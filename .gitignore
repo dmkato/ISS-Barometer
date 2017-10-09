@@ -1,0 +1,8 @@
+*.dvi 
+*.out 
+*.log 
+*.aux 
+*.bbl 
+*.blg 
+*.pyg 
+*.toc
