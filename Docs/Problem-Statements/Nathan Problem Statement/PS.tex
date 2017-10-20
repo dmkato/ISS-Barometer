@@ -1,0 +1,137 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{setspace}
+
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		The Cleverly Named Team}
+\def \CapstoneTeamNumber{		20}
+\def \GroupMemberOne{			Cade Raichart}
+\def \GroupMemberTwo{			Daniel Kato}
+\def \GroupMemberThree{			Nathan Shepherd}
+\def \CapstoneProjectName{		Monovocometer iOS App}
+\def \CapstoneSponsorCompany{	NASA}
+\def \CapstoneSponsorPerson{		Don Pettit}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		Problem Statement
+				%Requirements Document
+				%Technology Review
+				%Design Document
+				%Progress Report
+				}
+			
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+%\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+    	\includegraphics[height=4cm]{coe_v_spot1}
+        \hfill 
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        \includegraphics[height=4cm]{NASA}   
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            %\CapstoneTeamName\par 
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+        % 6. Fill in your abstract 
+        The International Space Station, the conglomerate work of multiple national space associations, including NASA, requires precision devices to monitor the many aspects of space life.
+        One very important aspect for the success of life in near vacuum is sustained air pressure inside the modules.
+        This air pressure is monitored by mechanical barometers, called Manovacometers, which must be visually monitored, and are no longer available.
+        The \CapstoneProjectName seeks to provide a suitable replacement for the current barometer device aboard the International Space Station.
+        This document will serve to introduce the \CapstoneProjectName, and will detail the problem, the solution, and the success metrics of the project.
+        The sections include the Definition of the Problem, Definition of Project, and the Metrics of Success.
+        \end{abstract}     
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+\section{Definition of Problem}
+Orbiting the Earth at a minimum of 330 km, the ISS introduces many unique problems to engineers, not the least of which is the near vacuum surrounding the station.
+The interior of the ISS has a pressure of 1 atmosphere, measured in millimeters of Mercury (mmHg), that must be maintained for the safety of the passengers and equipment.
+The systems aboard the ISS maintain pressure under normal conditions, but in the case of a leak the pressure will drop, endangering the crew.  Leaks in the ISS can be caused by faulty seals in hatches or orbital debris striking the vessel.
+Any leaks in the hull of the modules are cause for alarm, with a severe case consisting of a loss of 1 mm per minute.
+Leaks must be discovered and found in limited time, and repairing leaks is critical.
+The passengers of the ISS currently rely on the Russian made 1960's era mechanical Manovacometer, a precise device that measures air pressure.
+Passengers aboard the space station must use the Manovacometer to measure and track decreasing pressure, translating pressure change measurements to the time remaining using a printed chart.
+By shutting down all the modules, the crew can then use the Manovacometer and the process of elimination to find the leak.
+Once found, it is patched, either from the inside or the outside.
+For example, the crew will close all of the latches between modules and gather in the Soyuz Capsule.
+If there were no leaks then the next step would be to move to the next module, checking for leaks, once it was eliminated, they would move to the next module, and so on.
+The iPad app that we propose to build would replace the Manovacometers, as the crew have multiple iPads at their disposal.
+In addition, there are only two Manovacometers on board the ISS, with little prospect of getting more, meaning that there is even more incentive for a replacement.
+We seek to solve the replacement of these Manovacometers with an iPad app, using the iPad's internal barometer.
+Although this will be more efficient to read, there are other problems that may arise with the proposed solution.
+One of which is orientation; the iPad, and indeed most Apple products, have an accelerometer inside that measures which direction you hold the device, horizontally, called landscape, or vertically, called portrait.
+Given that this app will be in microgravity, the accelerometer requires harder twists to measure movement, and is far less convenient.
+Another problem that will have to be solved is that of the iPad's pressure resistance, especially it's range of low pressures that it can withstand.
+From Don Pettit, we know that the iPad can handle conditions of 0.5 atms, or 380 mmHg, but we don't know how accurate the iPad is within lower pressure environments.
+This problem will need testing and further research to find the bounds of the iPad's endurances and accuracy.
+
+\section{Definition of Project}
+The \CapstoneProjectName will be built over the next three school terms, by \GroupMemberOne, \GroupMemberTwo, and \GroupMemberThree, with the plan of replacing the mechanical Manovacometer.
+The ISS has 8 to 10 iPad Air 2's on board, and with the application they will be able to use their iPad's as barometers.
+Although there are many different apps already available as barometers, they are optimized to be effective on Earth, for tracking weather or altitude.
+These other applications can act as a starting place, but they are not suitable for the ISS.
+The app that we write must have certain characteristics to be a potential replacement for the Manovacometers.
+The display will consist of two pages at most, with one containing the current pressure, the initial pressure, and the absolute pressure change in seconds per mmHg, and the other screen consisting of a graph with pressure as a function of time.
+All displays must be highly legible in font, style, coloring, and size.
+By efficiently using the screen space, this will not be too much of a problem.
+Additionally, the display will be intuitively interactive, with a start/stop button to begin recording, and zoom capabilities on the graph section.
+This interaction will help the crew members efficiently use the app to measure and analyze pressure readings, providing benefits that were lacking in the mechanical Manovacometer.
+Another benefit this app will have is the ability to store the data in the form of csv files, readable by Excel.
+In addition to the two main screens, which may be combined depending on the orientation, there will be a settings page.
+The settings page will have options to alter different aspects of the app itself.
+Settings may include significant digits of the measurements, plot scale and scroll functionality, pressure update rate, and orientation.
+The orientation setting would be to remove the strain that crew members face of twisting the iPads. 
+
+\section{Success Metrics} 
+This project seems to be smaller scale than some of the others, as it is accessing a barometer chip on the iPad, then writing an app around it, but potentially it could be more intensive with testing.
+We must ensure that the iPad is suitable for low pressures, and how accurate it is in relation to the Manovacometers.
+This will involve a vacuum chamber, with precise measurements, used to compare the accuracy of the app.
+We may also need to test the pressure strength of iPads, though the pressure becomes critical before it reaches the known limits of the iPad, so it might also not be necessary.
+In addition to testing, the app's completion will be measured with the completion of the listed required features.
+These features are two displays; one with initial pressure, current pressure, and pressure change as sec/mmHg, and one with the plot of pressure as a function of time.
+The first display will also display a time stamp, in GMT, and will have all of the pressures displayed in mmHg.
+This display will have a start/stop functionality, that will allow the user to start and stop recording of data.
+Once data is recorded it should be optional to store it in the form of a csv file, that can be read by Excel.
+
+\end{document}
