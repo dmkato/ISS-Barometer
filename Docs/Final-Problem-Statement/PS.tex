@@ -12,7 +12,7 @@
 \def \GroupMemberOne{			Cade Raichart}
 \def \GroupMemberTwo{			Daniel Kato}
 \def \GroupMemberThree{			Nathan Shepherd}
-\def \CapstoneProjectName{		Manovacometer iOS App}
+\def \CapstoneProjectName{		ISS Barometer App}
 \def \CapstoneSponsorCompany{	NASA}
 \def \CapstoneSponsorPerson{		Don Pettit}
 
@@ -68,7 +68,7 @@
         % 6. Fill in your abstract 
         The International Space Station, the conglomerate work of multiple national space associations, including NASA, requires precision devices to monitor the many aspects of space life.
         One very important aspect for the success of life in near vacuum is sustained air pressure inside the modules.
-        This air pressure is monitored by mechanical barometers, called Manovacometers, which must be visually monitored, and are no longer available.
+        This air pressure is monitored by mechanical barometers, called MANOVACUMETERS, which must be visually monitored, and are no longer available.
         The \CapstoneProjectName seeks to provide a suitable replacement for the current barometer device aboard the International Space Station.
         This document will serve to introduce the \CapstoneProjectName, and will detail the problem, the solution, and the success metrics of the project.
         The sections include the Definition of the Problem, Definition of Project, and the Metrics of Success.
@@ -90,15 +90,15 @@ The interior of the ISS has a pressure of 1 atmosphere, measured in millimeters 
 The systems aboard the ISS maintain pressure under normal conditions, but in the case of a leak the pressure will drop, endangering the crew.  Leaks in the ISS can be caused by faulty seals in hatches or orbital debris striking the vessel.
 Any leaks in the hull of the modules are cause for alarm, with a severe case consisting of a loss of 1 mm per minute.
 Leaks must be discovered and found in limited time, and repairing leaks is critical.
-The passengers of the ISS currently rely on the Russian made 1960's era mechanical Manovacometer, a precise device that measures air pressure.
-Passengers aboard the space station must use the Manovacometer to measure and track decreasing pressure, translating pressure change measurements to the time remaining using a printed chart.
-By shutting down all the modules, the crew can then use the Manovacometer and the process of elimination to find the leak.
+The passengers of the ISS currently rely on the Russian made 1960's era mechanical MANOVACUMETER, a precise device that measures air pressure.
+Passengers aboard the space station must use the MANOVACUMETER to measure and track decreasing pressure, translating pressure change measurements to the time remaining using a printed chart.
+By shutting down all the modules, the crew can then use the MANOVACUMETER and the process of elimination to find the leak.
 Once found, it is patched, either from the inside or the outside.
 For example, the crew will close all of the latches between modules and gather in the Soyuz Capsule.
 If there were no leaks then the next step would be to move to the next module, checking for leaks, once it was eliminated, they would move to the next module, and so on.
-The iPad app that we propose to build would replace the Manovacometers, as the crew have multiple iPads at their disposal.
-In addition, there are only two Manovacometers on board the ISS, with little prospect of getting more, meaning that there is even more incentive for a replacement.
-We seek to solve the replacement of these Manovacometers with an iPad app, using the iPad's internal barometer.
+The iPad app that we propose to build would replace the MANOVACUMETERS, as the crew have multiple iPads at their disposal.
+In addition, there are only two MANOVACUMETERS on board the ISS, with little prospect of getting more, meaning that there is even more incentive for a replacement.
+We seek to solve the replacement of these MANOVACUMETERS with an iPad app, using the iPad's internal barometer.
 Although this will be more efficient to read, there are other problems that may arise with the proposed solution.
 One of which is orientation; the iPad, and indeed most Apple products, have an accelerometer inside that measures which direction you hold the device, horizontally, called landscape, or vertically, called portrait.
 Given that this app will be in microgravity, the accelerometer requires harder twists to measure movement, and is far less convenient.
@@ -107,25 +107,35 @@ From Don Pettit, we know that the iPad can handle conditions of 0.5 atms, or 380
 This problem will need testing and further research to find the bounds of the iPad's endurances and accuracy.
 
 \section{Definition of Project}
-The \CapstoneProjectName will be built over the next three school terms, by \GroupMemberOne, \GroupMemberTwo, and \GroupMemberThree, with the plan of replacing the mechanical Manovacometer.
+The \CapstoneProjectName will be built over the next three school terms, by \GroupMemberOne, \GroupMemberTwo, and \GroupMemberThree, with the plan of replacing the mechanical MANOVACUMETER.
 The ISS has 8 to 10 iPad Air 2's on board, and with the application they will be able to use their iPad's as barometers.
 Although there are many different apps already available as barometers, they are optimized to be effective on Earth, for tracking weather or altitude.
 These other applications can act as a starting place, but they are not suitable for the ISS.
-The app that we write must have certain characteristics to be a potential replacement for the Manovacometers.
+The app that we write must have certain characteristics to be a potential replacement for the MANOVACUMETERS.
 The display will consist of two pages at most, with one containing the current pressure, the initial pressure, and the absolute pressure change in seconds per mmHg, and the other screen consisting of a graph with pressure as a function of time.
 All displays must be highly legible in font, style, coloring, and size.
 By efficiently using the screen space, this will not be too much of a problem.
 Additionally, the display will be intuitively interactive, with a start/stop button to begin recording, and zoom capabilities on the graph section.
-This interaction will help the crew members efficiently use the app to measure and analyze pressure readings, providing benefits that were lacking in the mechanical Manovacometer.
+This interaction will help the crew members efficiently use the app to measure and analyze pressure readings, providing benefits that were lacking in the mechanical MANOVACUMETER.
 Another benefit this app will have is the ability to store the data in the form of csv files, readable by Excel.
 In addition to the two main screens, which may be combined depending on the orientation, there will be a settings page.
 The settings page will have options to alter different aspects of the app itself.
 Settings may include significant digits of the measurements, plot scale and scroll functionality, pressure update rate, and orientation.
 The orientation setting would be to remove the strain that crew members face of twisting the iPads. 
 
+\subsection{Features Listed:}
+\begin{itemize}
+\item Data Screen with initial pressure, current pressure, start/stop button, time stamp, pressure change (measured in sec / mmHg)
+\item Graph Screen with plot pressure as a function of time, pinch to zoom functionality, scaling options (to be set in settings)
+\item Also on Graph Screen have a readout of change in mmHg per min, and time stamp
+\item Additional settings menu that includes plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure
+\item Graph will be able to be exported as a csv, excel readable file
+\item All items will be optimized for efficient reading and clear interface
+\end{itemize}
+
 \section{Success Metrics} 
 This project seems to be smaller scale than some of the others, as it is accessing a barometer chip on the iPad, then writing an app around it, but potentially it could be more intensive with testing.
-We must ensure that the iPad is suitable for low pressures, and how accurate it is in relation to the Manovacometers.
+We must ensure that the iPad is suitable for low pressures, and how accurate it is in relation to the MANOVACUMETERS.
 This will involve a vacuum chamber, with precise measurements, used to compare the accuracy of the app.
 We may also need to test the pressure strength of iPads, though the pressure becomes critical before it reaches the known limits of the iPad, so it might also not be necessary.
 In addition to testing, the app's completion will be measured with the completion of the listed required features.
