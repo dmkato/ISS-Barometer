@@ -1,0 +1,321 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{setspace}
+
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+%\usepackage{pgfgantt}
+%\definecolor{grey}{rgb}{0.57, 0.64, 0.69}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{The ISS App}
+\def \CapstoneTeamNumber{20}
+\def \GroupMemberOne{Cade Raichart}
+\def \GroupMemberTwo{Daniel Kato}
+\def \GroupMemberThree{Nathan Shepherd}
+\def \CapstoneProjectName{ISS Barometer App }
+\def \CapstoneSponsorCompany{NASA}
+\def \CapstoneSponsorPerson{Don Pettit}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{	%Problem Statement
+				Requirements Document
+				%Technology Review
+				%Design Document
+				%Progress Report
+				}
+
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+%\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+    	\includegraphics[height=4cm]{coe_v_spot1}
+        \hfill
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        \includegraphics[height=4cm]{NASA}
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            %\CapstoneTeamName\par
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+        % 6. Fill in your abstract
+
+        \end{abstract}
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+\section{Introduction}
+
+\subsection{Purpose}
+This document will detail the required final product of this project, the \CapstoneProjectName.
+The sections will go over the scope of the project, as well as the specific details of it's completion.
+This document will also serve as the metrics in which we will be graded at the end of Spring term.
+This Requirements Document is meant as a repeatable and detailed description of the problem that we aim to solve, as stated in our Problem Statement.
+That goal is to provide an auxiliary barometer to the MANOVACUMETERS aboard the ISS with an iPad app.
+The intended audience for this document is the client, NASA and Don Pettit, as well as anyone seeking to repeat this process, using the base setup.
+This document will also act as a success metric once this school year is finished, allowing clear decisive evaluation.
+Additionally it will provide a detailed agreement between the group and our client, to ensure that we are all on the same page.
+This document can be changed throughout the project, but scope changes must be submitted and verified by both teachers and clients.
+
+\subsection{Scope}
+The \CapstoneProjectName will measure the current pressure of its surroundings using the built in pressure transducer.
+The application will display the pressure in mmHg upon starting the app and whenever the 'Record Pressure' button is pressed the current pressure along with a timestamp will be recorded and displayed.
+It will also display the current pressure change in $\frac{\Delta t}{\Delta p}$ and include a graph of $\frac{\Delta p}{\Delta t}$ will be displayed with the capability to pinch to zoom and scale the graph.
+This graph will have a readout of $\Delta \frac{\Delta p}{\Delta t}$ displayed next to it.\textbf{}
+A settings page will be provided that allows the user to choose the plot scale of the graph, orientation of the app, and number of significant digits.
+The graph's data will also be exportable as a csv file.
+The application will not read remote pressure data.
+The \CapstoneProjectName will be used as a tool for astronauts to compute the amount of time they have before they must evacuate the International Space Station.
+This application has the benefit of allowing the user to track the change of pressure data more efficiently than taking readings from a manual barometer.
+
+\subsection{Definitions, Acronyms, and Abbreviations}
+\begin{itemize}
+\item[--] MANOVACUMETER: The current mechanical air pressure gauge aboard the ISS
+\item[--] NASA: National Aeronautics and Space Administration
+\item[--] ISS: International Space Station
+\item[--] iOS: The internal operating system of Apple products, specifically iPads
+\item[--] iPad: A touch screen tablet device with barometer capabilities
+\item[--] mmHg: Millimeters of Mercury, the standard pressure unit
+\item[--] t-Res: The chart that NASA uses to calculate residual time left on station
+%Add any wacko words that are used throughout
+\end{itemize}
+
+\subsection{References}
+
+\subsection{Overview}
+This document will follow the IEEE 830-1995 guidelines, in both headings and content.
+The following section, Overall Description, will detail the description of our application,
+The third section, Specific Requirement, will outline the requirements in user interface, hardware interface, software interface, and communications interface.
+Our Gantt chart can be found in section 2.6, Schedule Dependencies, and lays out the rough schedule in terms of dependent features.
+It provides a birds-eye view of the schedule and dependencies of this project.
+It is subject to change, as more information and insight comes to light.
+The final section will describe, in detail, each feature, additionally it will describe second version features.
+
+
+\section{Overall Description}
+
+\subsection{Product Perspectives}
+There are many apps on the Apple store right now that use the barometer to display pressure here on earth.
+The difference between the ones on the market and ours is that theirs are designed for earth's atmospheric pressure and most of them are meant to help with weather not pressure leaks.
+To accomplish the system requirements the system interfaces needs to have three pages that the user can move through.
+The third page, settings page, needs to be able to control the characteristics and display of the other two pages.
+The Display of the first page needs to have a big easy to see button, with a digital display that can be seen easily and read fast.
+The second page needs to have a graph across the screen that the user can zoom into.  The settings page needs to be able to control the other two pages with little wonder of what each setting does. This page contains a plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure.
+We will need to get the software to use the internal barometer that the ipad Air-2 uses, this will capture our atmospheric pressure for us.
+There is no outside interface that the app needs to use to complete the product.
+The running graph will impeded on the amount of memory we have, while it's in it will continual gather more and more data.
+This being said the data isn't large but if left on too long it could fill up the memory.
+The first page will display the initial pressure, current pressure and the pressure change as sec/mmHG.
+For our graph we will be using pressure vs the function of time as our two axis datas as well as dp/dt as the slope of the graph.
+
+\subsection{Product Functions}
+\begin{itemize}
+\item Data Screen with initial pressure, current pressure, start/stop button, time stamp, pressure change (measured in sec / mmHg)
+\item Graph Screen with plot pressure as a function of time, pinch to zoom functionality, scaling options (to be set in settings)
+\item Additional settings menu that includes plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure
+\item Graph will be able to be exported as a csv, excel readable file
+\item All items will be optimized for efficient reading and clear interface
+\end{itemize}
+
+\subsection{User Characteristics}
+The intended audience for the \CapstoneProjectName is astronauts and cosmonauts aboard the International Space Station.
+The personnel aboard the ISS are expected to have a working of knowledge of the relationship between $\frac{\Delta p}{\Delta t}$, $\frac{\Delta p}{\Delta t}$, and $\Delta \frac{\Delta p}{\Delta t}$.
+Because the intended user is aboard the ISS in space, it is expected that the app be used in micro-gravity.
+
+\subsection{Constraints}
+The constraints of this project involve mostly the constraints in place by working on iPads.
+The language that we will use is Swift, which must be developed on Apple's IDE, XCode.
+This further limits our development environment options, in that XCode is only made for Mac OS machines, and not for Windows computers.
+The fact that this application will need to be deployed on the ISS also adds some constraints.
+One constraint is the download and size limits of iPad Apps; which must have executables under 500 MB, and a decompressed size of 4 GB.
+The download speed of the ISS, unknown at this time, will also limit the size of the app.
+The fact that the ISS is unreachable, and our audience are the few crew members aboard, problems and updates might take a while to be addressed and applied.
+Although not likely a problem, time also is a constraint, with our client requesting a product before the end of the calendar year, 2017.
+Based on what we know now, this will all be achievable.
+
+\subsection{Assumptions and Dependencies}
+The iPads on the ISS use version 10 of the OS, they might have update this during our product.
+Our product mostly uses mm/Hg as our measurement for pressure if this is changed the requirements will need to be changed.
+
+\subsection{Schedule Dependencies}
+%\begin{ganttchart}[
+%	hgrid,
+%    x unit=.5mm,
+%    time slot format=isodate,
+%    link bulge=4
+%]{2017-09-10}{2018-06-20}
+%\gantttitle{\CapstoneProjectName}
+%\gantttitlecalendar{year, month} \\
+%
+%%Items
+%\ganttgroup{Version 1}{2017-09-20}{2017-12-30} \\ %Will add new line
+%\ganttbar{Display Readings}{2017-10-30}{2017-11-20} \\
+%\ganttbar{Basic Plot}{2017-11-20}{2017-11-30} \\
+%\ganttbar{Basic Settings}{2017-11-20}{2017-11-30} \\
+%\ganttbar{Finalize Design}{2017-12-01}{2018-01-01} \\
+%\ganttgroup{Version 2}{2018-01-01}{2018-05-18} \\
+%\ganttbar[inline]{Test Accuracy}{2018-01-01}{2018-05-18} \\
+%\ganttbar[inline]{Adv. Plot}{2018-01-01}{2018-03-20} \\
+%\ganttbar[inline]{Adv. Settings}{2018-01-01}{2018-03-10} \\
+%\ganttbar[
+%	bar/.append style={fill=grey, rounded corners=3pt}
+%    ]{Final Submission}{2018-05-18}{2018-06-10}
+%
+%%Relationships
+%\ganttlink{elem1}{elem2}
+%\ganttlink[link type=s-s]{elem2}{elem3}
+%
+%\ganttlink{elem4}{elem5}
+%\ganttlink[link type=s-s]{elem6}{elem7}
+%\ganttlink[link type=s-s]{elem7}{elem8}
+%
+%\ganttlink{elem5}{elem9}
+%
+%
+%\end{ganttchart}
+
+\section{Specific Requirements}
+
+\subsection{External Interface Requirements}
+
+\subsubsection{User Interfaces}
+The user interface include the button to record the pressure at that given moment, the graph and the ability to pinch to zoom
+
+\subsubsection{Hardware Interfaces}
+
+\subsubsection{Software Interfaces}
+
+\subsubsection{Communications Interfaces}
+
+\section{Specific System Features}
+
+\subsection{Initial Pressure Reading}
+
+\subsubsection{Purpose of Function}
+This number will be on the initial data screen.
+It will show the initial pressure reading, in the units defined in the settings page, defaulted to mm Hg.
+When the application is not in the recording mode it will show the current pressure, and once the record button is pressed it will show the pressure at the time of recording.
+This provides the users with a clear, simple view of the current pressure, and once recording starts, it will provide a base line pressure that will be used to gauge the trends.
+\subsubsection{Stimulus/Response Sequence}
+Before and after a recording session, this text will display the current pressure polled from the barometer at regular intervals, depending on the settings.
+Once the button is pressed, this number will pause, and display the pressure at the time the recording started, with a time stamp.
+
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Ability to poll on-iPad barometer according to set rate
+\item Ability to save and time stamp the pressure, in specified unit
+\item Ability to start, stop, and discard/save recordings
+\end{itemize}
+
+\subsection{Record Button}
+\subsubsection{Purpose of Function}
+\subsubsection{Stimulus/Response Sequence}
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Filler
+\end{itemize}
+
+\subsection{Current(recording) Pressure Reading}
+\subsubsection{Purpose of Function}
+This number will be shown on the initial data screen, during recording.
+It will show the current pressure reading, in the defined units.
+This number will be polled from the barometer on the iPad, at a rate defined in the settings, which will be no greater than 2 seconds.
+It will be the same clear text as the other readings, and have a decimal amount define in the settings.
+This measurement will be used for the $\frac{\Delta t}{\Delta p}$ plot and readout.
+\subsubsection{Stimulus/Response Sequence}
+This won't be visible before recording, but once the record mode is activated, then this will start displaying the current pressure.
+Once the recording is stopped it will pause, and will be stored with with the plot.
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Ability to poll on-iPad barometer readings according to set rate
+\item Ability to start, stop, and discard/save recordings
+\end{itemize}
+
+\subsection{Time over Pressure Change Reading}
+\subsubsection{Purpose of Function}
+\subsubsection{Stimulus/Response Sequence}
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Filler
+\end{itemize}
+
+\subsection{Plot of Pressure Change}
+\subsubsection{Purpose of Function}
+\subsubsection{Stimulus/Response Sequence}
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Filler
+\end{itemize}
+
+\subsection{Configurable Settings Page}
+\subsubsection{Purpose of Function}
+\subsubsection{Stimulus/Response Sequence}
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Filler
+\end{itemize}
+
+\subsection{V2 Consult T-Res}
+\subsubsection{Purpose of Function}
+This function would allow users to look up the t-Res values in relation to the $\frac{\Delta t}{\Delta p}$.
+The t-Res look up would provide users with time remaining in a leak situation.
+This is something that is already done aboard the ISS, but with the addition of a digital table it would make the time spent much shorter.
+The display would provide the time remaining, with context of NASA's parameters for evacuation.
+\subsubsection{Stimulus/Response Sequence}
+This functionality would be available after a user had opted for it in the form of a button.
+It would then display time remaining, as a function of pressure loss.
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Ability to poll on-iPad barometer readings
+\item Ability to use t-Res look up, and access to evacuation parameters
+\item Ability to show/hide information
+\end{itemize}
+
+\subsection{V2 Save Function}
+\subsubsection{Purpose of Function}
+\subsubsection{Stimulus/Response Sequence}
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Filler
+\end{itemize}
+
+
+\end{document}
