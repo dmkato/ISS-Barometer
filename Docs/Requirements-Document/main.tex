@@ -133,18 +133,19 @@ The final section will describe, in detail, each feature, additionally it will d
 \section{Overall Description}
 
 \subsection{Product Perspectives}
-There are many apps on the Apple store right now that use the barometer to display pressure here on earth.
-The difference between the ones on the market and ours is that theirs are designed for earth's atmospheric pressure and most of them are meant to help with weather not pressure leaks.
-To accomplish the system requirements the system interfaces needs to have three pages that the user can move through.
-The third page, settings page, needs to be able to control the characteristics and display of the other two pages.
-The Display of the first page needs to have a big easy to see button, with a digital display that can be seen easily and read fast.
-The second page needs to have a graph across the screen that the user can zoom into.  The settings page needs to be able to control the other two pages with little wonder of what each setting does. This page contains a plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure.
-We will need to get the software to use the internal barometer that the ipad Air-2 uses, this will capture our atmospheric pressure for us.
+There are many apps on the Apple store right now that use the built in barometer to display pressure here on earth.
+The difference between the ones on the market and ours is that others are designed for everyday people to measure pressure with regards to weather on Earth, and the \CapstoneTeamName is designed for astronauts to pressure leaks onboard the ISS.
+To accomplish the requirements, the user interface needs to have three pages that the user can move through: a main display, a graph page, and a settings page.
+The settings page needs to be able to control the characteristics and display of the other two pages.
+This page contains a plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure.
+The main page will display the initial pressure, current pressure and the pressure change as sec/mmHG.
+It will also show a big easy to see button for recording the current pressure, with a digital display that can be seen easily and read fast.
+This page needs to have an interactive graph across that the user can pinch-to-zoom and scroll back and forth.
+For our graph we will be using pressure vs the function of time as our two axis datas as well as $\frac{\Delta p}{\Delta t}$ as the slope of the graph.
+We will need to get the software to use the internal barometer that the iPad Air 2 uses to capture the atmospheric pressure.
 There is no outside interface that the app needs to use to complete the product.
-The running graph will impeded on the amount of memory we have, while it's in it will continual gather more and more data.
-This being said the data isn't large but if left on too long it could fill up the memory.
-The first page will display the initial pressure, current pressure and the pressure change as sec/mmHG.
-For our graph we will be using pressure vs the function of time as our two axis datas as well as dp/dt as the slope of the graph.
+The running graph will impeded on the amount of memory we have, and while it's running it will continually gather more data.
+This being said the data isn't large but if left on too long it could fill up memory.
 
 \subsection{Product Functions}
 \begin{itemize}
