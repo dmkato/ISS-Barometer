@@ -10,7 +10,7 @@ TRG	= $(SRC:%.tex=%.dvi)
 PSF	= $(SRC:%.tex=%.ps)
 PDF	= $(SRC:%.tex=%.pdf)
 
-all: pdf
+all: pdf clean
 
 pdf: $(PDF)
 
@@ -37,5 +37,3 @@ clean:
 	rm -f  *.ps *.dvi *.out *.log *.aux *.bbl *.blg *.pyg *.toc
 
 .PHONY: all show clean ps pdf showps
-
-

@@ -6,11 +6,11 @@
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
 
-%\usepackage{pgfgantt}
-%\definecolor{grey}{rgb}{0.57, 0.64, 0.69}
+\usepackage{pgfgantt}
+\definecolor{grey}{rgb}{0.57, 0.64, 0.69}
 
 % 1. Fill in these details
-\def \CapstoneTeamName{The ISS App}
+\def \CapstoneTeamName{The Cleverly Named Team}
 \def \CapstoneTeamNumber{20}
 \def \GroupMemberOne{Cade Raichart}
 \def \GroupMemberTwo{Daniel Kato}
@@ -176,52 +176,61 @@ The iPads on the ISS use version 10 of the OS, they might have update this durin
 Our product mostly uses mm/Hg as our measurement for pressure if this is changed the requirements will need to be changed.
 
 \subsection{Schedule Dependencies}
-%\begin{ganttchart}[
-%	hgrid,
-%    x unit=.5mm,
-%    time slot format=isodate,
-%    link bulge=4
-%]{2017-09-10}{2018-06-20}
-%\gantttitle{\CapstoneProjectName}
-%\gantttitlecalendar{year, month} \\
-%
-%%Items
-%\ganttgroup{Version 1}{2017-09-20}{2017-12-30} \\ %Will add new line
-%\ganttbar{Display Readings}{2017-10-30}{2017-11-20} \\
-%\ganttbar{Basic Plot}{2017-11-20}{2017-11-30} \\
-%\ganttbar{Basic Settings}{2017-11-20}{2017-11-30} \\
-%\ganttbar{Finalize Design}{2017-12-01}{2018-01-01} \\
-%\ganttgroup{Version 2}{2018-01-01}{2018-05-18} \\
-%\ganttbar[inline]{Test Accuracy}{2018-01-01}{2018-05-18} \\
-%\ganttbar[inline]{Adv. Plot}{2018-01-01}{2018-03-20} \\
-%\ganttbar[inline]{Adv. Settings}{2018-01-01}{2018-03-10} \\
-%\ganttbar[
-%	bar/.append style={fill=grey, rounded corners=3pt}
-%    ]{Final Submission}{2018-05-18}{2018-06-10}
-%
-%%Relationships
-%\ganttlink{elem1}{elem2}
-%\ganttlink[link type=s-s]{elem2}{elem3}
-%
-%\ganttlink{elem4}{elem5}
-%\ganttlink[link type=s-s]{elem6}{elem7}
-%\ganttlink[link type=s-s]{elem7}{elem8}
-%
-%\ganttlink{elem5}{elem9}
-%
-%
-%\end{ganttchart}
+\vspace{20pt}
+\begin{ganttchart}[
+	hgrid,
+    x unit=.5mm,
+    time slot format=isodate,
+    link bulge=4
+]{2017-09-10}{2018-06-20}
+% \gantttitle{\CapstoneProjectName}
+\gantttitlecalendar{year, month} \\
+
+%Items
+\ganttgroup{Version 1}{2017-09-20}{2017-12-30} \\ %Will add new line
+\ganttbar{Display Readings}{2017-10-30}{2017-11-20} \\
+\ganttbar{Basic Plot}{2017-11-20}{2017-11-30} \\
+\ganttbar{Basic Settings}{2017-11-20}{2017-11-30} \\
+\ganttbar{Finalize Design}{2017-12-01}{2018-01-01} \\
+\ganttgroup{Version 2}{2018-01-01}{2018-05-18} \\
+\ganttbar[inline]{Test Accuracy}{2018-01-01}{2018-05-18} \\
+\ganttbar[inline]{Adv. Plot}{2018-01-01}{2018-03-20} \\
+\ganttbar[inline]{Adv. Settings}{2018-01-01}{2018-03-10} \\
+\ganttbar[inline]{T-res Calculation}{2018-01-01}{2018-03-10} \\
+\ganttbar[
+	bar/.append style={fill=grey, rounded corners=3pt}
+    ]{Final Submission}{2018-05-18}{2018-06-10}
+
+%Relationships
+\ganttlink{elem1}{elem2}
+\ganttlink[link type=s-s]{elem2}{elem3}
+
+\ganttlink{elem4}{elem5}
+\ganttlink[link type=s-s]{elem6}{elem7}
+\ganttlink[link type=s-s]{elem7}{elem8}
+\ganttlink[link type=s-s]{elem8}{elem9}
+
+\ganttlink{elem5}{elem10}
+
+\end{ganttchart}
 
 \section{Specific Requirements}
 
 \subsection{External Interface Requirements}
 
 \subsubsection{User Interfaces}
-The user interface include the button to record the pressure at that given moment, the graph and the ability to pinch to zoom
+The user interface will include a button to record the pressure at that given moment, a graph and the ability to pinch-to-zoom, and a settings page.
+The record button will simply record the pressure at the time the button was pressed and display the result with a timestamp.
+The graph will be interactive and allow the user to zoom in on certain areas and scroll to view other portions of the graph.
+The settings page will include toggles to allow the user to change the number of significant digits, orientation, plot scale, scroll functionality, and other units of pressure.
+There will be no privileged users, so anybody who uses the app will be able to use all features.
 
 \subsubsection{Hardware Interfaces}
+The \CapstoneProjectName will not directly interface with any hardware, but will instead make use of Apple's iOS APIs in the Swift language that wrap all interaction with iOS hardware.
 
 \subsubsection{Software Interfaces}
+The \CapstoneProjectName will use the Apple's iOS APIs in the Swift 4 programming language to read pressure data from the pressure transducer, to display the data to the screen, and to create the graph of $\frac{\Delta p}{\Delta t}$.
+Each use of an iOS API will be carried out by a function call to the appropriate Swift 4 library. Information on these APIs can be found at \url{https://developer.apple.com/documentation}.
 
 \subsubsection{Communications Interfaces}
 
@@ -271,10 +280,13 @@ Once the recording is stopped it will pause, and will be stored with with the pl
 
 \subsection{Time over Pressure Change Reading}
 \subsubsection{Purpose of Function}
+This display of change in pressure or $\frac{\Delta t}{\Delta p}$ will be used to inform the user of how quickly the surrounding pressure is changing. This will be used to track changes in pressure in real time.
 \subsubsection{Stimulus/Response Sequence}
+The pressure will be read at a consistant time interval, and at each reading, $\frac{\Delta t}{\Delta p}$ will be calculated and converted into the specified unit of measurement. This number will then be displayed in a readable manner on the main page
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Filler
+\item Ability to poll on-iPad barometer readings according to set rate
+\item Ability to control the view of the app
 \end{itemize}
 
 \subsection{Plot of Pressure Change}
@@ -287,10 +299,20 @@ Once the recording is stopped it will pause, and will be stored with with the pl
 
 \subsection{Configurable Settings Page}
 \subsubsection{Purpose of Function}
+This will be its own page in the application that allows the user to configure the app in a way that they like.
+The page will include toggles for number of significant digits, orientation, plot scale, scroll functionality, other units of pressure, and sample rate.
+
 \subsubsection{Stimulus/Response Sequence}
+When the user selects a number from the significant digits selector, the all of the data displayed on the main page should have that number of digits to the right of the decimal place.
+When a user selects an orientation from the menu, the display should roll to that orientation in the settings view, and persist to the main page.
+When a user selects a plot scale, the graph on the main page's scale will adjust to match.
+When a user selects a specific graph scrolling functionality, the graph will change to reflect.
+When a user selected a different unit of measurement, the pressure displays on the main page will use that unit instead of the default mmHg.
+When a user selects a sample rate, the graph and pressure display will update at the specified number of times per second.
+
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Filler
+\item Ability to poll on-iPad barometer according to set rate.
 \end{itemize}
 
 \subsection{V2 Consult T-Res}
