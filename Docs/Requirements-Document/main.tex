@@ -259,11 +259,20 @@ Once the button is pressed, this number will pause, and display the pressure at 
 \end{itemize}
 
 \subsection{Record Button}
+
 \subsubsection{Purpose of Function}
+This button will trigger the recording of data, it will also provide the user the ability to stop and pause recordings.
+By pressing/touching this button, the user will be able to activate the recording, in which the program will store pressure readings for use in the graph.
+As a result, the button will cause the graph to start recording, and the display to show the initial pressure alongside the current pressure and pressure change.
 \subsubsection{Stimulus/Response Sequence}
+Upon activating this button the graph will start recording and the initial pressure and pressure change will display alongside the current pressure.
+Once the program is recording this button will allow the user to pause and stop the recording, with pause meaning suspending recording and stop will fully cease recording.
+Once the recording has been dealt with, either deleted or saved as a csv, then the button will return to it's record ready state.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Filler
+\item Ability to poll on-iPad barometer
+\item Ability to display readings
+\item Ability to save and display saved data.
 \end{itemize}
 
 \subsection{Current(recording) Pressure Reading}
@@ -286,7 +295,7 @@ Once the recording is stopped it will pause, and will be stored with with the pl
 \subsubsection{Purpose of Function}
 This display of change in pressure or $\frac{\Delta t}{\Delta p}$ will be used to inform the user of how quickly the surrounding pressure is changing. This will be used to track changes in pressure in real time.
 \subsubsection{Stimulus/Response Sequence}
-The pressure will be read at a consistant time interval, and at each reading, $\frac{\Delta t}{\Delta p}$ will be calculated and converted into the specified unit of measurement. This number will then be displayed in a readable manner on the main page
+The pressure will be read at a consistent time interval, and at each reading, $\frac{\Delta t}{\Delta p}$ will be calculated and converted into the specified unit of measurement. This number will then be displayed in a readable manner on the main page
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
 \item Ability to poll on-iPad barometer readings according to set rate
