@@ -71,8 +71,8 @@
         % 6. Fill in your abstract
 This Requirements Document is meant as a repeatable and detailed description of using the iPad Air 2 Barometer to create an app that can be used to measure atmospheric pressure in emergency situations aboard the International Space Station.
 Within this document is the description, constraints and dependencies that will be used for this app.
-The Specific requirements that must be completed are laid out within the user, hardware and software interfaces sections. 
-The System features intails the more in depth features of the pressure readings, recording button, graph and the settings pages. 
+The Specific requirements that must be completed are laid out within the user, hardware and software interfaces sections.
+The System features intails the more in depth features of the pressure readings, recording button, graph and the settings pages.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -136,15 +136,15 @@ The final section will describe, in detail, each feature, additionally it will d
 \section{Overall Description}
 
 \subsection{Product Perspectives}
-Today in the Apple store there are apps that use the internal barometer and displays earth's atmospheric pressure, one such app is Barometer and Altimeter Pro.Apps on the market are designed for earth's atmospheric pressure and to help with detection of weath. The product we are creating will be used for detection atmospheric pressure in space specifically from hull breaches. 
-To accomplish the requirements the system interfaces will have three pages the display, graph and settings. 
+Today in the Apple store there are apps that use the internal barometer and displays earth's atmospheric pressure, one such app is Barometer and Altimeter Pro.Apps on the market are designed for earth's atmospheric pressure and to help with detection of weath. The product we are creating will be used for detection atmospheric pressure in space specifically from hull breaches.
+To accomplish the requirements the system interfaces will have three pages the display, graph and settings.
 The Display will have a big button, with a digital display of atmospheric pressure.
-The first page will display the initial pressure, current pressure and the pressure change as sec/mmHG. 
+The first page will display the initial pressure, current pressure and the pressure change as sec/mmHG.
 Graphs display will have a graph that spans the whole screen, that the user will have the ability to zoom in and out.
  The graph axis will be pressure vs the function of time and our slope will be dp/dt.
- The third page, settings page, will control the characteristics and look of the other two pages. 
+ The third page, settings page, will control the characteristics and look of the other two pages.
 Settings page will contain the option of changing the plot scale, scroll functionality, orientation, decimal point, as well as other units of measure for pressure.
- All displays and pages need to be able to be read fast and easily in low light. 
+ All displays and pages need to be able to be read fast and easily in low light.
 We will need to get the software to use the internal barometer that the ipad Air-2 uses, this will capture our atmospheric pressure for us.
 There is no outside interface that the app needs to use to complete the product.
 There is a chance that the running graph could impeded on the amount of memory the iPad has, the longer it's on the more data it stores.
@@ -237,7 +237,7 @@ The \CapstoneProjectName will use the Apple's iOS APIs in the Swift 4 programmin
 Each use of an iOS API will be carried out by a function call to the appropriate Swift 4 library. Information on these APIs can be found at \url{https://developer.apple.com/documentation}.
 
 \subsubsection{Communications Interfaces}
-Our app will not need to communicate outside of the iPad, it will need to use the internal barometer and exported as a csv to an excel file. 
+Our app will not need to communicate outside of the iPad, it will need to use the internal barometer and exported as a csv to an excel file.
 \section{Specific System Features}
 
 \subsection{Initial Pressure Reading}
@@ -297,9 +297,9 @@ The pressure will be read at a consistant time interval, and at each reading, $\
 \subsubsection{Purpose of Function}
 This graph will display the change in pressure over time, in such a way that the user can quickly see the whole timeline.
 \subsubsection{Stimulus/Response Sequence}
-The graph's y axis will be pressure, while the x axis will be the function of time. The slope of the graph will be dp/dt, it will be constantly updated as the app is run. 
-The graph will be a running graph. 
-The time constraint is always getting longer and the slope is constantly updated to give you the newest read. 
+The graph's y axis will be pressure, while the x axis will be the function of time. The slope of the graph will be dp/dt, it will be constantly updated as the app is run.
+The graph will be a running graph.
+The time constraint is always getting longer and the slope is constantly updated to give you the newest read.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
 \item Ability to store and calculate dp/dt
@@ -343,10 +343,16 @@ It would then display time remaining, as a function of pressure loss.
 
 \subsection{V2 Save Function}
 \subsubsection{Purpose of Function}
+In version 2, it is required that the \CapstoneTeamName be able to export a csv containing all information from the current session.
+This will allow the user to review the data they have collected on a computer for further processing and analysis.
+This function will not be available while pressure data is being recorded and will require the user to pause the recording to save the data.
 \subsubsection{Stimulus/Response Sequence}
+Once in a paused state, by press pressing a 'Save to CSV' button, a csv file with the information collected during the current session will become available to share via Apple's share sheet.
+This share sheet will allow the user to choose an action for the created csv document.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Filler
+\item Ability to poll on-iPad barometer according to set rate.
+\item Ability to create files on the iPad
 \end{itemize}
 
 
