@@ -69,7 +69,10 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract
-
+This Requirements Document is meant as a repeatable and detailed description of using the iPad Air 2 Barometer to create an app that can be used to measure atmospheric pressure in emergency situations aboard the International Space Station.
+Within this document is the description, constraints and dependencies that will be used for this app.
+The Specific requirements that must be completed are laid out within the user, hardware and software interfaces sections. 
+The System features intails the more in depth features of the pressure readings, recording button, graph and the settings pages. 
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -133,19 +136,19 @@ The final section will describe, in detail, each feature, additionally it will d
 \section{Overall Description}
 
 \subsection{Product Perspectives}
-There are many apps on the Apple store right now that use the built in barometer to display pressure here on earth.
-The difference between the ones on the market and ours is that others are designed for everyday people to measure pressure with regards to weather on Earth, and the \CapstoneTeamName is designed for astronauts to pressure leaks onboard the ISS.
-To accomplish the requirements, the user interface needs to have three pages that the user can move through: a main display, a graph page, and a settings page.
-The settings page needs to be able to control the characteristics and display of the other two pages.
-This page contains a plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure.
-The main page will display the initial pressure, current pressure and the pressure change as sec/mmHG.
-It will also show a big easy to see button for recording the current pressure, with a digital display that can be seen easily and read fast.
-This page needs to have an interactive graph across that the user can pinch-to-zoom and scroll back and forth.
-For our graph we will be using pressure vs the function of time as our two axis datas as well as $\frac{\Delta p}{\Delta t}$ as the slope of the graph.
-We will need to get the software to use the internal barometer that the iPad Air 2 uses to capture the atmospheric pressure.
+Today in the Apple store there are apps that use the internal barometer and displays earth's atmospheric pressure, one such app is Barometer and Altimeter Pro.Apps on the market are designed for earth's atmospheric pressure and to help with detection of weath. The product we are creating will be used for detection atmospheric pressure in space specifically from hull breaches. 
+To accomplish the requirements the system interfaces will have three pages the display, graph and settings. 
+The Display will have a big button, with a digital display of atmospheric pressure.
+The first page will display the initial pressure, current pressure and the pressure change as sec/mmHG. 
+Graphs display will have a graph that spans the whole screen, that the user will have the ability to zoom in and out.
+ The graph axis will be pressure vs the function of time and our slope will be dp/dt.
+ The third page, settings page, will control the characteristics and look of the other two pages. 
+Settings page will contain the option of changing the plot scale, scroll functionality, orientation, decimal point, as well as other units of measure for pressure.
+ All displays and pages need to be able to be read fast and easily in low light. 
+We will need to get the software to use the internal barometer that the ipad Air-2 uses, this will capture our atmospheric pressure for us.
 There is no outside interface that the app needs to use to complete the product.
-The running graph will impeded on the amount of memory we have, and while it's running it will continually gather more data.
-This being said the data isn't large but if left on too long it could fill up memory.
+There is a chance that the running graph could impeded on the amount of memory the iPad has, the longer it's on the more data it stores.
+This being said the data isn't large and shouldn't be a problem.
 
 \subsection{Product Functions}
 \begin{itemize}
@@ -234,7 +237,7 @@ The \CapstoneProjectName will use the Apple's iOS APIs in the Swift 4 programmin
 Each use of an iOS API will be carried out by a function call to the appropriate Swift 4 library. Information on these APIs can be found at \url{https://developer.apple.com/documentation}.
 
 \subsubsection{Communications Interfaces}
-
+Our app will not need to communicate outside of the iPad, it will need to use the internal barometer and exported as a csv to an excel file. 
 \section{Specific System Features}
 
 \subsection{Initial Pressure Reading}
@@ -292,10 +295,16 @@ The pressure will be read at a consistant time interval, and at each reading, $\
 
 \subsection{Plot of Pressure Change}
 \subsubsection{Purpose of Function}
+This graph will display the change in pressure over time, in such a way that the user can quickly see the whole timeline.
 \subsubsection{Stimulus/Response Sequence}
+The graph's y axis will be pressure, while the x axis will be the function of time. The slope of the graph will be dp/dt, it will be constantly updated as the app is run. 
+The graph will be a running graph. 
+The time constraint is always getting longer and the slope is constantly updated to give you the newest read. 
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Filler
+\item Ability to store and calculate dp/dt
+\item Ability to zoom into and out of the graph.
+\item Ability to display the whole timeline or only the newest data
 \end{itemize}
 
 \subsection{Configurable Settings Page}
