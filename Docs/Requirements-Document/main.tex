@@ -176,8 +176,11 @@ Although not likely a problem, time also is a constraint, with our client reques
 Based on what we know now, this will all be achievable.
 
 \subsection{Assumptions and Dependencies}
-The iPads on the ISS use version 10 of the OS, they might have update this during our product.
-Our product mostly uses mm/Hg as our measurement for pressure if this is changed the requirements will need to be changed.
+We are assuming that the iPad Air 2 has a barometer inside of it as the manufacture has described.
+We will also assume that the ipad has enough memory to hold onto the running data and display it onto our timeline graph.
+The iPads OS on the ISS use version 10, if this is updated then there may become compatibility problems we will need to face.
+Our product mostly uses mm/Hg as our measurement for pressure, this is an assumption that our client may change and we will have to change.
+If any of our assumptions are incorrect or not available then we will have to change accordingly.
 
 \subsection{Schedule Dependencies}
 \vspace{20pt}
@@ -237,7 +240,7 @@ The \CapstoneProjectName will use the Apple's iOS APIs in the Swift 4 programmin
 Each use of an iOS API will be carried out by a function call to the appropriate Swift 4 library. Information on these APIs can be found at \url{https://developer.apple.com/documentation}.
 
 \subsubsection{Communications Interfaces}
-Our app will not need to communicate outside of the iPad, it will need to use the internal barometer and exported as a csv to an excel file. 
+The ISS Barameter App will not need to communicate outside of the iPad, it will need to use the internal barometer and exported as a csv to an excel file. 
 \section{Specific System Features}
 
 \subsection{Initial Pressure Reading}
