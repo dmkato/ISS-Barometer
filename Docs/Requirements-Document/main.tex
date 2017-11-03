@@ -72,7 +72,7 @@
 This Requirements Document is meant as a repeatable and detailed description of using the iPad Air 2 Barometer to create an app that can be used to measure atmospheric pressure in emergency situations aboard the International Space Station.
 Within this document is the description, constraints and dependencies that will be used for this app.
 The Specific requirements that must be completed are laid out within the user, hardware and software interfaces sections.
-The System features intails the more in depth features of the pressure readings, recording button, graph and the settings pages.
+The System features entails the more in depth features of the pressure readings, recording button, graph and the settings pages.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -131,7 +131,6 @@ Our Gantt chart can be found in section 2.6, Schedule Dependencies, and lays out
 It provides a birds-eye view of the schedule and dependencies of this project.
 It is subject to change, as more information and insight comes to light.
 The final section will describe, in detail, each feature, additionally it will describe second version features.
-
 
 \section{Overall Description}
 
@@ -280,16 +279,16 @@ Once the recording has been dealt with, either deleted or saved as a csv, then t
 \item Ability to save and display saved data.
 \end{itemize}
 
-\subsection{Current(recording) Pressure Reading}
+\subsection{Current Pressure Reading}
 \subsubsection{Purpose of Function}
-This number will be shown on the initial data screen, during recording.
-It will show the current pressure reading, in the defined units.
-This number will be polled from the barometer on the iPad, at a rate defined in the settings, which will be no greater than 2 seconds.
-It will be the same clear text as the other readings, and have a decimal amount define in the settings.
-This measurement will be used for the $\frac{\Delta t}{\Delta p}$ plot and readout.
+This number will be shown on the initial data screen during recording.
+It will show the current pressure reading in the defined units.
+This number will be polled from the barometer on the iPad at a rate defined in the settings, which will be no greater than 2 seconds.
+It will be the same clear text as the other readings and have a decimal amount define in the settings.
+This measurement will be used for the $\frac{\Delta p}{\Delta t}$ plot and readout.
 \subsubsection{Stimulus/Response Sequence}
-This won't be visible before recording, but once the record mode is activated, then this will start displaying the current pressure.
-Once the recording is stopped it will pause, and will be stored with with the plot.
+Upon starting up the app, the current pressure will be displayed, and when the record function is activated, the pressure data will be recorded every time it is polled.
+Once the recording is stopped the data will be stored with the plot.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
 \item Ability to poll on-iPad barometer readings according to set rate
