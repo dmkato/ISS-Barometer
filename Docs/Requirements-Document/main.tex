@@ -111,12 +111,13 @@ This application has the benefit of allowing the user to track the change of pre
 
 \subsection{Definitions, Acronyms, and Abbreviations}
 \begin{itemize}
-\item[--] MANOVACUMETER: The current mechanical air pressure gauge aboard the ISS
-\item[--] NASA: National Aeronautics and Space Administration
-\item[--] ISS: International Space Station
+\item[--] csv: A file format readable by Excel and other spread sheet software
 \item[--] iOS: The internal operating system of Apple products, specifically iPads
 \item[--] iPad: A touch screen tablet device with barometer capabilities
+\item[--] ISS: International Space Station
+\item[--] MANOVACUMETER: The current mechanical air pressure gauge aboard the ISS
 \item[--] mmHg: Millimeters of Mercury, the standard pressure unit
+\item[--] NASA: National Aeronautics and Space Administration
 \item[--] t-Res: The chart that NASA uses to calculate residual time left on station
 %Add any wacko words that are used throughout
 \end{itemize}
@@ -131,6 +132,7 @@ Our Gantt chart can be found in section 2.6, Schedule Dependencies, and lays out
 It provides a birds-eye view of the schedule and dependencies of this project.
 It is subject to change, as more information and insight comes to light.
 The final section will describe, in detail, each feature, additionally it will describe second version features.
+Second version features are not stretch goals, but instead expected after the first version release in December of 2017, as detailed in our Gantt chart.
 
 \section{Overall Description}
 
@@ -248,8 +250,8 @@ The ISS Barometer App will not need to communicate outside of the iPad, it will 
 
 \subsubsection{Purpose of Function}
 This number will be on the initial data screen.
-It will show the initial pressure reading, in the units defined in the settings page, defaulted to mm Hg.
-When the application is not in the recording mode it will show the current pressure, and once the record button is pressed it will show the pressure at the time of recording.
+It will show the initial pressure reading, in the units defined in the settings page, defaulted to mmHg.
+When the application is not in the recording mode it will show the current pressure, and once the record button is pressed it will show the pressure at the time of the recording was started.
 This provides the users with a clear, simple view of the current pressure, and once recording starts, it will provide a base line pressure that will be used to gauge the trends.
 \subsubsection{Stimulus/Response Sequence}
 Before and after a recording session, this text will display the current pressure polled from the barometer at regular intervals, depending on the settings.
