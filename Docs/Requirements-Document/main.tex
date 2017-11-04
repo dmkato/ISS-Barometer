@@ -311,11 +311,17 @@ Once the recording is stopped the data will be stored with the plot.
 
 \subsection{Time over Pressure Change Reading}
 \subsubsection{Purpose of Function}
-This display of change in pressure or $\frac{\Delta t}{\Delta p}$ will be used to inform the user of how quickly the surrounding pressure is changing. This will be used to track changes in pressure in real time.
+This display of change in pressure or $\frac{\Delta t}{\Delta p}$ will be used to inform the user of how quickly the surrounding pressure is changing.
+This will be used to track changes in pressure in relation to change in time.
+This will also be used in the plotting of the data, as well as in the t-Res table, once that is implemented (V2).
 \subsubsection{Stimulus/Response Sequence}
-The pressure will be read at a consistent time interval, and at each reading, $\frac{\Delta t}{\Delta p}$ will be calculated and converted into the specified unit of measurement. This number will then be displayed in a readable manner on the main page
+This number will be displayed once the user activates the recording.
+The pressure will be read at a consistent time interval, and at each reading, $\frac{\Delta t}{\Delta p}$ will be calculated and converted into the specified unit of measurement.
+This number will then be displayed in a readable manner on the main page.
+Once a recording is discarded or saved, this number will no longer be displayed.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
+\item Ability to start, stop, and discard/save recordings
 \item Ability to poll on-iPad barometer readings according to set rate
 \item Ability to control the view of the app
 \end{itemize}
