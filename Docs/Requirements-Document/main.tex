@@ -104,7 +104,7 @@ This document can be changed throughout the project, but scope changes must be s
 The \CapstoneProjectName will measure the current pressure of its surroundings using the built in pressure transducer.
 The application will display the pressure in mmHg upon starting the app and whenever the 'Record Pressure' button is pressed the current pressure along with a timestamp will be recorded and displayed.
 It will also display the current pressure change in $\frac{\Delta t}{\Delta p}$ and include a graph of $\frac{\Delta p}{\Delta t}$ will be displayed with the capability to pinch to zoom and scale the graph.
-This graph will have a readout of $\Delta \frac{\Delta p}{\Delta t}$ displayed next to it.\textbf{}
+This graph will have a readout of $\Delta \frac{\Delta p}{\Delta t}$ displayed next to it.
 A settings page will be provided that allows the user to choose the plot scale of the graph, orientation of the app, and number of significant digits.
 The graph's data will also be exportable as a csv file.
 The application will not read remote pressure data.
@@ -146,7 +146,7 @@ To accomplish the requirements the system interfaces will have three pages the d
 The Display will have a big button, with a digital display of atmospheric pressure.
 The first page will display the initial pressure, current pressure and the pressure change as sec/mmHG.
 Graphs display will have a graph that spans the whole screen, that the user will have the ability to zoom in and out.
- The graph axis will be pressure vs the function of time and our slope will be dp/dt.
+ The graph axis will be pressure vs the function of time and our slope will be $\frac{\Delta p}{\Delta t}$.
  The third page, settings page, will control the characteristics and look of the other two pages.
 Settings page will contain the option of changing the plot scale, scroll functionality, orientation, decimal point, as well as other units of measure for pressure.
  All displays and pages need to be able to be read fast and easily in low light.
@@ -157,7 +157,7 @@ This being said the data isn't large and shouldn't be a problem.
 
 \subsection{Product Functions}
 This application will be released in multiple versions, with the initial version expected to be released by the end of 2017.
-As such, the functions are seperated into Version 1 requirements and Version 2 requirements.
+As such, the functions are separated into Version 1 requirements and Version 2 requirements.
 Additionally, if given time, our team may be able to do accuracy and resistance testing on the iPad devices for low pressure.
 This is a stretch goal, and might not be feasible with our current time frame.
 The following functions will be detailed in the Specific Requirements section, but are presented below for clarity.
@@ -194,10 +194,10 @@ Based on what we know now, this will all be achievable.
 We are assuming that the iPad Air 2 has a barometer inside of it as the manufacture has described.
 The functioning of the application depends on the correct functioning of iPad, and underlying APIs.
 We will also assume that the iPad has enough memory to hold onto the running data and display it onto our timeline graph.
-The iPads OS on the ISS is uptated to version 10, if this is further updated in the future then there may become compatibility problems we will need to face.
+The iPads OS on the ISS is updated to version 10, if this is further updated in the future then there may become compatibility problems we will need to face.
 Our product mostly uses mm/Hg as our measurement for pressure, this is an assumption that our client may change and we will have to change.
 As we will be relying on the hardware of the iPads, we assume that it will function and work accurately throughout its use.
-If the iPad does misfunction, perhaps due to low pressures, then out application may have unexpected errors.
+If the iPad does malfunction, perhaps due to low pressures, then out application may have unexpected errors.
 If any of our assumptions are incorrect or not available then we will have to change accordingly.
 Below is a schedule of the dependencies, which will broadly show schedule requirements in moving the project forward.
 
@@ -337,12 +337,12 @@ This graph will display the change in pressure over time, in such a way that the
 This will allow the user to visualize the data and provide a comparison for the t-Res chart.
 \subsubsection{Stimulus/Response Sequence}
 The graph's y axis will be pressure, while the x axis will be the function of time.
-The slope of the graph will be \frac{\Delta p}{\Delta t}, it will be constantly updated as the app is run.
+The slope of the graph will be $\frac{\Delta p}{\Delta t}$, it will be constantly updated as the app is run.
 The graph will be a running graph that allows data to flow off screen or shrinks the scale each time a data point is added.
 The time constraint is always getting longer and the slope is constantly updated to give you the newest read.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Ability to store and calculate dp/dt
+\item Ability to store and calculate $\frac{\Delta p}{\Delta t}$
 \item Ability to zoom into and out of the graph.
 \item Ability to display the whole timeline or only the newest data
 \end{itemize}
