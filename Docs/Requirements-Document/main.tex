@@ -334,9 +334,11 @@ Once a recording is discarded or saved, this number will no longer be displayed.
 \subsection{Plot of Pressure Change}
 \subsubsection{Purpose of Function}
 This graph will display the change in pressure over time, in such a way that the user can quickly see the whole timeline.
+This will allow the user to visualize the data and provide a comparison for the t-Res chart.
 \subsubsection{Stimulus/Response Sequence}
-The graph's y axis will be pressure, while the x axis will be the function of time. The slope of the graph will be dp/dt, it will be constantly updated as the app is run.
-The graph will be a running graph.
+The graph's y axis will be pressure, while the x axis will be the function of time.
+The slope of the graph will be \frac{\Delta p}{\Delta t}, it will be constantly updated as the app is run.
+The graph will be a running graph that allows data to flow off screen or shrinks the scale each time a data point is added.
 The time constraint is always getting longer and the slope is constantly updated to give you the newest read.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
