@@ -194,10 +194,10 @@ Based on what we know now, this will all be achievable.
 We are assuming that the iPad Air 2 has a barometer inside of it as the manufacture has described.
 The functioning of the application depends on the correct functioning of iPad, and underlying APIs.
 We will also assume that the iPad has enough memory to hold onto the running data and display it onto our timeline graph.
-The iPads OS on the ISS is uptated to version 10, if this is further updated in the future then there may become compatibility problems we will need to face.
+The iPads OS on the ISS is updated to version 10, if this is further updated in the future then there may become compatibility problems we will need to face.
 Our product mostly uses mm/Hg as our measurement for pressure, this is an assumption that our client may change and we will have to change.
 As we will be relying on the hardware of the iPads, we assume that it will function and work accurately throughout its use.
-If the iPad does misfunction, perhaps due to low pressures, then out application may have unexpected errors.
+If the iPad does malfunction, perhaps due to low pressures, then out application may have unexpected errors.
 If any of our assumptions are incorrect or not available then we will have to change accordingly.
 Below is a schedule of the dependencies, which will broadly show schedule requirements in moving the project forward.
 
@@ -337,12 +337,12 @@ This graph will display the change in pressure over time, in such a way that the
 This will allow the user to visualize the data and provide a comparison for the t-Res chart.
 \subsubsection{Stimulus/Response Sequence}
 The graph's y axis will be pressure, while the x axis will be the function of time.
-The slope of the graph will be \frac{\Delta p}{\Delta t}, it will be constantly updated as the app is run.
+The slope of the graph will be $\frac{\Delta p}{\Delta t}$, it will be constantly updated as the app is run.
 The graph will be a running graph that allows data to flow off screen or shrinks the scale each time a data point is added.
 The time constraint is always getting longer and the slope is constantly updated to give you the newest read.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Ability to store and calculate dp/dt
+\item Ability to store and calculate $\frac{\Delta p}{\Delta t}$
 \item Ability to zoom into and out of the graph.
 \item Ability to display the whole timeline or only the newest data
 \end{itemize}
