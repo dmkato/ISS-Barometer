@@ -86,6 +86,7 @@
 The ISS Barometer is an iOS application that will serve the crewmembers of the International Space Station (ISS).
 Our application will be used on the ISS to find leaks in the station by measuring air pressure, using the on-iPad barometer sensor.
 For this project we have divided the pieces into the following sections:
+
 \begin{itemize}
 \item Development Platform
 \item Chart Library
@@ -95,11 +96,30 @@ For this project we have divided the pieces into the following sections:
 \item UI Library
 \item Language
 \item Data Storage
-\item Settings Page
+\item Color Palette
 \end{itemize}
 
+This document works with Language, Data Storage, and Color Palette, as far as technologies.
+For each piece, three different options will be presented, and then the best choice will be chosen and justified, given our project requirements.
+Something to note, the choices rely on predecided technologies, though these are up for deciding, in my partners' documents.
+For example, some of the data storage choices rely on using Swift 3 or 4, with the XCode development environment.
+
 \section{Data Storage}
+The data storage of our application will mostly be used for the storage of settings, as well as temporary storage of plot data.
+One of the functions of ISS Barometer is it will record data from the barometer, and display a graph.
+This plot will be stored temporarily until the user decides to save it as a seperate file, at which point, the iPad will store it in the users file directory.
+Before storing it seperately, this data will be saved with the application, and so there are choices to make regarding storage.
+Namely, we can decide if we wish to store this data locally, or on a remote server.
+Additionally, we must decide upon the package implementation, as listed below.
+In regards to the settings storage, each iPad will have settings which must also be stored, so that users do not need to set their preferences each time.
+It should be noted, that although these options are presented as exclusive options, in that we would choose one, data storage can be implemented with multiple packages.
+For example, some data may be stored using one technology, and some other data can be stored using a different technology.
+
 \subsection{Option 1: NSUserDefault Package}
+NSUserDefault is a package developed for iOS use, within XCode.
+In fact, this option would only be available using XCode and Swift.
+It is ostensibly used for the storing of application settings and is meant to be an easy solution for such a challenge. \cite{udefaultApple}
+
 \subsection{Option 2: CoreData Package}
 \subsection{Option 3: SQL Server}
 \subsection{Decision and Justification}
@@ -110,10 +130,12 @@ For this project we have divided the pieces into the following sections:
 \subsection{Option 3: C\#}
 \subsection{Decision and Justification}
 
-\section{Settings Presentation}
-\subsection{Option 1:}
-\subsection{Option 2:}
-\subsection{Option 3:}
+\section{Color Palette}
+\subsection{Option 1: NASA Similar Theme}
+\subsection{Option 2: }
+\subsection{Option 3: }
 \subsection{Decision and Justification}
-
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
 \end{document}
