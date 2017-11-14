@@ -2,6 +2,37 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstdefinelanguage{swift}
+{
+  morekeywords={
+    func,if,then,else,for,in,while,do,switch,case,default,where,break,continue,fallthrough,return,
+    typealias,struct,class,enum,protocol,var,func,let,get,set,willSet,didSet,inout,init,deinit,extension,
+    subscript,prefix,operator,infix,postfix,precedence,associativity,left,right,none,convenience,dynamic,
+    final,lazy,mutating,nonmutating,optional,override,required,static,unowned,safe,weak,internal,
+    private,public,is,as,self,unsafe,dynamicType,true,false,nil,Type,Protocol,
+  },
+  morecomment=[l]{//}, % l is for line comment
+  morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+  morestring=[b]" % defines that strings are enclosed in double quotes
+}
+
+\definecolor{keyword}{HTML}{BA2CA3}
+\definecolor{string}{HTML}{D12F1B}
+\definecolor{comment}{HTML}{008400}
+
+\lstset{
+  language=swift,
+  basicstyle=\ttfamily,
+  showstringspaces=false, % lets spaces in strings appear as real spaces
+  columns=fixed,
+  keepspaces=true,
+  keywordstyle=\color{keyword},
+  stringstyle=\color{string},
+  commentstyle=\color{comment},
+}
+% From chriseidhof on GitHub
 
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
@@ -118,38 +149,150 @@ For example, some data may be stored using one technology, and some other data c
 \subsection{Option 1: NSUserDefault Package}
 NSUserDefault is a package developed for iOS use, within XCode.
 In fact, this option would only be available using XCode and Swift.
-It is ostensibly used for the storing of application settings and is meant to be an easy solution for such a challenge \cite{udefaultApple}.
+Using this package would also require that we are storing data locally, on the iPads that run the application.
+NSUserDefaults is ostensibly used for the storing of application settings and is meant to be an easy solution for such a challenge \cite{udefaultApple}.
 NSUserDefaults is regarded as the quickest way to solve a problem, and as such is often the first method tried by developers.
 It is used specifically for small pieces of data, and should not be used for larger size data files.
 As it is meant for small, settings sized data, it is limited to storing only objects of it's class.
-This means that each variable that you want to store using NSUserDefaults must be manipulated to match the class.
-This can be done with the use of the classes function, and is only a line of code.
+This means that each variable that you want to store using NSUserDefaults must be manipulated to an instance of a supported data type of the class.
+This can be done with the use of the {\lstinline|set(_:forkey:)|} function, and is only a line of code.
 The types that are excepted by NSUserDefaults are listed below.
 \begin{itemize}
-\item NSData
-\item NSString
-\item NSNumber
-\item NSDate
-\item NSArray
-\item NSDictionary
+\item \lstinline|NSData|
+\item \lstinline|NSString|
+\item \lstinline|NSNumber|
+\item \lstinline|NSDate|
+\item \lstinline|NSArray|
+\item \lstinline|NSDictionary|
 \end{itemize}
-These types easily cover any that might be necessary on this project, and both NSArrays and NSDictionaries are automatically converted from their Swift equivalents \cite{udefaultBlog}.
+These types easily cover any that might be necessary on this project, and both \lstinline|NSArrays| and \lstinline|NSDictionaries| are automatically converted from their Swift equivalents \cite{udefaultBlog}.
+The benefits of using this is that it is easy to implement, it is commonly used to store settings, and it is relatively fast for small sets of data \cite{storeoptions}.
 
 \subsection{Option 2: CoreData Package}
+CoreData, similar to NSUserDefaults, is a Swift supported, local storage library.
+It is used as a storage package, and is said to reduce code up to 70\% \cite{coreApple}.
+CoreData actually uses SQLite as its stoarage manipulation package, but it still stores locally.
+This is how it can potentially reduce code volume, because it abstracts out the use of specific SQLite commands and functions, replacing them with its own general functions.
+Additionally, because CoreData uses SQLite, it stores all of the files with the .db suffix \cite{storeoptions}.
+CoreData is often implemented as a chatch-all storage manager, as it has the funcionality to provide comprehensive storage.
+This means, however, that CoreData also is harder to implement, as it may be more confusing to new users and it has a lot of functionality.
+In fact, on the developer pages for this package, it is noted ``\textbf{Important:} Core Data is an advanced technology that is not required for creating simple applications.''\cite{coreApple2}
+In most cases, this means that CoreData is not used unless it is necessary.
+For our project, CoreData could be used to temporarily store data from the plot within the application, but plot data might not be big enough to warrant CoreData.
+Also it might not be necessary to explicitly store plot information from the application, as users may choose to export it as a .csv, rather than closing the application.
+
 \subsection{Option 3: SQL Server}
+The third option that has been put forward is a non-local server storage solution.
+In this case, that would be in the form of an SQL server, either provided by NASA, or by the students of this project.
+This option would allow us to access data, meaning NASA officials in Mission Control would be able to recieve and analyze data.
+Although this could be helpful, it is unknown the connectivity of the ISS, and it would most likely be a bottle neck for such an implementation.
+To use an SQL server, our application would have to implement SQLite, to make queries and store data.
+SQLite is a wiedly used framework, and is supported in Swift and Objective C.
+It uses C as a backend to make server calls, and so has the potential to be complicated.
+SQLite can also be used as a local storage library, and so offers more options.
+Additionally, SQLite is rated among the fastest database managers, though may require further set up than Option 1 or 2.
+SQLite can be implemented on many different languages, and also has a large amount of documentation \cite{sqlite}.
+
 \subsection{Decision and Justification}
+In the case of ISS Barometer, the clear decision is to use CoreData, in tandem with NSUserDefaults.
+As with many applications, ours requires that user preferences be saved with the application, and not required to be reentered everytime ISS Barometer launches.
+This will require the NSUserDefaults package, allowing us to quickly save data that the user specifies, such as float point accuracy and orientation options.
+However, NSUserDefaults does not scale, and would be inappropriate for plots of undefined size, such as the $\Delta \frac{\Delta p}{\Delta t}$ plot.
+This means we need a scalable option, for which we will use CoreData.
+It allows for large data sets, and can scale well, far better than NSUserDefaults would be able to.
+As far as a server, the challenges associated with a server, namely the problems of connectivity on the ISS, make this option moot.
+Additionally, its only benefit is that it would allow NASA to view data, which will also be possible when we implement the saving ability.
+As users wish to share data, they would save the plot as a csv, and then send it seperately, using already in place methods, developed by NASA.
 
 \section{Language}
+The language used for development has a large effect on our project.
+It can impact things such as format, performance, and interaction.
+Also it has a large impact on other pieces of this project, as some packages and options are only available in some languages.
+The language we choose depends on the hardware that we are developing, so for this section it is assumed that we are developing for the iPad.
+The languages that are presented as options are Swift, Objective C, and C\#.
+Both Swift and Objective C can be written using the XCode editor, Apple's proprietary IDE.
+C\# must be written using Unity, a partially open-source editor, primarily used for 3D rendering and game design.
+Major considerations of choosing a language are as follows:
+\begin{itemize}
+	\item Accessibility: Can all team members and our client understand and work with this languages
+	\item Implementation: Is it possible to implement the necessary features in our application with this languages
+	\item Performance: Does using this language noticibly affect reaction time of the application
+\end{itemize}
+More considerations may affect the final decision, though first each language will be described below.
+
 \subsection{Option 1: Swift}
+Swift is the suggested programming language for applications run on iPads.
+As such, Apple holds it in very high regard, making their documentation rather bias.
+For example, from their ``Welcome to Swift'' page, they say, ``The compiler is optimized for performance and the language is optimized for development, without compromising on either\cite{swift1}.''
+Although bold, Swift may deliver on that statement.
+Swift is newer and, as a result, better designed for iOS development.
+It is supported through Apple, and is likely to be the primary application language in the future, ensuring our applications lasting power.
+Also it is backwards compatable with Objective C libraries, meaining that along with the benefits it has very few draw backs from Objective C.
+It is said to be more readable, easier to learn, and considerably safer, with abstractions that define away memory management and pointers.
+In fact, Swift is said, by Apple, to ``defines away'' many different problems faced by developers:
+\begin{itemize}
+	\item  Out of bounds array accessing
+	\item  Uninitialized variables
+	\item  Overflow of integers
+	\item  Unhandled \lstinline|null| or \lstinline|nil| errors
+	\item  Memory managment probems, such as \lstinline|segfault|
+	\item  Unhandled general errors
+\end{itemize}
+Another benefit to Swift, as opposed to Objective C, is that Objective C requires two files, including a .h, while Swift requires only one.
+That benefit may have less weight than others, but it still should be mentioned.
+
 \subsection{Option 2: Objective C}
+Objective C is considered the legacy language of iOS, as it has been used since the early days of iOS and, as a language, has been around for over 30 years.
+That said, it has many options when it comes to available packages, and any available packages to Swift can be used by Objective C.
+Objective C, as it has been the primary language for a while, is also the language that many of the packages that will be used are written in.
+This means that if we spend the time learning and implementing this language than it could help us understand deeper implementations of our project, which could come of use in debugging or other such activities.
+Additionally, although less novice friendly, Objective C is perhaps better documented, in that there are many more guides and documents to allow quick and easy lookup.
+This benefit should not be looked over, as all members of this group are novice beginners at iOS development.
+
 \subsection{Option 3: C\#}
-\subsection{Decision and Justification}
+C\# is the option if we were to use Unity as a development environment.
+A major benefit of using this language is the ability to be cross platform, using Unity to alternate from Android or Desktop applications.
+Although a realatively cool feature, this doesn't help us in development of a purely iOS application.
+Additionally, C\# can call methods and import packages built in Objective C, C, or C++, allowing it to have similar functionality to the other applications.
+C\# would, however, require that we build our application and then refactor it into Objective C, using the XCode.
+It turns out that Unity does not have the capability to test or deploy applications straight to iOS, and must first use XCode.
+This would slow down development, and impeed the team.
+On the flip side, Unity may be installed on Mac, Windows, and Linux, allowing all of the team memebers equal access \cite{objc1}.
+
+\subsection{Decision and Justification: Swift}
+For this project the clear language decision is Swift.
+The ability to quickly prototype and develop the application, along with it's performance benefits make this the best option.
+Objective C would be an option, though it doesn't have the same quick development options that XCode/Swift give us, as well as the readability and easy integration.
+C\# is not really an option in that it would require that we rewrite our code in either Objective C or Swift anyway.
+Additionally, aside from the accessibility, it doesn't offer any benefits for our application, and is more geared towards game design.
+Choosing Swift offers more choices in which version we use.
+The clear option is the most recent version, Swift 4.
+This will ensure that our application remains verible, and doesn't cause any drawbacks becuase the ISS iPads are kept up to date.
+Keeping updated also helps protect security and limited bugs in our code.
+Also, as our client has access to XCode, using Swift will also allow us to show him progress, without very much difficulty.
 
 \section{Color Palette}
+The color of this application is more of an auxilliary decision, but still requires some thought.
+As our application is specifically meant to improve the readability of other available applications, we must make sure that any colors we choose are clear and do not distract from the data being displayed.
+This application is not meant to be visually suprising.
+As such, the options put forward are kept clean and muted, with obvious ties to known palettes.
+Additionally, I will do my best to display these colors, so that comparisons will be clear.
+
 \subsection{Option 1: NASA Similar Theme}
-\subsection{Option 2: }
-\subsection{Option 3: }
+NASA has a very defined style, specifically defending their logo with strict guidelines regarding placement and coloring.
+If our application were to use the logo we would need to liscence it, though for now it is only color that we are interested in.
+The color palette of NASA actually depends on the application of it, and in many cases the background images that the text is superimposed over.
+The main color palette of NASA, from their base published logo and documents, is the red, white and blue of the United States.
+
+\subsection{Option 2: OSU Similar Theme}
+This color palette would represent the creators and origin of the application.
+The well defined color palett of OSU would be easy to implement, and could follow examples such as OSU app.
+
+\subsection{Option 3: General Technology Theme}
+This theme is not very well defined, so I have chosen clear black on white text, with blue accents where necessary.
+
 \subsection{Decision and Justification}
+Objectively decide on my own.  More to come with final draft.
 \newpage
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
