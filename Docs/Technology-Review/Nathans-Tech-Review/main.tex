@@ -118,7 +118,22 @@ For example, some data may be stored using one technology, and some other data c
 \subsection{Option 1: NSUserDefault Package}
 NSUserDefault is a package developed for iOS use, within XCode.
 In fact, this option would only be available using XCode and Swift.
-It is ostensibly used for the storing of application settings and is meant to be an easy solution for such a challenge. \cite{udefaultApple}
+It is ostensibly used for the storing of application settings and is meant to be an easy solution for such a challenge \cite{udefaultApple}.
+NSUserDefaults is regarded as the quickest way to solve a problem, and as such is often the first method tried by developers.
+It is used specifically for small pieces of data, and should not be used for larger size data files.
+As it is meant for small, settings sized data, it is limited to storing only objects of it's class.
+This means that each variable that you want to store using NSUserDefaults must be manipulated to match the class.
+This can be done with the use of the classes function, and is only a line of code.
+The types that are excepted by NSUserDefaults are listed below.
+\begin{itemize}
+\item NSData
+\item NSString
+\item NSNumber
+\item NSDate
+\item NSArray
+\item NSDictionary
+\end{itemize}
+These types easily cover any that might be necessary on this project, and both NSArrays and NSDictionaries are automatically converted from their Swift equivalents \cite{udefaultBlog}.
 
 \subsection{Option 2: CoreData Package}
 \subsection{Option 3: SQL Server}
