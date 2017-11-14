@@ -133,6 +133,7 @@ Because the ability to interface with the onboard barometer is required for this
 \subsection{Charts}
 \subsubsection*{Description}
 Charts is an open source library by Daniel Cohen Gindi for building charts in iOS applications.
+
 \subsubsection*{Pros}
 Charts' latest commit at the time is 6 days ago, which means that it is still being maintained to some degree.
 It also specifically supports Xcode 9.0 and Swift 4.0, making it likely that we wont run into compatibility issues.
@@ -143,34 +144,64 @@ No cons so far
 
 \subsection{Dr Charts}
 \subsubsection*{Description}
-Charts is an open source library by Zomato for building charts in iOS applications.
+Dr Charts is an open source library by Zomato for building charts in iOS applications.
+
 \subsubsection*{Pros}
+The charts created using Dr Charts can be animated to create a more pleasant user experience without compromising visibility of data.
+
 \subsubsection*{Cons}
+This API only mentions support for iOS 7, 8, and 9 and this could cause compatibility issues.
 
 \subsection{PNCharts}
 \subsubsection*{Description}
+PNCharts is an open source library by Kevin Zhow for building charts in iOS applications.
+
 \subsubsection*{Pros}
+This API provides animations for each type of graph, and could contribute to a better user experience
+
 \subsubsection*{Cons}
+This API hasn't made a change since June 7th of 2017, so it is unclear as to if this repo will continue to be maintained.
 
 \subsection{Decision}
+Because reliability is of the utmost importance, and Charts offers support for dynamic graphs, we will be using the Charts API for the ISS Barometer App.
 
 \section{Organization of UI}
 
 \subsection{Tabs}
 \subsubsection*{Description}
+A tab based application is one that has multiple views that are accessed via a tab bar at the bottom of the screen.
+
 \subsubsection*{Pros}
+This is advantageous because each page is only one click away at all times.
+Also, just by reading the tabs you know all of the possible pages you can use to interact with the application.
+
 \subsubsection*{Cons}
+The tab bar is cemented to the bottom of the screen at all times, which takes up quite a bit of screen real estate, and also detracts from the focus of the page.
+Also some pages don't need to be displayed at all times such as the settings page.
 
 \subsection{Single Page}
 \subsubsection*{Description}
+A single page application will have the graph and the statistics displayed on the main page.
+With this view, you can double click on the graph to make it fullscreen, and access frequently used settings via gestures.
+All other settings will be accessible from the app's tab in the setting application on the device.
+
 \subsubsection*{Pros}
+This layout will allow for more of a focus on the content, and reduce the number of infrequently pressed buttons.
+
 \subsubsection*{Cons}
+By employing gestures, it will end up taking more time to learn how to use the application comfortably .
 
 \subsection{Homepage With Sub Pages}
 \subsubsection*{Description}
+The homepage will have informative icons which when pressed will take the user to a view with either the statistics, the graph, or settings.
+
 \subsubsection*{Pros}
+The focus will be on the content, and users will be able to explicitly select what content they see and don't see by choosing a view.
+
 \subsubsection*{Cons}
+by having pages linked to a main page, a button to go home will need to be present on the screen to allow the user to go back and select another page.
 
 \subsection{Decision}
+Because settings shouldn't need to be accessed frequently, and both statistics and the graph will need to be accessed when ever the astronaut is using the application, we will be using the single page layout.
 
 \end{document}
