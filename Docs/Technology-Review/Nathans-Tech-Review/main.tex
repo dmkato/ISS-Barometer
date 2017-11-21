@@ -34,6 +34,15 @@
 }
 % From chriseidhof on GitHub
 
+\definecolor{NASAred}{RGB}{252,61,33}
+\definecolor{NASAblue}{RGB}{11,61,145}
+
+\definecolor{OSUorange}{RGB}{220,68,5}
+
+\definecolor{myblue}{HTML}{1563e0}
+\definecolor{mygrey}{HTML}{ADBED8}
+\definecolor{mydarkgrey}{HTML}{3d434c}
+
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
 
@@ -70,7 +79,7 @@
     	\includegraphics[height=4cm]{coe_v_spot1}
         \hfill
         % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
-        \includegraphics[height=4cm]{NASA}
+        %\includegraphics[height=4cm]{NASA}
         \par\vspace{.2in}
         \centering
         \scshape{
@@ -100,7 +109,11 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract
-        This document serves to
+        This document serves to provide the reader with a detailed justification of choices made on the \CapstoneProjectName.
+        The choices made are regarding technologies used in the making of our application, and this document provides only a third of those technologies, the rest written by other group members.
+        The goal of this document is to justify the choices made, with research to prove that our project was done in the best way possible.
+        Included is a list of options, details on each, and justifications of each choice.
+        Additionally, there is a reference page at the end.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -279,20 +292,50 @@ As such, the options put forward are kept clean and muted, with obvious ties to 
 Additionally, I will do my best to display these colors, so that comparisons will be clear.
 
 \subsection{Option 1: NASA Similar Theme}
-NASA has a very defined style, specifically defending their logo with strict guidelines regarding placement and coloring.
-If our application were to use the logo we would need to liscence it, though for now it is only color that we are interested in.
+\begin{itemize}
+  \item[\fcolorbox{black}{NASAred}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] NASA red
+  \item[\fcolorbox{black}{white}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] NASA white
+  \item[\fcolorbox{black}{NASAblue}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] NASA blue
+\end{itemize}
+NASA has a very defined style, specifically defending their logo with strict guidelines regarding placement and coloring \cite{nasa2}.
+If our application were to use the logo we would need to liscence it, but for now it is only color that we are interested in.
 The color palette of NASA actually depends on the application of it, and in many cases the background images that the text is superimposed over.
 The main color palette of NASA, from their base published logo and documents, is the red, white and blue of the United States.
+This color palette would potentially be a good choice, as it is directly tied to our client and the company for which we are developing.
+The benefits of this would be that our application could be marketed to other users, besides ISS crewmembers, but as that is not our initial goal, this color scheme most likely would only hurt our readability and clarity.
+The colors are bold, which is good for a flag or emblem, but not for our application \cite{nasa1}.
 
 \subsection{Option 2: OSU Similar Theme}
+\begin{itemize}
+  \item[\fcolorbox{black}{OSUorange}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] OSU orange
+  \item[\fcolorbox{black}{black}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] OSU black
+  \item[\fcolorbox{black}{white}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] OSU white
+\end{itemize}
 This color palette would represent the creators and origin of the application.
-The well defined color palett of OSU would be easy to implement, and could follow examples such as OSU app.
+The well defined color palette of OSU would be easy to implement, and could follow examples such as OSU app.
+Once agian we run into the problem that these colors are meant to stand out, whereas in our application, we require that the colors do not draw excessive attention.
+Although, of course, we want our application to be well designed, including coloring, there is no place in this application for bold, strong colors.
+Also, there is little need to associate this application with the college, because the work will be done by our team, with little interaction of the college as a whole.
 
-\subsection{Option 3: General Technology Theme}
+\subsection{Option 3: Subtle Technology Theme}
+\begin{itemize}
+  \item[\fcolorbox{black}{myblue}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] Blue for highlights
+  \item[\fcolorbox{black}{mygrey}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] Grey for secondary data
+  \item[\fcolorbox{black}{mydarkgrey}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] Darker gray for navigational options
+\end{itemize}
 This theme is not very well defined, so I have chosen clear black on white text, with blue accents where necessary.
+These accents would most likely be on the plot and within the options.
+Using the grey and darker grey would add some muted variation while remaining simple.
+This color scheme doesn't have the problem of being bold or too strong, and it could work well with the applications goals of readability and clarity.
 
 \subsection{Decision and Justification}
-Objectively decide on my own.  More to come with final draft.
+As stated before any color used will not be emphasized, as readability is our main goal.
+This means that although certain elements may be colored, the majority will most likely remain black and white, with accents on the graph and other data to help clarity.
+Also, as our application is being released in two versions, there is time we could use to get feedback from the crewmembers using the application, and a color scheme would be easily changed.
+For version one though, I think that option 3 is the obvious choice.
+As the other options are designed specifically for other uses, such as emblems and flags, their colors stand out, and draw attention in a way that would be intrusive and counter productive in our application.
+The third option, Subtle Technology Theme, will be implemented, and changes can be issued from our users or our client, as this technology doesn't have any features that depend on it.
+
 \newpage
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
