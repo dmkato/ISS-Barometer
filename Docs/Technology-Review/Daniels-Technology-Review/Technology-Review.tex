@@ -56,13 +56,14 @@
             }
             \vfill
         }
-        % \begin{abstract}
-        % 	When the International Space Station (ISS) has a leak, they use barometers and lookup tables to determine the amount of time they have before they need to evacuate.
-				% 	Unfortunately, the ISS is down to 2 barometers, but have 8 - 10 iPad Air 2's on board.
-				% 	Our goal is to create an application that can aid the astronauts on the ISS in calculating the amount of time they have before they need to evacuate the ISS in the event of a leak.\par
-				% 	To accomplish this we will create an interface to clearly display the current pressure, the starting pressure, and the dP/dT along with a live graph of the change in pressure over time.
-				% 	We will also allow the user to change settings like the number of significant digits displayed, the amount and granularity of the data displayed in the graph, and orientation
-        % \end{abstract}
+        \begin{abstract}
+        	When the International Space Station (ISS) has a leak, they use barometers and lookup tables to determine the amount of time they have before they need to evacuate.
+					Unfortunately, the ISS is down to 2 barometers, but have 8 - 10 iPad Air 2's on board.
+					Our goal is to create an application that can aid the astronauts on the ISS in calculating the amount of time they have before they need to evacuate the ISS in the event of a leak.\par
+          There are many different technologies that can be used to create this application including Development Framework, Chart Library, and Organization of the UI.
+          The decision of which technology to use for each component will be made based on comparing three different options.
+          Which ever option best suits the clients needs will be selected.
+        \end{abstract}
     \end{singlespace}
 \end{titlepage}
 \newpage
@@ -73,9 +74,6 @@
 %\listoftables
 \clearpage
 
-\section{Personal Role}
-My role in the ISS Barometer team will be to choose the development platform, focus on the implementation of the chart that plots $\frac{\Delta p}{\Delta t}$, and choose the overall organization of the user interface.
-
 \section{Objective}
 The International Space Station(ISS) serves as laboratory for crew members to conduct experiments in microgravity.
 The ISS can experience breaches in the hull for many reasons, but when the hull is breached, the pressure of the environment begins approaching unsafe levels.
@@ -83,122 +81,87 @@ To aid in the fixing of breaches the crew members currently use 1960's era mecha
 Because these are no longer being manufactured, the numbers of these barometers are dwindling.
 
 Our objective is to create an iOS application that replaces these mechanical barometers.
- The application will display the current pressure like the \textit{MANOVACOMETERS}, but will also display other useful pieces of information such as the current $\frac{\Delta p}{\Delta t}$, and a graph displaying the progression of $\frac{\Delta p}{\Delta t}$.
+The application will display the current pressure like the \textit{MANOVACOMETERS}, but will also display other useful pieces of information such as the current change in pressure as a function of time($\frac{\Delta p}{\Delta t}$), and a graph displaying the progression of $\frac{\Delta p}{\Delta t}$.
 
+ My role in the ISS Barometer team will be to choose the development platform, focus on the implementation of the chart that plots $\frac{\Delta p}{\Delta t}$, and choose the overall organization of the user interface.
 This graph will have 2 modes: a mode in which the data flows off the left side of the graph and a mode where the data is compacted to allow the entire frame of data to fit in the graph. The x axis will represent time and the y axis will represent mm/Hg.
 
-In order to create this application, the ISS Barometer team will need to use a software development framework to write the necessary code.
-
 \section{Development Framework}
-
 \subsection{Xcode/Swift}
-\subsubsection*{Description}
 Xcode is the development platform provided by Apple for engineers to create apps for their iOS products.
-This platform allows the developer to write code and connect it to User Interface elements to create an application.
-
-\subsubsection*{Pros}
+This platform allows the developer to write code and connect it to User Interface elements to create an application. This the most commonly used framework for iOS app development.
 Because Xcode and Swift are the proprietary software development tools from Apple, these tools provide the developer with the full capability to interface with Apple's hardware.
+This will allow the developer to have full access to the iPad's onboard sensors through Apple's APIs.
 
-\subsubsection*{Cons}
-The way the user interface is created and manipulated is through a drag-and-drop style interface within Xcode called Interface Builder.
+The way the user interface is created and manipulated in Xcode is through a drag-and-drop style interface called Interface Builder.
 This can make it easy to quickly turn an idea into an application, but when it comes to collaborating and having multiple people make changes to the UI, the Xcode implementation falls short.
 When interacting with Interface Builder, each change is saved to a .xib file, which is obfuscated away from the developer.
 This becomes a problem when certain UI elements that are linked to the code are changed, because the reference to the UI element that is linked to the Swift code may be different after the UI change.
 This can cause errors that can only be fixed by opening up the xib file and manually changing the reference, or deleting the code and re creating the reference, which can cause its own set of problems.
 
 \subsection{Unity}
-\subsubsection*{Description}
 Unity is a game development platform and game engine that can be used to create iOS applications and games.
-
-\subsubsection*{Pros}
+This framework includes tools for constructing objects in a 3D or 2D environment.
 Because Unity is primarily used to create games, the UI and transitions between pages could be enhanced by taking advantage of Unities computer graphics APIs.
-
-\subsubsection*{Cons}
-Because Unity is a game engine, there is likely to be a massive amount of unnecessary overhead when creating an application that is not graphics intensive. It also does not have the capability to interface with the iPad's built in barometer.
+One down side is that because Unity is a game engine, there is likely to be a massive amount of unnecessary overhead when creating an application that is not graphics intensive.
+It also does not have the capability to interface with the iPad's built in barometer directly.
 
 \subsection{React Native}
-\subsubsection*{Description}
 React Native is a software development framework that allows developers to create apps for mobile devices using javascript, CSS, and HTML.
-
-\subsubsection*{Pros}
 Because the UI in a React Native app is controlled by CSS and HTML, every creation or modification of an element will be executed via code and not by Xcode's Interface Builder, it will be a lot easier to collaborate and make changes to the code base.
-
-\subsubsection*{Cons}
 React native was built to allow the rapid creation of cross platform apps. As a result, it does not offer the ability to interface with the built in barometer.
 
 \subsection{Decision}
 Because the ability to interface with the onboard barometer is required for this project, we will be using Xcode and swift to develop the ISS Barometer application.
 
 \section{Chart Library}
-\subsection{Charts}
-\subsubsection*{Description}
-Charts is an open source library by Daniel Cohen Gindi for building charts in iOS applications.
+\subsection{Criteria}
+A good chart library will be one that is easy to use, visually appealing, and have the ability to update a graph elegantly in real time.
+The chart will need to be configurable in a way that allows the data to either flow off the side of the graph, or shrink the width between points for every added data point.
+It will also need to be a library that is compatible with the iPad Air 2 and iOS 10+.
 
-\subsubsection*{Pros}
+\subsection{Charts}
+Charts is an open source library by Daniel Cohen Gindi for building charts in iOS applications.
 Charts' latest commit at the time is 6 days ago, which means that it is still being maintained to some degree.
 It also specifically supports Xcode 9.0 and Swift 4.0, making it likely that we wont run into compatibility issues.
 This API also has specific methods for adding realtime and dynamic data to the graph.
-
-\subsubsection*{Cons}
-No cons so far
+One downside is that the graphs are not particularly appealing visually
 
 \subsection{Dr Charts}
-\subsubsection*{Description}
 Dr Charts is an open source library by Zomato for building charts in iOS applications.
-
-\subsubsection*{Pros}
 The charts created using Dr Charts can be animated to create a more pleasant user experience without compromising visibility of data.
-
-\subsubsection*{Cons}
-This API only mentions support for iOS 7, 8, and 9 and this could cause compatibility issues.
+A few downsides to this API are that it only mentions support for iOS 7, 8, and 9 and this could cause compatibility issues.
+Additionally, there is no built in method for adding a data point to the graph and this could make it difficult to create a live graph with updating data.
 
 \subsection{PNCharts}
-\subsubsection*{Description}
 PNCharts is an open source library by Kevin Zhow for building charts in iOS applications.
-
-\subsubsection*{Pros}
-This API provides animations for each type of graph, and could contribute to a better user experience
-
-\subsubsection*{Cons}
-This API hasn't made a change since June 7th of 2017, so it is unclear as to if this repo will continue to be maintained.
+This API provides animations for several different types of graphs, which could contribute to a better user experience.
+The API also makes it pretty simple to construct a graph.
+Instead of having class methods, you just set certain member variables to the data you want to represent in the graph.
+A downside is that this API hasn't made a change since June 7th of 2017, so it is unclear as to if this repo will continue to be maintained.
 
 \subsection{Decision}
-Because reliability is of the utmost importance, and Charts offers support for dynamic graphs, we will be using the Charts API for the ISS Barometer App.
+Because reliability is of the utmost importance, and Charts offers support for dynamic graphs, we will be using the Charts API for the ISS Barometer App. The other 2 libraries don't have the consistent support present in Charts.
+Also the Charts API is makes it very easy to add points to a dynamic graph, making it perfect for the clients needs.
 
 \section{Organization of UI}
-
 \subsection{Tabs}
-\subsubsection*{Description}
 A tab based application is one that has multiple views that are accessed via a tab bar at the bottom of the screen.
-
-\subsubsection*{Pros}
 This is advantageous because each page is only one click away at all times.
 Also, just by reading the tabs you know all of the possible pages you can use to interact with the application.
-
-\subsubsection*{Cons}
 The tab bar is cemented to the bottom of the screen at all times, which takes up quite a bit of screen real estate, and also detracts from the focus of the page.
 Also some pages don't need to be displayed at all times such as the settings page.
 
 \subsection{Single Page}
-\subsubsection*{Description}
 A single page application will have the graph and the statistics displayed on the main page.
 With this view, you can double click on the graph to make it fullscreen, and access frequently used settings via gestures.
 All other settings will be accessible from the app's tab in the setting application on the device.
-
-\subsubsection*{Pros}
 This layout will allow for more of a focus on the content, and reduce the number of infrequently pressed buttons.
-
-\subsubsection*{Cons}
 By employing gestures, it will end up taking more time to learn how to use the application comfortably .
 
 \subsection{Homepage With Sub Pages}
-\subsubsection*{Description}
 The homepage will have informative icons which when pressed will take the user to a view with either the statistics, the graph, or settings.
-
-\subsubsection*{Pros}
 The focus will be on the content, and users will be able to explicitly select what content they see and don't see by choosing a view.
-
-\subsubsection*{Cons}
 by having pages linked to a main page, a button to go home will need to be present on the screen to allow the user to go back and select another page.
 
 \subsection{Decision}
