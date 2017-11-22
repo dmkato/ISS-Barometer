@@ -87,6 +87,9 @@ The application will display the current pressure like the \textit{MANOVACOMETER
 This graph will have 2 modes: a mode in which the data flows off the left side of the graph and a mode where the data is compacted to allow the entire frame of data to fit in the graph. The x axis will represent time and the y axis will represent mm/Hg.
 
 \section{Development Framework}
+\subsection{Criteria}
+A suitable development framework is one that will include tools to allow the developer to create a working user interfaces with ease. It is also necessary that the framework provides direct access to the built in barometer.
+
 \subsection{Xcode/Swift}
 Xcode is the development platform provided by Apple for engineers to create apps for their iOS products.
 This platform allows the developer to write code and connect it to User Interface elements to create an application. This the most commonly used framework for iOS app development.
@@ -109,7 +112,8 @@ It also does not have the capability to interface with the iPad's built in barom
 \subsection{React Native}
 React Native is a software development framework that allows developers to create apps for mobile devices using javascript, CSS, and HTML.
 Because the UI in a React Native app is controlled by CSS and HTML, every creation or modification of an element will be executed via code and not by Xcode's Interface Builder, it will be a lot easier to collaborate and make changes to the code base.
-React native was built to allow the rapid creation of cross platform apps. As a result, it does not offer the ability to interface with the built in barometer.
+React native was built to allow the rapid creation of cross platform apps and because of this, it does not support all features of all phones.
+As a result, apps written with React-Native do not offer support for the built-in barometer.
 
 \subsection{Decision}
 Because the ability to interface with the onboard barometer is required for this project, we will be using Xcode and swift to develop the ISS Barometer application.
@@ -146,11 +150,14 @@ Because reliability is of the utmost importance, and Charts offers support for d
 Also the Charts API is makes it very easy to add points to a dynamic graph, making it perfect for the clients needs.
 
 \section{Organization of UI}
+\subsection{Criteria}
+An appropriate organization of the user interface will allow the user to access all the information needed without unnecessary effort. Also it shouldn't crowd the display with information that is not important or infrequently used.
+
 \subsection{Tabs}
 A tab based application is one that has multiple views that are accessed via a tab bar at the bottom of the screen.
 This is advantageous because each page is only one click away at all times.
 Also, just by reading the tabs you know all of the possible pages you can use to interact with the application.
-The tab bar is cemented to the bottom of the screen at all times, which takes up quite a bit of screen real estate, and also detracts from the focus of the page.
+A downside is that the tab bar is cemented to the bottom of the screen at all times, which takes up quite a bit of screen real estate, and also detracts from the focus of the page.
 Also some pages don't need to be displayed at all times such as the settings page.
 
 \subsection{Single Page}
@@ -158,14 +165,16 @@ A single page application will have the graph and the statistics displayed on th
 With this view, you can double click on the graph to make it fullscreen, and access frequently used settings via gestures.
 All other settings will be accessible from the app's tab in the setting application on the device.
 This layout will allow for more of a focus on the content, and reduce the number of infrequently pressed buttons.
-By employing gestures, it will end up taking more time to learn how to use the application comfortably .
+A downside is that by employing gestures, it will end up taking more time to learn how to use the application comfortably.
 
 \subsection{Homepage With Sub Pages}
 The homepage will have informative icons which when pressed will take the user to a view with either the statistics, the graph, or settings.
 The focus will be on the content, and users will be able to explicitly select what content they see and don't see by choosing a view.
-by having pages linked to a main page, a button to go home will need to be present on the screen to allow the user to go back and select another page.
+By having pages linked to a main page, a button to go home will need to be present on the screen to allow the user to go back and select another page.
+One downside of this is that all information will not be visible at the same time.
 
 \subsection{Decision}
 Because settings shouldn't need to be accessed frequently, and both statistics and the graph will need to be accessed when ever the astronaut is using the application, we will be using the single page layout.
+This will ensure that the user has access to all important information all the time.
 
 \end{document}
