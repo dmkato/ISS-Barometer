@@ -110,7 +110,7 @@ Our version one application will be given to the client, who will then be able t
 Although they are the intended target user, giving them version one will allow our team to improve upon any issues that the find in using the application.
 This means that our version two application may have changes not mentioned in the list, as they may be specific to the users and will only be apparent after use.
 This design document will detail our choices from the individual Technology Reviews, and will provide details related to our decision making, with regards to the mentioned requirements.
-\cite{udefaultApple}
+
 \section{Glossary of Terms}
 \begin{itemize}
 \item[--] csv: A file format readable by Excel and other spread sheet software
@@ -124,6 +124,26 @@ This design document will detail our choices from the individual Technology Revi
 \end{itemize}
 
 \section{Data Storage}
+The data storage of our application will mostly be used for the storage of settings, as well as temporary storage of plot data.
+One of the functions of ISS Barometer will be to record data from the barometer, and display a graph.
+This plot will be stored temporarily until the user decides to save it as a separate file, at which point, the iPad will store it in the users file directory.
+Before storing it separately, this data will be saved with the application, and so that the user may revisit it after closing the application.
+This type of storage will be implemented locally, on the individual iPads, as opposed to on a server.
+Within the technology review the options that were inspected were CoreData, NSUserDefaults and SQLite.
+It should be noted, that although these options were presented as exclusive options, it was anticipated that data storage would be implemented with multiple packages.
+In the case of ISS Barometer, the clear decision is to use CoreData, in tandem with NSUserDefaults.
+As with many applications, ours requires that user preferences be saved with the application, and not need to be reentered every time the ISS Barometer launches.
+This permanence will require the NSUserDefaults package, allowing us to quickly save data that the user specifies, such as float point accuracy and orientation options.
+However, NSUserDefaults does not scale, and would be inappropriate for plots of undefined size, such as the $\Delta \frac{\Delta p}{\Delta t}$ plot.
+This means we need a scalable option, for which we will use CoreData.
+It allows for large data sets, and can scale well, allowing for the undefined sized plots that are needed.
+In argument against a remote server, the challenges associated with a server, namely the problems of connectivity on the ISS, in addition to the added infrastructure, make this option moot.
+Additionally, its only benefit is that it would allow NASA to view data, which will also be possible when we implement the exporting function.
+As users wish to share data, they would save the plot as a csv, and then send it separately, using already in place methods, developed by NASA.
+The combination of NSUserDefaults and CoreData also provides us with working examples, as these are the recommended packages, by Apple.
+Being the suggested packages means that the documentation will be accessible and readily available, whereas with using something newer like Realm would have far less documentation.
+Although not a major consideration, availability of documentation will influence other areas of our application, such as the efficiency at an implementation level.
+
 
 \section{Language}
 
