@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         self.time = NSDate()
         self.prevMmHg = self.mmHg
         self.mmHg = self.kPa2mmHg(kPa: kPa)
-        self.deltaMmHg = (self.prevMmHg! - self.mmHg!) / (self.time?.timeIntervalSince(self.prevTime! as Date))!
+        self.deltaMmHg = (self.mmHg! - self.prevMmHg!) / (self.time?.timeIntervalSince(self.prevTime! as Date))!
         
         let fString = "%.\(self.significantDigits)f mmHg"
         self.pressureDisplay.text = String(format:fString, (self.mmHg)!)
