@@ -69,12 +69,7 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract
-This Requirements Document is meant as a repeatable and detailed description of using the iPad Air 2 Barometer to create an app for displaying barometer readings.
-This app will be used to measure atmospheric pressure in emergency situations aboard the International Space Station.
-This document will also serve to be an agreement that both our team and our client will make, and it will be used to evaluate our product at the end of Spring term.
-Within this document is the description, constraints and dependencies that will be used for this app.
-The Specific requirements that must be completed are laid out within the user, hardware and software interfaces sections.
-The System features entails the more in depth features of the pressure readings, recording button, graph and the settings pages.
+
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -86,12 +81,23 @@ The System features entails the more in depth features of the pressure readings,
 %\listoftables
 \clearpage
 
+%Introduction
+%Stakeholders and Concerns
+%Timeline
+%glossary
+%Design Views (Pieces)
+ 		%Each design Piece
+			%Mentioning Design viewpoints
+			%Target audience
+			%Concerns addressed
+
 \section{Introduction}
 The \CapstoneProjectName will provide crew members of the International Space Station with a readout of barometric pressure, as read from the iPads internal sensor.
 This application will supplement the current method of air pressure reading, the MANOVACUMETER, a mechanical barometer.
 As our application is targeted toward the crew members, it needs to be highly readable, clear, and good at quickly conveying data.
 Along with ease of use, the need for readability and efficiency of use are the main decision factors in our production, as well as our design.
 Listed below are the final product requirements of this product; version one will be provided at the end of December 2017, version two will be provided before the end of May.
+The optional research, referred to as O1, will be completed if time allows, and is not considered necessary for completion of the product.
 
 \begin{itemize}
 \item[V1:] Data Screen with initial pressure, current pressure, start/stop button, time stamp, pressure change (measured in sec / mmHg)
@@ -101,7 +107,7 @@ Listed below are the final product requirements of this product; version one wil
 \item[V2:] Graph will have pinch to zoom functionality, scaling options (to be set in settings)
 \item[V2:] Graph will be able to be exported as a csv, excel readable file
 \item[V2:] Graph can be compared to t-Res table, to measure time remaining
-\item[Optional:] Research can be done to identify low pressure accuracy and resistance
+\item[O1] Research can be done to identify low pressure accuracy and resistance
 \end{itemize}
 
 As approved by our client, these are the goals of our project, with unlisted items being out of scope.
@@ -110,6 +116,46 @@ Our version one application will be given to the client, who will then be able t
 Although they are the intended target user, giving them version one will allow our team to improve upon any issues that the find in using the application.
 This means that our version two application may have changes not mentioned in the list, as they may be specific to the users and will only be apparent after use.
 This design document will detail our choices from the individual Technology Reviews, and will provide details related to our decision making, with regards to the mentioned requirements.
+
+\section{Stakeholders and Concerns}
+\section{Timeline}
+\vspace{20pt}
+\begin{ganttchart}[
+	hgrid,
+    x unit=.5mm,
+    time slot format=isodate,
+    link bulge=4
+]{2017-09-10}{2018-06-20}
+% \gantttitle{\CapstoneProjectName}
+\gantttitlecalendar{year, month} \\
+
+%Items
+\ganttgroup{Version 1}{2017-09-20}{2017-12-30} \\ %Will add new line
+\ganttbar{Display Readings}{2017-10-30}{2017-11-20} \\
+\ganttbar{Basic Plot}{2017-11-20}{2017-11-30} \\
+\ganttbar{Basic Settings}{2017-11-20}{2017-11-30} \\
+\ganttbar{Finalize Design}{2017-12-01}{2018-01-01} \\
+\ganttgroup{Version 2}{2018-01-01}{2018-05-18} \\
+\ganttbar[inline]{Test Accuracy}{2018-01-01}{2018-05-18} \\
+\ganttbar[inline]{Adv. Plot}{2018-01-01}{2018-03-20} \\
+\ganttbar[inline]{Adv. Settings}{2018-01-01}{2018-03-10} \\
+\ganttbar[inline]{T-res Calculation}{2018-01-01}{2018-03-10} \\
+\ganttbar[
+	bar/.append style={fill=grey, rounded corners=3pt}
+    ]{Final Submission}{2018-05-18}{2018-06-10}
+
+%Relationships
+\ganttlink{elem1}{elem2}
+\ganttlink[link type=s-s]{elem2}{elem3}
+
+\ganttlink{elem4}{elem5}
+\ganttlink[link type=s-s]{elem6}{elem7}
+\ganttlink[link type=s-s]{elem7}{elem8}
+\ganttlink[link type=s-s]{elem8}{elem9}
+
+\ganttlink{elem5}{elem10}
+
+\end{ganttchart}
 
 % Super hacky but pretty glossary
 \section{Glossary of Terms}
