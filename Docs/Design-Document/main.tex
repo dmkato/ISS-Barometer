@@ -15,7 +15,7 @@
 \def \GroupMemberOne{Cade Raichart}
 \def \GroupMemberTwo{Daniel Kato}
 \def \GroupMemberThree{Nathan Shepherd}
-\def \CapstoneProjectName{ISS Barometer App }
+\def \CapstoneProjectName{ISS Barometer App}
 \def \CapstoneSponsorCompany{NASA}
 \def \CapstoneSponsorPerson{Don Pettit}
 
@@ -42,7 +42,7 @@
     	\includegraphics[height=4cm]{coe_v_spot1}
         \hfill
         % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
-        \includegraphics[height=4cm]{NASA}
+        %\includegraphics[height=4cm]{NASA}
         \par\vspace{.2in}
         \centering
         \scshape{
@@ -81,21 +81,14 @@
 %\listoftables
 \clearpage
 
-%Introduction
-%Stakeholders and Concerns
-%Timeline
-%glossary
-%Design Views (Pieces)
- 		%Each design Piece
-			%Mentioning Design viewpoints
-			%Target audience
-			%Concerns addressed
-
 \section{Introduction}
+\subsection{Purpose}
 The \CapstoneProjectName will provide crew members of the International Space Station with a readout of barometric pressure, as read from the iPads internal sensor.
 This application will supplement the current method of air pressure reading, the MANOVACUMETER, a mechanical barometer.
 As our application is targeted toward the crew members, it needs to be highly readable, clear, and good at quickly conveying data.
-Along with ease of use, the need for readability and efficiency of use are the main decision factors in our production, as well as our design.
+Along with ease of use, the need for readability and efficiency of use are the main decision factors in our production, as well as our design \cite{probStat}.
+
+\subsection{Scope}
 Listed below are the final product requirements of this product; version one will be provided at the end of December 2017, version two will be provided before the end of May.
 The optional research, referred to as O1, will be completed if time allows, and is not considered necessary for completion of the product.
 
@@ -115,10 +108,26 @@ This may be changed in the future, depending on available time, for instance, th
 Our version one application will be given to the client, who will then be able to give it to the ISS crew members.
 Although they are the intended target user, giving them version one will allow our team to improve upon any issues that the find in using the application.
 This means that our version two application may have changes not mentioned in the list, as they may be specific to the users and will only be apparent after use.
-This design document will detail our choices from the individual Technology Reviews, and will provide details related to our decision making, with regards to the mentioned requirements.
 
-\section{Stakeholders and Concerns}
+\subsection{Context}
+This application is being developed for use on the ISS.
+The stakeholders of the \CapstoneProjectName include the client, Donald Pettit, and the current and future crew members of the ISS, as well as any NASA employees that will benefit from this application.
+That includes Ground Control members, as well as testers that may authorize our application for installation.
+Although there are other applications that read and record air pressure data, they have been deemed unfit for the following reasons.
+\begin{itemize}
+	\item Complex and hard-to-read UI
+	\item Imprecise readings or recordings
+	\item Lack of customizability involving units
+	\item Optimized for altitude or weather
+\end{itemize}
+These needs prompted this project, and serve as simplified concerns that we seek to avoid.
+The users of the application, crew members of the ISS, require that the application meet their needs, as listed in the Scope.
+Because we will be avoiding pitfalls of other invalid applications, our application will be tailored specifically to serve the crew members.
+This means that their feedback, after version one is supplied, will be invaluable in helping guide changes to be made in version two.
+As a result, we should produce an application that is designed from the bottom up, for the crew members and NASA to use in the future.
+
 \section{Timeline}
+The following is a chart that displays our projected timeline \cite{reqDoc}.
 \vspace{20pt}
 \begin{ganttchart}[
 	hgrid,
@@ -170,47 +179,53 @@ This design document will detail our choices from the individual Technology Revi
 \item[] \textbf{2.8 t-Res:} The chart that NASA uses to calculate residual time left on station
 \end{itemize}
 
-\section{Data Storage}
-The data storage of our application will mostly be used for the storage of settings, as well as temporary storage of plot data.
-One of the functions of ISS Barometer will be to record data from the barometer, and display a graph.
-This plot will be stored temporarily until the user decides to save it as a separate file, at which point, the iPad will store it in the users file directory.
-Before storing it separately, this data will be saved with the application, and so that the user may revisit it after closing the application.
-This type of storage will be implemented locally, on the individual iPads, as opposed to on a server.
-Within the technology review the options that were inspected were CoreData, NSUserDefaults and SQLite.
-It should be noted, that although these options were presented as exclusive options, it was anticipated that data storage would be implemented with multiple packages.
-In the case of ISS Barometer, the clear decision is to use CoreData, in tandem with NSUserDefaults.
-As with many applications, ours requires that user preferences be saved with the application, and not need to be reentered every time the ISS Barometer launches.
-This permanence will require the NSUserDefaults package, allowing us to quickly save data that the user specifies, such as float point accuracy and orientation options.
-However, NSUserDefaults does not scale, and would be inappropriate for plots of undefined size, such as the $\Delta \frac{\Delta p}{\Delta t}$ plot.
-This means we need a scalable option, for which we will use CoreData.
-It allows for large data sets, and can scale well, allowing for the undefined sized plots that are needed.
-In argument against a remote server, the challenges associated with a server, namely the problems of connectivity on the ISS, in addition to the added infrastructure, make this option moot.
-Additionally, its only benefit is that it would allow NASA to view data, which will also be possible when we implement the exporting function.
-As users wish to share data, they would save the plot as a csv, and then send it separately, using already in place methods, developed by NASA.
-The combination of NSUserDefaults and CoreData also provides us with working examples, as these are the recommended packages, by Apple.
-Being the suggested packages means that the documentation will be accessible and readily available, whereas with using something newer like Realm would have far less documentation.
-Although not a major consideration, availability of documentation will influence other areas of our application, such as the efficiency at an implementation level.
+\section{References}
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
 
+\section{Context Viewpoint}
+% The Context view of a system defines the relationships, dependencies, and interactions between the system and its environment—the people, systems, and external entities with which it interacts.
+\subsection{Design Concerns}
+% Could be setting of use [in space, iss, quick pressure change], who uses it [crew members]...
+\subsection{Design Elements}
+% UI design, barometer implementation, Platform(iPad vs ...)
 
-\section{Language}
+\section{Functional Viewpoint}
+% The Functional view of a system defines the architectural elements that deliver the system’s functionality.
+\subsection{Design Concerns}
+% Could be accuracy and precision, speed, clarity of graph...
+\subsection{Design Elements}
+% Could be UI Design, graph interface, language, storage information, barometer implementation...
 
-\section{UI Library}
+\section{Information Viewpoint}
+% Describes the way that the system stores, manipulates, manages, and distributes information
+\subsection{Design Concerns}
+% Could mention accessibility to csv, speed, security from errors
+\subsection{Design Elements}
+% Essentially just the graph storage function, and settings storage
 
-\section{Graph Interface}
+\section{Concurrency Viewpoint}
+% Describes the concurrency structure of the system, mapping functional elements to concurrency units to clearly identify the parts of the system that can execute concurrently, and shows how this is coordinated and controlled
+\subsection{Design Concerns}
+% Will just probably be graph running while app closed? Barometer keeping up to date, no locks on data so not really a problems
+\subsection{Design Elements}
+% Barometer implementation, chart library
 
-\section{Barometer Implementation}
+\section{Development Viewpoint}
+% Describes the architecture that supports the software development process
+\subsection{Design Concerns}
+% We're the only stakeholders in this one pretty much
+\subsection{Design Elements}
+% Language Used, IDE, packages in general
 
-\section{Organization of UI}
-
-\section{Chart Library}
-
-\section{Development Framework}
-
-\section{Color Palette}
+\section{Deployment and Post-Deployment Viewpoints}
+% Pretty small and similar so I grouped them, easy to ungroup
+% Deployment: Describes the environment into which the system will be deployed, including the dependencies the system has on its runtime environment
+% Operation: Describes how the system will be operated, administered, and supported when it is running in its production environment
+\subsection{Design Concerns}
+\subsection{Design Elements}
 
 \section{Conclusion}
 
-\newpage
-\bibliographystyle{IEEEtran}
-\bibliography{bibliography}
+
 \end{document}
