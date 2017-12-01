@@ -180,6 +180,7 @@ The following is a chart that displays our projected timeline \cite{reqDoc}.
 \item[] \textbf{2.7 NASA:} National Aeronautics and Space Administration
 \item[] \textbf{2.8 t-Res:} The chart that NASA uses to calculate residual time left on station
 \item[] \textbf{2.9 UI:} Acronym for user interface
+\item[] \textbf{2.10 Segue:} A transition form one view to another
 \end{itemize}
 
 \section{References}
@@ -234,8 +235,27 @@ The choices made for the Context Viewpoint will help optimize our application fo
 % The Functional view of a system defines the architectural elements that deliver the system’s functionality.
 \subsection{Design Concerns}
 % Could be accuracy and precision, speed, clarity of graph...
+The functional viewpoint is a project viewpoint that deals with the capabilities, external interfaces, and internal structure of each component of the application.
+For the ISS Barometer the main concerns are in regards to the maintainability of the code and the way each element interacts.
+Each of the main components of the application will need to interact in a manner that is easy follow and manipulate.
+The stakeholders for this viewpoint are the client, the ISS crew members, our team, and NASA as the ability of our application to be updated and maintained relies on a good interface design and internal structure.
+It is necessary that our application be well modularized so that it can be reworked to meet any future needs of NASA and the crew on the ISS.
+One concern is that the settings page and the main page will need to be able to communicate and pass data to one another.
+Another concern is that the graph will need continual access to an updating array of pressure data points.
+It is important that the graph is updated each time a new barometer reading is taken to provide the user with as much data as possible.
+
 \subsection{Design Elements}
 % Could be UI Design, graph interface, language, storage information, barometer implementation...
+To address the concern of maintainability, we will implement 3 views: a main view, a graph view, and a settings view.
+The graph view will exist as a sub view of the main view.
+Each view will be controlled by a corresponding view controller class.
+Separating out each of the pages as views will allow us to keep the code separate and more organized, as well as letting us reuse the graph view to display it in full screen.
+To address the concern of transfering data between views, we will use segues as outlined in the Coding Explorer Blog \cite{dataThroughSeque}.
+This will involve overriding a function in the called \texttt{prepareForSegue()} in the sending end of the segue to assign a value to a variable that is passed into the receiving end of the segue.
+This will allow the receiving end of the segue to to access the passed in data through the designated variable name.
+To store each barometer reading, a member variable of the main view controller will be created that holds an array of all of the collected datapoints in the current session.
+To address the concern of updating the graph with new readings, a member function of the graph view controller class will be called after each reading, adding the taken data point to the graph.
+
 
 \section{Information Viewpoint}
 % Describes the way that the system stores, manipulates, manages, and distributes information
