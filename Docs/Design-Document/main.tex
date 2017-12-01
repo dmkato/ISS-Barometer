@@ -177,6 +177,7 @@ The following is a chart that displays our projected timeline \cite{reqDoc}.
 \item[] \textbf{2.6 mmHg:} Millimeters of Mercury, the standard pressure unit
 \item[] \textbf{2.7 NASA:} National Aeronautics and Space Administration
 \item[] \textbf{2.8 t-Res:} The chart that NASA uses to calculate residual time left on station
+\item[] \textbf{2.9 UI:} Acronym for user interface
 \end{itemize}
 
 \section{References}
@@ -187,8 +188,30 @@ The following is a chart that displays our projected timeline \cite{reqDoc}.
 % The Context view of a system defines the relationships, dependencies, and interactions between the system and its environment—the people, systems, and external entities with which it interacts.
 \subsection{Design Concerns}
 % Could be setting of use [in space, iss, quick pressure change], who uses it [crew members]...
+The context viewpoint is a project viewpoint that looks at the application in respect to its relationship with the environment.
+For this viewpoint, the major design concerns are related to the applications use, its users, and its location.
+The stakeholders of this perspective are the end users, the client, and NASA as a whole.
+All of them rely on the ability of our application to be clear in how it interacts through its UI.
+The end users require that the \CapstoneProjectName provide accurate data clearly and quickly, with easily understood interactivity.
+The users will be reliant on this application in potentially dire situations, leaks in the ISS, meaning it must not be unduly difficult to understand or operate.
+As mentioned in context section, the problem of complicated UI and difficult to understand displays are the reasons that other applications are not used.
+NASA requires that this application not introduce any security problems, and that any data displayed can be trusted.
+NASA also requires that the application be functional and clear of critical bugs, which could jeopardize mission safety.
+The latter requirement is lessened by the fact that NASA will keep the MANOVACUMETERS aboard the ISS, as well as other redundancies, but should still be considered.
+The setting of use, the ISS, introduces some interesting considerations to the design.
+For instance the accelerometer will not work as it does in 1g, and requires shaking to reorient the iPad.
+Also the iPad may be exposed to extreme low pressures, and should be trusted to remain functional and accurate.
+These considerations do not affect the design of the application, but may be tested if the optional goals are achieved.
+In addition to low pressure and gravity, the stations remoteness may also affect design, in that updates and communications will be sent through NASA and their network.
+
 \subsection{Design Elements}
 % UI design, barometer implementation, Platform(iPad vs ...)
+In response to the design concerns, several design elements have been chosen to alleviate the dilemmas.
+As a result of the crew members need for clear, usable design, we have decided to use Swift Charts as our plot library, and a combination of Cocoa controls, FlatUIKit, and  CRPageViewController \cite{techDocRaichart}.
+In addition to specific UI libraries, we plan to design the UI with simplicity and readability in mind.
+This will be judged in part by our client, and eventually by the crew members once it is deployed, as version one.
+The plot library will provide the functionality that is needed, in addition to being a supported and trusted plotter.
+
 
 \section{Functional Viewpoint}
 % The Functional view of a system defines the architectural elements that deliver the system’s functionality.
