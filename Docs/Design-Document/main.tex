@@ -211,7 +211,19 @@ As a result of the crew members need for clear, usable design, we have decided t
 In addition to specific UI libraries, we plan to design the UI with simplicity and readability in mind.
 This will be judged in part by our client, and eventually by the crew members once it is deployed, as version one.
 The plot library will provide the functionality that is needed, in addition to being a supported and trusted plotter.
-
+Using trusted and recommended libraries and packages will also help provide NASA with understandable and trusted code.
+This means that their approval and authorization will be quicker and therefore allow faster turn around on things such as updates.
+Accelerometer issues caused by low gravity is an easily solvable issue, requiring only the addition of a button to switch orientation.
+This has been a design choice, proposed by the client, since the beginning, and would solve the issue for the end users.
+The other problem caused by the environment, that of low pressure accuracy, will not be as easily solved.
+As our application is not able to alter the hardwares capabilities in withstanding pressure, the only option would be to alter the platform.
+The options that we have considered include external Arduino applications, the iPhone 6, or the iPad Air.
+The iPad has been identified as our required platform, by our client, and backed by our research \cite{techDocRaichart}.
+This means our only option for ensuring the reliability of the application is to test it in a controlled pressure container.
+This would require things outside the scope of this project, but may be achieved as a stretch goal, as seen in the Scope section.
+The added difficulty of transferring data through NASA to the ISS means that updates will be sparse, and return data or remote data storage is infeasible.
+These factors guided our decision to use CoreData and NSUserDefaults as our storage packages, instead of a remote server package, like SQLite \cite{techDocShepherd}.
+The choices made for the Context Viewpoint will help optimize our application for the location and users involved.
 
 \section{Functional Viewpoint}
 % The Functional view of a system defines the architectural elements that deliver the system’s functionality.
