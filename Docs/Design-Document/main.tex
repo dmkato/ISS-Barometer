@@ -181,6 +181,7 @@ The following is a chart that displays our projected timeline \cite{reqDoc}.
 \item[] \textbf{2.8 t-Res:} The chart that NASA uses to calculate residual time left on station
 \item[] \textbf{2.9 UI:} Acronym for user interface
 \item[] \textbf{2.10 Segue:} A transition form one view to another
+\item[] \textbf{2.11 API:} Application Programer Interface; Third party code to aid in development
 \end{itemize}
 
 \section{References}
@@ -256,7 +257,6 @@ This will allow the receiving end of the segue to to access the passed in data t
 To store each barometer reading, a member variable of the main view controller will be created that holds an array of all of the collected datapoints in the current session.
 To address the concern of updating the graph with new readings, a member function of the graph view controller class will be called after each reading, adding the taken data point to the graph.
 
-
 \section{Information Viewpoint}
 % Describes the way that the system stores, manipulates, manages, and distributes information
 \subsection{Design Concerns}
@@ -322,7 +322,7 @@ Astronauts need to have all data be precise and completely accurate to save live
 \subsection{Design Elements}
 % Barometer implementation, chart library
 In response to the design concerns, several hardware chips are being used correctly calculate the timing problems.
-The ISS Barometer App will be using the iPad Air 2 for its platform. The Ipad uses a Apple A8x triple core 1.5 GHz Typhoon cpu.
+The ISS Barometer App will be using the iPad Air 2 for its platform. The iPad uses a Apple A8x triple core 1.5 GHz Typhoon cpu.
 The triple core cpu allows for multiple action to be done simultaneously.
 This means that we can display the atmospheric pressure, dp/dt, calculate time to evacuation and display the graph simultaneously making it accurate and safe.
 With each core of the cpu running at 1.5 GHz we do not have to worry about the barometer recording data faster than it can be displayed.
@@ -332,8 +332,25 @@ With each core of the cpu running at 1.5 GHz we do not have to worry about the b
 % Describes the architecture that supports the software development process
 \subsection{Design Concerns}
 % We're the only stakeholders in this one pretty much
+The development viewpoint is a project viewpoint that deals with the organization of modules, the standardization of testing, and common processing.
+For the ISS Barometer, the main concerns are in regards to testing, development framework, programming language, and third-party APIs.
+Testing our application is necessary to ensure that each incremental change does not break the existing code base.
+The development framework will need to cater to the needs of the application which includes: direct access to the barometer, ability to incorporate a chart API, and ability to display separate views.
+Any third party APIs used will need to be compatible with iOS 10+, and positively contribute to the code base without creating any unnecessary burdens.
+The programming language used will have to be supported by the development framework, and the iPad.
+
 \subsection{Design Elements}
 % Language Used, IDE, packages in general
+To address the concern of development framework, we will use Xcode to write our application.
+This will allow us direct access to the barometer and any native features of the iPad.
+It will also allow us to take advantage of the native Xcode testing framework.
+To address the concern of module organization, we will use the package manager Cocoapods to install and manage all third party APIs.
+Cocoapods will also make it easy to keep our applications dependencies up to date to avoid security issues.
+We will be using the Swift 4 language to develop our application because it is a supported and feature rich language made by Apple that has received plenty of positive feedback regarding its usability and ease of development.
+We will be using 2 third party APIs: Charts by Daniel Daniel Cohen Gindi, and Cocoa Controls.
+These libraries were chosen due to their compatibility with the project as outlined in the technology review.
+To test our application's code and UI, we will use Xcode's built in testing library.
+This is the best solution as the testing suit is set up when the project is created, making it easy to test our program from the beginning.
 
 \section{Deployment and Post-Deployment Viewpoints}
 % Pretty small and similar so I grouped them, easy to ungroup
