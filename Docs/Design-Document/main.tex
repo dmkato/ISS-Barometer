@@ -69,7 +69,8 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract
-
+	This document focuses on the individual components of our project and “how” they will be implemented. 
+	We chose to focus on the design viewpoints in terms of the using the IEEE std 1016-2009 document for software design description, we have chosen the 6 view points we chose as suitable for our project
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -286,8 +287,25 @@ This technique prevents overflow of data storage, which would cause the applicat
 % Describes the concurrency structure of the system, mapping functional elements to concurrency units to clearly identify the parts of the system that can execute concurrently, and shows how this is coordinated and controlled
 \subsection{Design Concerns}
 % Will just probably be graph running while app closed? Barometer keeping up to date, no locks on data so not really a problems
+For this viewpoint the major concerns are related to the speed of hardware, and timing.
+The stakeholders of this would be our client, end users and astronauts aboard the ISS. 
+The astronauts will need to rely on our app to correctly have all the timing work in unison.  
+When using hardware and software systems together we run into some timing problems. 
+Our app might have a timing concern with how fast the barometer records atmospheric pressure. 
+The barometer might be reading the data slower than the graph can display it, also it might be reading it faster than we can display the data on the graph.
+This can cause problems with the end users. 
+Looking at the graph with a older atmospheric pressure than the one the barometer can cause the user to not evacuate early, this could result in death of the crew. 
+Our app will be doing many actions all at the same time, this all needs to be done simultaneously as to ensure the accuracy of the data.
+Astronauts need to have all data be precise and completely accurate to save lives.  
+
 \subsection{Design Elements}
 % Barometer implementation, chart library
+In response to the design concerns, several hardware chips are being used correctly calculate the timing problems. 
+The ISS Barometer App will be using the iPad Air 2 for its platform. The Ipad uses a Apple A8x triple core 1.5 GHz Typhoon cpu. 
+The triple core cpu allows for multiple action to be done simultaneously. 
+This means that we can display the atmospheric pressure, dp/dt, calculate time to evacuation and display the graph simultaneously making it accurate and safe.
+With each core of the cpu running at 1.5 GHz we do not have to worry about the barometer recording data faster than it can be displayed. 
+
 
 \section{Development Viewpoint}
 % Describes the architecture that supports the software development process
@@ -301,8 +319,21 @@ This technique prevents overflow of data storage, which would cause the applicat
 % Deployment: Describes the environment into which the system will be deployed, including the dependencies the system has on its runtime environment
 % Operation: Describes how the system will be operated, administered, and supported when it is running in its production environment
 \subsection{Design Concerns}
+This viewpoint is a project that looks at the environment that the system will be deployed in. 
+The operational concerns are how  it will be operated, administered and supported while in deployment.
+The second concern of this viewpoint is will the app help the crew while in use. 
+The ISS Barometer App will be aboard the ISS space station. 
+The space station is orbiting the Earth at a minimum of 330 km. 
+The interior of the ISS has a pressure of 1 atmosphere, measured in millimeters of Mercury (mmHg), that must be maintained for the safety of the Astronauts aboard the ISS.
+If the atmospheric pressure drops below .540 atm it will endangering the crew. 
+Leaks in the ISS can be caused by faulty seals in hatches or orbital debris striking the vessel, a severe leak consists of a loss of 1 mm per minute.
 \subsection{Design Elements}
-
+In response to the viewpoint concerns our app will be deployed to find these leaks. 
+The astronauts will operate the app by going from room to room, closing hatch door behind them and seeing if the atmospheric pressure stabilizes. If it doesn't stabilize they will move on to the next room. 
+Until they find the room/rooms with the leak or they must abandon ship. When the app is activated with the start button, it will record the atmospheric pressure and display it along with the appropriate time stamp. 
+That data will be used to calculate the dp/dt. dp/dt will be displayed by the first page, used as the slope of the graph, and it will be used with the comparison to the t-Res tables to display the time till evacuation. 
+The App will be administered by uploading the files to the space station and downloading onto the iPads.
+Updates to the app will administered to the iPad in the same way. As the iPad's OS gets update so must we update the app.
 \section{Conclusion}
 As described in our Technology documents, we have sought out different options for the major pieces of this project.
 With the research done, and the viewpoints provided here, it has been shown that the \CapstoneProjectName is properly thought out and detailed.
