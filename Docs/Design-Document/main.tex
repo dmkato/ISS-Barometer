@@ -181,9 +181,12 @@ The following is a chart that displays our projected timeline \cite{reqDoc}.
 \end{itemize}
 
 \section{References}
+\begingroup
+\renewcommand{\section}[2]{}%
+%\renewcommand{\chapter}[2]{}% for other classes
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
-
+\endgroup
 \section{Context Viewpoint}
 % The Context view of a system defines the relationships, dependencies, and interactions between the system and its environment—the people, systems, and external entities with which it interacts.
 \subsection{Design Concerns}
@@ -236,8 +239,48 @@ The choices made for the Context Viewpoint will help optimize our application fo
 % Describes the way that the system stores, manipulates, manages, and distributes information
 \subsection{Design Concerns}
 % Could mention accessibility to csv, speed, security from errors
+The stakeholders of the information viewpoint are those reliant on accurate and secure data storage.
+This is all of the main stakeholders: the client, the ISS crew members, our team, and NASA, as a whole.
+As the purpose of our application is to display information from the barometer module of the iPad, so it follows that it is necessary to display correct and timely data.
+Also necessary, is the ability to store the data between uses, so that a user may exit the application and open to the same view, complete with prior data.
+One additional concern may be the need to record data while the application is not running in the foreground of the iPad.
+This may be a concern, but from our understanding of the clients specifications, this is not within scope, and shouldn't be an issue.
+Once the user has a plot recorded they might want to export it as a csv file, which must also be secure from errors or tampering.
+It must be ensured that the data being exported to the csv is the data that was recorded.
+Once the csv is exported, that data is no longer our concern, as it is in the hands of the user.
+In addition to exporting and saving plot data between uses, our application will have some various settings, which will be stored between uses, so that certain settings are persistent.
+The settings that must remain persistent between uses are listed below \cite{reqDoc}:
+\begin{itemize}
+	\item Significant digits
+	\item Plot scale
+	\item Plot scroll functionality
+	\item Orientation
+	\item Units of pressure
+	\item Sample rate of recording
+\end{itemize}
+
 \subsection{Design Elements}
 % Essentially just the graph storage function, and settings storage
+The main security that will be implemented is done through using well defined and secure storage packages.
+We are not expecting intentional tampering, as the application will not be connected to the network, and the only users are using the application for self-preservation.
+That said, it is still possible that data be mangled, dropped, or altered as it is recorded or exported.
+By correctly using well maintained and trusted packages we will avoid many problems with data storage.
+As the data being stored is small, and relatively simple, the use of packages will simplify our storage, while allowing the users quick and reliable data.
+The packages that will store plot data and settings data will be two different packages.
+This method, as suggested by Apple\cite{coreApple}, will separate user data, such as settings, from application data, like the recordings or the plot.
+The user data package will be NSUserDefaults, which is suggested for storing small portions of data.
+The settings stored will be integers or boolean data, and like other application data, will be stored locally on the iPad.
+The plot storage package will be CoreData, which will be able to handle larger sets of data, like the plot.
+This also will be stored locally.
+
+\subsection{Design Attributes}
+Data stored by the NSUserDefaults will be of the form of integers or booleans, as it will only be storing user choices.
+Data stored by CoreData, for the plot, will be in the form of paired floats and timestamps.
+Together each of these data points will form a data point on the plot, as the recording continues, and the graph implementation plots the points.
+If the data is recorded and then exported, the user will be prompted whether or not to remove the data stored in the application.
+If the user accepts then the plot data will be removed, and the screen will be returned to its prerecord state.
+The data must be removed from the application, either by deleting or exporting, before the user will be allowed to record again.
+This technique prevents overflow of data storage, which would cause the application to crash.
 
 \section{Concurrency Viewpoint}
 % Describes the concurrency structure of the system, mapping functional elements to concurrency units to clearly identify the parts of the system that can execute concurrently, and shows how this is coordinated and controlled
