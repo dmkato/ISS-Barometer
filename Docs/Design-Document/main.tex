@@ -324,7 +324,7 @@ Astronauts need to have all data be precise and accurate to save lives.
 In response to the design concerns, several hardware chips are being used correctly calculate the timing problems.
 The ISS Barometer App will be using the iPad Air 2 for its platform. The iPad uses a Apple A8x triple core 1.5 GHz Typhoon CPU.
 The triple core cpu allows for multiple action to be done simultaneously.
-This means that we can display the atmospheric pressure, $\Delta \frac{\Delta p}{\Delta t}$, calculate time to evacuation and display the graph simultaneously making it accurate and safe.
+This means that we can display the atmospheric pressure, $\frac{\Delta p}{\Delta t}$, calculate time to evacuation and display the graph simultaneously making it accurate and safe.
 With each core of the CPU running at 1.5 GHz we do not have to worry about the barometer recording data faster than it can be displayed.
 The choices that have been made regarding the graphing library, Chart, ensure that our plot will also be running at its optimized speed.
 Also, as the barometer module is internal the iPad uses the same CPU to poll it for barometric pressure.
@@ -371,9 +371,12 @@ If the atmospheric pressure drops below .540 atm it will endangering the crew.
 Leaks in the ISS can be caused by faulty seals in hatches or orbital debris striking the vessel, a severe leak consists of a loss of 1 mm per minute.
 \subsection{Design Elements}
 In response to the viewpoint concerns our app will be deployed to find these leaks.
-The astronauts will operate the app by going from room to room, closing hatch door behind them and seeing if the atmospheric pressure stabilizes. If it doesn't stabilize they will move on to the next room.
-Until they find the room/rooms with the leak or they must abandon ship. When the app is activated with the start button, it will record the atmospheric pressure and display it along with the appropriate time stamp.
-That data will be used to calculate the dp/dt. dp/dt will be displayed by the first page, used as the slope of the graph, and it will be used with the comparison to the t-Res tables to display the time till evacuation.
+The astronauts will operate the app by going from room to room, closing hatch door behind them and seeing if the atmospheric pressure stabilizes.
+If it doesn't stabilize they will move on to the next room.
+Until they find the room/rooms with the leak or they must abandon ship.
+When the app is activated with the start button, it will record the atmospheric pressure and display it along with the appropriate time stamp.
+That data will be used to calculate the $\frac{\Delta p}{\Delta t}$.
+$\frac{\Delta p}{\Delta t}$ will be displayed by the first page, used as the slope of the graph, and it will be used with the comparison to the t-Res tables to display the time till evacuation.
 The App will be administered by uploading the files to the space station and downloading onto the iPads.
 Updates to the app will administered to the iPad in the same way. As the iPad's OS gets update so must we update the app.
 
