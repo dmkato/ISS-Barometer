@@ -15,7 +15,7 @@
 \def \GroupMemberOne{Cade Raichart}
 \def \GroupMemberTwo{Daniel Kato}
 \def \GroupMemberThree{Nathan Shepherd}
-\def \CapstoneProjectName{ISS Barometer App}
+\def \CapstoneProjectName{ISS Barometer App }
 \def \CapstoneSponsorCompany{NASA}
 \def \CapstoneSponsorPerson{Don Pettit}
 
@@ -237,8 +237,8 @@ The choices made for the Context Viewpoint will help optimize our application fo
 \subsection{Design Concerns}
 % Could be accuracy and precision, speed, clarity of graph...
 The functional viewpoint is a project viewpoint that deals with the capabilities, external interfaces, and internal structure of each component of the application.
-For the ISS Barometer the main concerns are in regards to the maintainability of the code and the way each element interacts.
-Each of the main components of the application will need to interact in a manner that is easy follow and manipulate.
+For the ISS Barometer the main concerns are in regards to the maintainability of the code and the way each element of the application interacts with one another.
+Each of the main components of the application will need to pass data around in a manner that is easy follow and manipulate.
 The stakeholders for this viewpoint are the client, the ISS crew members, our team, and NASA as the ability of our application to be updated and maintained relies on a good interface design and internal structure.
 It is necessary that our application be well modularized so that it can be reworked to meet any future needs of NASA and the crew on the ISS.
 One concern is that the settings page and the main page will need to be able to communicate and pass data to one another.
@@ -250,11 +250,11 @@ It is important that the graph is updated each time a new barometer reading is t
 To address the concern of maintainability, we will implement 3 views: a main view, a graph view, and a settings view.
 The graph view will exist as a sub view of the main view.
 Each view will be controlled by a corresponding view controller class.
-Separating out each of the pages as views will allow us to keep the code separate and more organized, as well as letting us reuse the graph view to display it in full screen.
-To address the concern of transfering data between views, we will use segues as outlined in the Coding Explorer Blog \cite{dataThroughSeque}.
+Separating out each of the pages as views will allow us to keep the code separate and organized, as well as let us reuse the graph view to display it in full screen.
+To address the concern of transferring data between views, we will use segues as outlined in the Coding Explorer Blog \cite{dataThroughSeque}.
 This will involve overriding a function in the called \texttt{prepareForSegue()} in the sending end of the segue to assign a value to a variable that is passed into the receiving end of the segue.
 This will allow the receiving end of the segue to to access the passed in data through the designated variable name.
-To store each barometer reading, a member variable of the main view controller will be created that holds an array of all of the collected datapoints in the current session.
+To store each barometer reading, a member variable of the main view controller will be created that holds an array of all of the collected data points in the current session.
 To address the concern of updating the graph with new readings, a member function of the graph view controller class will be called after each reading, adding the taken data point to the graph.
 
 \section{Information Viewpoint}
@@ -334,6 +334,7 @@ With each core of the cpu running at 1.5 GHz we do not have to worry about the b
 % We're the only stakeholders in this one pretty much
 The development viewpoint is a project viewpoint that deals with the organization of modules, the standardization of testing, and common processing.
 For the ISS Barometer, the main concerns are in regards to testing, development framework, programming language, and third-party APIs.
+The stakeholders for this viewpoint are only the team, as they are going to be the ones interacting with the development tools.
 Testing our application is necessary to ensure that each incremental change does not break the existing code base.
 The development framework will need to cater to the needs of the application which includes: direct access to the barometer, ability to incorporate a chart API, and ability to display separate views.
 Any third party APIs used will need to be compatible with iOS 10+, and positively contribute to the code base without creating any unnecessary burdens.
@@ -350,7 +351,7 @@ We will be using the Swift 4 language to develop our application because it is a
 We will be using 2 third party APIs: Charts by Daniel Daniel Cohen Gindi, and Cocoa Controls.
 These libraries were chosen due to their compatibility with the project as outlined in the technology review.
 To test our application's code and UI, we will use Xcode's built in testing library.
-This is the best solution as the testing suit is set up when the project is created, making it easy to test our program from the beginning.
+This is the best solution as it is a full featured testing suit that is set up when the project is created, making it easy to test our program from the beginning.
 
 \section{Deployment and Post-Deployment Viewpoints}
 % Pretty small and similar so I grouped them, easy to ungroup
