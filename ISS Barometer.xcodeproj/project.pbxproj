@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		353719991FCF519B007A0C10 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353719961FCF5159007A0C10 /* Charts.framework */; };
-		3537199A1FCF519B007A0C10 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 353719961FCF5159007A0C10 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		036B95F895063210F33D6A72 /* Pods_ISS_Barometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789AB272C2CBA8E4F7BC68F /* Pods_ISS_Barometer.framework */; };
 		35F63A4A1FCCE56C00639EB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A491FCCE56C00639EB5 /* AppDelegate.swift */; };
 		35F63A4C1FCCE56C00639EB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A4B1FCCE56C00639EB5 /* ViewController.swift */; };
 		35F63A4F1FCCE56C00639EB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F63A4D1FCCE56C00639EB5 /* Main.storyboard */; };
@@ -17,30 +16,11 @@
 		35F63A571FCCE56C00639EB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F63A551FCCE56C00639EB5 /* LaunchScreen.storyboard */; };
 		35F63A621FCCE56C00639EB5 /* ISS_BarometerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A611FCCE56C00639EB5 /* ISS_BarometerTests.swift */; };
 		35F63A6D1FCCE56C00639EB5 /* ISS_BarometerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A6C1FCCE56C00639EB5 /* ISS_BarometerUITests.swift */; };
+		9CB4AC929818C4E668B4255E /* Pods_ISS_BarometerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAD1B812304883B5942BD90 /* Pods_ISS_BarometerTests.framework */; };
+		B60B035C069668C4DCBAC289 /* Pods_ISS_BarometerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F216094E224D3F1DD705C59C /* Pods_ISS_BarometerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		353719951FCF5159007A0C10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 353719901FCF5159007A0C10 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
-			remoteInfo = Charts;
-		};
-		353719971FCF5159007A0C10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 353719901FCF5159007A0C10 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
-		};
-		3537199B1FCF519B007A0C10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 353719901FCF5159007A0C10 /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A58A4ED274A941CA248EA921;
-			remoteInfo = Charts;
-		};
 		35F63A5E1FCCE56C00639EB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 35F63A3E1FCCE56C00639EB5 /* Project object */;
@@ -64,7 +44,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3537199A1FCF519B007A0C10 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +51,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		353719901FCF5159007A0C10 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		35F63A461FCCE56C00639EB5 /* ISS Barometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISS Barometer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F63A491FCCE56C00639EB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35F63A4B1FCCE56C00639EB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +65,15 @@
 		35F63A681FCCE56C00639EB5 /* ISS BarometerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ISS BarometerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F63A6C1FCCE56C00639EB5 /* ISS_BarometerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISS_BarometerUITests.swift; sourceTree = "<group>"; };
 		35F63A6E1FCCE56C00639EB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6152C2C7AE6591AF2D72F59D /* Pods-ISS BarometerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISS BarometerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISS BarometerTests/Pods-ISS BarometerTests.release.xcconfig"; sourceTree = "<group>"; };
+		6E2D340FA54BB336B4F87939 /* Pods-ISS BarometerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISS BarometerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISS BarometerUITests/Pods-ISS BarometerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7789AB272C2CBA8E4F7BC68F /* Pods_ISS_Barometer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISS_Barometer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96B1448FC63A5930608F6971 /* Pods-ISS Barometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISS Barometer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISS Barometer/Pods-ISS Barometer.debug.xcconfig"; sourceTree = "<group>"; };
+		BBAD1B812304883B5942BD90 /* Pods_ISS_BarometerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISS_BarometerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6168327429AA3A31EE4E3A9 /* Pods-ISS BarometerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISS BarometerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISS BarometerUITests/Pods-ISS BarometerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F216094E224D3F1DD705C59C /* Pods_ISS_BarometerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISS_BarometerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBE7DA7FD9727D497BCA2221 /* Pods-ISS Barometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISS Barometer.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISS Barometer/Pods-ISS Barometer.release.xcconfig"; sourceTree = "<group>"; };
+		FC26005A0A1A9AC6140657DE /* Pods-ISS BarometerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISS BarometerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISS BarometerTests/Pods-ISS BarometerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				353719991FCF519B007A0C10 /* Charts.framework in Frameworks */,
+				036B95F895063210F33D6A72 /* Pods_ISS_Barometer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CB4AC929818C4E668B4255E /* Pods_ISS_BarometerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,30 +97,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60B035C069668C4DCBAC289 /* Pods_ISS_BarometerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		353719911FCF5159007A0C10 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				353719961FCF5159007A0C10 /* Charts.framework */,
-				353719981FCF5159007A0C10 /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		35F63A3D1FCCE56C00639EB5 = {
 			isa = PBXGroup;
 			children = (
-				353719901FCF5159007A0C10 /* Charts.xcodeproj */,
 				35F63A481FCCE56C00639EB5 /* ISS Barometer */,
 				35F63A601FCCE56C00639EB5 /* ISS BarometerTests */,
 				35F63A6B1FCCE56C00639EB5 /* ISS BarometerUITests */,
 				35F63A471FCCE56C00639EB5 /* Products */,
-				8141CE9542B98806FF313D13 /* Frameworks */,
+				5E54AF8655506A6621E601F1 /* Pods */,
+				4DE4E5A105656702BCE66CE9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,11 +158,27 @@
 			path = "ISS BarometerUITests";
 			sourceTree = "<group>";
 		};
-		8141CE9542B98806FF313D13 /* Frameworks */ = {
+		4DE4E5A105656702BCE66CE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7789AB272C2CBA8E4F7BC68F /* Pods_ISS_Barometer.framework */,
+				BBAD1B812304883B5942BD90 /* Pods_ISS_BarometerTests.framework */,
+				F216094E224D3F1DD705C59C /* Pods_ISS_BarometerUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E54AF8655506A6621E601F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				96B1448FC63A5930608F6971 /* Pods-ISS Barometer.debug.xcconfig */,
+				FBE7DA7FD9727D497BCA2221 /* Pods-ISS Barometer.release.xcconfig */,
+				FC26005A0A1A9AC6140657DE /* Pods-ISS BarometerTests.debug.xcconfig */,
+				6152C2C7AE6591AF2D72F59D /* Pods-ISS BarometerTests.release.xcconfig */,
+				6E2D340FA54BB336B4F87939 /* Pods-ISS BarometerUITests.debug.xcconfig */,
+				C6168327429AA3A31EE4E3A9 /* Pods-ISS BarometerUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,15 +188,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35F63A711FCCE56C00639EB5 /* Build configuration list for PBXNativeTarget "ISS Barometer" */;
 			buildPhases = (
+				87DF5F6778AC4ECDEC90F6EF /* [CP] Check Pods Manifest.lock */,
 				35F63A421FCCE56C00639EB5 /* Sources */,
 				35F63A431FCCE56C00639EB5 /* Frameworks */,
 				35F63A441FCCE56C00639EB5 /* Resources */,
 				3537199D1FCF519B007A0C10 /* Embed Frameworks */,
+				39DC001B95C4540ABCA9F64D /* [CP] Embed Pods Frameworks */,
+				8C28CEC8E3D30C948A271FB6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3537199C1FCF519B007A0C10 /* PBXTargetDependency */,
 			);
 			name = "ISS Barometer";
 			productName = "ISS Barometer";
@@ -286,12 +284,6 @@
 			mainGroup = 35F63A3D1FCCE56C00639EB5;
 			productRefGroup = 35F63A471FCCE56C00639EB5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 353719911FCF5159007A0C10 /* Products */;
-					ProjectRef = 353719901FCF5159007A0C10 /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				35F63A451FCCE56C00639EB5 /* ISS Barometer */,
@@ -300,23 +292,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		353719961FCF5159007A0C10 /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 353719951FCF5159007A0C10 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		353719981FCF5159007A0C10 /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = 353719971FCF5159007A0C10 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		35F63A441FCCE56C00639EB5 /* Resources */ = {
@@ -346,6 +321,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		39DC001B95C4540ABCA9F64D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ISS Barometer/Pods-ISS Barometer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS Barometer/Pods-ISS Barometer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		49D249AA1DC8908550E8D696 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,6 +352,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS BarometerUITests/Pods-ISS BarometerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87DF5F6778AC4ECDEC90F6EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ISS Barometer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C28CEC8E3D30C948A271FB6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS Barometer/Pods-ISS Barometer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A5DAB713EC2FBD7B175BFB5F /* [CP] Check Pods Manifest.lock */ = {
@@ -474,11 +500,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3537199C1FCF519B007A0C10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = 3537199B1FCF519B007A0C10 /* PBXContainerItemProxy */;
-		};
 		35F63A5F1FCCE56C00639EB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 35F63A451FCCE56C00639EB5 /* ISS Barometer */;
@@ -620,8 +641,8 @@
 		};
 		35F63A721FCCE56C00639EB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96B1448FC63A5930608F6971 /* Pods-ISS Barometer.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6HY3FQ6Q9;
@@ -636,8 +657,8 @@
 		};
 		35F63A731FCCE56C00639EB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE7DA7FD9727D497BCA2221 /* Pods-ISS Barometer.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6HY3FQ6Q9;
@@ -652,6 +673,7 @@
 		};
 		35F63A751FCCE56C00639EB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC26005A0A1A9AC6140657DE /* Pods-ISS BarometerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -669,6 +691,7 @@
 		};
 		35F63A761FCCE56C00639EB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6152C2C7AE6591AF2D72F59D /* Pods-ISS BarometerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -686,6 +709,7 @@
 		};
 		35F63A781FCCE56C00639EB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E2D340FA54BB336B4F87939 /* Pods-ISS BarometerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -702,6 +726,7 @@
 		};
 		35F63A791FCCE56C00639EB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6168327429AA3A31EE4E3A9 /* Pods-ISS BarometerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
