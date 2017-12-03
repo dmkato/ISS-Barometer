@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import Charts
 
 class ViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
