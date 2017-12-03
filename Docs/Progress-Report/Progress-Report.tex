@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{setspace}
+\usepackage{listings}
 
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
@@ -89,6 +90,22 @@
 \section{Project Problems}
 
 \section{Interesting Code}
+\begin{lstlisting}
+  func startDisplayingPressureData() {
+      self.altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
+        data, error in
+          self.handlePressureReading(data: data!)
+      })
+  }
+
+\end{lstlisting}
+
+One of the main features of our application is its ability to read data from the iPad's built in barometer and display the data collected in different ways.
+The way that data is collected from the barometer is quite interesting.
+The process of reading data from the barometer requires a bit of processing power and time which can block other time sensitive tasks form being performed.
+As a result, the measurement is done asynchronously through an object called the \texttt{OperationQueue}.
+A method provided by the CoreMotion library called \texttt{startRelativeUpdates()} takes the \texttt{OperationQueue}'s \texttt{main} queue, and a callback function as arguement.
+The function then appends a task to the queue to perform in the background, and when the task is complete, the result is passed into the callback function for further processing.\\
 
 \section{Retrospective}
 \begin{center}
