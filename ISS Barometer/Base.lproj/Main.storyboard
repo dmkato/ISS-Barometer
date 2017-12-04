@@ -19,25 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure (mmhg)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZb-QA-aBg">
-                                <rect key="frame" x="95.000000000000014" y="56" width="185.33333333333337" height="30"/>
+                                <rect key="frame" x="95" y="56" width="185" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfI-5A-aGZ" userLabel="Pressure Value">
-                                <rect key="frame" x="188.33333333333334" y="94" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delta Pressure (mmhg/sec)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPM-GG-0Kc">
-                                <rect key="frame" x="42" y="169" width="293" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejx-af-yCa" userLabel="Delta Pressure Value">
-                                <rect key="frame" x="188" y="219" width="0.0" height="0.0"/>
+                                <rect key="frame" x="187.66666666666666" y="94" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,17 +37,46 @@
                                     <segue destination="WSa-VY-E7U" kind="embed" id="aEN-0o-btt"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delta Pressure (mmhg/sec)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPM-GG-0Kc">
+                                <rect key="frame" x="42" y="169" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejx-af-yCa" userLabel="Delta Pressure Value">
+                                <rect key="frame" x="187.66666666666666" y="219" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAe-EA-w5e">
+                                <rect key="frame" x="329" y="297" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="5fW-Qz-rUS" kind="show" id="0Ud-Tc-Mlp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="WPM-GG-0Kc" firstAttribute="top" secondItem="RZb-QA-aBg" secondAttribute="bottom" constant="83" id="5Oj-fv-YBK"/>
-                            <constraint firstItem="wfI-5A-aGZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BXq-e9-nq2"/>
-                            <constraint firstItem="Ejx-af-yCa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LIp-VG-uOK"/>
-                            <constraint firstItem="RZb-QA-aBg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YSX-73-h5i"/>
+                            <constraint firstItem="WPM-GG-0Kc" firstAttribute="top" secondItem="RZb-QA-aBg" secondAttribute="bottom" constant="83" id="5Oj-fv-YBK">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-30"/>
+                            </constraint>
+                            <constraint firstItem="wfI-5A-aGZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BXq-e9-nq2">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-272"/>
+                            </constraint>
+                            <constraint firstItem="Ejx-af-yCa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LIp-VG-uOK">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-1"/>
+                            </constraint>
+                            <constraint firstItem="RZb-QA-aBg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YSX-73-h5i">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-271.5"/>
+                            </constraint>
                             <constraint firstItem="wfI-5A-aGZ" firstAttribute="top" secondItem="RZb-QA-aBg" secondAttribute="bottom" constant="8" id="Z6r-LD-2VI"/>
                             <constraint firstItem="WPM-GG-0Kc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="gBi-wr-Rq5"/>
                             <constraint firstItem="Ejx-af-yCa" firstAttribute="top" secondItem="WPM-GG-0Kc" secondAttribute="bottom" constant="20" id="w8O-5I-vj8"/>
-                            <constraint firstItem="RZb-QA-aBg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="wze-H7-mMZ"/>
+                            <constraint firstItem="RZb-QA-aBg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="wze-H7-mMZ">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -71,6 +88,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="35.467980295566505"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kwb-gX-A2J">
+            <objects>
+                <viewController id="5fW-Qz-rUS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C1L-dm-WkB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3g-6h-LAm">
+                                <rect key="frame" x="16" y="44" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="Cft-af-9ED" kind="unwind" unwindAction="unwindToViewControllerNameHereWithSegue:" id="L34-b5-lo1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="V1Y-9x-LKu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s2K-3E-lBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Cft-af-9ED" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="35"/>
         </scene>
         <!--Line Chart View Controller-->
         <scene sceneID="2jW-JN-V5k">
@@ -87,6 +130,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JAS-bm-qHk"/>
                     </view>
                     <connections>
                         <outlet property="lineChartView" destination="NY4-By-H64" id="r1t-Bw-KNu"/>
@@ -94,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zj5-0C-6nM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="785" y="147"/>
+            <point key="canvasLocation" x="33" y="656"/>
         </scene>
     </scenes>
 </document>
