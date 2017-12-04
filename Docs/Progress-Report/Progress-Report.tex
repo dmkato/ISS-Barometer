@@ -81,72 +81,35 @@
 
 % 8. now you write!
 \section{Project Purpose}
+The purpose of this project is to create an application, the ISS Barometer, that will be used on the ISS to measure and track air pressure.
+The crew members aboard the ISS currently rely on out of date mechanical barometers to take critical readings during leaks.
+These leaks, caused by orbital debris, must be found and patched or the crew would need to evacuate.
+Our application seeks to improve on the mechanical barometers by providing clear and accurate pressure readings through the iPads on-board barometer sensor.
+The app will display the current pressure and changes in pressure, by way of on screen digits and a plot.
+Eventually, in version 2, our app will also have the capability of calculating remaining time on vessel before evacuation.
+This added functionality will further assist the crew members, allowing them to make quick decisions in potential life and death situations.
 
 \section{Project Goals}
+As mentioned above the application we are making will provide ISS crew members with an accurate and efficient pressure reading.
+Our required features follow that purpose and are listed below:
+\begin{itemize}
+\item[V1:] Data Screen with initial pressure, current pressure, start/stop button, time stamp, pressure change (measured in sec / mmHg)
+\item[V1:] Graph Screen with plot pressure as a function of time
+\item[V1:] Additional settings menu that includes plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure
+\item[V1:] All items will be optimized for efficient reading and clear interface
+\item[V2:] Graph will have pinch to zoom functionality, scaling options (to be set in settings)
+\item[V2:] Graph will be able to be exported as a csv, excel readable file
+\item[V2:] Graph can be compared to t-Res table, to measure time remaining
+\item[O1:] Research can be done to identify low pressure accuracy and resistance
+\end{itemize}
+These features, with the exception of the optional item O1, function as our goals.
+Along with these specific features, the application that we create must be efficient and clear, as decided by the users.
+The application will be used in challenging situations and must be clear and easy to understand, so that the data can be conveyed quickly and without confusion.
 
 \section{Current State of the Project}
 % If anyone can think of a better way to state this, feel free to change the heading
 
 \section{Project Problems}
-We chose to use swift and xcode because they allows for quick development and prototyping. 
-This said we ran into many problems with that. For one Swift only works on Linux and MacOS.
-One of our group members did not have either at the time. They fixed this with installing a linux OS. 
-Another problem was installing the swift libraries and connecting them with the xcode application.
-Linux needed many packages to be downloaded for the library to work correctly, this took many hours of troubleshooting as it was not straightforward.
-Connecting swift to xcode on the MacOS was another problem as well. 
-Our last problem with swift and xcode is we have no experience using either.
-We had and still have to continually work on improving our knowledge of these systems using online videos, guides and other resources. 
-
-For the first time we all experienced what it was like working with someone who is in the workplace.
-We learned that our clients will not be getting back to us immediately and sometimes we have to wait for them reply.
-This means we have to work and finish our work and send it to him way earlier then we had planned originally. 
-We also ran into the problems of finding the correct IEEE documentations. 
-Sometimes we found the document quick and easy while other times it hours and many students combined to find them.  
-
-\section{Technology Review Paper}
-
-The goal of this document is to justify the choices made, with research to prove that our project was done in the best way possible. 
-Included is a list of technology options, details on each, and justifications of each choice. 
-The nine technologies we needed to find implementations  for was development platform, chart library, UI organization, barometer implementation, data storage, graph library, color palette, programing language and UI library. 
-We will summaries the appropriate implementations that we chose and the justification for those implementations. 
-
-For our development platform technology we will be using Xcode and swift to develop the ISS Barometer application.
-We chose this technology for its ability to interface with the onboard barometer, which is required for this project.
-The ability to interface directly with the built in barometer is necessary for gaining an accurate pressure reading.[2 D
-
-
-Our Chart Library Technology will be the library called Charts.
-Reliability is of the utmost importance for our application. 
-Charts offers support for dynamic graphs, while the other 2 libraries don't have the consistent support that will be need.
-The Charts API also makes it easy to add points to a dynamic graph, making it the perfect library. [2 D]
-
-We are using the single page layout for our Organization of our UI. 
-Using a single page layout will allow us to access our settings, statistics and our graph frequently and easily.
-Since our astronauts will be using this in emergency situations speed and easy access is absolutely necessary.  [2 D]
-
-Our client has asked us to us the iPad air 2 for our Barometer Implementation technology.
-We are asked to use this because the space station has 8-10 iPads aboard. 
-Using any other implementation would cause us to ship it up to the space station which is not necessary or convenient. [3 C]
-
-For the Graph Interface technology we have chosen Swift Chars library.
-Our client has requested that the graph be able to zoom and pan, the only library that allows us to do this is the swift charts library.  [3 c]
-
-The UI Library will be mostly Cocoa controls for is massive library and larger features list. 
-Though as we have found no single library has everything we need to complete our task, therefore we will need to use many other libraries such as CRPageViewController and FlatUIKit. [3 c]
-    
-
-We will be programing in the swift Language. 
-This was chosen for its ability to quickly prototype and develop the application. 
-Swift also has many performance benefits for app creation that make it the best option. 
-Also our client doesn't know much about programming swift works xcode which will make showing him our progress easily. [1 nathan]
-
-For our data storage technology we will use CoreData, in tandem with NSUserDefaults.
-CoreData allows for large data sets that scale well and far better than the other libraries do.  
-Using NSUserDefaults package, allows us to quickly save data, such as float point accuracy. [1 nathan]
-
-Our color palette technology will be the Subtle Technology Theme.
-This was chosen because the other options, OSU similar theme and Nasa similar theme, are designed for specific uses that would be intrusive and counterproductive in our application.
-Subtle Technology Theme allows the user to not be distracted by unwanted color.  [1 nathan]
 
 \section{Interesting Code}
 \begin{lstlisting}
@@ -166,16 +129,6 @@ As a result, the measurement is done asynchronously through an object called the
 A method provided by the CoreMotion library called \texttt{startRelativeUpdates()} takes the \texttt{OperationQueue}'s \texttt{main} queue, and a callback function as arguement.
 The function then appends a task to the queue to perform in the background, and when the task is complete, the result is passed into the callback function for further processing.\\
 
-\section{Document Summaries}
-
-\subsection{Problem Statement}
-
-\subsection{Requirements Document}
-
-\subsection{Technology Review}
-
-\subsection{Design Document}
-
 \section{Retrospective}
 \begin{center}
 	\begin{tabular}{| l | p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}
@@ -186,15 +139,18 @@ The function then appends a task to the queue to perform in the background, and 
  & Figure out how to share app with client, whom does not know the github system
  & step by step instructions on how to download the app \\ \hline
 		Week 4 & & & \\ \hline
-		Week 5 & Started Requirements Document rough draft & Need to start Requirements Document & Requirements Document will be started \\ \hline
-		Week 6 & First prototype with two basic display of barometer numbers
+		Week 5 & & & \\ \hline
+		Week 6 &First prototype with two basic display of barometer numbers
   finished the Requirements Document & & \\ \hline
-		Week 7 & Started Technology Review & Need to Start Technology Review & Technology Review will be started \\ \hline
+		Week 7 & & & \\ \hline
 		Week 8 & Completed Technology Review document rough draft & Need to complete Technology Review rough draft & A rough draft of the Technology Review will be created \\ \hline
 		Week 9 &Finished Technology document
 Started working on design document
  & Could not find IEEE paper & Searched more and asked around\\ \hline
-		Week 10 & Completed Design Document and Progress Report & Need to complete Design Document and Progress Report & Design Document and Progress Report will be completed \\ \hline
+		Week 10 & & & \\ \hline
+
+
+
 
 	\end{tabular}
 \end{center}
