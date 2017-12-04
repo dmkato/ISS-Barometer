@@ -146,7 +146,7 @@ The function then appends a task to the queue to perform in the background, and 
 \section{Document Summaries}
 
 \subsection{Problem Statement}
-The problem statement is where we first laid out the understanding we had of the project.
+The problem statement is where we first expressed the understanding we had of the project.
 We described the use case of the barometers that are begin replaced so that our design may fit the needs of the crew members.
 This included a definition of the problem which stated that we are designing an iOS application for the iPad Air 2s on the ISS to replace the mechanical barometers called 'MANOVACUMETERS'.
 The project was then defined as a three term long project that will result in an application that can be used in place of the MANOVACUMETERS currently being used on the ISS.
@@ -154,7 +154,22 @@ This app is to have a graph, a reading of the current pressure in mmHg and dp/dt
 A settings page is to be included that will allow units, significant digits, plot scale, and orientation.
 The success of the project was defined as being when there are two displays; one with initial pressure in mmHg, current pressure in mmHg, pressure change as sec/mmHg and timestamp in GMT, and one with the plot of pressure as a function of time.
 The first display will allow the user to start and stop recording of data.
+
 \subsection{Requirements Document}
+The Requirements Document is where we discussed details of the project and defined features of the application.
+The scope of the project is defined as being to create an application for crew members of the ISS to measure the pressure inside of the ISS in the event of a rapid depressurization event.
+Some alternatives to creating a new application were discussed such as using existing barometer apps, but the needs of the space station require a custom application to be built.
+The timeline of the project described version 1 being completed by the end of December, and version 2 being completed by mid May.
+Each feature is then discussed in detail.
+The initial pressure reading feature will show the pressure read when the app loads, or whenever the record button is pressed.
+The record button feature will record the pressure readings to be exported as a csv.
+The current pressure reading feature will display the current pressure in mmHg.
+The time pressure over change feature will display the change in pressure over time as mmHg/sec.
+The plot of the pressure change feature will be a graph that displays the change in pressure over time so that the event can be visualized.
+The configurable settings page feature will allow the user to change the units, significant digits, orientation, and plot scale.
+Then features for version two were described.
+The Consult T-Res feature will provide the user with the T-Res measurement that  corresponds to the slope of the graph.
+The Save feature will allow the user to save pressure data to a csv.
 
 \subsection{Technology Review}
 The goal of this document is to justify the choices made, with research to prove that our project was done in the best way possible.
