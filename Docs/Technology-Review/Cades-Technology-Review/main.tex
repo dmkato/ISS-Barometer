@@ -110,7 +110,7 @@
         \begin{abstract}
         % 6. Fill in your abstract
 	   This document will review three major components, Graph interface, Barometer implementation and UI library, of the nine our group is doing.
- The paper will review three technologies for each component, it will then display the chosen technology and why it was chosen for this project. 
+ The paper will review three technologies for each component, it will then display the chosen technology and why it was chosen for this project.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -124,29 +124,29 @@
 
 % 8. now you write!
 \section{Introduction}
-The ISS Barometer is an IOS app created for the astronauts going and on the International Space Station(ISS). 
+The ISS Barometer is an IOS app created for the astronauts going and on the International Space Station(ISS).
 This app will be used in emergency situations to find atmospherical pressure leaks, using built in technology of the iPad Air 2s barometer.
- This project has been split into 9 pieces, my role in this project is to create the Graph page using the barometer and helping with UI design. 
+ This project has been split into 9 pieces, my role in this project is to create the Graph page using the barometer and helping with UI design.
 
-We want our graph to display dt/dp as a slope, with our graph constantly updating and growing. 
-It needs to be able to zoom and pan the entire graph, as well as be easily visible in low light. 
+We want our graph to display dt/dp as a slope, with our graph constantly updating and growing.
+It needs to be able to zoom and pan the entire graph, as well as be easily visible in low light.
 The y-axis will need to be able to grow indefinitely while the app is running, the astronauts may be using the app to collect atmospheric data for hours, we need to be able to display this.
 
  Our UI needs to be easy to program, easy to change, and readily by our employer.
  It needs to be able to move from one page to the next and have buttons.
 The client has told us to using the iPad Air 2 as our barometer implementation.
- I have reasearch some other options in case the employer wants them but since there is already iPads aboard the ISS i do not see them changing this do to cost of sending physical things to the station. 
+ I have reasearch some other options in case the employer wants them but since there is already iPads aboard the ISS i do not see them changing this do to cost of sending physical things to the station.
 
 
 \section{Graph Interface}
 Our app will be using running graphs, graphs that continually display as the device records data, that can zoom and pan this ability is required from the client.
  A swift library will be chosen to accomplishes that task. '
-The graph must also be legible and easy to use so that there is no time wasted, this is an emergency app we need it to be simple. 
-Our client has asked for the graph but have not give us any set libraries to use, so we get to choose the best library. 
+The graph must also be legible and easy to use so that there is no time wasted, this is an emergency app we need it to be simple.
+Our client has asked for the graph but have not give us any set libraries to use, so we get to choose the best library.
 
 \subsection{Option 1: ScrollableGraphView}
 Scrollable Graph View features the animations for the graph, relocation of values while in use, changing the size of the range while scrolling, smooth scrolling, handles large amount of points and has customizable for looks. \cite{Github3}
- I picked this technology because of its ability to scroll, change range while working and its workload ability. 
+ I picked this technology because of its ability to scroll, change range while working and its workload ability.
 This technology is better than the others i chose because the others don't have as fluid and easily displayable graphs.
  As well as this library has the most support to help you program a graph for the iPad.
 %\begin{itemize}
@@ -155,9 +155,9 @@ This technology is better than the others i chose because the others don't have 
 
 \subsection{Option 2: Charts}
 	Charts features eight charts, x and y scaling, side scrolling, combining charts, highlights, saving chart to camera roll, color template, customizable legends and Animations. \cite{Github4}
-I picked this technology because of its scrolling ability and how easy it is to read the data. 
+I picked this technology because of its scrolling ability and how easy it is to read the data.
 Unlike the other two, this Library has a very clear and easily customizable labels as well as the fact that it is fastest and easiest to change and upgrade from within the code.
- These three reason the advantages it holds against the other two libraries.  
+ These three reason the advantages it holds against the other two libraries.
 \subsection{Option 3:Swift Charts}
 	Swift Charts features 7 types of charts, multiple labels per value, Creation of arbitrary markers, Modular architecture, Chars can be combined, legends, Zooming and panning, lockable x and y axis, extensible axis values and label generators. \cite{Github5}
 I chose this library for its ability to zoom, panning and customize almost everything, including the zoom ability.
@@ -171,47 +171,47 @@ The app will be using Swift Charts as our graph interface.
 \subsection{Option 1: Cocoa controls}
 Cocoa controls library features input bars, search displays, calendar displays, ability to put pictures on the app, file indexes, map displays, rating displays, card swiping, small graph displays, easy to read data displays, pop ups, easy buttons and many many more displays. \cite{Cocoa}
 I chose this UI Library because of how much you can do with it, there are just so many different displays, view and inputs that can be customizable in so many ways.
-It is the largest of the libraries from the other technologies I choose for the UI library, that what gives it an advantage compared to the other two. 
+It is the largest of the libraries from the other technologies I choose for the UI library, that what gives it an advantage compared to the other two.
 \subsection{Option 2: CRPageViewController}
 CRPageViewController Library features the ability to switch from page to page easily and easy to customize how those pages are displayed (size, margins, height,etc.).\cite{Github1}
- I chose this library for its easy to use page swiper, easy on the go customization and the how the library looks. 
-This library is superior to the other two because of its on the go customization and professional look.     
+ I chose this library for its easy to use page swiper, easy on the go customization and the how the library looks.
+This library is superior to the other two because of its on the go customization and professional look.
 \subsection{Option 3: FlatUIKit}
 FlatUIKit is a swift library made by Grouper and it features buttons, text fields, segment controls, switches, alert Views, sliders, bar button items, navigation bars, table cells, popovers, and customizable colors, fonts and icons.\cite{Github2}
  I chose this Library for its easy to read displayable items, we don't need fancy gadgets for our app just straightforward easy to use and read.
  This is superior to the other two technologies because it's straightforward to code and easy to manipulate/customize .
 \subsection{Decision}
-I chose to use Cocoa controls for is massive library and larger features list. 
-The UI library will not consistent of just one though, no library for swift contains all the perfect functions that we will need. 
-Cocoa controls will have most of them and be used more than the FlatUIKit and CRPageViewController. 
+I chose to use Cocoa controls for is massive library and larger features list.
+The UI library will not consistent of just one though, no library for swift contains all the perfect functions that we will need.
+Cocoa controls will have most of them and be used more than the FlatUIKit and CRPageViewController.
 
 \section{Barometer Implementation}
 \subsection{Option 1: iPad Air 2}
-The IPad Air 2 has an on board barometer that is easy to use and already has libraries to use it. 
-We choose this because the employer has asked us to use these, He asked us to use these because the ISS already has iPads on board. 
+The IPad Air 2 has an on board barometer that is easy to use and already has libraries to use it.
+We choose this because the employer has asked us to use these, He asked us to use these because the ISS already has iPads on board.
 We would be able to upload the iPad app without ever having to take a new product up to the space station, thus making it the most superior of these technologies.
  There are many technologies that could be used in place of the IPad but all of them would require a trip to the space station, which takes time and money they do not want.
- If every crew member has a iPhone we might be able to use those ones. 
+ If every crew member has a iPhone we might be able to use those ones.
 
 \subsection{Option 2:	Extrnal Barometer-arduino }
 Arduino has made a easily programmable barometer for cheap purchase.
- Arduino has been considered one of the easiest languages to learn and boards to use. 
+ Arduino has been considered one of the easiest languages to learn and boards to use.
 I choose this technology for it huge community and how cheap the barometer is.
- It is superior to the other two technologies because of its support, customization, cheapness and easy to program. 
-This was not chosen by the employer but if needing a cheap barometer that will get the job done, use arduino. 
+ It is superior to the other two technologies because of its support, customization, cheapness and easy to program.
+This was not chosen by the employer but if needing a cheap barometer that will get the job done, use arduino.
 
 \subsection{Option 3: iPhone 6}
 The iPhone 6 comes with a barometer on board.
  This would be used the same was as the iPad and programmed using the same language.
  The difference between the two is the ios is older in the iPhone 6, It has a smaller display, and we don't know if they have them aboard the ISS.
  I chose this because it would keep us from having to learn something different then the language we have chosen and since the NASA is using iPads they might also use apple's iPhones.
- This technology would be superior to the other two because of how small the iPhone is (easy to carry around), it isn't heavy, no wires and can be carried in a pocket. 
-This could replace the iPad if they didn't have to make new trips to the ISS. 
+ This technology would be superior to the other two because of how small the iPhone is (easy to carry around), it isn't heavy, no wires and can be carried in a pocket.
+This could replace the iPad if they didn't have to make new trips to the ISS.
 \subsection{Decision}
 We will be using the iPad for our barometer implementation.
  This was chosen by our client, but i would also choose it with their situation.
- There is already iPads aboard the ISS, so no need for a new mission just to send a new app up to the station. 
-The iPad has a bigger screen that will allow easy viewing and not cramp the graph space. 
+ There is already iPads aboard the ISS, so no need for a new mission just to send a new app up to the station.
+The iPad has a bigger screen that will allow easy viewing and not cramp the graph space.
 \newpage
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
