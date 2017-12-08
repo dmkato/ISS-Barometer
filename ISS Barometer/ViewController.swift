@@ -10,10 +10,11 @@ import UIKit
 import CoreMotion
 import Charts
 
-
 class ViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
     @IBOutlet weak var deltaPressureDisplay: UILabel!
+    @IBOutlet weak var chartView: UIView!
+    
     lazy var altimeter :CMAltimeter = CMAltimeter()
     var mmHg:Double? = 0.0
     var prevMmHg:Double? = 0.0
@@ -21,11 +22,6 @@ class ViewController: UIViewController {
     var prevTime:NSDate? = NSDate()
     var time:NSDate? = NSDate()
     var significantDigits:Int = 4
-    
-    @IBAction func unwindToViewControllerNameHere(segue: UIStoryboardSegue) {
-        //nothing goes here
-    }
-
     
     func kPa2mmHg(kPa:Double) -> Double {
         let atm:Double = kPa * 101.325

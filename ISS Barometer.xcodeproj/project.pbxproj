@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		036B95F895063210F33D6A72 /* Pods_ISS_Barometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789AB272C2CBA8E4F7BC68F /* Pods_ISS_Barometer.framework */; };
+		353A095A1FDA19ED00A7CBA7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A09591FDA19ED00A7CBA7 /* SettingsViewController.swift */; };
 		353B592A1FD3C0310060613E /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B59291FD3C0310060613E /* LineChartViewController.swift */; };
 		35F63A4A1FCCE56C00639EB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A491FCCE56C00639EB5 /* AppDelegate.swift */; };
 		35F63A4C1FCCE56C00639EB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A4B1FCCE56C00639EB5 /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		353A09591FDA19ED00A7CBA7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		353B59291FD3C0310060613E /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
 		35F63A461FCCE56C00639EB5 /* ISS Barometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISS Barometer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F63A491FCCE56C00639EB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,13 +134,14 @@
 			isa = PBXGroup;
 			children = (
 				35F63A491FCCE56C00639EB5 /* AppDelegate.swift */,
-				35F63A4B1FCCE56C00639EB5 /* ViewController.swift */,
 				35F63A4D1FCCE56C00639EB5 /* Main.storyboard */,
 				35F63A531FCCE56C00639EB5 /* Assets.xcassets */,
 				35F63A551FCCE56C00639EB5 /* LaunchScreen.storyboard */,
 				35F63A581FCCE56C00639EB5 /* Info.plist */,
 				35F63A501FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld */,
+				35F63A4B1FCCE56C00639EB5 /* ViewController.swift */,
 				353B59291FD3C0310060613E /* LineChartViewController.swift */,
+				353A09591FDA19ED00A7CBA7 /* SettingsViewController.swift */,
 			);
 			path = "ISS Barometer";
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				35F63A521FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld in Sources */,
 				353B592A1FD3C0310060613E /* LineChartViewController.swift in Sources */,
 				35F63A4C1FCCE56C00639EB5 /* ViewController.swift in Sources */,
+				353A095A1FDA19ED00A7CBA7 /* SettingsViewController.swift in Sources */,
 				35F63A4A1FCCE56C00639EB5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,12 +652,14 @@
 			baseConfigurationReference = 96B1448FC63A5930608F6971 /* Pods-ISS Barometer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6HY3FQ6Q9;
 				INFOPLIST_FILE = "ISS Barometer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ISSB.ISS-Barometer";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ISSB.ISS-Barometer-Daniel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -664,12 +670,14 @@
 			baseConfigurationReference = FBE7DA7FD9727D497BCA2221 /* Pods-ISS Barometer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6HY3FQ6Q9;
 				INFOPLIST_FILE = "ISS Barometer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ISSB.ISS-Barometer";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ISSB.ISS-Barometer-Daniel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

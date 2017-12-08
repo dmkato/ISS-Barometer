@@ -1,3 +1,10 @@
+XCWORKSPACE=./ISS\ Barometer.xcworkspace
+ifeq ($(wildcard file1),)
+    PODCMD=update
+else
+    PODCMD=install
+endif
+
 default:
-	pod install
-	open ISS\ Barometer.xcworkspace
+	pod $(PODCMD)
+	open $(XCWORKSPACE)
