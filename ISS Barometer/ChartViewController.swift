@@ -9,22 +9,27 @@
 import UIKit
 import Charts
 
-class LineChartViewController: UIViewController {
+class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
+    var chartData: ChartData = ChartData()
+    
+    func updateChart(pressureReading: Double, time: NSDate) {
+        let newEntry = ChartDataEntry(x: time.timeIntervalSince1970, y: pressureReading)
+        self.chartData.addEntry(newEntry, dataSetIndex: 0)
+        lineChartView.notifyDataSetChanged()
+    }
+    
+    func setChart() {
+        lineChartView.noDataText = "You need to provide data for the chart."
+        chartData.addDataSet(LineChartDataSet(values: nil, label: "Pressure"))
+        self.lineChartView.data = self.chartData
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setChart()
 
         // Do any additional setup after loading the view.
-    }
-    
-    func setChart() {
-        lineChartView.noDataText = "You need to provide data for the chart."
-    }
-    
-    func updateChart() {
-        print("Boom")
     }
 
     override func didReceiveMemoryWarning() {
