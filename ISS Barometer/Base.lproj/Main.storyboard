@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delta (mmhg/sec)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPM-GG-0Kc">
-                                <rect key="frame" x="90" y="231" width="194" height="30"/>
+                                <rect key="frame" x="90.666666666666686" y="231" width="194" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -58,9 +58,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-bx-B8W">
-                                <rect key="frame" x="16" y="347" width="343" height="431"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-bx-B8W">
+                                <rect key="frame" x="16" y="401" width="343" height="377"/>
                                 <connections>
                                     <segue destination="WSa-VY-E7U" kind="embed" id="aEN-0o-btt"/>
                                 </connections>
@@ -68,35 +67,78 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="S1D-bx-B8W" secondAttribute="trailing" constant="40" id="1kf-xd-5UG"/>
                             <constraint firstItem="WPM-GG-0Kc" firstAttribute="top" secondItem="RZb-QA-aBg" secondAttribute="bottom" constant="83" id="5Oj-fv-YBK">
                                 <variation key="heightClass=regular-widthClass=compact" constant="79"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-30"/>
                             </constraint>
+                            <constraint firstItem="S1D-bx-B8W" firstAttribute="top" secondItem="WPM-GG-0Kc" secondAttribute="bottom" constant="86" id="8tY-WF-s5Z">
+                                <variation key="heightClass=regular" constant="398"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="140"/>
+                            </constraint>
                             <constraint firstItem="wfI-5A-aGZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BXq-e9-nq2">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-195"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-2.8333333333333144"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-272"/>
                             </constraint>
                             <constraint firstItem="Ejx-af-yCa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LIp-VG-uOK">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-195"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-2.8333333333333144"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-1"/>
                             </constraint>
+                            <constraint firstItem="S1D-bx-B8W" firstAttribute="top" secondItem="WPM-GG-0Kc" secondAttribute="bottom" id="N44-OY-ShR">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-172"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="S1D-bx-B8W" secondAttribute="bottom" id="ND0-rs-TTE"/>
+                            <constraint firstItem="S1D-bx-B8W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="QUe-Zp-4a5">
+                                <variation key="heightClass=compact-widthClass=compact" constant="364"/>
+                            </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S1D-bx-B8W" secondAttribute="trailing" constant="16" id="SDf-gM-utG">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-44"/>
+                            </constraint>
                             <constraint firstItem="RZb-QA-aBg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YSX-73-h5i">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-194.5"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-271.5"/>
                             </constraint>
                             <constraint firstItem="wfI-5A-aGZ" firstAttribute="top" secondItem="RZb-QA-aBg" secondAttribute="bottom" constant="8" id="Z6r-LD-2VI"/>
                             <constraint firstItem="WPM-GG-0Kc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="gBi-wr-Rq5">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-194"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="S1D-bx-B8W" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qp1-Fe-GvL">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="Ejx-af-yCa" firstAttribute="top" secondItem="WPM-GG-0Kc" secondAttribute="bottom" constant="20" id="w8O-5I-vj8">
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                             </constraint>
                             <constraint firstItem="RZb-QA-aBg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="wze-H7-mMZ">
+                                <variation key="heightClass=compact-widthClass=compact" constant="29"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="34"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="18"/>
                             </constraint>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1kf-xd-5UG"/>
+                                <exclude reference="8tY-WF-s5Z"/>
+                                <exclude reference="N44-OY-ShR"/>
+                                <exclude reference="ND0-rs-TTE"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="8tY-WF-s5Z"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="1kf-xd-5UG"/>
+                                <include reference="N44-OY-ShR"/>
+                                <exclude reference="ND0-rs-TTE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="ISS Barometer" id="Pbr-i3-w7D">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="7uh-hW-QfM">
@@ -113,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="35.467980295566505"/>
+            <point key="canvasLocation" x="31.03448275862069" y="34.399999999999999"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Kwb-gX-A2J">
@@ -125,7 +167,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="LuB-lc-MRj"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="dgS-Gn-xw0"/>
+                    <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="never" id="dgS-Gn-xw0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2K-3E-lBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,16 +178,21 @@
             <objects>
                 <viewController storyboardIdentifier="ChartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WSa-VY-E7U" customClass="ChartViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mr1-AK-6F3">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="431"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="377"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NY4-By-H64" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="431"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NY4-By-H64" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="377"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="NY4-By-H64" secondAttribute="bottom" id="JlG-im-r2w"/>
+                            <constraint firstItem="NY4-By-H64" firstAttribute="leading" secondItem="JAS-bm-qHk" secondAttribute="leading" id="MQj-sO-HiN"/>
+                            <constraint firstItem="NY4-By-H64" firstAttribute="trailing" secondItem="JAS-bm-qHk" secondAttribute="trailing" id="a7X-Oc-Moh"/>
+                            <constraint firstItem="NY4-By-H64" firstAttribute="top" secondItem="Mr1-AK-6F3" secondAttribute="top" id="sie-Kx-msO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JAS-bm-qHk"/>
                     </view>
                     <connections>
@@ -154,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zj5-0C-6nM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="655.78817733990149"/>
+            <point key="canvasLocation" x="30" y="702"/>
         </scene>
     </scenes>
 </document>

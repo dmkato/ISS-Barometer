@@ -6,7 +6,7 @@ target 'ISS Barometer' do
   use_frameworks!
 
   # Pods for ISS Barometer
-  pod 'Charts', :git => 'https://github.com/danielgindi/Charts/', commit: '54171609c2f7d987a46eab60eb0422318d08d266'
+  pod 'Charts'
 
   target 'ISS BarometerTests' do
     inherit! :search_paths

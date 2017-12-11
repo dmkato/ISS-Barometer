@@ -1,10 +1,7 @@
-XCWORKSPACE=./ISS\ Barometer.xcworkspace
-ifeq ($(wildcard file1),)
-    PODCMD=update
-else
-    PODCMD=install
-endif
-
 default:
-	pod $(PODCMD)
-	open $(XCWORKSPACE)
+	sudo gem install cocoapods
+	pod install
+	open ./ISS\ Barometer.xcworkspace
+
+update:
+	open ./ISS\ Barometer.xcworkspace

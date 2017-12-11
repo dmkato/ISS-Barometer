@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     var time:NSDate? = NSDate()
     var significantDigits:Int = 4
     lazy var chartViewController: ChartViewController = {
-        return self.childViewControllers[0] as! ChartViewController
+        return childViewControllers[0] as! ChartViewController
     }()
     
     func kPa2mmHg(kPa:Double) -> Double {
@@ -34,23 +34,25 @@ class ViewController: UIViewController {
     
     func handlePressureReading(data:CMAltitudeData) {
         let kPa = data.pressure.doubleValue
-        self.prevTime = self.time
-        self.time = NSDate()
-        self.prevMmHg = self.mmHg
-        self.mmHg = self.kPa2mmHg(kPa: kPa)
-        self.deltaMmHg = (self.mmHg! - self.prevMmHg!) / (self.time?.timeIntervalSince(self.prevTime! as Date))!
+        prevTime = time
+        time = NSDate()
+        prevMmHg = mmHg
+        mmHg = kPa2mmHg(kPa: kPa)
+        deltaMmHg = (mmHg! - prevMmHg!) / (time?.timeIntervalSince(prevTime! as Date))!
         
         // Set Pressure Readings
-        let fString = "%.\(self.significantDigits)f mmHg"
-        self.pressureDisplay.text = String(format:fString, (self.mmHg)!)
-        self.deltaPressureDisplay.text = String(format:fString, (self.deltaMmHg)!)
+        let fString = "%.\(significantDigits)f mmHg"
+        pressureDisplay.text = String(format:fString, (mmHg)!)
+        deltaPressureDisplay.text = String(format:fString, (deltaMmHg)!)
         
         // Update Chart
-        self.chartViewController.updateChart(pressureReading: self.mmHg ?? 0.0, time: self.time!)
+        chartViewController.updateChart(pressureReading: mmHg!,
+                                        time: time!.timeIntervalSince1970)
     }
     
     func startDisplayingPressureData() {
-        self.altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: { data, error in
+        altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main,
+                                               withHandler: { data, error in
             self.handlePressureReading(data: data!)
         })
     }
@@ -58,10 +60,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if CMAltimeter.isRelativeAltitudeAvailable() {
-            self.startDisplayingPressureData()
+            startDisplayingPressureData()
         }
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

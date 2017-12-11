@@ -11,39 +11,63 @@ import Charts
 
 class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
-    var chartData: ChartData = ChartData()
+    var chartData = ChartData()
+    var startingTime: Double = 0
     
-    func updateChart(pressureReading: Double, time: NSDate) {
-        let newEntry = ChartDataEntry(x: time.timeIntervalSince1970, y: pressureReading)
-        self.chartData.addEntry(newEntry, dataSetIndex: 0)
+    func updateChart(pressureReading: Double, time: Double) {
+        if startingTime == 0 {
+            startingTime = time
+        }
+        let elapsedTime = time - startingTime
+        let newEntry = ChartDataEntry(x: elapsedTime,
+                                      y: pressureReading)
+        chartData.addEntry(newEntry, dataSetIndex: 0)
+        chartData.notifyDataChanged()
         lineChartView.notifyDataSetChanged()
+        lineChartView.setNeedsDisplay()
+    }
+    
+    func setChartData() {
+        let lineChartDataSet = LineChartDataSet(values: nil,
+                                                label: "Pressure")
+        chartData.addDataSet(lineChartDataSet)
+        lineChartView.data = chartData
+    }
+    
+    func setChartProperties() {
+        lineChartView.setScaleEnabled(true)
+        lineChartView.noDataText = "You need to provide data for the chart."
+        lineChartView.chartDescription?.enabled = false
+    }
+    
+    func setAxes() {
+        lineChartView.leftAxis.axisMaximum = 15
+        lineChartView.leftAxis.axisMinimum = 0
+        lineChartView.rightAxis.axisMaximum = 15
+        lineChartView.rightAxis.axisMinimum = 0
+        lineChartView.xAxis.labelPosition = .bottom
     }
     
     func setChart() {
-        lineChartView.noDataText = "You need to provide data for the chart."
-        chartData.addDataSet(LineChartDataSet(values: nil, label: "Pressure"))
-        self.lineChartView.data = self.chartData
+        setChartData()
+        setChartProperties()
+        setAxes()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setChart()
-
-        // Do any additional setup after loading the view.
+        setChart()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // This is called before sequeing to the settings view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
