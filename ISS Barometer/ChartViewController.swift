@@ -11,52 +11,75 @@ import Charts
 
 class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
-    var chartData = ChartData()
     var startingTime: Double = 0
+    var dataEntries = [ChartDataEntry]()
     
-    func updateChart(pressureReading: Double, time: Double) {
+    func setTime(time: Double) -> Double{
         if startingTime == 0 {
             startingTime = time
         }
-        let elapsedTime = time - startingTime
-        let newEntry = ChartDataEntry(x: elapsedTime,
-                                      y: pressureReading)
-        chartData.addEntry(newEntry, dataSetIndex: 0)
-        chartData.notifyDataChanged()
+        return time - startingTime
+    }
+    
+    func addDataPoint(newEntry: ChartDataEntry) {
+        dataEntries.append(newEntry)
+        var lineChartDataSet = LineChartDataSet()
+        lineChartDataSet = (lineChartView.data?.dataSets[0] as? LineChartDataSet)!
+        lineChartDataSet.values = dataEntries
+    }
+    
+    func updateChartView() {
+        lineChartView.data?.notifyDataChanged()
         lineChartView.notifyDataSetChanged()
         lineChartView.setNeedsDisplay()
     }
     
-    func setChartData() {
-        let lineChartDataSet = LineChartDataSet(values: nil,
-                                                label: "Pressure")
-        chartData.addDataSet(lineChartDataSet)
-        lineChartView.data = chartData
+    func updateChart(pressureReading: Double, time: Double) {
+        let elapsedTime = setTime(time: time)
+        let newEntry = ChartDataEntry(x: elapsedTime,
+                                      y: pressureReading)
+        addDataPoint(newEntry: newEntry)
+        updateChartView()
     }
     
-    func setChartProperties() {
+    func initChartProperties() {
         lineChartView.setScaleEnabled(true)
         lineChartView.noDataText = "You need to provide data for the chart."
         lineChartView.chartDescription?.enabled = false
     }
     
-    func setAxes() {
-        lineChartView.leftAxis.axisMaximum = 15
-        lineChartView.leftAxis.axisMinimum = 0
-        lineChartView.rightAxis.axisMaximum = 15
-        lineChartView.rightAxis.axisMinimum = 0
+    func initAxes() {
+//        lineChartView.leftAxis.axisMaximum = 15
+//        lineChartView.leftAxis.axisMinimum = 0
+//        lineChartView.rightAxis.axisMaximum = 15
+//        lineChartView.rightAxis.axisMinimum = 0
         lineChartView.xAxis.labelPosition = .bottom
     }
     
-    func setChart() {
-        setChartData()
-        setChartProperties()
-        setAxes()
+    func initChartData() {
+        let lineChartDataSet = LineChartDataSet()
+        lineChartDataSet.setColor(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1))
+        lineChartDataSet.drawCirclesEnabled = false
+        lineChartDataSet.drawFilledEnabled = false
+        lineChartDataSet.drawValuesEnabled = false
+//        lineChartDataSet.mode = .cubicBezier
+        
+        var dataSets = [lineChartDataSet]
+        dataSets.append(lineChartDataSet)
+        
+        let data = LineChartData(dataSets: dataSets)
+        lineChartView.data = data
+    }
+    
+    func initChart() {
+        initChartProperties()
+        initAxes()
+        initChartData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setChart()
+        initChart()
     }
 
     override func didReceiveMemoryWarning() {
