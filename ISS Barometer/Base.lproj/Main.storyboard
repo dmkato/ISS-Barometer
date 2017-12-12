@@ -29,7 +29,7 @@
         <!--ISS Barometer-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,6 +95,7 @@
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S1D-bx-B8W" secondAttribute="trailing" constant="16" id="SDf-gM-utG">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-44"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                             </constraint>
                             <constraint firstItem="RZb-QA-aBg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YSX-73-h5i">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-194.5"/>
@@ -108,6 +109,7 @@
                             </constraint>
                             <constraint firstItem="S1D-bx-B8W" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qp1-Fe-GvL">
                                 <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-20"/>
                             </constraint>
                             <constraint firstItem="Ejx-af-yCa" firstAttribute="top" secondItem="WPM-GG-0Kc" secondAttribute="bottom" constant="20" id="w8O-5I-vj8">
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
@@ -141,10 +143,14 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="ISS Barometer" id="Pbr-i3-w7D">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="7uh-hW-QfM">
-                            <connections>
-                                <segue destination="5fW-Qz-rUS" kind="show" id="Aha-58-aRD"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="yLg-Hp-JDw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Bls-xd-9NA">
+                                <rect key="frame" x="-23" y="-15" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="5fW-Qz-rUS" kind="show" id="FoY-vv-BT8"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -155,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31.03448275862069" y="34.399999999999999"/>
+            <point key="canvasLocation" x="30.46875" y="33.984375"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Kwb-gX-A2J">

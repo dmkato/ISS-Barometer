@@ -1,15 +1,15 @@
 //
-//  ISS_BarometerTests.swift
+//  ViewController.swift
 //  ISS BarometerTests
 //
-//  Created by Daniel Kato on 11/27/17.
+//  Created by Daniel Kato on 12/11/17.
 //  Copyright © 2017 ISSBarometer. All rights reserved.
 //
 
 import XCTest
-@testable import ISS_Barometer
 
-class ISS_BarometerTests: XCTestCase {
+class ViewController: XCTestCase {
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.

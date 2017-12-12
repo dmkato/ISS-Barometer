@@ -1,18 +1,20 @@
 //
-//  ISS_BarometerTests.swift
+//  ViewControllerTests.swift
 //  ISS BarometerTests
 //
-//  Created by Daniel Kato on 11/27/17.
+//  Created by Daniel Kato on 12/11/17.
 //  Copyright © 2017 ISSBarometer. All rights reserved.
 //
 
 import XCTest
 @testable import ISS_Barometer
 
-class ISS_BarometerTests: XCTestCase {
+class MainViewControllerTests: XCTestCase {
+    var mainViewController: MainViewController!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        mainViewController = MainViewController()
     }
     
     override func tearDown() {
@@ -20,9 +22,13 @@ class ISS_BarometerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testKpaToMmhg() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let testValue = 1.0
+        let expected = 0.13332236842105263
+        let actual = mainViewController.kPa2mmHg(kPa: testValue)
+        XCTAssert(actual == expected, "1.0 kPa should equal 7.500616 mmHg")
     }
     
     func testPerformanceExample() {

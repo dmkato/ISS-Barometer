@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 import Charts
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
     @IBOutlet weak var deltaPressureDisplay: UILabel!
     @IBOutlet weak var chartView: UIView!
