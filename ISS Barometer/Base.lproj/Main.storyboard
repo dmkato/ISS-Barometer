@@ -143,9 +143,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="ISS Barometer" id="Pbr-i3-w7D">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="yLg-Hp-JDw">
+                        <barButtonItem key="rightBarButtonItem" id="yLg-Hp-JDw">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Bls-xd-9NA">
-                                <rect key="frame" x="-23" y="-15" width="22" height="22"/>
+                                <rect key="frame" x="337" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="5fW-Qz-rUS" kind="show" id="FoY-vv-BT8"/>
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zj5-0C-6nM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="702"/>
+            <point key="canvasLocation" x="30" y="672"/>
         </scene>
     </scenes>
 </document>
