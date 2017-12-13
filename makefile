@@ -3,5 +3,5 @@ default:
 	pod install
 	open ./ISS\ Barometer.xcworkspace
 
-update:
+open:
 	open ./ISS\ Barometer.xcworkspace
