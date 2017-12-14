@@ -61,8 +61,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         if CMAltimeter.isRelativeAltitudeAvailable() {
             startDisplayingPressureData()
-        } else {
-            
         }
     }
     
