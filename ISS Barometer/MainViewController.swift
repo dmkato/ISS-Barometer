@@ -20,8 +20,8 @@ class MainViewController: UIViewController {
     var mmHg:Double? = 0.0
     var prevMmHg:Double? = 0.0
     var deltaMmHg:Double? = 0.0
-    var prevTime:NSDate? = NSDate()
-    var time:NSDate? = NSDate()
+    var prevTime:Double? = 0.0
+    var time:Double? = 0.0
     var significantDigits:Int = 4
     var prevDebugData:Double? = 760.00
     var debugData:Double? = 0.0
@@ -39,10 +39,10 @@ class MainViewController: UIViewController {
     func handlePressureReading(data:CMAltitudeData) {
         let kPa = data.pressure.doubleValue
         prevTime = time
-        time = NSDate()
+        time = data.timestamp
         prevMmHg = mmHg
         mmHg = kPa2mmHg(kPa: kPa)
-        deltaMmHg = (mmHg! - prevMmHg!) / (time?.timeIntervalSince(prevTime! as Date))!
+        deltaMmHg = (mmHg! - prevMmHg!) / (time! - prevTime!)
         
         // Set Pressure Readings
         let fString = "%.\(significantDigits)f mmHg"
@@ -51,7 +51,7 @@ class MainViewController: UIViewController {
         
         // Update Chart
         chartViewController.updateChart(pressureReading: mmHg!,
-                                        time: time!.timeIntervalSince1970)
+                                        time: time!)
     }
     
     func startDisplayingPressureData() {
