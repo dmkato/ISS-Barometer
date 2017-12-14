@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
     @IBOutlet weak var deltaPressureDisplay: UILabel!
     @IBOutlet weak var chartView: UIView!
-
+    
     lazy var altimeter :CMAltimeter = CMAltimeter()
     var mmHg:Double? = 0.0
     var prevMmHg:Double? = 0.0
@@ -22,6 +22,12 @@ class MainViewController: UIViewController {
     var prevTime:Double? = 0.0
     var time:Double? = 0.0
     var significantDigits:Int = 4
+    
+    // REMOVE BEFORE DEPLOY <--
+    var prevDebugData:Double? = 0.0
+    var debugData:Double? = 10.0
+    var deltaDebug:Double? = 0.0
+    // -->
     lazy var chartViewController: ChartViewController = {
         return childViewControllers[0] as! ChartViewController
     }()
@@ -57,10 +63,35 @@ class MainViewController: UIViewController {
         })
     }
     
+    //Debug Function to populate graph with random data, when barometer is unavalailable
+    func startDisplayingDebugData() {
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayDebugData), userInfo: nil, repeats: true)
+    }
+    
+    // REMOVE BEFORE DEPLOY
+    @objc func displayDebugData() {
+        prevTime = time
+        time = NSDate().timeIntervalSince1970
+        if (arc4random() % 2 == 0 || debugData! < 1){
+            debugData = debugData! + drand48()
+        } else {
+            debugData = debugData! - drand48()
+        }
+        deltaDebug = (debugData! - prevDebugData!) / (time! - prevTime!)
+        prevDebugData = debugData!
+        let fString = "%.\(significantDigits)f mmHg"
+        pressureDisplay.text = String(format:fString, (debugData)!)
+        deltaPressureDisplay.text = String(format:fString, (deltaDebug)!)
+        chartViewController.updateChart(pressureReading: debugData!,
+                                        time: time!)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if CMAltimeter.isRelativeAltitudeAvailable() {
             startDisplayingPressureData()
+        // REMOVE BEFORE DEPLOY
+        } else {
+            startDisplayingDebugData()
         }
     }
     
