@@ -71,15 +71,15 @@ class MainViewController: UIViewController {
     @objc func displayDebugData() {
         print("hello")
         prevTime = time
-        time = NSDate()
+        time = NSDate().timeIntervalSince1970
         debugData = debugData! - drand48()
-        deltaDebug = (debugData! - prevDebugData!) / (time?.timeIntervalSince(prevTime! as Date))!
+        deltaDebug = (debugData! - prevDebugData!) / (time! - prevTime!)
         prevDebugData = debugData!
         let fString = "%.\(significantDigits)f mmHg"
         pressureDisplay.text = String(format:fString, (debugData)!)
         deltaPressureDisplay.text = String(format:fString, (deltaDebug)!)
         chartViewController.updateChart(pressureReading: debugData!,
-                                        time: time!.timeIntervalSince1970)
+                                        time: time!)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
