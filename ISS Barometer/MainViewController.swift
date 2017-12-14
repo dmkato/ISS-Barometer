@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
     @IBOutlet weak var deltaPressureDisplay: UILabel!
     @IBOutlet weak var chartView: UIView!
-    @IBOutlet weak var debugDataToggle: UISwitch!
     
     lazy var altimeter :CMAltimeter = CMAltimeter()
     var mmHg:Double? = 0.0
@@ -23,9 +22,12 @@ class MainViewController: UIViewController {
     var prevTime:Double? = 0.0
     var time:Double? = 0.0
     var significantDigits:Int = 4
-    var prevDebugData:Double? = 760.00
-    var debugData:Double? = 0.0
+    
+    // REMOVE BEFORE DEPLOY <--
+    var prevDebugData:Double? = 0.0
+    var debugData:Double? = 10.0
     var deltaDebug:Double? = 0.0
+    // -->
     lazy var chartViewController: ChartViewController = {
         return childViewControllers[0] as! ChartViewController
     }()
@@ -63,16 +65,18 @@ class MainViewController: UIViewController {
     
     //Debug Function to populate graph with random data, when barometer is unavalailable
     func startDisplayingDebugData() {
-        var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayDebugData), userInfo: nil, repeats: true)
-        //(timeInterval: 1, target: self, selector: #selector(MainViewController.displayDebugData), userInfo: nil, repeats: true)
-        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayDebugData), userInfo: nil, repeats: true)
     }
     
+    // REMOVE BEFORE DEPLOY
     @objc func displayDebugData() {
-        print("hello")
         prevTime = time
         time = NSDate().timeIntervalSince1970
-        debugData = debugData! - drand48()
+        if (arc4random() % 2 == 0 || debugData! < 1){
+            debugData = debugData! + drand48()
+        } else {
+            debugData = debugData! - drand48()
+        }
         deltaDebug = (debugData! - prevDebugData!) / (time! - prevTime!)
         prevDebugData = debugData!
         let fString = "%.\(significantDigits)f mmHg"
@@ -85,6 +89,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         if CMAltimeter.isRelativeAltitudeAvailable() {
             startDisplayingPressureData()
+        // REMOVE BEFORE DEPLOY
         } else {
             startDisplayingDebugData()
         }
