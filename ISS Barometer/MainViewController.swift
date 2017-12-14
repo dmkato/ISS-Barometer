@@ -14,7 +14,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
     @IBOutlet weak var deltaPressureDisplay: UILabel!
     @IBOutlet weak var chartView: UIView!
-
+    @IBOutlet weak var debugDataToggle: UISwitch!
+    
     lazy var altimeter :CMAltimeter = CMAltimeter()
     var mmHg:Double? = 0.0
     var prevMmHg:Double? = 0.0
@@ -22,6 +23,9 @@ class MainViewController: UIViewController {
     var prevTime:NSDate? = NSDate()
     var time:NSDate? = NSDate()
     var significantDigits:Int = 4
+    var prevDebugData:Double? = 760.00
+    var debugData:Double? = 0.0
+    var deltaDebug:Double? = 0.0
     lazy var chartViewController: ChartViewController = {
         return childViewControllers[0] as! ChartViewController
     }()
@@ -57,10 +61,32 @@ class MainViewController: UIViewController {
         })
     }
     
+    //Debug Function to populate graph with random data, when barometer is unavalailable
+    func startDisplayingDebugData() {
+        var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayDebugData), userInfo: nil, repeats: true)
+        //(timeInterval: 1, target: self, selector: #selector(MainViewController.displayDebugData), userInfo: nil, repeats: true)
+        
+    }
+    
+    @objc func displayDebugData() {
+        print("hello")
+        prevTime = time
+        time = NSDate()
+        debugData = debugData! - drand48()
+        deltaDebug = (debugData! - prevDebugData!) / (time?.timeIntervalSince(prevTime! as Date))!
+        prevDebugData = debugData!
+        let fString = "%.\(significantDigits)f mmHg"
+        pressureDisplay.text = String(format:fString, (debugData)!)
+        deltaPressureDisplay.text = String(format:fString, (deltaDebug)!)
+        chartViewController.updateChart(pressureReading: debugData!,
+                                        time: time!.timeIntervalSince1970)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if CMAltimeter.isRelativeAltitudeAvailable() {
             startDisplayingPressureData()
+        } else {
+            startDisplayingDebugData()
         }
     }
     
