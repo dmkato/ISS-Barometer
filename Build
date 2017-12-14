@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+    SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    echo $SCRIPT_DIR
+    cd $SCRIPT_DIR
+    sudo gem install cocoapods
+    pod install
+    open ./ISS\ Barometer.xcworkspace
+
+elif [ "$1" == "open" ]; then
+    open ./ISS\ Barometer.xcworkspace
+
+fi

@@ -49,10 +49,10 @@ class ChartViewController: UIViewController {
     }
     
     func initAxes() {
-//        lineChartView.leftAxis.axisMaximum = 15
-//        lineChartView.leftAxis.axisMinimum = 0
-//        lineChartView.rightAxis.axisMaximum = 15
-//        lineChartView.rightAxis.axisMinimum = 0
+        lineChartView.leftAxis.axisMaximum = 15
+        lineChartView.leftAxis.axisMinimum = 0
+        lineChartView.rightAxis.axisMaximum = 15
+        lineChartView.rightAxis.axisMinimum = 0
         lineChartView.xAxis.labelPosition = .bottom
     }
     
