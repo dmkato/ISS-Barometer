@@ -49,10 +49,10 @@ class ChartViewController: UIViewController {
     }
     
     func initAxes() {
-        //        lineChartView.leftAxis.axisMaximum = 15
-        //        lineChartView.leftAxis.axisMinimum = 0
-        //        lineChartView.rightAxis.axisMaximum = 15
-        //        lineChartView.rightAxis.axisMinimum = 0
+    //        lineChartView.leftAxis.axisMaximum = 15
+    //        lineChartView.leftAxis.axisMinimum = 0
+    //        lineChartView.rightAxis.axisMaximum = 15
+    //        lineChartView.rightAxis.axisMinimum = 0
         lineChartView.xAxis.labelPosition = .bottom
     }
     
@@ -81,16 +81,16 @@ class ChartViewController: UIViewController {
         super.viewDidLoad()
         initChart()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // This is called before sequeing to the settings view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    
+
 }
