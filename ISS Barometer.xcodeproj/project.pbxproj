@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		036B95F895063210F33D6A72 /* Pods_ISS_Barometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789AB272C2CBA8E4F7BC68F /* Pods_ISS_Barometer.framework */; };
+		350F06EF1FE377C1000B4BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 350F06ED1FE377C1000B4BDB /* Main.storyboard */; };
 		352E80A51FDF57FE00DE1592 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352E80A41FDF57FE00DE1592 /* MainViewControllerTests.swift */; };
 		352E80A71FDF581900DE1592 /* ChartViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352E80A61FDF581900DE1592 /* ChartViewControllerTests.swift */; };
 		352E80A91FDF582800DE1592 /* SettingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352E80A81FDF582800DE1592 /* SettingsViewControllerTests.swift */; };
@@ -15,7 +16,6 @@
 		353B592A1FD3C0310060613E /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B59291FD3C0310060613E /* ChartViewController.swift */; };
 		35F63A4A1FCCE56C00639EB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A491FCCE56C00639EB5 /* AppDelegate.swift */; };
 		35F63A4C1FCCE56C00639EB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A4B1FCCE56C00639EB5 /* MainViewController.swift */; };
-		35F63A4F1FCCE56C00639EB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F63A4D1FCCE56C00639EB5 /* Main.storyboard */; };
 		35F63A521FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A501FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld */; };
 		35F63A541FCCE56C00639EB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35F63A531FCCE56C00639EB5 /* Assets.xcassets */; };
 		35F63A571FCCE56C00639EB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F63A551FCCE56C00639EB5 /* LaunchScreen.storyboard */; };
@@ -56,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		350F06EE1FE377C1000B4BDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../.Trash/ISS-Barometer-master 2/ISS Barometer/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		352E80A41FDF57FE00DE1592 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		352E80A61FDF581900DE1592 /* ChartViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewControllerTests.swift; sourceTree = "<group>"; };
 		352E80A81FDF582800DE1592 /* SettingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerTests.swift; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		35F63A461FCCE56C00639EB5 /* ISS Barometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISS Barometer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F63A491FCCE56C00639EB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35F63A4B1FCCE56C00639EB5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		35F63A4E1FCCE56C00639EB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35F63A511FCCE56C00639EB5 /* ISS_Barometer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ISS_Barometer.xcdatamodel; sourceTree = "<group>"; };
 		35F63A531FCCE56C00639EB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35F63A561FCCE56C00639EB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				35F63A491FCCE56C00639EB5 /* AppDelegate.swift */,
-				35F63A4D1FCCE56C00639EB5 /* Main.storyboard */,
+				350F06ED1FE377C1000B4BDB /* Main.storyboard */,
 				35F63A531FCCE56C00639EB5 /* Assets.xcassets */,
 				35F63A551FCCE56C00639EB5 /* LaunchScreen.storyboard */,
 				35F63A581FCCE56C00639EB5 /* Info.plist */,
@@ -313,9 +313,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				350F06EF1FE377C1000B4BDB /* Main.storyboard in Resources */,
 				35F63A571FCCE56C00639EB5 /* LaunchScreen.storyboard in Resources */,
 				35F63A541FCCE56C00639EB5 /* Assets.xcassets in Resources */,
-				35F63A4F1FCCE56C00639EB5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,10 +533,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		35F63A4D1FCCE56C00639EB5 /* Main.storyboard */ = {
+		350F06ED1FE377C1000B4BDB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				35F63A4E1FCCE56C00639EB5 /* Base */,
+				350F06EE1FE377C1000B4BDB /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
