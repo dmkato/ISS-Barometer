@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lSr-QO-ibD">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <navigationController id="lSr-QO-ibD" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mSK-KQ-ZYU">
-                        <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -31,35 +31,35 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-bx-B8W">
-                                <rect key="frame" x="16" y="305" width="732" height="699"/>
+                                <rect key="frame" x="16" y="305" width="988" height="443"/>
                                 <connections>
                                     <segue destination="WSa-VY-E7U" kind="embed" id="aEN-0o-btt"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure (mmhg)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZb-QA-aBg">
-                                <rect key="frame" x="116" y="132" width="185" height="30"/>
+                                <rect key="frame" x="244" y="132" width="185" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfI-5A-aGZ" userLabel="Pressure Value">
-                                <rect key="frame" x="207.5" y="172" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blah" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfI-5A-aGZ" userLabel="Pressure Value">
+                                <rect key="frame" x="307" y="172" width="57" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delta (mmhg/sec)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPM-GG-0Kc">
-                                <rect key="frame" x="458" y="132" width="194" height="30"/>
+                                <rect key="frame" x="586" y="132" width="194" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejx-af-yCa" userLabel="Delta Pressure Value">
-                                <rect key="frame" x="555.5" y="172" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blah" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejx-af-yCa" userLabel="Delta Pressure Value">
+                                <rect key="frame" x="655" y="172" width="57" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,46 +77,49 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="143"/>
                             </constraint>
                             <constraint firstItem="wfI-5A-aGZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BXq-e9-nq2">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-195"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-217.5"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-2.8333333333333144"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-176.5"/>
                             </constraint>
                             <constraint firstItem="Ejx-af-yCa" firstAttribute="top" secondItem="WPM-GG-0Kc" secondAttribute="bottom" constant="20" id="K6h-mf-deT"/>
                             <constraint firstItem="Ejx-af-yCa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LIp-VG-uOK">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-195"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-217.5"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-2.8333333333333144"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="171.5"/>
                             </constraint>
                             <constraint firstItem="S1D-bx-B8W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="QUe-Zp-4a5">
-                                <variation key="heightClass=compact-widthClass=compact" constant="364"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="300"/>
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S1D-bx-B8W" secondAttribute="trailing" constant="16" id="SDf-gM-utG">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-44"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-29"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                             </constraint>
                             <constraint firstItem="RZb-QA-aBg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YSX-73-h5i">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-194.5"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-217.5"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-175.5"/>
                             </constraint>
                             <constraint firstItem="Ejx-af-yCa" firstAttribute="top" secondItem="WPM-GG-0Kc" secondAttribute="bottom" constant="20" id="chY-oe-7QL">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
+                            <constraint firstItem="Ejx-af-yCa" firstAttribute="top" secondItem="WPM-GG-0Kc" secondAttribute="bottom" constant="10" id="fBC-Ve-5JO"/>
                             <constraint firstItem="WPM-GG-0Kc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="gBi-wr-Rq5">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-194"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-217"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="171"/>
                             </constraint>
+                            <constraint firstItem="S1D-bx-B8W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="ghx-7B-Auq"/>
+                            <constraint firstItem="wfI-5A-aGZ" firstAttribute="top" secondItem="RZb-QA-aBg" secondAttribute="bottom" constant="10" id="nfc-Pi-uPc"/>
                             <constraint firstItem="wfI-5A-aGZ" firstAttribute="top" secondItem="RZb-QA-aBg" secondAttribute="bottom" constant="20" id="pZ5-5o-67e">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="S1D-bx-B8W" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qp1-Fe-GvL">
-                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-10"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-20"/>
                             </constraint>
                             <constraint firstItem="wfI-5A-aGZ" firstAttribute="top" secondItem="RZb-QA-aBg" secondAttribute="bottom" constant="10" id="sw1-bu-hjs"/>
                             <constraint firstItem="RZb-QA-aBg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="wze-H7-mMZ">
-                                <variation key="heightClass=compact-widthClass=compact" constant="29"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="61"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="34"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="68"/>
                             </constraint>
@@ -125,17 +128,27 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="nfc-Pi-uPc"/>
                                 <exclude reference="pZ5-5o-67e"/>
                                 <exclude reference="sw1-bu-hjs"/>
-                                <exclude reference="8tY-WF-s5Z"/>
                                 <exclude reference="K6h-mf-deT"/>
                                 <exclude reference="chY-oe-7QL"/>
+                                <exclude reference="fBC-Ve-5JO"/>
                                 <exclude reference="yUH-fa-gKl"/>
+                                <exclude reference="8tY-WF-s5Z"/>
+                                <exclude reference="ghx-7B-Auq"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="constraints">
                                 <include reference="8tY-WF-s5Z"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="nfc-Pi-uPc"/>
+                                <include reference="fBC-Ve-5JO"/>
+                                <include reference="ghx-7B-Auq"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -155,7 +168,7 @@
                     <navigationItem key="navigationItem" title="ISS Barometer" id="Pbr-i3-w7D">
                         <barButtonItem key="rightBarButtonItem" id="yLg-Hp-JDw">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Bls-xd-9NA">
-                                <rect key="frame" x="726" y="11" width="22" height="22"/>
+                                <rect key="frame" x="982" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="5fW-Qz-rUS" kind="show" id="FoY-vv-BT8"/>
@@ -171,14 +184,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29.600000000000001" y="33.251231527093594"/>
+            <point key="canvasLocation" x="29.55665024630542" y="32.799999999999997"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Kwb-gX-A2J">
             <objects>
                 <viewController id="5fW-Qz-rUS" customClass="SettingsViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hhS-ox-xF3">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="LuB-lc-MRj"/>
@@ -194,19 +207,23 @@
             <objects>
                 <viewController storyboardIdentifier="ChartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WSa-VY-E7U" customClass="ChartViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mr1-AK-6F3">
-                        <rect key="frame" x="0.0" y="0.0" width="732" height="699"/>
+                        <rect key="frame" x="0.0" y="0.0" width="988" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NY4-By-H64" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="732" height="699"/>
+                                <rect key="frame" x="0.0" y="0.0" width="988" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="NY4-By-H64" secondAttribute="bottom" id="JlG-im-r2w"/>
-                            <constraint firstItem="NY4-By-H64" firstAttribute="leading" secondItem="JAS-bm-qHk" secondAttribute="leading" id="MQj-sO-HiN"/>
-                            <constraint firstItem="NY4-By-H64" firstAttribute="trailing" secondItem="JAS-bm-qHk" secondAttribute="trailing" id="a7X-Oc-Moh"/>
+                            <constraint firstItem="NY4-By-H64" firstAttribute="leading" secondItem="JAS-bm-qHk" secondAttribute="leading" id="MQj-sO-HiN">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-44"/>
+                            </constraint>
+                            <constraint firstItem="NY4-By-H64" firstAttribute="trailing" secondItem="JAS-bm-qHk" secondAttribute="trailing" id="a7X-Oc-Moh">
+                                <variation key="heightClass=compact-widthClass=compact" constant="44"/>
+                            </constraint>
                             <constraint firstItem="NY4-By-H64" firstAttribute="top" secondItem="Mr1-AK-6F3" secondAttribute="top" id="sie-Kx-msO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JAS-bm-qHk"/>
@@ -217,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zj5-0C-6nM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="672"/>
+            <point key="canvasLocation" x="29.926108374384238" y="671.20000000000005"/>
         </scene>
     </scenes>
 </document>
