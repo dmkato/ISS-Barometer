@@ -19,7 +19,7 @@ class Barometer {
     
     // REMOVE BEFORE DEPLOY <--
     var prevDebugData:Double? = 0.0
-    var debugData:Double? = 10.0
+    var debugData:Double? = 700.0
     var deltaDebug:Double? = 0.0
     // -->
     
