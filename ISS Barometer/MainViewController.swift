@@ -33,9 +33,7 @@ class MainViewController: UIViewController {
     }()
     
     func kPa2mmHg(kPa:Double) -> Double {
-        let atm:Double = kPa * 101.325
-        let mmHg:Double = atm / 760.0
-        return mmHg
+        return kPa * 7.50061683
     }
     
     func handlePressureReading(data:CMAltitudeData) {
