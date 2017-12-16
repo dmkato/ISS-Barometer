@@ -36,8 +36,7 @@ class ChartViewController: UIViewController {
     
     func updateChart(pressureReading: Double, time: Double) {
         let elapsedTime = setTime(time: time)
-        let newEntry = ChartDataEntry(x: elapsedTime,
-                                      y: pressureReading)
+        let newEntry = ChartDataEntry(x: elapsedTime, y: pressureReading)
         addDataPoint(newEntry: newEntry)
         updateChartView()
     }
@@ -62,11 +61,8 @@ class ChartViewController: UIViewController {
         lineChartDataSet.drawCirclesEnabled = false
         lineChartDataSet.drawFilledEnabled = false
         lineChartDataSet.drawValuesEnabled = false
-//        lineChartDataSet.mode = .cubicBezier
-        
         var dataSets = [lineChartDataSet]
         dataSets.append(lineChartDataSet)
-        
         let data = LineChartData(dataSets: dataSets)
         lineChartView.data = data
     }
@@ -86,11 +82,4 @@ class ChartViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // This is called before sequeing to the settings view
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-
 }
