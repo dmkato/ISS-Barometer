@@ -48,11 +48,10 @@ class ChartViewController: UIViewController {
     }
     
     func initAxes() {
-//        lineChartView.leftAxis.axisMaximum = 15
-//        lineChartView.leftAxis.axisMinimum = 0
-//        lineChartView.rightAxis.axisMaximum = 15
-//        lineChartView.rightAxis.axisMinimum = 0
+        lineChartView.leftAxis.axisMinimum = 0
+        lineChartView.rightAxis.axisMinimum = 0
         lineChartView.xAxis.labelPosition = .bottom
+        lineChartView.legend.enabled = false
     }
     
     func initChartData() {
@@ -61,7 +60,7 @@ class ChartViewController: UIViewController {
         lineChartDataSet.drawCirclesEnabled = false
         lineChartDataSet.drawFilledEnabled = false
         lineChartDataSet.drawValuesEnabled = false
-        var dataSets = [lineChartDataSet]
+        var dataSets = [LineChartDataSet]()
         dataSets.append(lineChartDataSet)
         let data = LineChartData(dataSets: dataSets)
         lineChartView.data = data
