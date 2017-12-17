@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Charts
 import CoreMotion
 @testable import ISS_Barometer
 
@@ -32,7 +33,11 @@ class MainViewControllerTests: XCTestCase {
         mainViewController.updateUI(mmHg: testMmHg, deltaMmHg: testDeltaMmHg, time: testTime)
         XCTAssert(mainViewController.pressureDisplay.text == "700.1000 mmHg")
         XCTAssert(mainViewController.deltaPressureDisplay.text == "0.3000 mmHg")
+        let lineChartDataSet = (mainViewController.chartViewController.lineChartView.data?.dataSets[0] as? LineChartDataSet)!
+        print(lineChartDataSet.values[0].x)
+        print(lineChartDataSet.values[0].y)
+        XCTAssert(lineChartDataSet.values[0].x == 0.0)
+        XCTAssert(lineChartDataSet.values[0].y == testMmHg)
     }
-    
 }
 
