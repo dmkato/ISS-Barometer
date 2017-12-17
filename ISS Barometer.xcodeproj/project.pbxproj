@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		036B95F895063210F33D6A72 /* Pods_ISS_Barometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789AB272C2CBA8E4F7BC68F /* Pods_ISS_Barometer.framework */; };
-		352E80A51FDF57FE00DE1592 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352E80A41FDF57FE00DE1592 /* MainViewControllerTests.swift */; };
-		352E80A71FDF581900DE1592 /* ChartViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352E80A61FDF581900DE1592 /* ChartViewControllerTests.swift */; };
-		352E80A91FDF582800DE1592 /* SettingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352E80A81FDF582800DE1592 /* SettingsViewControllerTests.swift */; };
 		3539C13A1FE5C20B0054C63E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3539C1381FE5C20B0054C63E /* Main.storyboard */; };
 		353A095A1FDA19ED00A7CBA7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A09591FDA19ED00A7CBA7 /* SettingsViewController.swift */; };
 		353B592A1FD3C0310060613E /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B59291FD3C0310060613E /* ChartViewController.swift */; };
@@ -57,9 +54,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		352E80A41FDF57FE00DE1592 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
-		352E80A61FDF581900DE1592 /* ChartViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewControllerTests.swift; sourceTree = "<group>"; };
-		352E80A81FDF582800DE1592 /* SettingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerTests.swift; sourceTree = "<group>"; };
 		3539C1391FE5C20B0054C63E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		353A09591FDA19ED00A7CBA7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		353B59291FD3C0310060613E /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -159,9 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				35F63A611FCCE56C00639EB5 /* ISS_BarometerTests.swift */,
-				352E80A41FDF57FE00DE1592 /* MainViewControllerTests.swift */,
-				352E80A61FDF581900DE1592 /* ChartViewControllerTests.swift */,
-				352E80A81FDF582800DE1592 /* SettingsViewControllerTests.swift */,
 				35F63A631FCCE56C00639EB5 /* Info.plist */,
 			);
 			path = "ISS BarometerTests";
@@ -506,9 +497,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				352E80A71FDF581900DE1592 /* ChartViewControllerTests.swift in Sources */,
-				352E80A91FDF582800DE1592 /* SettingsViewControllerTests.swift in Sources */,
-				352E80A51FDF57FE00DE1592 /* MainViewControllerTests.swift in Sources */,
 				35F63A621FCCE56C00639EB5 /* ISS_BarometerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,12 +7,15 @@
 //
 
 import XCTest
+import Charts
 @testable import ISS_Barometer
 
 class ISS_BarometerTests: XCTestCase {
+    var storyboard: UIStoryboard!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        storyboard = UIStoryboard(name: "Main", bundle: nil)
     }
     
     override func tearDown() {
@@ -20,16 +23,19 @@ class ISS_BarometerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testNewDataPoint() {
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        mainViewController.loadViewIfNeeded()
+        let testMmHg = 700.1
+        let testDeltaMmHg = 0.3
+        let testTime = 20.0
+        mainViewController.updateUI(mmHg: testMmHg, deltaMmHg: testDeltaMmHg, time: testTime)
+        XCTAssert(mainViewController.pressureDisplay.text == "700.1000 mmHg")
+        XCTAssert(mainViewController.deltaPressureDisplay.text == "0.3000 mmHg")
+        let lineChartDataSet = (mainViewController.chartViewController.lineChartView.data?.dataSets[0] as? LineChartDataSet)!
+        print(lineChartDataSet.values[0].x)
+        print(lineChartDataSet.values[0].y)
+        XCTAssert(lineChartDataSet.values[0].x == 0.0)
+        XCTAssert(lineChartDataSet.values[0].y == testMmHg)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
