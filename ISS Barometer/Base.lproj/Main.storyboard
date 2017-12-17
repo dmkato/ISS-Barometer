@@ -29,7 +29,7 @@
         <!--ISS Barometer-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,6 +128,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="8tY-WF-s5Z"/>
+                                <exclude reference="ghx-7B-Auq"/>
                                 <exclude reference="nfc-Pi-uPc"/>
                                 <exclude reference="pZ5-5o-67e"/>
                                 <exclude reference="sw1-bu-hjs"/>
@@ -135,8 +137,6 @@
                                 <exclude reference="chY-oe-7QL"/>
                                 <exclude reference="fBC-Ve-5JO"/>
                                 <exclude reference="yUH-fa-gKl"/>
-                                <exclude reference="8tY-WF-s5Z"/>
-                                <exclude reference="ghx-7B-Auq"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -146,9 +146,9 @@
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
+                                <include reference="ghx-7B-Auq"/>
                                 <include reference="nfc-Pi-uPc"/>
                                 <include reference="fBC-Ve-5JO"/>
-                                <include reference="ghx-7B-Auq"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
