@@ -14,13 +14,6 @@ class ChartViewController: UIViewController {
     var startingTime: Double = 0
     var dataEntries = [ChartDataEntry]()
     
-    func setTime(time: Double) -> Double{
-        if startingTime == 0 {
-            startingTime = time
-        }
-        return time - startingTime
-    }
-    
     func addDataPoint(newEntry: ChartDataEntry) {
         dataEntries.append(newEntry)
         var lineChartDataSet = LineChartDataSet()
@@ -35,8 +28,7 @@ class ChartViewController: UIViewController {
     }
     
     func updateChart(pressureReading: Double, time: Double) {
-        let elapsedTime = setTime(time: time)
-        let newEntry = ChartDataEntry(x: elapsedTime, y: pressureReading)
+        let newEntry = ChartDataEntry(x: time, y: pressureReading)
         addDataPoint(newEntry: newEntry)
         updateChartView()
     }
@@ -52,6 +44,7 @@ class ChartViewController: UIViewController {
         lineChartView.rightAxis.axisMinimum = 0
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.legend.enabled = false
+        lineChartView.xAxis.valueFormatter = XAxisValueFormatter()
     }
     
     func initChartData() {

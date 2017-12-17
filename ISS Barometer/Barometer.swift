@@ -32,7 +32,7 @@ class Barometer {
             data, error in
             let kPa = data?.pressure.doubleValue
             self.prevTime = self.time
-            self.time = data?.timestamp
+            self.time = Date().timeIntervalSince1970
             self.prevMmHg = self.mmHg
             self.mmHg = self.kPa2mmHg(kPa: kPa!)
             self.deltaMmHg = (self.mmHg! - self.prevMmHg!) / (self.time! - self.prevTime!)
@@ -45,7 +45,7 @@ class Barometer {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             _ in
             self.prevTime = self.time
-            self.time = NSDate().timeIntervalSince1970
+            self.time = Date().timeIntervalSince1970
             if (arc4random() % 2 == 0 || self.debugData! < 1){
                 self.debugData = self.debugData! + drand48()
             } else {
