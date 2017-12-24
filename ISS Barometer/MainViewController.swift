@@ -17,6 +17,10 @@ class MainViewController: UIViewController {
     var barometer = Barometer()
     lazy var chartViewController: ChartViewController = childViewControllers[0] as! ChartViewController
 
+    @IBAction func resetPressed(_ sender: Any) {
+        barometer.updateInitialReading()
+    }
+    
     func updateUI(mmHg:Double, deltaMmHg:Double, time:Double) {
         // Set Pressure Readings
         let fString = "%.\(significantDigits)f mmHg"
