@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
     @IBOutlet weak var deltaPressureDisplay: UILabel!
     @IBOutlet weak var chartView: UIView!
+    @IBOutlet weak var deltaTimestamp: UILabel!
+    @IBOutlet weak var currentTimestamp: UILabel!
     var significantDigits:Int = 4
     var barometer = Barometer()
     lazy var chartViewController: ChartViewController = childViewControllers[0] as! ChartViewController
@@ -21,11 +23,16 @@ class MainViewController: UIViewController {
         barometer.updateInitialReading()
     }
     
-    func updateUI(mmHg:Double, deltaMmHg:Double, time:Double) {
+    func updateUI(mmHg:Double, deltaMmHg:Double, time:Double, resetWasPressed:Bool) {
         // Set Pressure Readings
         let fString = "%.\(significantDigits)f mmHg"
         pressureDisplay.text = String(format:fString, mmHg)
         deltaPressureDisplay.text = String(format:fString, deltaMmHg)
+        let date = Date(timeIntervalSince1970: time)
+        currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+        if resetWasPressed {
+            deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+        }
 
         // Update Chart
         chartViewController.updateChart(pressureReading: mmHg, time: time)
