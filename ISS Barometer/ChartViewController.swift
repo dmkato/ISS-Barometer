@@ -11,7 +11,6 @@ import Charts
 
 class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
-    var startingTime: Double = 0
     var dataEntries = [ChartDataEntry]()
     var settings:Settings?
     

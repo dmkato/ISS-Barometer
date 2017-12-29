@@ -14,6 +14,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var sigFigSlider: UISlider!
     @IBOutlet weak var sigFigValue: UILabel!
     @IBOutlet weak var unitPicker: UISegmentedControl!
+    @IBOutlet weak var orientationPicker: UISegmentedControl!
     
     @IBAction func sliderMoved(_ sender: Any) {
         let roundedValue = lroundf(sigFigSlider.value)
@@ -28,6 +29,13 @@ class SettingsTableViewController: UITableViewController {
         settings?.units = selectedUnit!
     }
     
+    @IBAction func orientationPicked(_ sender: Any) {
+        let selectedIdx = orientationPicker.selectedSegmentIndex
+        let selectedOrientation = orientationPicker.titleForSegment(at: selectedIdx)
+        settings?.orientation = selectedOrientation!
+        UIDevice.current.setValue(selectedIdx + 1, forKey: "orientation")
+    }
+    
     func initSlider() {
         sigFigValue.text = String(describing: settings!.sigFigs)
         sigFigSlider.setValue(Float(settings!.sigFigs), animated: true)
@@ -39,10 +47,17 @@ class SettingsTableViewController: UITableViewController {
         unitPicker.selectedSegmentIndex = segmentIdx
     }
     
+    func initOrientationPicker() {
+        let orientationPickerSegments = ["Up": 0, "Down": 1, "Left": 2, "Right": 3]
+        let segmentIdx = orientationPickerSegments[settings!.orientation]!
+        orientationPicker.selectedSegmentIndex = segmentIdx
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initSlider()
         initUnitPicker()
+        initOrientationPicker()
     }
     
     override func viewDidLoad() {

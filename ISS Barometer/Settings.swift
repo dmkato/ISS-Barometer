@@ -11,7 +11,7 @@ import Foundation
 class Settings {
     var units = "mmHg"
     var sigFigs = 4
-    var orientation = "up"
-    var slideingScale = false
+    var orientation = "Up"
+    var slidingScale = false
     var slidingScaleThreshold = 20
 }
