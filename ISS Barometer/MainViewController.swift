@@ -15,9 +15,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var deltaTimestamp: UILabel!
     @IBOutlet weak var currentTimestamp: UILabel!
+    
+    var settings = Settings()
     var significantDigits:Int = 4
     var barometer = Barometer()
-    lazy var chartViewController: ChartViewController = childViewControllers[0] as! ChartViewController
+    lazy var chartViewController = childViewControllers[0] as! ChartViewController
 
     @IBAction func resetPressed(_ sender: Any) {
         barometer.updateInitialReading()
@@ -25,7 +27,7 @@ class MainViewController: UIViewController {
     
     func updateUI(mmHg:Double, deltaMmHg:Double, time:Double, resetWasPressed:Bool) {
         // Set Pressure Readings
-        let fString = "%.\(significantDigits)f mmHg"
+        let fString = "%.\(settings.sigFigs)f \(settings.units)"
         pressureDisplay.text = String(format:fString, mmHg)
         deltaPressureDisplay.text = String(format:fString, deltaMmHg)
         let date = Date(timeIntervalSince1970: time)
@@ -40,6 +42,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chartViewController.settings = self.settings
         barometer.startBarometerUpdates(updateFunc: updateUI)
     }
     
@@ -50,8 +53,10 @@ class MainViewController: UIViewController {
     
     // This is called before sequeing to the settings view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "settingsSegue" {
+            let settingsVC = segue.destination as! SettingsViewController
+            settingsVC.settings = self.settings
+        }
     }
 }
 

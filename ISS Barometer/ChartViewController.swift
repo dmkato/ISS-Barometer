@@ -13,6 +13,7 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
     var startingTime: Double = 0
     var dataEntries = [ChartDataEntry]()
+    var settings:Settings?
     
     func addDataPoint(newEntry: ChartDataEntry) {
         dataEntries.append(newEntry)

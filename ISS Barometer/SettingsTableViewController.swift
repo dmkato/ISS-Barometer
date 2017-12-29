@@ -9,12 +9,47 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
+    var settings:Settings?
 
+    @IBOutlet weak var sigFigSlider: UISlider!
+    @IBOutlet weak var sigFigValue: UILabel!
+    @IBOutlet weak var unitPicker: UISegmentedControl!
+    
+    @IBAction func sliderMoved(_ sender: Any) {
+        let roundedValue = lroundf(sigFigSlider.value)
+        (sender as AnyObject).setValue(Float(roundedValue), animated: true)
+        sigFigValue.text = String(roundedValue)
+        settings?.sigFigs = roundedValue
+    }
+    
+    @IBAction func unitPicked(_ sender: Any) {
+        let selectedIdx = unitPicker.selectedSegmentIndex
+        let selectedUnit = unitPicker.titleForSegment(at: selectedIdx)
+        settings?.units = selectedUnit!
+    }
+    
+    func initSlider() {
+        sigFigValue.text = String(describing: settings!.sigFigs)
+        sigFigSlider.setValue(Float(settings!.sigFigs), animated: true)
+    }
+    
+    func initUnitPicker() {
+        let unitPickerSegments = ["mmHg": 0, "psi": 1, "kPa": 2, "atm": 3]
+        let segmentIdx = unitPickerSegments[settings!.units]!
+        unitPicker.selectedSegmentIndex = segmentIdx
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        initSlider()
+        initUnitPicker()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+//         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem

@@ -9,10 +9,16 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    var settings:Settings?
+    lazy var settingsTableView = childViewControllers[0] as! SettingsTableViewController
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingsTableView.settings = self.settings
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
