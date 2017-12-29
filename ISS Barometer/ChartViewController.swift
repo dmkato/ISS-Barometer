@@ -50,6 +50,7 @@ class ChartViewController: UIViewController {
     func initChartData() {
         let lineChartDataSet = LineChartDataSet()
         lineChartDataSet.setColor(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1))
+        lineChartDataSet.lineWidth = 2
         lineChartDataSet.drawCirclesEnabled = false
         lineChartDataSet.drawFilledEnabled = false
         lineChartDataSet.drawValuesEnabled = false
