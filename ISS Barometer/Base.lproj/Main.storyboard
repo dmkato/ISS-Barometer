@@ -134,8 +134,8 @@
                                 <exclude reference="A2L-Jy-vjO"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8tY-WF-s5Z"/>
                                 <exclude reference="sw1-bu-hjs"/>
+                                <exclude reference="8tY-WF-s5Z"/>
                                 <exclude reference="yUH-fa-gKl"/>
                                 <exclude reference="ERj-UJ-eNT"/>
                                 <exclude reference="eAO-AO-lVu"/>
@@ -341,8 +341,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58K-OA-gSd">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="58K-OA-gSd">
                                                     <rect key="frame" x="699" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="slidingScalePicked:" destination="Z9g-Lb-bfY" eventType="valueChanged" id="WQy-ar-dj0"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -367,6 +370,7 @@
                         <outlet property="orientationPicker" destination="rqr-aY-t3V" id="fLP-GC-NfT"/>
                         <outlet property="sigFigSlider" destination="AgK-hC-Pu8" id="dPw-El-JYB"/>
                         <outlet property="sigFigValue" destination="qss-w1-w1a" id="vb8-Zw-aW4"/>
+                        <outlet property="slidingScalePicker" destination="58K-OA-gSd" id="6Rh-Xz-SUe"/>
                         <outlet property="unitPicker" destination="Mmm-Nc-89N" id="9Ww-iy-zf2"/>
                     </connections>
                 </tableViewController>
