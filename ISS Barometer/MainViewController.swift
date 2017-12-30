@@ -40,6 +40,12 @@ class MainViewController: UIViewController {
         chartViewController.updateChart(pressureReading: mmHg, time: time)
     }
     
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+//        let orientationPickerSegments = ["Up": 0, "Down": 1, "Left": 2, "Right": 3]
+//        print(settings.orientation)
+        return UIInterfaceOrientation.portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         chartViewController.settings = self.settings

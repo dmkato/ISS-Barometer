@@ -13,10 +13,6 @@ class NavigationController: UINavigationController {
         return false
     }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
-
     /*
     // MARK: - Navigation
 

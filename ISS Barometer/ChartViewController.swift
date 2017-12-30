@@ -61,7 +61,6 @@ class ChartViewController: UIViewController {
     }
     
     func initChart() {
-        print(settings?.slidingScale)
         initChartProperties()
         initAxes()
         initChartData()

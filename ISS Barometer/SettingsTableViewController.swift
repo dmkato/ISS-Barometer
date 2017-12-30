@@ -10,10 +10,6 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     var settings:Settings?
-    
-    override var shouldAutorotate: Bool {
-        return false
-    }
 
     @IBOutlet weak var sigFigSlider: UISlider!
     @IBOutlet weak var sigFigValue: UILabel!

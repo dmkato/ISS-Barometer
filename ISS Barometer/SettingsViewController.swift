@@ -17,8 +17,9 @@ class SettingsViewController: UIViewController {
         settingsTableView.settings = self.settings
     }
     
-    func changeOrientation() {
-        
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        let orientationPickerSegments = ["Up": 0, "Down": 1, "Left": 2, "Right": 3]
+        return UIInterfaceOrientation(rawValue: orientationPickerSegments[settings!.orientation]!)!
     }
 
     override func viewDidLoad() {
