@@ -14,4 +14,5 @@ class Settings {
     var orientation = "Up"
     var slidingScale = false
     var slidingScaleThreshold = 20
+    var runningWindowSize = 50
 }

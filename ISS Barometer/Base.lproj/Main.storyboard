@@ -357,6 +357,47 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="LNK-Ak-toq">
+                                        <rect key="frame" x="0.0" y="275" width="768" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LNK-Ak-toq" id="egQ-m3-Nqv">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Window Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAY-em-a7v">
+                                                    <rect key="frame" x="20" y="20" width="99" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="0iU-HK-SCH">
+                                                    <rect key="frame" x="518" y="15" width="194" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="190" id="LG6-ZH-nUP"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="runningWindowSliderMoved:" destination="Z9g-Lb-bfY" eventType="valueChanged" id="FjO-DX-lXr"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kda-4J-a63">
+                                                    <rect key="frame" x="727.5" y="19" width="20.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EAY-em-a7v" secondAttribute="trailing" constant="20" symbolic="YES" id="3jy-Pl-gFj"/>
+                                                <constraint firstItem="EAY-em-a7v" firstAttribute="centerY" secondItem="egQ-m3-Nqv" secondAttribute="centerY" id="6yE-bo-L4n"/>
+                                                <constraint firstItem="EAY-em-a7v" firstAttribute="centerY" secondItem="0iU-HK-SCH" secondAttribute="centerY" id="EhF-Bc-4Kc"/>
+                                                <constraint firstItem="Kda-4J-a63" firstAttribute="baseline" secondItem="EAY-em-a7v" secondAttribute="baseline" id="HH7-gy-nq0"/>
+                                                <constraint firstItem="EAY-em-a7v" firstAttribute="leading" secondItem="egQ-m3-Nqv" secondAttribute="leading" constant="20" id="MY2-Tm-aSS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Kda-4J-a63" secondAttribute="trailing" id="ae7-vG-w1O"/>
+                                                <constraint firstItem="Kda-4J-a63" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="egQ-m3-Nqv" secondAttribute="leadingMargin" id="fsf-4s-ijv"/>
+                                                <constraint firstAttribute="trailing" secondItem="0iU-HK-SCH" secondAttribute="trailing" constant="58" id="uej-Xt-ee0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -368,6 +409,10 @@
                     <navigationItem key="navigationItem" id="JkB-zp-2mc"/>
                     <connections>
                         <outlet property="orientationPicker" destination="rqr-aY-t3V" id="fLP-GC-NfT"/>
+                        <outlet property="runningWindowOptions" destination="egQ-m3-Nqv" id="JpF-7p-YBR"/>
+                        <outlet property="runningWindowSlider" destination="0iU-HK-SCH" id="Lvu-A7-dkw"/>
+                        <outlet property="runningWindowTable" destination="LNK-Ak-toq" id="Ygz-NJ-DxF"/>
+                        <outlet property="runningWindowValue" destination="Kda-4J-a63" id="s2n-H7-tT5"/>
                         <outlet property="sigFigSlider" destination="AgK-hC-Pu8" id="dPw-El-JYB"/>
                         <outlet property="sigFigValue" destination="qss-w1-w1a" id="vb8-Zw-aW4"/>
                         <outlet property="slidingScalePicker" destination="58K-OA-gSd" id="6Rh-Xz-SUe"/>

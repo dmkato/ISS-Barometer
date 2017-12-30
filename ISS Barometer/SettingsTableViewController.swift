@@ -20,6 +20,10 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var unitPicker: UISegmentedControl!
     @IBOutlet weak var orientationPicker: UISegmentedControl!
     @IBOutlet weak var slidingScalePicker: UISwitch!
+    @IBOutlet weak var runningWindowSlider: UISlider!
+    @IBOutlet weak var runningWindowValue: UILabel!
+    @IBOutlet weak var runningWindowOptions: UIView!
+    @IBOutlet weak var runningWindowTable: UITableViewCell!
     
     @IBAction func sliderMoved(_ sender: Any) {
         let roundedValue = lroundf(sigFigSlider.value)
@@ -42,8 +46,15 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func slidingScalePicked(_ sender: Any) {
         settings?.slidingScale = slidingScalePicker.isOn
+        initWindowSlider()
     }
     
+    @IBAction func runningWindowSliderMoved(_ sender: Any) {
+        let roundedValue = lroundf(runningWindowSlider.value)
+        (sender as AnyObject).setValue(Float(roundedValue), animated: true)
+        runningWindowValue.text = String(roundedValue*25)
+        settings?.runningWindowSize = roundedValue*25
+    }
     func initSlider() {
         sigFigValue.text = String(describing: settings!.sigFigs)
         sigFigSlider.setValue(Float(settings!.sigFigs), animated: true)
@@ -64,6 +75,18 @@ class SettingsTableViewController: UITableViewController {
     func initSlidingScalePicker() {
         slidingScalePicker.setOn((settings?.slidingScale)!, animated: true)
     }
+    
+    func initWindowSlider() {
+        if slidingScalePicker.isOn {
+            runningWindowOptions.isHidden = false
+            runningWindowTable.isHidden = false
+        } else {
+            runningWindowOptions.isHidden = true
+            runningWindowTable.isHidden = true
+        }
+        runningWindowValue.text = String(describing: settings!.runningWindowSize)
+        runningWindowSlider.setValue(Float(round(Double(settings!.runningWindowSize)/25.0)), animated: true)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,6 +94,7 @@ class SettingsTableViewController: UITableViewController {
         initUnitPicker()
         initOrientationPicker()
         initSlidingScalePicker()
+        initWindowSlider()
     }
     
 
