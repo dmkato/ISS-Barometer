@@ -113,6 +113,9 @@ class ChartViewController: UIViewController {
     
     func initChart() {
         windowRunning = (settings?.slidingScale)!
+        if windowRunning {
+            windowSize = (settings?.runningWindowSize)!
+        }
         initChartProperties()
         initAxes()
         initChartData()
@@ -124,6 +127,9 @@ class ChartViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         windowRunning = (settings?.slidingScale)!
+        if windowRunning {
+            windowSize = (settings?.runningWindowSize)!
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
