@@ -8,22 +8,15 @@
 
 import UIKit
 
-class LockedNavigationViewController: UINavigationController {
-    override open var shouldAutorotate: Bool {
+class NavigationController: UINavigationController {
+    override var shouldAutorotate: Bool {
         return false
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     /*
     // MARK: - Navigation
 

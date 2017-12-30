@@ -12,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Locked Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="vy1-Z5-WjX">
             <objects>
-                <navigationController id="lSr-QO-ibD" customClass="LockedNavigationViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="lSr-QO-ibD" customClass="NavigationController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mSK-KQ-ZYU">
                         <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -39,7 +39,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-bx-B8W">
                                 <rect key="frame" x="16" y="303" width="736" height="701"/>
                                 <connections>
-                                    <segue destination="WSa-VY-E7U" kind="embed" id="aEN-0o-btt"/>
+                                    <segue destination="WSa-VY-E7U" kind="embed" identifier="chartSegue" id="aEN-0o-btt"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZb-QA-aBg">
