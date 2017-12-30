@@ -56,6 +56,9 @@ class MainViewController: UIViewController {
         if segue.identifier == "settingsSegue" {
             let settingsVC = segue.destination as! SettingsViewController
             settingsVC.settings = self.settings
+        } else if segue.identifier == "chartSegue" {
+            let chartVC = segue.destination as! ChartViewController
+            chartVC.settings = self.settings
         }
     }
 }

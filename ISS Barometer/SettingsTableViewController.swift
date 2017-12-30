@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     var settings:Settings?
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
 
     @IBOutlet weak var sigFigSlider: UISlider!
     @IBOutlet weak var sigFigValue: UILabel!
@@ -33,7 +37,6 @@ class SettingsTableViewController: UITableViewController {
         let selectedIdx = orientationPicker.selectedSegmentIndex
         let selectedOrientation = orientationPicker.titleForSegment(at: selectedIdx)
         settings?.orientation = selectedOrientation!
-        UIDevice.current.setValue(selectedIdx + 1, forKey: "orientation")
     }
     
     func initSlider() {
@@ -74,24 +77,6 @@ class SettingsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 4
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-//
-//        return cell
-//    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -139,3 +124,5 @@ class SettingsTableViewController: UITableViewController {
     */
 
 }
+
+

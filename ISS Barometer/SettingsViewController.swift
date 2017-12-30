@@ -16,6 +16,10 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         settingsTableView.settings = self.settings
     }
+    
+    func changeOrientation() {
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
