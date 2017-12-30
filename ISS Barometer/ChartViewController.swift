@@ -12,17 +12,17 @@ import Charts
 class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
     var dataEntries = [ChartDataEntry]()
-    var settings:Settings?
+    var settings:Settings!
     
     func addDataPoint(newEntry: ChartDataEntry) {
         dataEntries.append(newEntry)
         var lineChartDataSet = LineChartDataSet()
-        lineChartDataSet = (lineChartView.data?.dataSets[0] as? LineChartDataSet)!
+        lineChartDataSet = lineChartView.data!.dataSets[0] as! LineChartDataSet
         lineChartDataSet.values = dataEntries
     }
     
     func updateChartView() {
-        lineChartView.data?.notifyDataChanged()
+        lineChartView.data!.notifyDataChanged()
         lineChartView.notifyDataSetChanged()
         lineChartView.setNeedsDisplay()
     }
@@ -36,7 +36,7 @@ class ChartViewController: UIViewController {
     func initChartProperties() {
         lineChartView.setScaleEnabled(true)
         lineChartView.noDataText = "You need to provide data for the chart."
-        lineChartView.chartDescription?.enabled = false
+        lineChartView.chartDescription!.enabled = false
     }
     
     func initAxes() {

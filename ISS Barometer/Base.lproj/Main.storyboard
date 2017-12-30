@@ -39,7 +39,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-bx-B8W">
                                 <rect key="frame" x="16" y="303" width="736" height="701"/>
                                 <connections>
-                                    <segue destination="WSa-VY-E7U" kind="embed" identifier="chartSegue" id="aEN-0o-btt"/>
+                                    <segue destination="WSa-VY-E7U" kind="embed" identifier="ChartSegue" id="aEN-0o-btt"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZb-QA-aBg">
@@ -48,8 +48,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfI-5A-aGZ" userLabel="Pressure Value">
-                                <rect key="frame" x="257.5" y="133" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfI-5A-aGZ" userLabel="Pressure Value">
+                                <rect key="frame" x="258" y="133" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejx-af-yCa" userLabel="Delta Pressure Value">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejx-af-yCa" userLabel="Delta Pressure Value">
                                 <rect key="frame" x="512" y="133" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
@@ -134,8 +134,8 @@
                                 <exclude reference="A2L-Jy-vjO"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8tY-WF-s5Z"/>
                                 <exclude reference="sw1-bu-hjs"/>
+                                <exclude reference="8tY-WF-s5Z"/>
                                 <exclude reference="yUH-fa-gKl"/>
                                 <exclude reference="ERj-UJ-eNT"/>
                                 <exclude reference="eAO-AO-lVu"/>
@@ -167,7 +167,7 @@
                                 <rect key="frame" x="726" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="5fW-Qz-rUS" kind="show" identifier="settingsSegue" id="FoY-vv-BT8"/>
+                                    <segue destination="Z9g-Lb-bfY" kind="show" identifier="SettingsSegue" id="z0i-ml-scH"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -182,29 +182,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.90625" y="32.2265625"/>
+            <point key="canvasLocation" x="52" y="32"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="Kwb-gX-A2J">
-            <objects>
-                <viewController id="5fW-Qz-rUS" customClass="SettingsViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
-                    <containerView key="view" opaque="NO" contentMode="scaleToFill" id="pCV-5Q-nVi">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <connections>
-                            <segue destination="Z9g-Lb-bfY" kind="embed" id="n97-nS-nTX"/>
-                        </connections>
-                    </containerView>
-                    <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="never" id="dgS-Gn-xw0"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s2K-3E-lBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="968.75" y="34.5703125"/>
-        </scene>
-        <!--Settings Table View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="5v4-FT-k3g">
             <objects>
-                <tableViewController id="Z9g-Lb-bfY" customClass="SettingsTableViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Z9g-Lb-bfY" customClass="SettingsViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="MUN-AX-Mpv">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -372,7 +355,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zt-1e-3cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967.96875" y="825.5859375"/>
+            <point key="canvasLocation" x="890" y="32"/>
         </scene>
         <!--Chart View Controller-->
         <scene sceneID="2jW-JN-V5k">
@@ -406,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zj5-0C-6nM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="730"/>
+            <point key="canvasLocation" x="52" y="725"/>
         </scene>
     </scenes>
 </document>

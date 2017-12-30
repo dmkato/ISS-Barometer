@@ -9,18 +9,17 @@
 import UIKit
 
 class NavigationController: UINavigationController {
-    override var shouldAutorotate: Bool {
-        return false
-    }
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    lazy var settings = appDelegate.settings
+    var rotated = false
+    var prevOrientation: String!
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override var shouldAutorotate: Bool {
+        if settings.orientation != prevOrientation {
+            prevOrientation = settings.orientation
+            return true
+        } else {
+            return false
+        }
     }
-    */
-
 }
