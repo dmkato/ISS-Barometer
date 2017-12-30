@@ -13,12 +13,26 @@ class Barometer {
     lazy var altimeter :CMAltimeter = CMAltimeter()
     var initialReading:Double?
     
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var settings = appDelegate.settings
+
     // REMOVE BEFORE DEPLOY <--
-    var debugData:Double? = 700.0
+    var debugData:Double? = 100.0
     // -->
     
-    func kPa2mmHg(kPa:Double) -> Double {
-        return kPa * 7.50061683
+    func kPa2units(kPa:Double) -> Double {
+        switch settings?.units {
+            case "mmHg"?:
+                return kPa * 7.50061683
+            case "psi"?:
+                return kPa / 6.89475729
+            case "kPa"?:
+                return kPa
+            case "atm"?:
+                return kPa / 101.325
+            default:
+                return kPa * 7.50061683
+        }
     }
     
     func updateInitialReading() {
@@ -29,7 +43,7 @@ class Barometer {
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
             data, error in
             let kPa = data?.pressure.doubleValue
-            let mmHg = self.kPa2mmHg(kPa: kPa!)
+            let mmHg = self.kPa2units(kPa: kPa!)
             let time = Date().timeIntervalSince1970
             var resetWasPressed = false
             if self.initialReading == nil {
@@ -57,7 +71,7 @@ class Barometer {
                 resetWasPressed = true
             }
             let deltaDebug = (self.debugData! - self.initialReading!)
-            updateFunc(self.debugData!, deltaDebug, time, resetWasPressed)
+            updateFunc(self.kPa2units(kpa: self.debugData!), deltaDebug, time, resetWasPressed)
         }
     }
     
