@@ -17,7 +17,6 @@ class ChartViewController: UIViewController {
     var settings:Settings?
 
     var windowRunning = false
-    
     var windowSize = 50
     var currentCount = 0.0
     
@@ -110,6 +109,9 @@ class ChartViewController: UIViewController {
     }
     
     func initChart() {
+        windowRunning = (settings?.slidingScale)!
+        print(windowRunning)
+        
         initChartProperties()
         initAxes()
         initChartData()
