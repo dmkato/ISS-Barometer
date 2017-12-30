@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Settings {
+class Settings: Codable {
     var units = "mmHg"
     var sigFigs = 4
     var orientation = "Right"
