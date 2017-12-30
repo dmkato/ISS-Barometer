@@ -5,6 +5,8 @@
 //  Created by Daniel Kato on 12/2/17.
 //  Copyright © 2017 ISSBarometer. All rights reserved.
 //
+//  Running Graph function adapted from GitHub user thierryH24
+
 
 import UIKit
 import Charts
@@ -13,9 +15,31 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
     var dataEntries = [ChartDataEntry]()
     var settings:Settings?
+
+    var windowRunning = false
+    
+    var windowSize = 50
+    var currentCount = 0.0
+    
+    var yAxisMin:Double = 0.0
+    var yAxisMax:Double = 800.00
     
     func addDataPoint(newEntry: ChartDataEntry) {
         dataEntries.append(newEntry)
+        
+        if windowRunning {
+            if dataEntries.count >= windowSize
+            {
+                let maxi = Double(newEntry.x)
+                lineChartView.xAxis.axisMaximum = maxi
+                lineChartView.xAxis.axisMinimum = maxi - Double(windowSize)
+            }
+            
+            lineChartView.moveViewToX(Double(currentCount))
+        }
+        
+        currentCount = currentCount + 1
+        
         var lineChartDataSet = LineChartDataSet()
         lineChartDataSet = (lineChartView.data?.dataSets[0] as? LineChartDataSet)!
         lineChartDataSet.values = dataEntries
@@ -29,6 +53,33 @@ class ChartViewController: UIViewController {
     
     func updateChart(pressureReading: Double, time: Double) {
         let newEntry = ChartDataEntry(x: time, y: pressureReading)
+        if (currentCount == 0.0) {
+            if (windowRunning) {
+                lineChartView.xAxis.axisMaximum = time
+                lineChartView.xAxis.axisMaximum = Double(windowSize) + time
+            } else {
+                lineChartView.leftAxis.axisMinimum = 0
+                lineChartView.rightAxis.axisMinimum = 0
+            }
+            yAxisMin = 100.0 * round((pressureReading - 100.0)/100.0)
+            lineChartView.leftAxis.axisMinimum = yAxisMin
+            lineChartView.rightAxis.axisMinimum = yAxisMin
+            
+            yAxisMax = 50.0 * round((pressureReading + 50.0)/50.0)
+            lineChartView.leftAxis.axisMaximum = yAxisMax
+            lineChartView.rightAxis.axisMaximum = yAxisMax
+        }
+        if (pressureReading >= yAxisMax - 15) {
+            yAxisMax = yAxisMax + 50.0
+            lineChartView.leftAxis.axisMaximum = yAxisMax
+            lineChartView.rightAxis.axisMaximum = yAxisMax
+        }
+        if (pressureReading <= yAxisMin + 20) {
+            yAxisMin = yAxisMin - 100.0
+            lineChartView.leftAxis.axisMinimum = yAxisMin
+            lineChartView.rightAxis.axisMinimum = yAxisMin
+        }
+        
         addDataPoint(newEntry: newEntry)
         updateChartView()
     }
@@ -40,8 +91,6 @@ class ChartViewController: UIViewController {
     }
     
     func initAxes() {
-        lineChartView.leftAxis.axisMinimum = 0
-        lineChartView.rightAxis.axisMinimum = 0
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.legend.enabled = false
         lineChartView.xAxis.valueFormatter = XAxisValueFormatter()
