@@ -19,6 +19,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var sigFigValue: UILabel!
     @IBOutlet weak var unitPicker: UISegmentedControl!
     @IBOutlet weak var orientationPicker: UISegmentedControl!
+    @IBOutlet weak var slidingScalePicker: UISwitch!
     
     @IBAction func sliderMoved(_ sender: Any) {
         let roundedValue = lroundf(sigFigSlider.value)
@@ -39,6 +40,10 @@ class SettingsTableViewController: UITableViewController {
         settings?.orientation = selectedOrientation!
     }
     
+    @IBAction func slidingScalePicked(_ sender: Any) {
+        settings?.slidingScale = slidingScalePicker.isOn
+    }
+    
     func initSlider() {
         sigFigValue.text = String(describing: settings!.sigFigs)
         sigFigSlider.setValue(Float(settings!.sigFigs), animated: true)
@@ -56,13 +61,19 @@ class SettingsTableViewController: UITableViewController {
         orientationPicker.selectedSegmentIndex = segmentIdx
     }
     
+    func initSlidingScalePicker() {
+        slidingScalePicker.setOn((settings?.slidingScale)!, animated: true)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initSlider()
         initUnitPicker()
         initOrientationPicker()
+        initSlidingScalePicker()
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

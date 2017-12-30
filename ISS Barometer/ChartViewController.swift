@@ -16,9 +16,10 @@ class ChartViewController: UIViewController {
     var dataEntries = [ChartDataEntry]()
     var settings:Settings?
 
+    var startTime = 0.0
     var windowRunning = false
     var windowSize = 50
-    var currentCount = 0.0
+    var currentCount = 0
     
     var yAxisMin:Double = 0.0
     var yAxisMax:Double = 800.00
@@ -35,8 +36,10 @@ class ChartViewController: UIViewController {
             }
             
             lineChartView.moveViewToX(Double(currentCount))
+        } else {
+            lineChartView.xAxis.resetCustomAxisMax()
+            lineChartView.xAxis.resetCustomAxisMin()
         }
-        
         currentCount = currentCount + 1
         
         var lineChartDataSet = LineChartDataSet()
@@ -52,13 +55,13 @@ class ChartViewController: UIViewController {
     
     func updateChart(pressureReading: Double, time: Double) {
         let newEntry = ChartDataEntry(x: time, y: pressureReading)
-        if (currentCount == 0.0) {
+        if (currentCount == 0) {
+            startTime = time
+        }
+        if (currentCount <= windowSize) {
             if (windowRunning) {
-                lineChartView.xAxis.axisMaximum = time
-                lineChartView.xAxis.axisMaximum = Double(windowSize) + time
-            } else {
-                lineChartView.leftAxis.axisMinimum = 0
-                lineChartView.rightAxis.axisMinimum = 0
+                lineChartView.xAxis.axisMinimum = startTime
+                lineChartView.xAxis.axisMaximum = Double(windowSize) + startTime
             }
             yAxisMin = 100.0 * round((pressureReading - 100.0)/100.0)
             lineChartView.leftAxis.axisMinimum = yAxisMin
@@ -110,7 +113,6 @@ class ChartViewController: UIViewController {
     
     func initChart() {
         windowRunning = (settings?.slidingScale)!
-        print(windowRunning)
         initChartProperties()
         initAxes()
         initChartData()
@@ -120,7 +122,9 @@ class ChartViewController: UIViewController {
         super.viewDidLoad()
         initChart()
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        windowRunning = (settings?.slidingScale)!
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
