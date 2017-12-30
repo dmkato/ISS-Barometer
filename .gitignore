@@ -8,4 +8,4 @@
 *.toc
 *.pdf
 Pods
-ISS\ Barometer.xcworkspace/xcuserdata/danielkato.xcuserdatad/UserInterfaceState.xcuserstate
+ISS\ Barometer.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate
