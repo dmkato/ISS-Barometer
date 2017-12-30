@@ -16,8 +16,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var deltaTimestamp: UILabel!
     @IBOutlet weak var currentTimestamp: UILabel!
     
-    var settings:Settings!
-    var significantDigits:Int = 4
+    lazy var settings: Settings = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.settings
+    }()
+    
     var barometer = Barometer()
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
 
@@ -40,25 +43,9 @@ class MainViewController: UIViewController {
         chartViewController.updateChart(pressureReading: mmHg, time: time)
     }
     
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-//        let orientationPickerSegments = ["Up": 0, "Down": 1, "Left": 2, "Right": 3]
-//        print(settings.orientation)
-        return UIInterfaceOrientation.portrait
-    }
-    
-    func setSettings() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        settings = appDelegate.settings
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setSettings()
-        barometer.startBarometerUpdates(updateFunc: updateUI)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        barometer.startBarometerUpdates(updateFunc: updateUI)
     }
     
     override func didReceiveMemoryWarning() {
