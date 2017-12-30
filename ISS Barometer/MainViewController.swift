@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var deltaTimestamp: UILabel!
     @IBOutlet weak var currentTimestamp: UILabel!
     
-    var settings = Settings()
+    var settings:Settings!
     var significantDigits:Int = 4
     var barometer = Barometer()
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
@@ -40,10 +40,25 @@ class MainViewController: UIViewController {
         chartViewController.updateChart(pressureReading: mmHg, time: time)
     }
     
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+//        let orientationPickerSegments = ["Up": 0, "Down": 1, "Left": 2, "Right": 3]
+//        print(settings.orientation)
+        return UIInterfaceOrientation.portrait
+    }
+    
+    func setSettings() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        settings = appDelegate.settings
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setSettings()
+        barometer.startBarometerUpdates(updateFunc: updateUI)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        chartViewController.settings = self.settings
-        barometer.startBarometerUpdates(updateFunc: updateUI)
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,10 +68,10 @@ class MainViewController: UIViewController {
     
     // This is called before sequeing to the settings view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "settingsSegue" {
+        if segue.identifier == "SettingsSegue" {
             let settingsVC = segue.destination as! SettingsViewController
             settingsVC.settings = self.settings
-        } else if segue.identifier == "chartSegue" {
+        } else if segue.identifier == "ChartSegue" {
             let chartVC = segue.destination as! ChartViewController
             chartVC.settings = self.settings
         }
