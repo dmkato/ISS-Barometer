@@ -59,13 +59,13 @@ class ChartViewController: UIViewController {
             lineChartView.xAxis.axisMinimum = startTime
             lineChartView.xAxis.axisMaximum = Double(windowSize) + startTime
         }
-        yAxisMin = 100.0 * round((pressureReading - 100.0)/100.0)
-        lineChartView.leftAxis.axisMinimum = yAxisMin
-        lineChartView.rightAxis.axisMinimum = yAxisMin
-        
-        yAxisMax = 50.0 * round((pressureReading + 50.0)/50.0)
-        lineChartView.leftAxis.axisMaximum = yAxisMax
-        lineChartView.rightAxis.axisMaximum = yAxisMax
+//        yAxisMin = 100.0 * round((pressureReading - 100.0)/100.0)
+//        lineChartView.leftAxis.axisMinimum = yAxisMin
+//        lineChartView.rightAxis.axisMinimum = yAxisMin
+//
+//        yAxisMax = 50.0 * round((pressureReading + 50.0)/50.0)
+//        lineChartView.leftAxis.axisMaximum = yAxisMax
+//        lineChartView.rightAxis.axisMaximum = yAxisMax
     }
     
     func updateChart(pressureReading: Double, time: Double) {
