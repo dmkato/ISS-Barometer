@@ -14,5 +14,5 @@ class Settings: Codable {
     var orientation = "Right"
     var slidingScale = false
     var slidingScaleThreshold = 20
-    var runningWindowSize = 50
+    var windowSize = 50
 }
