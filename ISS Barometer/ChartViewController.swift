@@ -18,7 +18,6 @@ class ChartViewController: UIViewController {
     var dataEntries = [ChartDataEntry]()
     var settings:Settings!
     var startTime = 0.0
-    var windowRunning = false
     var currentCount = 0
     
     func adjustWindow(newEntry: ChartDataEntry) {
@@ -26,14 +25,12 @@ class ChartViewController: UIViewController {
             let maxi = Double(newEntry.x)
             lineChartView.xAxis.axisMaximum = maxi
             lineChartView.xAxis.axisMinimum = maxi - Double(settings.windowSize)
-        }
-        lineChartView.moveViewToX(Double(currentCount))
-    }
+        }    }
     
     func addDataPoint(newEntry: ChartDataEntry) {
         dataEntries.append(newEntry)
         
-        if windowRunning {
+        if settings.slidingScale {
             adjustWindow(newEntry: newEntry)
         } else {
             lineChartView.xAxis.resetCustomAxisMax()
@@ -52,7 +49,7 @@ class ChartViewController: UIViewController {
     }
     
     func maintainAxes(pressureReading: Double) {
-        if (windowRunning) {
+        if (settings.slidingScale) {
             lineChartView.xAxis.axisMinimum = startTime
             lineChartView.xAxis.axisMaximum = Double(settings.windowSize) + startTime
         }
@@ -63,7 +60,7 @@ class ChartViewController: UIViewController {
         if (currentCount == 0) {
             startTime = time
         }
-        if (windowRunning && currentCount <= settings.windowSize) {
+        if (settings.slidingScale && currentCount <= settings.windowSize) {
             lineChartView.xAxis.axisMinimum = startTime
             lineChartView.xAxis.axisMaximum = Double(settings.windowSize) + startTime
         }
@@ -85,6 +82,10 @@ class ChartViewController: UIViewController {
         lineChartView.rightAxis.axisMinimum = 0
         lineChartView.rightAxis.spaceTop = 0.5
         lineChartView.leftAxis.spaceTop = 0.5
+        lineChartView.rightAxis.drawAxisLineEnabled = false
+        lineChartView.leftAxis.drawAxisLineEnabled = false
+        lineChartView.xAxis.drawAxisLineEnabled = false
+        lineChartView.highlightPerTapEnabled = false
     }
     
     func initChartData() {
@@ -101,7 +102,6 @@ class ChartViewController: UIViewController {
     }
     
     func initChart() {
-        windowRunning = settings.slidingScale
         initChartProperties()
         initAxes()
         initChartData()
@@ -157,9 +157,7 @@ class ChartViewController: UIViewController {
         super.viewDidLoad()
         initChart()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        windowRunning = settings.slidingScale
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
