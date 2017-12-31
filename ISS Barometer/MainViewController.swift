@@ -43,6 +43,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        barometer.settings = self.settings
         barometer.startBarometerUpdates(updateFunc: updateUI)
     }
     
