@@ -8,10 +8,11 @@
 
 import Foundation
 
-class Settings {
+class Settings: Codable {
     var units = "mmHg"
     var sigFigs = 4
     var orientation = "Right"
     var slidingScale = false
     var slidingScaleThreshold = 20
+    var runningWindowSize = 50
 }

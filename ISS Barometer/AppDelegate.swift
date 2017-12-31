@@ -13,7 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var settings = Settings()
+    var settings: Settings!
     
     private func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
         let orientationInt = ["Up": 1, "Down": 2, "Left": 3, "Right": 4]
@@ -21,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if let data = UserDefaults.standard.value(forKey: "Settings") as? Data {
+            settings = try? PropertyListDecoder().decode(Settings.self, from: data)
+        } else {
+            settings = Settings()
+        }
         return true
     }
 
@@ -33,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(settings), forKey: "Settings")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
