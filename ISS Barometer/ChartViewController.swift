@@ -25,18 +25,17 @@ class ChartViewController: UIViewController {
             let maxi = Double(newEntry.x)
             lineChartView.xAxis.axisMaximum = maxi
             lineChartView.xAxis.axisMinimum = maxi - Double(settings.windowSize)
-        }    }
+        }
+    }
     
     func addDataPoint(newEntry: ChartDataEntry) {
         dataEntries.append(newEntry)
-        
         if settings.slidingScale {
             adjustWindow(newEntry: newEntry)
         } else {
             lineChartView.xAxis.resetCustomAxisMax()
             lineChartView.xAxis.resetCustomAxisMin()
         }
-        
         currentCount += 1
         let lineChartDataSet = lineChartView.data!.dataSets[0] as! LineChartDataSet
         lineChartDataSet.values = dataEntries
