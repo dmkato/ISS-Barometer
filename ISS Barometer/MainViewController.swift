@@ -27,23 +27,23 @@ class MainViewController: UIViewController {
         barometer.updateInitialReading()
     }
     
-    func updateUI(mmHg:Double, deltaMmHg:Double, time:Double, resetWasPressed:Bool) {
+    func updateUI(pressure:Double, deltaPressure:Double, time:Double, resetWasPressed:Bool) {
         // Set Pressure Readings
         let fString = "%.\(settings.sigFigs)f \(settings.units)"
-        pressureDisplay.text = String(format:fString, mmHg)
-        deltaPressureDisplay.text = String(format:fString, deltaMmHg)
+        pressureDisplay.text = String(format:fString, pressure)
+        deltaPressureDisplay.text = String(format:fString, deltaPressure)
         let date = Date(timeIntervalSince1970: time)
         currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
         if resetWasPressed {
             deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
         }
-
         // Update Chart
-        chartViewController.updateChart(pressureReading: mmHg, time: time)
+        chartViewController.updateChart(pressureReading: pressure, time: time)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        barometer.settings = self.settings
         barometer.startBarometerUpdates(updateFunc: updateUI)
     }
     
@@ -57,6 +57,7 @@ class MainViewController: UIViewController {
         if segue.identifier == "SettingsSegue" {
             let settingsVC = segue.destination as! SettingsViewController
             settingsVC.settings = self.settings
+            settingsVC.chartVC = self.chartViewController
         } else if segue.identifier == "ChartSegue" {
             let chartVC = segue.destination as! ChartViewController
             chartVC.settings = self.settings
