@@ -12,10 +12,9 @@ import CoreMotion
 class Barometer {
     lazy var altimeter :CMAltimeter = CMAltimeter()
     var initialReading:Double?
+    var settings:Settings?
     
-    var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var settings = appDelegate.settings
-
+    
     // REMOVE BEFORE DEPLOY <--
     var debugData:Double? = 100.0
     // -->
@@ -71,7 +70,7 @@ class Barometer {
                 resetWasPressed = true
             }
             let deltaDebug = (self.debugData! - self.initialReading!)
-            updateFunc(self.kPa2units(kpa: self.debugData!), deltaDebug, time, resetWasPressed)
+            updateFunc(self.kPa2units(kPa: self.debugData!), deltaDebug, time, resetWasPressed)
         }
     }
     
