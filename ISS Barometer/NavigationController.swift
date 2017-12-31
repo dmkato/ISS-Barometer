@@ -9,8 +9,10 @@
 import UIKit
 
 class NavigationController: UINavigationController {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    lazy var settings = appDelegate.settings!
+    lazy var settings: Settings = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.settings
+    }()
     var rotated = false
     var prevOrientation: String!
     
