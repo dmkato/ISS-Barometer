@@ -86,6 +86,7 @@ class ChartViewController: UIViewController {
         lineChartView.leftAxis.drawAxisLineEnabled = false
         lineChartView.xAxis.drawAxisLineEnabled = false
         lineChartView.highlightPerTapEnabled = false
+        lineChartView.highlightPerDragEnabled = false
     }
     
     func initChartData() {
