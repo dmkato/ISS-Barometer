@@ -14,6 +14,7 @@ import Charts
 class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
     
+    var barometer:Barometer!
     var dataEntries = [ChartDataEntry]()
     var settings:Settings!
     var startTime = 0.0
@@ -121,28 +122,33 @@ class ChartViewController: UIViewController {
         }
     }
 
-    func convertValue(_ value: ChartDataEntry, _ newUnits: String) -> ChartDataEntry {
+    func convertValue(_ value: Double, _ newUnits: String) -> Double {
         let oldUnits = settings.units
-        let curKpa = unitsToKpa(value.y, oldUnits)
+        let curKpa = unitsToKpa(value, oldUnits)
         
         switch newUnits {
         case "mmHg":
-            value.y = curKpa * 7.50061683
+            return curKpa * 7.50061683
         case "psi":
-            value.y = curKpa / 6.89475729
+            return curKpa / 6.89475729
         case "kPa":
-            value.y = curKpa
+            return curKpa
         case "atm":
-            value.y = curKpa / 101.325
+            return curKpa / 101.325
         default:
-            value.y = curKpa * 7.50061683
+            return curKpa * 7.50061683
         }
-        return value
+    }
+    
+    func convertEntry(_ entry: ChartDataEntry, _ newUnits: String) -> ChartDataEntry{
+        entry.y = convertValue(entry.y, newUnits)
+        return entry
     }
     
     func convertDataPoints(unit: String) {
         let lineChartDataSet = lineChartView.data!.dataSets[0] as! LineChartDataSet
-        dataEntries = dataEntries.map { value in convertValue(value, unit) }
+        barometer.initialReading = convertValue(barometer.initialReading!, unit)
+        dataEntries = dataEntries.map { value in convertEntry(value, unit) }
         lineChartDataSet.values = dataEntries
         updateChartView()
     }
