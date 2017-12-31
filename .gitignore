@@ -9,3 +9,4 @@
 *.pdf
 Pods
 ISS\ Barometer.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate
+ISS\ Barometer.xcworkspace/xcuserdata/*.xcuserdatad/xcdebugger/*

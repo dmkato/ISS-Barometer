@@ -43,8 +43,7 @@ class ChartViewController: UIViewController {
         }
         
         currentCount += 1
-        var lineChartDataSet = LineChartDataSet()
-        lineChartDataSet = lineChartView.data!.dataSets[0] as! LineChartDataSet
+        let lineChartDataSet = lineChartView.data!.dataSets[0] as! LineChartDataSet
         lineChartDataSet.values = dataEntries
     }
     
@@ -124,6 +123,47 @@ class ChartViewController: UIViewController {
         initChartProperties()
         initAxes()
         initChartData()
+    }
+    
+    func unitsToKpa(_ pressure: Double, _ oldUnits: String) -> Double {
+        switch oldUnits {
+        case "mmHg":
+            return pressure / 7.50061683
+        case "psi":
+            return pressure * 6.89475729
+        case "kPa":
+            return pressure
+        case "atm":
+            return pressure * 101.325
+        default:
+            return pressure / 7.50061683
+        }
+    }
+
+    func convertValue(_ value: ChartDataEntry, _ newUnits: String) -> ChartDataEntry {
+        let oldUnits = settings.units
+        let curKpa = unitsToKpa(value.y, oldUnits)
+        
+        switch newUnits {
+        case "mmHg":
+            value.y = curKpa * 7.50061683
+        case "psi":
+            value.y = curKpa / 6.89475729
+        case "kPa":
+            value.y = curKpa
+        case "atm":
+            value.y = curKpa / 101.325
+        default:
+            value.y = curKpa * 7.50061683
+        }
+        return value
+    }
+    
+    func convertDataPoints(unit: String) {
+        let lineChartDataSet = lineChartView.data!.dataSets[0] as! LineChartDataSet
+        dataEntries = dataEntries.map { value in convertValue(value, unit) }
+        lineChartDataSet.values = dataEntries
+        updateChartView()
     }
     
     override func viewDidLoad() {

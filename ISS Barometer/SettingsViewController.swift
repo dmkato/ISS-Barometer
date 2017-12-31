@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     var settings:Settings!
+    var chartVC: ChartViewController!
 
     @IBOutlet weak var sigFigSlider: UISlider!
     @IBOutlet weak var sigFigValue: UILabel!
@@ -31,6 +32,7 @@ class SettingsViewController: UITableViewController {
     @IBAction func unitPicked(_ sender: Any) {
         let selectedIdx = unitPicker.selectedSegmentIndex
         let selectedUnit = unitPicker.titleForSegment(at: selectedIdx)
+        chartVC.convertDataPoints(unit: selectedUnit!)
         settings.units = selectedUnit!
     }
     
