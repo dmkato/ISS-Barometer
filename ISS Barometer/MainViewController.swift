@@ -61,6 +61,7 @@ class MainViewController: UIViewController {
         } else if segue.identifier == "ChartSegue" {
             let chartVC = segue.destination as! ChartViewController
             chartVC.settings = self.settings
+            chartVC.barometer = barometer
         }
     }
 }

@@ -22,6 +22,10 @@ class Barometer {
     var debugData:Double? = 100.0
     // -->
     
+    func updateInitialReading() {
+        initialReading = nil
+    }
+    
     func kPa2units(kPa:Double) -> Double {
         switch settings.units {
             case "mmHg":
