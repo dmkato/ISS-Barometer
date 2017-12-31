@@ -8,36 +8,52 @@
 
 import Foundation
 import CoreMotion
+import UIKit
 
 class Barometer {
     lazy var altimeter :CMAltimeter = CMAltimeter()
-    var initialReading:Double?
-    
+    var initialReading: Double?
+    lazy var settings: Settings = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.settings
+    }()
+
     // REMOVE BEFORE DEPLOY <--
-    var debugData:Double? = 700.0
+    var debugData:Double? = 100.0
     // -->
     
-    func kPa2mmHg(kPa:Double) -> Double {
-        return kPa * 7.50061683
+    func updateInitialReading() {
+        initialReading = nil
     }
     
-    func updateInitialReading() {
-        self.initialReading = nil
+    func kPa2units(kPa:Double) -> Double {
+        switch settings.units {
+            case "mmHg":
+                return kPa * 7.50061683
+            case "psi":
+                return kPa / 6.89475729
+            case "kPa":
+                return kPa
+            case "atm":
+                return kPa / 101.325
+            default:
+                return kPa * 7.50061683
+        }
     }
     
     func startDisplayingPressureData(updateFunc:@escaping (Double, Double, Double, Bool) -> ()) {
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
             data, error in
             let kPa = data?.pressure.doubleValue
-            let mmHg = self.kPa2mmHg(kPa: kPa!)
+            let pressure = self.kPa2units(kPa: kPa!)
             let time = Date().timeIntervalSince1970
             var resetWasPressed = false
             if self.initialReading == nil {
-                self.initialReading = mmHg
+                self.initialReading = pressure
                 resetWasPressed = true
             }
-            let deltaMmHg = (mmHg - self.initialReading!)
-            updateFunc(mmHg, deltaMmHg, time, resetWasPressed)
+            let deltaPressure = pressure - self.initialReading!
+            updateFunc(pressure, deltaPressure, time, resetWasPressed)
         })
     }
     
@@ -57,7 +73,7 @@ class Barometer {
                 resetWasPressed = true
             }
             let deltaDebug = (self.debugData! - self.initialReading!)
-            updateFunc(self.debugData!, deltaDebug, time, resetWasPressed)
+            updateFunc(self.kPa2units(kPa: self.debugData!), deltaDebug, time, resetWasPressed)
         }
     }
     
