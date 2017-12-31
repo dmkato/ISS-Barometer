@@ -16,13 +16,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var deltaTimestamp: UILabel!
     @IBOutlet weak var currentTimestamp: UILabel!
     
+    var barometer = Barometer()
+    lazy var chartViewController = childViewControllers[0] as! ChartViewController
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
     }()
-    
-    var barometer = Barometer()
-    lazy var chartViewController = childViewControllers[0] as! ChartViewController
 
     @IBAction func resetPressed(_ sender: Any) {
         barometer.updateInitialReading()

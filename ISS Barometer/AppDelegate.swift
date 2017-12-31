@@ -14,11 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var settings: Settings!
-    
-    private func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
-        let orientationInt = ["Up": 1, "Down": 2, "Left": 3, "Right": 4]
-        return orientationInt[settings.orientation]!
-    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if let data = UserDefaults.standard.value(forKey: "Settings") as? Data {
