@@ -50,23 +50,23 @@ class SettingsViewController: UITableViewController {
         let roundedValue = lroundf(runningWindowSlider.value)
         (sender as AnyObject).setValue(Float(roundedValue), animated: true)
         runningWindowValue.text = String(roundedValue*25)
-        settings?.runningWindowSize = roundedValue*25
+        settings?.windowSize = roundedValue*25
     }
     
     func initSlider() {
         sigFigValue.text = String(describing: settings!.sigFigs)
-        sigFigSlider.setValue(Float(settings!.sigFigs), animated: true)
+        sigFigSlider.setValue(Float(settings.sigFigs), animated: true)
     }
     
     func initUnitPicker() {
         let unitPickerSegments = ["mmHg": 0, "psi": 1, "kPa": 2, "atm": 3]
-        let segmentIdx = unitPickerSegments[settings!.units]!
+        let segmentIdx = unitPickerSegments[settings.units]!
         unitPicker.selectedSegmentIndex = segmentIdx
     }
     
     func initOrientationPicker() {
         let orientationPickerSegments = ["Up": 0, "Down": 1, "Left": 2, "Right": 3]
-        let segmentIdx = orientationPickerSegments[settings!.orientation]!
+        let segmentIdx = orientationPickerSegments[settings.orientation]!
         orientationPicker.selectedSegmentIndex = segmentIdx
     }
     
@@ -82,8 +82,8 @@ class SettingsViewController: UITableViewController {
             runningWindowOptions.isHidden = true
             runningWindowTable.isHidden = true
         }
-        runningWindowValue.text = String(describing: settings!.runningWindowSize)
-        runningWindowSlider.setValue(Float(round(Double(settings!.runningWindowSize)/25.0)), animated: true)
+        runningWindowValue.text = String(describing: settings.windowSize)
+        runningWindowSlider.setValue(Float(round(Double(settings.windowSize)/25.0)), animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,17 +97,10 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-//         self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
