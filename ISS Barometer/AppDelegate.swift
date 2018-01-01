@@ -15,9 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var settings: Settings!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let data = UserDefaults.standard.value(forKey: "Settings") as! Data
-        settings = try? PropertyListDecoder().decode(Settings.self, from: data)
-        if settings == nil {
+        if let data = UserDefaults.standard.value(forKey: "Settings") as? Data {
+            settings = try? PropertyListDecoder().decode(Settings.self, from: data)
+            if settings == nil {
+                settings = Settings()
+            }
+        } else {
             settings = Settings()
         }
         return true
