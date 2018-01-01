@@ -12,7 +12,7 @@ import UIKit
 class Settings: Codable {
     var units = "mmHg"
     var sigFigs = 4
-    var orientation: String!
+    var orientation = "Right"
     var slidingScale = false
     var slidingScaleThreshold = 20
     var windowSize = 50
