@@ -15,7 +15,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var deltaTimestamp: UILabel!
     @IBOutlet weak var currentTimestamp: UILabel!
-    
     var barometer = Barometer()
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
     lazy var settings: Settings = {
@@ -56,11 +55,9 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingsSegue" {
             let settingsVC = segue.destination as! SettingsViewController
-            settingsVC.settings = self.settings
             settingsVC.chartVC = self.chartViewController
         } else if segue.identifier == "ChartSegue" {
             let chartVC = segue.destination as! ChartViewController
-            chartVC.settings = self.settings
             chartVC.barometer = barometer
         }
     }

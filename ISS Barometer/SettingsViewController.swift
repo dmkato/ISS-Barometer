@@ -9,8 +9,11 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-    var settings:Settings!
     var chartVC: ChartViewController!
+    lazy var settings: Settings = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.settings
+    }()
 
     @IBOutlet weak var sigFigSlider: UISlider!
     @IBOutlet weak var sigFigValue: UILabel!
