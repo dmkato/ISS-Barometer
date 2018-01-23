@@ -15,6 +15,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var deltaTimestamp: UILabel!
     @IBOutlet weak var currentTimestamp: UILabel!
+    @IBOutlet weak var dpdtDisplay: UILabel!
+    @IBOutlet weak var dtdpDisplay: UILabel!
+    
     var barometer = Barometer()
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
     lazy var settings: Settings = {
