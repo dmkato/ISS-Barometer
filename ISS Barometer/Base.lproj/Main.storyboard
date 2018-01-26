@@ -39,10 +39,10 @@
                                 <rect key="frame" x="10" y="64" width="748" height="950"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xNB-GU-8nP" userLabel="Readings Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="748" height="275"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="748" height="222"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tbu-aC-RsG" userLabel="Pressure/Timestamp Stack">
-                                                <rect key="frame" x="0.0" y="67" width="249.5" height="141"/>
+                                                <rect key="frame" x="0.0" y="40.5" width="249.5" height="141"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R8c-WC-Wga" userLabel="Pressure Stack">
                                                         <rect key="frame" x="56" y="0.0" width="137.5" height="66"/>
@@ -81,7 +81,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="H0n-q7-2e8" userLabel="Delta/Timestamp Stack">
-                                                <rect key="frame" x="249.5" y="67" width="249" height="141"/>
+                                                <rect key="frame" x="249.5" y="40.5" width="249" height="141"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="kS1-Uc-lsg" userLabel="Delta Stack">
                                                         <rect key="frame" x="46.5" y="0.0" width="156" height="66"/>
@@ -132,7 +132,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JTc-IJ-tLB" userLabel="dP/dt dt/dP Stack">
-                                                <rect key="frame" x="498.5" y="26.5" width="249.5" height="222"/>
+                                                <rect key="frame" x="498.5" y="0.0" width="249.5" height="222"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="VQj-cp-EMD" userLabel="dP/dt Stack">
                                                         <rect key="frame" x="47" y="0.0" width="156" height="66"/>
@@ -201,17 +201,56 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-bx-B8W">
-                                        <rect key="frame" x="0.0" y="275" width="748" height="675"/>
-                                        <connections>
-                                            <segue destination="WSa-VY-E7U" kind="embed" identifier="ChartSegue" id="aEN-0o-btt"/>
-                                        </connections>
-                                    </containerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wt-mb-oOe" userLabel="Chart Stack">
+                                        <rect key="frame" x="0.0" y="222" width="748" height="708"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Rx0-g7-tWx" userLabel="yAxisStack">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="708"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7R-bN-Pt0" userLabel="spaceAbove">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="344"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ws-NK-QZX" userLabel="yAxisLabel">
+                                                        <rect key="frame" x="0.0" y="344" width="20" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmv-No-nx1" userLabel="spaceBelow">
+                                                        <rect key="frame" x="0.0" y="364" width="20" height="344"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-bx-B8W">
+                                                <rect key="frame" x="20" y="0.0" width="728" height="708"/>
+                                                <connections>
+                                                    <segue destination="WSa-VY-E7U" kind="embed" identifier="ChartSegue" id="aEN-0o-btt"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="S1D-bx-B8W" firstAttribute="leading" secondItem="Rx0-g7-tWx" secondAttribute="trailing" id="KgG-4d-kF4"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-oO-Sl6" userLabel="xAxisLabel">
+                                        <rect key="frame" x="355" y="930" width="38" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="S1D-bx-B8W" firstAttribute="leading" secondItem="xNB-GU-8nP" secondAttribute="leading" id="XS1-sT-NmM"/>
+                                    <constraint firstItem="9wt-mb-oOe" firstAttribute="top" secondItem="oyG-jW-4bS" secondAttribute="topMargin" constant="222" id="7XO-wG-VEP"/>
+                                    <constraint firstAttribute="bottom" secondItem="9wt-mb-oOe" secondAttribute="bottom" constant="20" symbolic="YES" id="7fy-xY-8MJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="9wt-mb-oOe" secondAttribute="trailing" id="CQn-MX-90p"/>
+                                    <constraint firstItem="9wt-mb-oOe" firstAttribute="leading" secondItem="oyG-jW-4bS" secondAttribute="leading" id="DSq-T8-r8s"/>
                                     <constraint firstAttribute="trailing" secondItem="xNB-GU-8nP" secondAttribute="trailing" id="a4f-Ez-9pF"/>
-                                    <constraint firstItem="S1D-bx-B8W" firstAttribute="top" secondItem="oyG-jW-4bS" secondAttribute="top" constant="275" id="dVu-87-1kn"/>
                                     <constraint firstItem="xNB-GU-8nP" firstAttribute="leading" secondItem="oyG-jW-4bS" secondAttribute="leading" id="eCL-tg-JgP"/>
                                 </constraints>
                             </stackView>
@@ -245,11 +284,12 @@
                         <outlet property="dpdtTimestamp" destination="Tof-7d-OvK" id="VQZ-CO-7Ke"/>
                         <outlet property="dtdpDisplay" destination="fg2-pp-n0q" id="isL-Wz-WTo"/>
                         <outlet property="pressureDisplay" destination="wfI-5A-aGZ" id="BS6-9y-V6o"/>
+                        <outlet property="yAxisLabel" destination="6Ws-NK-QZX" id="Zhu-Ix-f9a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51.5625" y="30.46875"/>
+            <point key="canvasLocation" x="51.5625" y="30.468749999999996"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="5v4-FT-k3g">
@@ -484,11 +524,11 @@
             <objects>
                 <viewController storyboardIdentifier="ChartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WSa-VY-E7U" customClass="ChartViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mr1-AK-6F3">
-                        <rect key="frame" x="0.0" y="0.0" width="748" height="675"/>
+                        <rect key="frame" x="0.0" y="0.0" width="728" height="708"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NY4-By-H64" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="748" height="675"/>
+                                <rect key="frame" x="0.0" y="0.0" width="728" height="707.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
