@@ -18,6 +18,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dpdtDisplay: UILabel!
     @IBOutlet weak var dtdpDisplay: UILabel!
     @IBOutlet weak var dpdtTimestamp: UILabel!
+    @IBOutlet weak var pressureDisplayUnit: UILabel!
+    @IBOutlet weak var deltaPressureDisplayUnit: UILabel!
+    @IBOutlet weak var dpdtDisplayUnit: UILabel!
+    @IBOutlet weak var dtdpDisplayUnit: UILabel!
     
     
     var barometer = Barometer()
@@ -41,9 +45,14 @@ class MainViewController: UIViewController {
     
     func updateUI(pressure:Double, deltaPressure:Double, time:Double) {
         // Set Pressure Readings
-        let fString = "%.\(settings.sigFigs)f \(settings.units)"
+        
+        let fString = "%.\(settings.sigFigs)f"
+        pressureDisplayUnit.text = String(settings.units)
+        dtdpDisplayUnit.text = String(settings.units)
+        dpdtDisplayUnit.text = String(settings.units)
         pressureDisplay.text = String(format:fString, pressure)
         deltaPressureDisplay.text = String(format:fString, deltaPressure)
+        deltaPressureDisplayUnit.text = String(settings.units)
         let date = Date(timeIntervalSince1970: time)
         currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
         if deltaResetWasPressed {
