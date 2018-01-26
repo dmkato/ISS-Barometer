@@ -87,11 +87,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="H0n-q7-2e8" userLabel="Delta/Timestamp Stack">
-<<<<<<< HEAD
-                                                <rect key="frame" x="249.5" y="40.5" width="249" height="141"/>
-=======
                                                 <rect key="frame" x="252.5" y="43" width="243" height="189"/>
->>>>>>> cdb45f08c862f3a873e3b264d80b2ecb544e754b
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kS1-Uc-lsg" userLabel="Delta Stack">
                                                         <rect key="frame" x="0.0" y="0.0" width="243" height="134.5"/>
@@ -147,11 +143,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JTc-IJ-tLB" userLabel="dP/dt dt/dP Stack">
-<<<<<<< HEAD
-                                                <rect key="frame" x="498.5" y="0.0" width="249.5" height="222"/>
-=======
                                                 <rect key="frame" x="505.5" y="0.0" width="242.5" height="275"/>
->>>>>>> cdb45f08c862f3a873e3b264d80b2ecb544e754b
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xfu-8k-kmV" userLabel="dt/dP Stack">
                                                         <rect key="frame" x="0.0" y="0.0" width="242.5" height="220.5"/>
@@ -333,11 +325,8 @@
                         <outlet property="dtdpDisplay" destination="fg2-pp-n0q" id="isL-Wz-WTo"/>
                         <outlet property="dtdpDisplayUnit" destination="sHI-wM-vww" id="lBg-NJ-sXn"/>
                         <outlet property="pressureDisplay" destination="wfI-5A-aGZ" id="BS6-9y-V6o"/>
-<<<<<<< HEAD
                         <outlet property="yAxisLabel" destination="6Ws-NK-QZX" id="Zhu-Ix-f9a"/>
-=======
                         <outlet property="pressureDisplayUnit" destination="Nik-lW-xze" id="6Tt-0R-hSM"/>
->>>>>>> cdb45f08c862f3a873e3b264d80b2ecb544e754b
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
