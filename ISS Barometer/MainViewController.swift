@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
     }()
 
     @IBAction func deltaResetPressed(_ sender: Any) {
-        barometer.updateInitialReading()
+        barometer.updateInitialDeltaReading()
         deltaResetWasPressed = true
     }
     
@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
         dpdtResetWasPressed = true
     }
     
-    func updateUI(pressure:Double, deltaPressure:Double, time:Double, deltaResetWasPressed:Bool) {
+    func updateUI(pressure:Double, deltaPressure:Double, time:Double) {
         // Set Pressure Readings
         let fString = "%.\(settings.sigFigs)f \(settings.units)"
         pressureDisplay.text = String(format:fString, pressure)
@@ -51,8 +51,8 @@ class MainViewController: UIViewController {
             deltaResetWasPressed = false
         }
         if dpdtResetWasPressed {
-            dpdtDisplay.text = "0"
-            dtdpDisplay.text = "0"
+            dpdtDisplay.text = String(describing: barometer.curDpdt!)
+            dtdpDisplay.text = String(describing: barometer.curDtdp!)
             dpdtTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
             dpdtResetWasPressed = false
         }

@@ -13,7 +13,8 @@ import UIKit
 class Barometer {
     lazy var altimeter :CMAltimeter = CMAltimeter()
     var initialDeltaReading: Double?
-    var initialDpdtReading: Double?
+    var curDpdt: Double?
+    var curDtdp: Double?
     var dpdtPressureReadings: [(Double, Double)]?
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -24,13 +25,24 @@ class Barometer {
     var debugData:Double? = 100.0
     // -->
     
-    func updateInitialDeltaReading() {
-        initialDeltaReading = nil
+    func getDpdt() -> Double {
+        // TODO: Reimann Sum of dpdtPressureReading
+        return 0
+    }
+    
+    func getDtdp() -> Double {
+        // TODO: Reimann Sum of dpdtPressureReading
+        return 0
     }
     
     func updateInitialDpdtReading() {
-        initialDpdtReading = nil
+        curDpdt = getDpdt()
+        curDtdp = getDtdp()
         dpdtPressureReadings = nil
+    }
+    
+    func updateInitialDeltaReading() {
+        initialDeltaReading = nil
     }
     
     func kPa2units(kPa:Double) -> Double {
@@ -56,9 +68,6 @@ class Barometer {
             let time = Date().timeIntervalSince1970
             if self.initialDeltaReading == nil {
                 self.initialDeltaReading = pressure
-            }
-            if self.initialDpdtReading == nil {
-                self.initialDpdtReading = pressure
             }
             self.dpdtPressureReadings?.append((pressure, time))
             let deltaPressure = pressure - self.initialDeltaReading!
