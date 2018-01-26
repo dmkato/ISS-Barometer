@@ -19,32 +19,44 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dtdpDisplay: UILabel!
     @IBOutlet weak var dpdtTimestamp: UILabel!
     
+    
     var barometer = Barometer()
+    var deltaResetWasPressed = true
+    var dpdtResetWasPressed = true
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
     }()
 
-    @IBAction func resetPressed(_ sender: Any) {
+    @IBAction func deltaResetPressed(_ sender: Any) {
         barometer.updateInitialReading()
+        deltaResetWasPressed = true
     }
     
     @IBAction func dpdtResetPressed(_ sender: Any) {
+        barometer.updateInitialDpdtReading()
+        dpdtResetWasPressed = true
     }
     
-    func updateUI(pressure:Double, deltaPressure:Double, time:Double, resetWasPressed:Bool) {
+    func updateUI(pressure:Double, deltaPressure:Double, time:Double, deltaResetWasPressed:Bool) {
         // Set Pressure Readings
         let fString = "%.\(settings.sigFigs)f \(settings.units)"
         pressureDisplay.text = String(format:fString, pressure)
         deltaPressureDisplay.text = String(format:fString, deltaPressure)
         let date = Date(timeIntervalSince1970: time)
         currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
-        if resetWasPressed {
+        if deltaResetWasPressed {
             deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
-            dpdtDisplay.text = 0
-            dtdpDisplay.text = 0
+            deltaResetWasPressed = false
         }
+        if dpdtResetWasPressed {
+            dpdtDisplay.text = "0"
+            dtdpDisplay.text = "0"
+            dpdtTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+            dpdtResetWasPressed = false
+        }
+        
         // Update Chart
         chartViewController.updateChart(pressureReading: pressure, time: time)
     }

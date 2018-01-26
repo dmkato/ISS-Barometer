@@ -98,9 +98,6 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzE-7l-HFP">
                                                                         <rect key="frame" x="66.5" y="0.0" width="39" height="30"/>
                                                                         <state key="normal" title="Reset"/>
-                                                                        <connections>
-                                                                            <action selector="resetPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oRt-Zo-7Lb"/>
-                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -134,20 +131,20 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JTc-IJ-tLB" userLabel="dP/dt dt/dP Stack">
                                                 <rect key="frame" x="498.5" y="26.5" width="249.5" height="222"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="VQj-cp-EMD" userLabel="dP/dt Stack">
-                                                        <rect key="frame" x="47" y="0.0" width="156" height="66"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VQj-cp-EMD" userLabel="dP/dt Stack">
+                                                        <rect key="frame" x="44.5" y="0.0" width="161" height="66"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6jZ-ls-1ks" userLabel="dP/dt Reset Stack">
-                                                                <rect key="frame" x="41.5" y="0.0" width="114.5" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="161" height="30"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dP/dt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPW-75-Xo0">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="58.5" height="30"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg dP/dt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPW-75-Xo0">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imM-yP-XHM">
-                                                                        <rect key="frame" x="68.5" y="0.0" width="46" height="30"/>
+                                                                        <rect key="frame" x="115" y="0.0" width="46" height="30"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <connections>
                                                                             <action selector="dpdtResetPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="81f-0L-EKi"/>
@@ -156,7 +153,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-b5-WNd" userLabel="dP/dt Value">
-                                                                <rect key="frame" x="0.0" y="30" width="156" height="36"/>
+                                                                <rect key="frame" x="2.5" y="30" width="156" height="36"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -166,8 +163,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xfu-8k-kmV" userLabel="dt/dP Stack">
                                                         <rect key="frame" x="47" y="81" width="156" height="66"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dt/dP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6X-MY-OFT">
-                                                                <rect key="frame" x="48" y="0.0" width="59.5" height="30"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg dt/dP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6X-MY-OFT">
+                                                                <rect key="frame" x="24.5" y="0.0" width="106.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
