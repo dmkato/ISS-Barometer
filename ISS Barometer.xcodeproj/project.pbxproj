@@ -147,11 +147,11 @@
 				35F63A551FCCE56C00639EB5 /* LaunchScreen.storyboard */,
 				35F63A581FCCE56C00639EB5 /* Info.plist */,
 				35F63A501FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld */,
+				35F63A4B1FCCE56C00639EB5 /* MainViewController.swift */,
 				355183CF1FE4C05E0065279E /* Barometer.swift */,
 				354958A51FF6DE8700C00594 /* Settings.swift */,
 				3507D3531FE71A7800C2C39D /* XAxisValueFormatter.swift */,
 				354958A71FF702D200C00594 /* NavigationController.swift */,
-				35F63A4B1FCCE56C00639EB5 /* MainViewController.swift */,
 				353B59291FD3C0310060613E /* ChartViewController.swift */,
 				354958A31FF6D3A200C00594 /* SettingsViewController.swift */,
 			);
