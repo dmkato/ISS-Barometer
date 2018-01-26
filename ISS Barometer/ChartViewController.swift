@@ -13,12 +13,14 @@ import Charts
 
 class ChartViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
-    
     var barometer:Barometer!
     var dataEntries = [ChartDataEntry]()
-    var settings:Settings!
     var startTime = 0.0
     var currentCount = 0
+    lazy var settings: Settings = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.settings
+    }()
     
     func adjustWindow(newEntry: ChartDataEntry) {
         if dataEntries.count >= settings.windowSize {

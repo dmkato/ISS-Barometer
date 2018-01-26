@@ -9,12 +9,12 @@
 import UIKit
 
 class NavigationController: UINavigationController {
+    var rotated = false
+    var prevOrientation: String!
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
     }()
-    var rotated = false
-    var prevOrientation: String!
     
     override var shouldAutorotate: Bool {
         if settings.orientation != prevOrientation {

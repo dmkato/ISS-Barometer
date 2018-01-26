@@ -9,8 +9,11 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-    var settings:Settings!
     var chartVC: ChartViewController!
+    lazy var settings: Settings = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.settings
+    }()
 
     @IBOutlet weak var sigFigSlider: UISlider!
     @IBOutlet weak var sigFigValue: UILabel!
@@ -44,7 +47,7 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func slidingScalePicked(_ sender: Any) {
-        settings?.slidingScale = slidingScalePicker.isOn
+        settings.slidingScale = slidingScalePicker.isOn
         initWindowSlider()
     }
     
@@ -52,11 +55,11 @@ class SettingsViewController: UITableViewController {
         let roundedValue = lroundf(runningWindowSlider.value)
         (sender as AnyObject).setValue(Float(roundedValue), animated: true)
         runningWindowValue.text = String(roundedValue*25)
-        settings?.windowSize = roundedValue*25
+        settings.windowSize = roundedValue*25
     }
     
     func initSlider() {
-        sigFigValue.text = String(describing: settings!.sigFigs)
+        sigFigValue.text = String(describing: settings.sigFigs)
         sigFigSlider.setValue(Float(settings.sigFigs), animated: true)
     }
     
@@ -73,7 +76,7 @@ class SettingsViewController: UITableViewController {
     }
     
     func initSlidingScalePicker() {
-        slidingScalePicker.setOn((settings?.slidingScale)!, animated: true)
+        slidingScalePicker.setOn((settings.slidingScale), animated: true)
     }
     
     func initWindowSlider() {
