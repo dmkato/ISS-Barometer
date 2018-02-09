@@ -104,6 +104,9 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzE-7l-HFP">
                                                                         <rect key="frame" x="125.5" y="0.0" width="39" height="62.5"/>
                                                                         <state key="normal" title="Reset"/>
+                                                                        <connections>
+                                                                            <action selector="deltaResetPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jy8-ob-FZa"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>

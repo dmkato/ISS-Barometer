@@ -23,10 +23,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dpdtDisplayUnit: UILabel!
     @IBOutlet weak var dtdpDisplayUnit: UILabel!
     
-    
     var barometer = Barometer()
-    var deltaResetWasPressed = true
-    var dpdtResetWasPressed = true
+    var deltaResetWasPressed = false
+    var dpdtResetWasPressed = false
+    
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -39,34 +39,32 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func dpdtResetPressed(_ sender: Any) {
-        barometer.updateInitialDpdtReading()
         dpdtResetWasPressed = true
     }
     
-    func updateUI(pressure:Double, deltaPressure:Double, time:Double) {
-        // Set Pressure Readings
-        
-        let fString = "%.\(settings.sigFigs)f"
-        pressureDisplayUnit.text = String(settings.units)
-        dtdpDisplayUnit.text = String(settings.units)
-        dpdtDisplayUnit.text = String(settings.units)
-        pressureDisplay.text = String(format:fString, pressure)
-        deltaPressureDisplay.text = String(format:fString, deltaPressure)
-        deltaPressureDisplayUnit.text = String(settings.units)
-        let date = Date(timeIntervalSince1970: time)
-        currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+    func handleDpdtReset(_ date: Date) {
+        if dpdtResetWasPressed {
+            dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDpdt())
+            dtdpDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDtdp())
+            dpdtTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+            dpdtResetWasPressed = false
+        }
+    }
+    
+    func handleDeltaReset(_ date: Date) {
         if deltaResetWasPressed {
             deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
             deltaResetWasPressed = false
         }
-        if dpdtResetWasPressed {
-            dpdtDisplay.text = String(describing: barometer.curDpdt!)
-            dtdpDisplay.text = String(describing: barometer.curDtdp!)
-            dpdtTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
-            dpdtResetWasPressed = false
-        }
-        
-        // Update Chart
+    }
+    
+    func updateUI(pressure:Double, deltaPressure:Double, time:Double) {
+        let date = Date(timeIntervalSince1970: time)
+        pressureDisplay.text = String(format:"%.\(settings.sigFigs)f", pressure)
+        deltaPressureDisplay.text = String(format:"%.\(settings.sigFigs)f", deltaPressure)
+        currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+        handleDeltaReset(date)
+        handleDpdtReset(date)
         chartViewController.updateChart(pressureReading: pressure, time: time)
     }
     
@@ -78,10 +76,19 @@ class MainViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // This is called before sequeing to the settings view
+    func setDisplayUnits() {
+        pressureDisplayUnit.text = String(settings.units)
+        dtdpDisplayUnit.text = "Sec/" + String(settings.units)
+        dpdtDisplayUnit.text = String(settings.units) + "/Sec"
+        deltaPressureDisplayUnit.text = String(settings.units)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setDisplayUnits()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SettingsSegue" {
             let settingsVC = segue.destination as! SettingsViewController

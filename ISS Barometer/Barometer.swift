@@ -13,9 +13,7 @@ import UIKit
 class Barometer {
     lazy var altimeter :CMAltimeter = CMAltimeter()
     var initialDeltaReading: Double?
-    var curDpdt: Double?
-    var curDtdp: Double?
-    var dpdtPressureReadings: [(Double, Double)]?
+    var pressureReadings = [(Double, Double)]()
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
@@ -26,19 +24,25 @@ class Barometer {
     // -->
     
     func getDpdt() -> Double {
-        // TODO: Reimann Sum of dpdtPressureReading
-        return 0
+        // TODO: Avg of dpdtPressureReading
+        var sum = 0.0
+        for idx in 1..<pressureReadings.count {
+            let dp = pressureReadings[idx].0 - pressureReadings[idx-1].0
+            let dt = pressureReadings[idx].1 - pressureReadings[idx-1].1
+            sum += dp/dt
+        }
+        return sum / Double(pressureReadings.count - 1)
     }
     
     func getDtdp() -> Double {
-        // TODO: Reimann Sum of dpdtPressureReading
-        return 0
-    }
-    
-    func updateInitialDpdtReading() {
-        curDpdt = getDpdt()
-        curDtdp = getDtdp()
-        dpdtPressureReadings = nil
+        // TODO: Avg of dpdtPressureReading
+        var sum = 0.0
+        for idx in 1..<pressureReadings.count {
+            let dp = pressureReadings[idx].0 - pressureReadings[idx-1].0
+            let dt = pressureReadings[idx].1 - pressureReadings[idx-1].1
+            sum += dt/dp
+        }
+        return sum / Double(pressureReadings.count - 1)
     }
     
     func updateInitialDeltaReading() {
@@ -69,7 +73,7 @@ class Barometer {
             if self.initialDeltaReading == nil {
                 self.initialDeltaReading = pressure
             }
-            self.dpdtPressureReadings?.append((pressure, time))
+            self.pressureReadings.append((pressure, time))
             let deltaPressure = pressure - self.initialDeltaReading!
             updateFunc(pressure, deltaPressure, time)
         })
@@ -88,8 +92,10 @@ class Barometer {
             if self.initialDeltaReading == nil {
                 self.initialDeltaReading = self.debugData!
             }
+            let pressure = self.kPa2units(kPa: self.debugData!)
+            self.pressureReadings.append((pressure, time))
             let deltaDebug = (self.debugData! - self.initialDeltaReading!)
-            updateFunc(self.kPa2units(kPa: self.debugData!), deltaDebug, time)
+            updateFunc(pressure, deltaDebug, time)
         }
     }
     
