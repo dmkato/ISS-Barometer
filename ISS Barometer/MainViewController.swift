@@ -62,16 +62,9 @@ class MainViewController: UIViewController {
     
     func adjustAxisLabels() {
         yAxisLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
-        yAxisLabel.text = "Pressure (" + settings.units + ")"
-        yAxisLabel.layer.borderWidth = 1.0
-        yAxisLabel.textAlignment = .right
-//        yAxisLabel.frame = CGRect(x: yAxisLabel.layer.position.x, y: yAxisLabel.layer.position.y,           width: 1, height:1);
-//        for constraint in self.view.constraints {
-//            if constraint.identifier == "sizeYAxis" {
-//                constraint.constant = 20
-//            }
-//        }
-//          yAxisLabel.frame = CGRect(x: 100, y: 0, width: 10, height: 20)
+        yAxisLabel.text = "Pressure (\(settings.units))"
+        
+        yAxisLabel.sizeToFit()
     }
     
     override func viewDidLoad() {
