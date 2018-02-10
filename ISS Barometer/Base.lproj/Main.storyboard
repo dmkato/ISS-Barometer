@@ -148,19 +148,19 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xfu-8k-kmV" userLabel="dt/dP Stack">
                                                         <rect key="frame" x="0.0" y="0.0" width="242.5" height="186"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VQj-cp-EMD" userLabel="dP/dt Stack">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VQj-cp-EMD" userLabel="dP/dt Stack">
                                                                 <rect key="frame" x="0.0" y="0.0" width="242.5" height="87.5"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6jZ-ls-1ks" userLabel="dP/dt Reset Stack">
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6jZ-ls-1ks" userLabel="dP/dt Reset Stack">
                                                                         <rect key="frame" x="43.5" y="0.0" width="155" height="30"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dP/dt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPW-75-Xo0">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="dP/dt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPW-75-Xo0">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="99" height="30"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="43"/>
                                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imM-yP-XHM">
+                                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imM-yP-XHM">
                                                                                 <rect key="frame" x="109" y="0.0" width="46" height="30"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <connections>
@@ -169,7 +169,7 @@
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="JRE-JY-jch">
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="JRE-JY-jch">
                                                                         <rect key="frame" x="0.0" y="30" width="242.5" height="57.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.0000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-b5-WNd" userLabel="dP/dt Value">
@@ -188,16 +188,16 @@
                                                                     </stackView>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x67-Mv-7BZ">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x67-Mv-7BZ">
                                                                 <rect key="frame" x="44" y="87.5" width="154" height="41"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dt/dP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6X-MY-OFT">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="dt/dP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6X-MY-OFT">
                                                                         <rect key="frame" x="0.0" y="0.0" width="108" height="41"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5E7-kH-6zS">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5E7-kH-6zS">
                                                                         <rect key="frame" x="108" y="0.0" width="46" height="41"/>
                                                                         <state key="normal" title="Button">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -256,11 +256,8 @@
                                                 </connections>
                                             </containerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ws-NK-QZX" userLabel="yAxisLabel">
-                                                <rect key="frame" x="-37" y="312" width="60" height="61"/>
+                                                <rect key="frame" x="0.0" y="343" width="100" height="21"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="aQS-od-Y6B"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -268,12 +265,12 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="S1D-bx-B8W" firstAttribute="leading" secondItem="6Ws-NK-QZX" secondAttribute="trailing" constant="8" id="4gm-X8-ltp"/>
-                                            <constraint firstItem="6Ws-NK-QZX" firstAttribute="leading" secondItem="T12-1H-QuU" secondAttribute="leading" id="9pQ-yp-eeb"/>
+                                            <constraint firstItem="6Ws-NK-QZX" firstAttribute="leading" secondItem="T12-1H-QuU" secondAttribute="leading" id="4za-8J-vaP"/>
+                                            <constraint firstItem="6Ws-NK-QZX" firstAttribute="top" secondItem="T12-1H-QuU" secondAttribute="top" constant="343" id="7Ml-OE-yTJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Ws-NK-QZX" secondAttribute="trailing" constant="648" id="H0W-iv-zPn"/>
+                                            <constraint firstAttribute="bottom" secondItem="6Ws-NK-QZX" secondAttribute="bottom" constant="337.5" id="Ose-Ed-xgO"/>
                                             <constraint firstItem="S1D-bx-B8W" firstAttribute="leading" secondItem="T12-1H-QuU" secondAttribute="leading" constant="31" id="Qbf-zd-r0j"/>
-                                            <constraint firstAttribute="bottom" secondItem="6Ws-NK-QZX" secondAttribute="bottom" constant="328.5" id="Qhp-Vq-m4n"/>
                                             <constraint firstAttribute="bottom" secondItem="S1D-bx-B8W" secondAttribute="bottom" constant="19" id="lmX-fX-7U4"/>
-                                            <constraint firstItem="6Ws-NK-QZX" firstAttribute="top" secondItem="T12-1H-QuU" secondAttribute="top" constant="312" id="mNc-B5-xem"/>
                                             <constraint firstItem="S1D-bx-B8W" firstAttribute="top" secondItem="T12-1H-QuU" secondAttribute="top" id="vZa-He-dCc"/>
                                             <constraint firstAttribute="trailing" secondItem="S1D-bx-B8W" secondAttribute="trailing" id="voy-EW-Jt5"/>
                                         </constraints>

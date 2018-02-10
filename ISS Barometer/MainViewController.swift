@@ -63,7 +63,6 @@ class MainViewController: UIViewController {
     func adjustAxisLabels() {
         yAxisLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
         yAxisLabel.text = "Pressure (\(settings.units))"
-        
         yAxisLabel.sizeToFit()
     }
     
