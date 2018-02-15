@@ -134,7 +134,50 @@ Sometimes we found the document quick and easy while other times it hours and ma
 % Each of our sections could have interesting code, problems faced, issues managed
 % I don't know really, but from the requirement this is the bulk of the writing
 \subsection{Daniel Kato}
+    I started the development process by creating a base project with the Charts API installed, and creating a main view and settings view in the storyboard.
 
+    \subsubsection{Chart}
+        For the chart I got a blank chart up and running on the display. This involved binding the Charts API's \texttt{LineChartView} class to a subview on the Main UI.
+        Next I created a view controller for that view called \texttt{ChartViewController} to control what is drawn in the \texttt{LineChartView}.
+        I then configured the chart to display according to Nathan's color palette and made some small changes to the way the chart was drawn.
+        In order for the chart to access the barometer data, I created a function in the \texttt{ChartViewController} called \texttt{updateChart} to be called every time a reading is taken with the pressure and time of the reading.
+        This allowed me to move on and implement the live updating functionality of the chart.
+
+    \subsubsection{Main UI}
+        For the main UI, I added all of the readings, timestamps, labels, and buttons to the UI as well as implemented the logic that supplied the values to each.
+        In the middle of connecting all of the moving parts, I decided to abstract the barometer functionality into its own class so the the code could be more readable.
+        I also configured the UI to use a \texttt{Navigation Controller} to manage switching to the settings view.
+
+    \subsubsection{Settings UI}
+
+
+
+
+\begin{itemize}
+    \item Add button to record average dP/dt and dt/dP since last press or start of data
+    \item Add 3rd column with avg dP/dt and avg dt/dP
+    \item Adjust Delta with conversion bug
+    \item Convert past data points when a unit is picked
+    \item Save settings to coreData when app is terminated
+    \item Add Reset Button
+    \item Adjust Axes on Chart
+    \item Change Delta Pressure functionality
+    \item Add delta time to Main UI
+    \item Add current time to Main UI
+    \item Make x-axis of chart display the time of the reading
+    \item Abstract barometer functionality into its own class
+    \item Test Chart
+    \item Test Pressure Display
+    \item Remove labels from bottom of chart
+    \item Chart updates, but data is not shown
+    \item Construct Chart
+    \item App Icon
+    \item Linked Barometer Data to Chart
+    \item Unit Picker Button
+    \item Orientation Setting Button
+    \item Figure out how to add barometer data to graph
+    \item Significant Digits Button
+\end{itemize}
 \subsection{Cade Raichart}
 
 \subsection{Nathan Shepherd}
@@ -149,10 +192,10 @@ Due to the technologies being vague and rather non-actionable, the team stuck to
 As follows, these are the issues I took both full and partial responsibility for:
 
 \begin{itemize}
-  \item Adjust Y-Axis Default Zoom Chart
-  \item Improve Random Debug data Chart
-  \item Unit Picker Button Settings UI
-  \item Moving graph button Settings UI
+  \item Adjust Y-Axis Default Zoom
+  \item Improve Random Debug data
+  \item Unit Picker Button
+  \item Moving graph button
   \item Adding X-axis and Y-axis titles
 \end{itemize}
 
@@ -171,7 +214,7 @@ One of the main features of our application is its ability to read data from the
 The way that data is collected from the barometer is quite interesting.
 The process of reading data from the barometer requires a bit of processing power and time which can block other time sensitive tasks form being performed.
 As a result, the measurement is done asynchronously through an object called the \texttt{OperationQueue}.
-A method provided by the CoreMotion library called \texttt{startRelativeUpdates()} takes the \texttt{OperationQueue}'s \texttt{main} queue, and a callback function as arguement.
+A method provided by the CoreMotion library called \texttt{startRelativeUpdates()} takes the \texttt{OperationQueue}'s \texttt{main} queue, and a callback function as argument.
 The function then appends a task to the queue to perform in the background, and when the task is complete, the result is passed into the callback function for further processing.\\
 
 \section{Retrospective}
