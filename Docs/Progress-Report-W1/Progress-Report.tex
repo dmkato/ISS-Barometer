@@ -3,9 +3,40 @@
 \usepackage{url}
 \usepackage{setspace}
 \usepackage{listings}
+\usepackage{xcolor}
 
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
+
+% Listings settings for swift taken from chriseidhof GitHub
+\lstdefinelanguage{swift}
+{
+  morekeywords={
+    func,if,then,else,for,in,while,do,switch,case,default,where,break,continue,fallthrough,return,
+    typealias,struct,class,enum,protocol,var,func,let,get,set,willSet,didSet,inout,init,deinit,extension,
+    subscript,prefix,operator,infix,postfix,precedence,associativity,left,right,none,convenience,dynamic,
+    final,lazy,mutating,nonmutating,optional,override,required,static,unowned,safe,weak,internal,
+    private,public,is,as,self,unsafe,dynamicType,true,false,nil,Type,Protocol,
+  },
+  morecomment=[l]{//}, % l is for line comment
+  morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+  morestring=[b]" % defines that strings are enclosed in double quotes
+}
+
+\definecolor{keyword}{HTML}{BA2CA3}
+\definecolor{string}{HTML}{D12F1B}
+\definecolor{comment}{HTML}{008400}
+
+\lstset{
+  language=swift,
+  basicstyle=\ttfamily,
+  showstringspaces=false, % lets spaces in strings appear as real spaces
+  columns=fixed,
+  keepspaces=true,
+  keywordstyle=\color{keyword},
+  stringstyle=\color{string},
+  commentstyle=\color{comment},
+}
 
 % 1. Fill in these details
 \def \CapstoneTeamName{Manovacumeter Team}
@@ -66,8 +97,10 @@
         One very important aspect for the success of life in near vacuum is sustained air pressure inside the modules.
         This air pressure is monitored by mechanical barometers, called Manovacometers, which must be visually monitored, and are no longer available.
         The \CapstoneProjectName seeks to provide a suitable replacement for the current barometer device aboard the International Space Station.
-        This document will serve to introduce the \CapstoneProjectName, and will detail the problem, the solution, and the success metrics of the project.
-        The sections include the Definition of the Problem, Definition of Project, and the Metrics of Success.
+        This document will update the reader on our progress, from the last Fall term Progress report.
+        Each member has written their progress and plans, as well as a main refresher on our project as a whole.
+        The member sections include Responsibilities, Current Status, Remaining Tasks, Problems Faced, and additional relevant or interesting details.
+        This document should provide a clear picture of where the project stands, halfway through the Winter term, and halfway through the allotted year.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -85,8 +118,8 @@ The ISS Barometer Application will be used on the ISS to measure and track air p
 The crew members aboard the ISS are currently reliant on mechanical barometers to take critical readings during leaks, or rapid depressurization events.
 These leaks, caused by orbital debris, must be found and patched or the crew would need to evacuate.
 Our application will improve on the mechanical barometers by providing clear and accurate pressure readings through the iPads on-board barometer sensor.
-Readouts and measurements will be presented in a quick to read fashion that will allow users to quickly gauge the important details.
-In further iterations, we plan to implement contextualized audio data readouts by using the t-Res document and a simple Swift api.
+Readouts and measurements will be presented in a easy-to-read fashion that will allow users to quickly gauge the important details.
+In further iterations, we plan to implement contextualized audio data readouts by using the t-Res document and a simple Swift api \cite{probStat}.
 
 \section{Project Goals}
 As mentioned above the application we are making will provide ISS crew members with an accurate and efficient pressure reading.
@@ -104,6 +137,10 @@ Our required features follow that purpose and are listed below:
 
 Along with these specific features, the application that we create must be efficient and clear, as decided by the users.
 The application will be used in challenging situations and must be clear and easy to understand, so that the data can be conveyed quickly and without confusion.
+From the listed project goals, we have sufficiently finished with V1, and have started implementing portions of V2, while trying to finalize our V1 progress.
+
+
+% These sections can be used by whoever wrote them, I'm not sure who did which ones though
 
 % \section{Current State of the Project}
 % % If anyone can think of a better way to state this, feel free to change the heading
@@ -175,10 +212,46 @@ As follows, these are the issues I took both full and partial responsibility for
 
 \subsection{Current Status}
 
-Currently our application is a fully functional prototype.
-It properly records air pressure, and displays a graph, along with the requested $\frac{\Delta p}{\Delta t}$ and $\frac{\Delta t}{\Delta p}$.
+Currently our application is a fully functional prototype with near full coverage of our version one goals.
+It properly records air pressure, and displays a graph, along with the requested current pressure, $\frac{\Delta p}{\Delta t}$, and $\frac{\Delta t}{\Delta p}$.
+In addition we have implemented the following settings, and initialized them with assumed defaults:
+
+\begin{lstlisting}
+class Settings: Codable {
+    var units = "mmHg"
+    var sigFigs = 4
+    var orientation = "Right"
+    var slidingScale = false
+    var windowSize = 50
+}
+\end{lstlisting}
+
+These settings allow the user to change and save their preferences, making the application more interactive.
+The units that can be chosen are mmHg, psi, kPa, and atm.
+The changes then propagate to both the data view and the plot, making both scale appropriately.
+The significant figure setting can be incremented anywhere between 0 and 10.
+The orientation is a user setting because, as described in our requirements document, the iPad accelerometer doesn't work very well in the microgravity of the ISS.
+To solve this the orientation is fixed, and can be changed by the user manually.
+The sliding scale is a switch that will allow the user to choose between two graph functions: The first and default, is a scaling graph, that shrinks with more data; the second is a graph with a set window size, and will follow new data as it's returned.
+The set window size option, if selected, will reveal a window size slider that allow the user to choose the size of the rolling window.
+In addition to specific user settings, I have implemented a stream of debug data, when an on board barometer isn't available.
+This will be removed before our final release, but it allows us to test the application just by running it on the Xcode emulator.
 
 \subsection{Remaining Tasks}
+The majority of remaining issues that we have to face are either UI adjustments, or version two features.
+The UI adjustments include making the labels both larger and more readable, and adjusting the axis labels further (more info in the next section).
+The client has also added some functionality to the version two release which include the following:
+
+\begin{itemize}
+  \item Dictation
+  \item Screen lock
+  \item T-Res Alarm
+\end{itemize}
+
+These issues will not be out of scope, and shouldn't be difficult to implement.
+The dictation will include regular audio readouts of the pressure and pressure rates.
+The interval and detail of these readouts have yet to be determined, but by implementing an internal text-to-speech Swift interface, the dictation should be quick to introduce and provide a hands free solution in the case of an emergency.
+
 \subsection{Problems Faced}
 \subsection{Relevant and Interesting Details}
 
