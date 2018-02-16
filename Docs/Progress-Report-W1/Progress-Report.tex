@@ -142,13 +142,6 @@ From the listed project goals, we have sufficiently finished with V1, and have s
 
 % These sections can be used by whoever wrote them, I'm not sure who did which ones though
 
-% \section{Current State of the Project}
-% % If anyone can think of a better way to state this, feel free to change the heading
-% Currently we have an outline of what parts must be included in the app as well as the outline for when the first version of our app must be completed.
-% We have also created our first prototype.
-% This reads from the barometer and displays the current pressure in mm/Hg. It also calculates the $\frac{\Delta p}{\Delta t}$ and displays that alongside the current pressure.
-% We have implemented the plot of pressure against time, and have had brief discussions with our client on design changes.
-
 % \section{Project Problems}
 % % Needs Rewritten
 % We chose to use swift and Xcode because they allows for quick development and prototyping.
@@ -175,11 +168,113 @@ From the listed project goals, we have sufficiently finished with V1, and have s
 %           issues we've taken for gitHub, I just copy and pasted them in including ones that I had a part in.
 %
 \section{Specific Contributions: Daniel Kato}
-\subsection{Responsibilities}
-\subsection{Current Status}
-\subsection{Remaining Tasks}
-\subsection{Problems Faced}
-\subsection{Relevant and Interesting Details}
+    \subsection{Responsibilities}
+    I started the development process by creating a base project with the Charts API installed, and creating a main view and settings view in the storyboard.
+
+        For the chart I got a blank chart up and running on the display.
+        This involved binding the Charts API's \texttt{LineChartView} class to a subview on the Main UI.
+        I also created a view controller for that view called \texttt{ChartViewController} to control what is drawn in the \texttt{LineChartView}.
+        I configured the chart to display according to Nathan's color palette and made some small changes to the way the chart was drawn.
+        In order for the chart to access the barometer data, I created a function in the \texttt{ChartViewController} called \texttt{updateChart} to be called every time a reading is taken with the pressure and time of the reading.
+        This allowed me to move on and implement the live updating functionality of the chart.
+
+        For the main UI, I added all of the readings, timestamps, labels, and buttons to the UI as well as implemented the logic that supplied the values to each.
+        In the middle of connecting all of the moving parts, I decided to abstract the barometer functionality into its own class so the the code could be more readable.
+        I also configured the UI to use a Navigation Controller to manage switching to the settings view.
+
+        For the settings UI, I added the table view holding all of the settings interfaces as well as the units, significant digits and orientation rows.
+        I also implemented the functionality for changing the units that are displayed on the readings and the chart by creating a settings class which is instantiated once and referenced by each view.
+        This allows the selected unit can be saved as a string in the settings object, and when switching back to the main view, the unit string is read from the object.
+        The converting of chart points is done in a handler function that responds to a button tab being pressed.
+        I also implemented the significant digits and orientation logic in a similar way to the units.
+
+        All of my code contributions have been kept track of by github issues, which are detailed below.
+
+        \begin{itemize}
+        \item Add button to record average dP/dt and dt/dP since last press or start of data
+        \item Add 3rd column with avg dP/dt and avg dt/dP
+        \item Adjust Delta with conversion bug fix
+        \item Convert past data points when a unit is picked
+        \item Save settings to coreData when app is terminated
+        \item Add Reset Delta Button
+        \item Adjust Axes on Chart
+        \item Change Delta Pressure functionality
+        \item Add delta time to Main UI
+        \item Add current time to Main UI
+        \item Make x-axis of chart display the time of the reading
+        \item Abstract barometer functionality into its own class
+        \item Test Pressure Display
+        \item Remove labels from bottom of chart
+        \item Chart updates, but data is not shown
+        \item Construct Chart
+        \item App Icon
+        \item Linked Barometer Data to Chart
+        \item Unit Picker Button
+        \item Orientation Setting Button
+        \item Figure out how to add barometer data to graph
+        \item Significant Digits Button
+        \end{itemize}
+
+    \subsection{Current Status}
+        We are currently updating the UI and adding a few features that Don requested in response to seeing our alpha version of the app.
+        This alpha version includes a main UI with readings of current pressure and time, change in pressure since button press and time of press, average $\frac{\Delta p}{\Delta t}$ and $\frac{\Delta t}{\Delta p}$ since button press and time of press, and a chart of pressure over time.
+        The delta reading has a corresponding button that when pressed updates the display with the change in pressure since the last time the button was pressed.
+        Similarly, the average $\frac{\Delta p}{\Delta t}$ and $\frac{\Delta t}{\Delta p}$ readings have a corresponding buttons that when pressed updates the display with the average $\frac{\Delta p}{\Delta t}$ and $\frac{\Delta t}{\Delta p}$ since the last button press.
+
+        The chart is currently displays the current pressure as a function of time with the ability to pinch to zoom.
+        The x-axis displays the time of the reading in the format determined for the system in the system settings app.
+        Whenever the units for the graph are changed, the y-axis points are converted to reflect the new unit of measurement while maintaining the shape of the graph.
+
+        The settings page currently allows for the configuration of units, significant digits, orientation, and graph style.
+        The available units are mmHg, psi, kPa, and atm.
+        The significant digit allow for between 0 and 10 significant digits.
+        The orientation allows for the orientation to be up, down, left, or right compared to the default orientation (camera above display and home button below).
+
+    \subsection{Remaining Tasks}
+        The application still needs to include axis labels, and have the UI updated, before having a complete alpha version.
+        Once the alpha has been accepted, we will incorporate the existing T-res chart into our application as well as a reading that displays the amount of time before an evacuation is necessary.
+        We will also incorporate a vocal readout of the amount of time left, and the ability to lock the screen from touch input unless a lock icon is pressed again.
+        We also need to redesign the app icon to depict the ISS with a hole in it with air escaping.
+
+    \subsection{Problems Faced}
+        One of the problems I ran into was getting the orientation to lock.
+        There was not much information on the web about programmatically locking the orientation in Swift 4.
+        I eventually found out that you can set the orientation with a call to \texttt{UIDevice.current.setValue(<orientationInt>, forKey: "orientation")}.
+        Also, we switched from placing UI elements by dragging and dropping them in the appropriate location, to using Stacks to stack items so they can be automatically adjusted to fit the orientation/device.
+        In the transition to stacks, we ran into issues with centering certain elements.
+
+    \subsection{Relevant and Interesting Details}
+        After completing the settings UI, we needed the settings to persist from use to use.
+        To solution to this problem was UserDefaults which allows you to store serialized objects and retrieve them by an ID later is the class conforms to the \texttt{Codable} class.
+        The code to implement this was very easy to read and implement and is as follows:
+
+\begin{lstlisting}
+// Settings Object
+class Settings: Codable {
+    var units = "mmHg"
+    var sigFigs = 4
+    var orientation = "Right"
+    var slidingScale = false
+    var slidingScaleThreshold = 20
+    var windowSize = 50
+}
+
+// Store Settings Object
+UserDefaults.standard.set(try? PropertyListEncoder().encode(settings), forKey: "Settings")
+
+// Retrieve Settings Object
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    if let data = UserDefaults.standard.value(forKey: "Settings") as? Data {
+        settings = try? PropertyListDecoder().decode(Settings.self, from: data)
+    }
+    if settings == nil {
+        settings = Settings()
+    }
+    return true
+}
+
+\end{lstlisting}
+
 
 \section{Specific Contributions: Cade Raichart}
 \subsection{Responsibilities}
@@ -254,24 +349,6 @@ The interval and detail of these readouts have yet to be determined, but by impl
 
 \subsection{Problems Faced}
 \subsection{Relevant and Interesting Details}
-
-% \section{Interesting Code}
-% \begin{lstlisting}
-%   func startDisplayingPressureData() {
-%       self.altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
-%         data, error in
-%           self.handlePressureReading(data: data!)
-%       })
-%   }
-%
-% \end{lstlisting}
-%
-% One of the main features of our application is its ability to read data from the iPad's built in barometer and display the data collected in different ways.
-% The way that data is collected from the barometer is quite interesting.
-% The process of reading data from the barometer requires a bit of processing power and time which can block other time sensitive tasks form being performed.
-% As a result, the measurement is done asynchronously through an object called the \texttt{OperationQueue}.
-% A method provided by the CoreMotion library called \texttt{startRelativeUpdates()} takes the \texttt{OperationQueue}'s \texttt{main} queue, and a callback function as arguement.
-% The function then appends a task to the queue to perform in the background, and when the task is complete, the result is passed into the callback function for further processing.\\
 
 \section{Retrospective}
 \begin{center}
