@@ -4,6 +4,9 @@
 \usepackage{setspace}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
 
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
@@ -348,7 +351,66 @@ The dictation will include regular audio readouts of the pressure and pressure r
 The interval and detail of these readouts have yet to be determined, but by implementing an internal text-to-speech Swift interface, the dictation should be quick to introduce and provide a hands free solution in the case of an emergency.
 
 \subsection{Problems Faced}
+
+The problems faced involved my efforts on rolling screen functionality and axis titles.
+The rolling screen functionality was the setting that allowed users to select the charts display mode.
+To implement rolling screen I had to set the minimum and maximum x axis for each data point added.
+It was simple enough to write this functionality but to make it call at regular intervals proved trickier.
+The solution I implemented was a timer object, that would activate each second, similar to the barometer polling.
+This allowed for the settings that affected the barometer, such as the units, to also change the debug data.
+The issue caused by the axis titles is still causing trouble.
+It comes from the fact that as a team, we want to have axis aligned titles, with the y-axis title being vertically orientated.
+It is only a single command that rotates the label, and is not really a challenge, but once rotated, Xcode's auto-formatting no longer applies.
+This means that size constraints that are applied before the rotation of the label are, for the most part, disregarded, as shown in the images below in fig \ref{fig:comparison}.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{widthAxis}
+  \caption{Label with width constraints}
+  \label{fig:width}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{heightAxis}
+  \caption{Label with height constraints}
+  \label{fig:height}
+\end{subfigure}
+\caption{A comparison of constraints on y axis label.}
+\label{fig:comparison}
+\end{figure}
+
+By fixing the width, the location of the label is affected, making the margin a ridiculous waste of space.
+When I try to fix this issue by also fixing the height of the label, the result is a truncated label.
+The solution that I was able to arrive at involved changing the implemented workspace technique, of using \texttt{Stacks}, to now using \texttt{Views}.
+This allows for more detailed adjustments, making it possible to constrain labels with position, and not just size.
+The result, shown in fig \ref{fig:comparison}, is the current solution.
+By using the following code, I am able to adjust the size of the label, after it is rotated.
+
+\begin{lstlisting}
+func adjustAxisLabels() {
+    yAxisLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+    yAxisLabel.text = "Pressure (\(settings.units))"
+    yAxisLabel.sizeToFit()
+}
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.3\linewidth]{solution}
+  \caption{The current solution of the label issue.}
+  \label{fig:solution}
+\end{figure}
+
 \subsection{Relevant and Interesting Details}
+
+The main interesting detail that I've noticed in my parts of the project is the difficulty of rotated titles.
+I'm sure that it has been established, but the complications that I have encountered in dealing with the labels has surprised me.
+Another thing that interested me was the adaptions requested for use aboard the ISS.
+I think that the applications use in microgravity and emergency situations is the most interesting detail of this project.
+The adaptions include things like the locked orientation and audio readout, as well as large font and clear typeface choices.
+It will be particularly interesting to deploy our application and hear feedback from real users.
 
 \section{Retrospective}
 \begin{center}
