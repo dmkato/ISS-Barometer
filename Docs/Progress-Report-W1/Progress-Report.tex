@@ -281,72 +281,73 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 \section{Specific Contributions: Cade Raichart}
 \subsection{Responsibilities}
-  My first task for the project was to create the settings page using daniels viewcontroller that he prepared in advance.
-  I created  a unit picker, which was a pull down menu that allowed the user to choose between mmHg, atm, kPa and PSI.
-  Then i created a significant digit picker that lets the user pick up to ten significant digits, using a scroll bar. 
-  Next i worked on orientation. 
-  I attempted to format the screen so that it would lock and then rotate in a chosen direction.
-  I was  unsuccessful so i collaborated with Daniel, who ended up finding the solution. We decided to remove my unit picker and significant     units, and instead agreed on a simpler design.
-  After we showed our alpha version to our client, he asked us to make some changes.
-  I removed the labels that said “timestamp” leaving only the clock. 
-  I also increased the font so that those who are visually impaired could clearly read it. 
-  Finally, I  formatted the rest of the labels and digits, so that they were all aligned, making them more neat and organized.
-  
-  My contributions:
-  \begin{itemize}
-    \item Unit Picker
-   \item  Significant Units
-    \item Orientation
-    \item Take away Timestamp
-    \item Make all numbers and labels bigger
-    \item Make all Labels fit on page with equal spacing
-    \item Make all Labels look pleasing to the eye
-    \end{itemize}
+My first task for the project was to create the settings page using Daniels \texttt{viewController} that he prepared in advance.
+I created  a unit picker, which was a pull down menu that allowed the user to choose between mmHg, atm, kPa and PSI.
+Then I created a significant digit picker that lets the user pick up to ten significant digits, using a scroll bar.
+Next I worked on orientation.
+I attempted to format the screen so that it would lock and then rotate in a chosen direction.
+I was  unsuccessful so I collaborated with Daniel, who ended up finding the solution.
+We decided to remove my unit picker and significant units, and instead agreed on a simpler design.
+After we showed our alpha version to our client, he asked us to make some changes.
+I removed the labels that said “timestamp” leaving only the clock.
+I also increased the font so that those who are visually impaired could clearly read it.
+Finally, I  formatted the rest of the labels and digits, so that they were all aligned, making them more neat and organized.
+
+My contributions:
+\begin{itemize}
+\item Unit Picker
+\item Significant Units
+\item Orientation
+\item Take away Timestamp
+\item Make all numbers and labels bigger
+\item Make all Labels fit on page with equal spacing
+\item Make all Labels look pleasing to the eye
+\end{itemize}
 
 \subsection{Current Status}
-  We are finishing up the newest requests that our client has requested after seeing our latest alpha.
-  These additions are making the display page more readable and organized, including labels on the graph and bigger digits for reading.
-  
-    The alpha version included a display page and a settings page. 
-    The display page included a current pressure, change in pressure(Delta), average change in pressure over time, average change in time over change in pressure, and lastly a running graph. 
-    
-  The change in pressure display has a button that starts displaying the Delta, which represents the change in pressure from the last time it was pressed to the current time. 
-  This also leaves a timestamp. 
-  Both $\frac{\Delta p}{\Delta t}$ and $\frac{\Delta t}{\Delta p}$ have a button that starts recording the values and also leaves a timestamp.
-  
-    The running graph displays pressure vs time.
-    Pressure is represented on the y-axis while time is represented by the x-axis. 
-    This graph allows the user to zoom in by pinching the screen. 
-    The x-axis will change its format of display when the internal ipad settings are changed, while the y-axis will changes its units when the units are changed in the settings page.
-    
-    The settings page includes a units picker, significant digits slider, an orientation picker, and a graph style.
-    The unit picker allows the user to pick between atm, mmHg, PSI and kPa. 
-    Our slider allows up to ten significant digits.
-    Our screen orientation is locked by default but allows users to reorient the screen however they choose. 
-    Last, the graph style allows the user to choose the sliding scale and the window size. 
+We are finishing up the newest requests that our client has requested after seeing our latest alpha.
+These additions are making the display page more readable and organized, including labels on the graph and bigger digits for reading.
+
+The alpha version included a display page and a settings page.
+The display page included a current pressure, change in pressure(Delta), average change in pressure over time, average change in time over change in pressure, and lastly a running graph.
+
+The change in pressure display has a button that starts displaying the Delta, which represents the change in pressure from the last time it was pressed to the current time.
+This also leaves a timestamp.
+Both $\frac{\Delta p}{\Delta t}$ and $\frac{\Delta t}{\Delta p}$ have a button that starts recording the values and also leaves a timestamp.
+
+The running graph displays pressure vs time.
+Pressure is represented on the y-axis while time is represented by the x-axis.
+This graph allows the user to zoom in by pinching the screen.
+The x-axis will change its format of display when the internal ipad settings are changed, while the y-axis will changes its units when the units are changed in the settings page.
+
+The settings page includes a units picker, significant digits slider, an orientation picker, and a graph style.
+The unit picker allows the user to pick between atm, mmHg, PSI and kPa.
+Our slider allows up to ten significant digits.
+Our screen orientation is locked by default but allows users to reorient the screen however they choose.
+Last, the graph style allows the user to choose the sliding scale and the window size.
 
 \subsection{Remaining Tasks}
-  The next step of our project is to begin work on version two. 
-  Our client has asked us to add dictation as well as T-Res tables.
-  T-Res is tables of data points that tell us the amount of pressure that would cause the crew to need to leave the ship vs how fast the pressure is dropping. 
-  The faster the pressure is dropping the earlier the crew needs to evacuate the space station. 
-  These tables will be implemented into our program so that we can dictate a countdown for evacuation. 
-  Lastly our client has asked us to add the option to lock the screen to touch.
-  
-  Version two features:
-  \begin{itemize}
-    \item Dictation
-    \item T-RES tables
-    \item Lock screen
-  \end{itemize}
+The next step of our project is to begin work on version two.
+Our client has asked us to add dictation as well as T-Res tables.
+T-Res is tables of data points that tell us the amount of pressure that would cause the crew to need to leave the ship vs how fast the pressure is dropping.
+The faster the pressure is dropping the earlier the crew needs to evacuate the space station.
+These tables will be implemented into our program so that we can dictate a countdown for evacuation.
+Lastly our client has asked us to add the option to lock the screen to touch.
 
-  We will use T-Res tables provided by our client and our app will dictate these numbers.
-  It will also be able to dictate the display numbers, such as current pressure, in the event that the crew members cannot read the display.
-  I have already started testing on how we can use the library AVFoundation to easily add dictation to our app. 
-  Finally, we will have our client view our product again and decide if more features should be added, or if changes need to be made to the display.     
+Version two features:
+\begin{itemize}
+\item Dictation
+\item T-RES tables
+\item Lock screen
+\end{itemize}
+
+We will use T-Res tables provided by our client and our app will dictate these numbers.
+It will also be able to dictate the display numbers, such as current pressure, in the event that the crew members cannot read the display.
+I have already started testing on how we can use the library AVFoundation to easily add dictation to our app.
+Finally, we will have our client view our product again and decide if more features should be added, or if changes need to be made to the display.
 
 \subsection{Problems Faced}
-The biggest problem i faced was locking the orientation and then being able to reorient the display to the users’ preferences.
+The biggest problem I faced was locking the orientation and then being able to reorient the display to the users’ preferences.
 I spent hours searching the web for help and mostly came up with ideas that just didn't work such as:
 
 \begin{lstlisting}
@@ -355,17 +356,20 @@ static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotate
 
     I found a lot of code like this one that potentially could have worked, but when implemented didn't lock the screen or allow you to switch your orientation.
     In fact, most research told me i could use the code “ self.lockOrientation(left)” to lock the screen but i was unsuccessful.
-    Daniel and Nathan ended up helping me with this problem and found {UIDevice.current.setValue(<orientationInt>, forKey: "orientation")} to fix the orientation, so that the user could orient the screen however they wanted. 
-    
-    Another problem i faced was orienting the stacks so that they were all aligned.
-    There were no instructions on how to use the viewcontroller stacks online, so I had to manually adjust the stacks until i found a solution.
+    Daniel and Nathan ended up helping me with this problem and found {UIDevice.current.setValue(<orientationInt>, forKey: "orientation")} to fix the orientation, so that the user could orient the screen however they wanted.
+
+    Another problem I faced was orienting the stacks so that they were all aligned.
+    There were no instructions on how to use the \texttt{viewController} stacks online, so I had to manually adjust the stacks until I found a solution.
     This solution was using more stacks within each other and making sure every single stack was correctly aligned with the previous one.
 
 \subsection{Relevant and Interesting Details}
-      The most interesting thing i have found is how viewcontrollers are easy to use for simple programs because swift and xcode have made it easy to drag and drop items. 
-      However, viewcontrollers create an organization problem for more in depth programs, because these items easily overlap making them hard to move.  
-      We started to use stacks that allowed us to make it easier to group items together and make them less cluttered. 
-      Although the viewcontroller is useful for small apps, if this app were more extensive I would try to avoid the use of the viewcontroller and remove it from the program. 
+
+The most interesting thing i have found is how viewcontrollers are easy to use for simple programs because swift and Xcode have made it easy to drag and drop items.
+However, viewcontrollers create an organization problem for more in depth programs, because these items easily overlap making them hard to move.
+We started to use stacks that allowed us to make it easier to group items together and make them less cluttered.
+Although the \texttt{viewController} is useful for small apps, if this app were more extensive I would try to avoid the use of the \texttt{viewController} and remove it from the program.
+
+
 \section{Specific Contributions: Nathan Shepherd}
 
 \subsection{Responsibilities}
@@ -500,36 +504,6 @@ By using the application, the astronauts will be able to find and repair leaks w
 With the potential to continue improving, this application may very well serve NASA far into the future.
 Taking into account our progress so far, it seems reasonable to assume that our project will succeed and fill the requirements that were set out.
 ​
-%
-% \section{Retrospective}
-% \begin{center}
-% 	\begin{tabular}{| l | p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}
-% 		\hline
-% 		& Positives & Deltas & Actions \\ \hline
-%     Winter Break & --  & -- & -- \\ \hline
-%     Week 1 & We made our GitHub setup with issues and a basic prototype
-%            & Started learning Swift and becoming familiar with the interface
-%            & Detailed our project, and attempted a demo with our client \\ \hline
-% 		Week 2 & Random debug data was implemented, graph is now looking complete
-%            & Challenges in debug data and variation and frequency
-%            & Implementing a timer object and multiple random variables \\ \hline
-% 		Week 3 & Positives & Deltas & Actions \\ \hline
-% 		Week 4 & Positives & Deltas & Actions \\ \hline
-%
-%     Winter Term & -- & -- & -- \\ \hline
-%     Week 1 & Positives & Deltas & Actions \\ \hline
-% 		Week 2 & Positives & Deltas & Actions \\ \hline
-% 		Week 3 & Other than UI, the application is working as planned
-%            & UI issues still persist, rotated axis titles are not sized properly
-%            & Research shows that rotated text doesn't allow auto-formatting \\ \hline
-% 		Week 4 & Fonts were sized appropriately, main UI uses Views now
-%            & Even in Views, as opposed to Stacks, the rotating causes problems
-%            & Using restraints we were able to manage the rotated text slightly \\ \hline
-%     Week 5 & Positives & Deltas & Actions \\ \hline
-%     Week 6 & Positives & Deltas & Actions \\ \hline
-%
-% 	\end{tabular}
-% \end{center}
 
 \newpage
 \bibliographystyle{IEEEtran}
