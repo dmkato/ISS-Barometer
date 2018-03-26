@@ -105,7 +105,7 @@
                                                                         <rect key="frame" x="125.5" y="0.0" width="39" height="62.5"/>
                                                                         <state key="normal" title="Reset"/>
                                                                         <connections>
-                                                                            <action selector="resetPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oRt-Zo-7Lb"/>
+                                                                            <action selector="deltaResetPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jy8-ob-FZa"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>

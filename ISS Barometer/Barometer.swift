@@ -12,7 +12,8 @@ import UIKit
 
 class Barometer {
     lazy var altimeter :CMAltimeter = CMAltimeter()
-    var initialReading: Double?
+    var initialDeltaReading: Double?
+    var pressureReadings = [(Double, Double)]()
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
@@ -22,8 +23,30 @@ class Barometer {
     var debugData:Double? = 100.0
     // -->
     
-    func updateInitialReading() {
-        initialReading = nil
+    func getDpdt() -> Double {
+        // TODO: Avg of dpdtPressureReading
+        var sum = 0.0
+        for idx in 1..<pressureReadings.count {
+            let dp = pressureReadings[idx].0 - pressureReadings[idx-1].0
+            let dt = pressureReadings[idx].1 - pressureReadings[idx-1].1
+            sum += dp/dt
+        }
+        return sum / Double(pressureReadings.count - 1)
+    }
+    
+    func getDtdp() -> Double {
+        // TODO: Avg of dpdtPressureReading
+        var sum = 0.0
+        for idx in 1..<pressureReadings.count {
+            let dp = pressureReadings[idx].0 - pressureReadings[idx-1].0
+            let dt = pressureReadings[idx].1 - pressureReadings[idx-1].1
+            sum += dt/dp
+        }
+        return sum / Double(pressureReadings.count - 1)
+    }
+    
+    func updateInitialDeltaReading() {
+        initialDeltaReading = nil
     }
     
     func kPa2units(kPa:Double) -> Double {
@@ -41,43 +64,42 @@ class Barometer {
         }
     }
     
-    func startDisplayingPressureData(updateFunc:@escaping (Double, Double, Double, Bool) -> ()) {
+    func startDisplayingPressureData(updateFunc:@escaping (Double, Double, Double) -> ()) {
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
             data, error in
             let kPa = data?.pressure.doubleValue
             let pressure = self.kPa2units(kPa: kPa!)
             let time = Date().timeIntervalSince1970
-            var resetWasPressed = false
-            if self.initialReading == nil {
-                self.initialReading = pressure
-                resetWasPressed = true
+            if self.initialDeltaReading == nil {
+                self.initialDeltaReading = pressure
             }
-            let deltaPressure = pressure - self.initialReading!
-            updateFunc(pressure, deltaPressure, time, resetWasPressed)
+            self.pressureReadings.append((pressure, time))
+            let deltaPressure = pressure - self.initialDeltaReading!
+            updateFunc(pressure, deltaPressure, time)
         })
     }
     
     // REMOVE BEFORE DEPLOY
-    func startDisplayingDebugData(updateFunc:@escaping (Double, Double, Double, Bool) -> ()) {
+    func startDisplayingDebugData(updateFunc:@escaping (Double, Double, Double) -> ()) {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             _ in
             let time = Date().timeIntervalSince1970
-            var resetWasPressed = false
             if (arc4random() % 2 == 0 || self.debugData! < 1){
                 self.debugData = self.debugData! + drand48()
             } else {
                 self.debugData = self.debugData! - drand48()
             }
-            if self.initialReading == nil {
-                self.initialReading = self.debugData!
-                resetWasPressed = true
+            if self.initialDeltaReading == nil {
+                self.initialDeltaReading = self.debugData!
             }
-            let deltaDebug = (self.debugData! - self.initialReading!)
-            updateFunc(self.kPa2units(kPa: self.debugData!), deltaDebug, time, resetWasPressed)
+            let pressure = self.kPa2units(kPa: self.debugData!)
+            self.pressureReadings.append((pressure, time))
+            let deltaDebug = (self.debugData! - self.initialDeltaReading!)
+            updateFunc(pressure, deltaDebug, time)
         }
     }
     
-    func startBarometerUpdates(updateFunc:@escaping (Double, Double, Double, Bool) -> ()) {
+    func startBarometerUpdates(updateFunc:@escaping (Double, Double, Double) -> ()) {
         if CMAltimeter.isRelativeAltitudeAvailable() {
             startDisplayingPressureData(updateFunc: updateFunc)
         } else {
