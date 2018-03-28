@@ -23,26 +23,37 @@ class Barometer {
     var debugData:Double? = 100.0
     // -->
     
-    func getDpdt() -> Double {
-        // TODO: Avg of dpdtPressureReading
+    func calcDeltaSum(_ dType: String) -> Double {
         var sum = 0.0
+        if pressureReadings.count <= 1 {
+            return 0
+        }
         for idx in 1..<pressureReadings.count {
             let dp = pressureReadings[idx].0 - pressureReadings[idx-1].0
             let dt = pressureReadings[idx].1 - pressureReadings[idx-1].1
-            sum += dp/dt
+            sum += (dType == "dpdt" ? dp/dt : dt/dp)
         }
         return sum / Double(pressureReadings.count - 1)
     }
     
+    func getDpdt() -> Double {
+        return calcDeltaSum("dpdt")
+    }
+    
     func getDtdp() -> Double {
-        // TODO: Avg of dpdtPressureReading
-        var sum = 0.0
-        for idx in 1..<pressureReadings.count {
-            let dp = pressureReadings[idx].0 - pressureReadings[idx-1].0
-            let dt = pressureReadings[idx].1 - pressureReadings[idx-1].1
-            sum += dt/dp
-        }
-        return sum / Double(pressureReadings.count - 1)
+        return calcDeltaSum("dtdp")
+    }
+    
+    func getDtdpStartTime() -> Double {
+         return self.pressureReadings.first?.1 ?? Date().timeIntervalSince1970
+    }
+    
+    func getDtdpEndTime() -> Double {
+        return self.pressureReadings.last?.1 ?? Date().timeIntervalSince1970
+    }
+    
+    func clearPressureReadings() {
+        self.pressureReadings = [(Double, Double)]()
     }
     
     func updateInitialDeltaReading() {
