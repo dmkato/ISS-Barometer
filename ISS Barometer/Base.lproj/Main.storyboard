@@ -264,6 +264,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="ISS Barometer" id="Pbr-i3-w7D">
+                        <barButtonItem key="leftBarButtonItem" title="Bar Button Item" style="plain" id="GpO-u0-0sM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KGR-8I-G15">
+                                <rect key="frame" x="20" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Lock"/>
+                                <connections>
+                                    <action selector="screenLockPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wzT-QF-cqd"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="yLg-Hp-JDw">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Bls-xd-9NA">
                                 <rect key="frame" x="726" y="11" width="22" height="22"/>
@@ -279,14 +289,18 @@
                         <outlet property="currentTimestamp" destination="A2L-Jy-vjO" id="5Fp-7P-9jA"/>
                         <outlet property="deltaPressureDisplay" destination="Ejx-af-yCa" id="NMJ-ws-6UG"/>
                         <outlet property="deltaPressureDisplayUnit" destination="ROE-cv-jHb" id="gEV-Xx-umL"/>
+                        <outlet property="deltaResetButton" destination="QzE-7l-HFP" id="P4Y-GW-NUs"/>
                         <outlet property="deltaTimestamp" destination="AiQ-lD-fAf" id="cYE-k4-6zB"/>
                         <outlet property="dpdtDisplay" destination="dfo-b5-WNd" id="EYo-Xq-w3e"/>
                         <outlet property="dpdtDisplayUnit" destination="Df1-Ii-2kt" id="xXW-Cq-Ck9"/>
+                        <outlet property="dpdtResetButton" destination="imM-yP-XHM" id="xks-iP-XhS"/>
                         <outlet property="dpdtTimestamp" destination="Tof-7d-OvK" id="VQZ-CO-7Ke"/>
                         <outlet property="dtdpDisplay" destination="fg2-pp-n0q" id="isL-Wz-WTo"/>
                         <outlet property="dtdpDisplayUnit" destination="sHI-wM-vww" id="lBg-NJ-sXn"/>
+                        <outlet property="lockButton" destination="KGR-8I-G15" id="Exn-Q4-D3Z"/>
                         <outlet property="pressureDisplay" destination="wfI-5A-aGZ" id="BS6-9y-V6o"/>
                         <outlet property="pressureDisplayUnit" destination="Nik-lW-xze" id="6Tt-0R-hSM"/>
+                        <outlet property="settingsButton" destination="Bls-xd-9NA" id="cRI-BO-gVU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

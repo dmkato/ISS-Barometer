@@ -22,8 +22,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var deltaPressureDisplayUnit: UILabel!
     @IBOutlet weak var dpdtDisplayUnit: UILabel!
     @IBOutlet weak var dtdpDisplayUnit: UILabel!
+    @IBOutlet weak var deltaResetButton: UIButton!
+    @IBOutlet weak var dpdtResetButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var lockButton: UIButton!
     
     var barometer = Barometer()
+    var screenIsLocked = false
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -35,6 +40,15 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func dpdtResetPressed(_ sender: Any) {
+    }
+    
+    @IBAction func screenLockPressed(_ sender: Any) {
+        screenIsLocked = !screenIsLocked
+        lockButton.setTitle(screenIsLocked ? "Unlock" : "Lock", for: .normal)
+        settingsButton.isEnabled = !screenIsLocked
+        dpdtResetButton.isEnabled = !screenIsLocked
+        deltaResetButton.isEnabled = !screenIsLocked
+        chartView.isUserInteractionEnabled = !screenIsLocked
     }
     
     func updateUI(pressure:Double, deltaPressure:Double, time:Double, resetWasPressed:Bool) {
