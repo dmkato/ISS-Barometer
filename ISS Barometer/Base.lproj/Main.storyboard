@@ -57,13 +57,13 @@
                                                                 <rect key="frame" x="0.0" y="63.5" width="242.5" height="72"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wfI-5A-aGZ" userLabel="Pressure Value">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="213.5" height="72"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="242.5" height="72"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="738" ambiguous="YES" text="unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nik-lW-xze">
-                                                                        <rect key="frame" x="213.5" y="51.5" width="29" height="20.5"/>
+                                                                        <rect key="frame" x="242.5" y="51.5" width="0.0" height="20.5"/>
                                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
@@ -114,13 +114,13 @@
                                                                 <rect key="frame" x="0.0" y="62.5" width="243" height="72"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.0000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ejx-af-yCa" userLabel="Delta Pressure Value">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="211.5" height="72"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="243" height="72"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROE-cv-jHb">
-                                                                        <rect key="frame" x="211.5" y="51.5" width="31.5" height="20.5"/>
+                                                                        <rect key="frame" x="243" y="51.5" width="0.0" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -173,13 +173,13 @@
                                                                         <rect key="frame" x="0.0" y="30" width="242.5" height="57.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.0000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-b5-WNd" userLabel="dP/dt Value">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="211" height="57.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="242.5" height="57.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Df1-Ii-2kt">
-                                                                                <rect key="frame" x="211" y="37" width="31.5" height="20.5"/>
+                                                                                <rect key="frame" x="242.5" y="37" width="0.0" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -209,13 +209,13 @@
                                                                 <rect key="frame" x="0.0" y="135.5" width="242.5" height="57.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.0000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fg2-pp-n0q" userLabel="dP/dt Value">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="211" height="57.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="242.5" height="57.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHI-wM-vww">
-                                                                        <rect key="frame" x="211" y="37" width="31.5" height="20.5"/>
+                                                                        <rect key="frame" x="242.5" y="37" width="0.0" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -283,7 +283,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="T12-1H-QuU" firstAttribute="leading" secondItem="oyG-jW-4bS" secondAttribute="leadingMargin" id="LNo-GO-iVg"/>
                                     <constraint firstItem="T12-1H-QuU" firstAttribute="top" secondItem="xNB-GU-8nP" secondAttribute="bottom" id="NeI-tu-hZN"/>
+                                    <constraint firstItem="T12-1H-QuU" firstAttribute="trailing" secondItem="oyG-jW-4bS" secondAttribute="trailingMargin" id="Vav-0W-qF6"/>
                                     <constraint firstAttribute="trailing" secondItem="xNB-GU-8nP" secondAttribute="trailing" id="a4f-Ez-9pF"/>
                                     <constraint firstItem="xNB-GU-8nP" firstAttribute="leading" secondItem="oyG-jW-4bS" secondAttribute="leading" id="eCL-tg-JgP"/>
                                 </constraints>
