@@ -24,8 +24,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var deltaPressureDisplayUnit: UILabel!
     @IBOutlet weak var dpdtDisplayUnit: UILabel!
     @IBOutlet weak var dtdpDisplayUnit: UILabel!
+    @IBOutlet weak var deltaResetButton: UIButton!
+    @IBOutlet weak var dpdtResetButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var lockButton: UIButton!
     
     var barometer = Barometer()
+    var screenIsLocked = false
     var deltaResetWasPressed = false
     var dpdtResetWasPressed = false
     
@@ -48,6 +53,15 @@ class MainViewController: UIViewController {
         dpdtFromTimestamp.text =  DateFormatter.localizedString(from: startDate, dateStyle: .none, timeStyle: .medium)
         dpdtToTimestamp.text = DateFormatter.localizedString(from: endDate, dateStyle: .none, timeStyle: .medium)
         barometer.clearPressureReadings()
+    }
+    
+    @IBAction func screenLockPressed(_ sender: Any) {
+        screenIsLocked = !screenIsLocked
+        lockButton.setTitle(screenIsLocked ? "Unlock" : "Lock", for: .normal)
+        settingsButton.isEnabled = !screenIsLocked
+        dpdtResetButton.isEnabled = !screenIsLocked
+        deltaResetButton.isEnabled = !screenIsLocked
+        chartView.isUserInteractionEnabled = !screenIsLocked
     }
     
     func handleDeltaReset(_ date: Date) {
