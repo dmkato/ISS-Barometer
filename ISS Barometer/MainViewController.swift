@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
     @IBOutlet weak var deltaPressureDisplay: UILabel!
     @IBOutlet weak var chartView: UIView!
+    @IBOutlet weak var yAxisLabel: UILabel!
     @IBOutlet weak var deltaTimestamp: UILabel!
     @IBOutlet weak var currentTimestamp: UILabel!
     @IBOutlet weak var dpdtDisplay: UILabel!
@@ -48,10 +49,9 @@ class MainViewController: UIViewController {
         dpdtToTimestamp.text = DateFormatter.localizedString(from: endDate, dateStyle: .none, timeStyle: .medium)
         barometer.clearPressureReadings()
     }
-
     
     func handleDeltaReset(_ date: Date) {
-        if deltaResetWasPressed {
+        if deltaResetWasPressed || barometer.firstReading {
             deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
             deltaResetWasPressed = false
         }
@@ -66,8 +66,15 @@ class MainViewController: UIViewController {
         chartViewController.updateChart(pressureReading: pressure, time: time)
     }
     
+    func adjustAxisLabels() {
+        yAxisLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+        yAxisLabel.text = "Pressure (\(settings.units))"
+        yAxisLabel.sizeToFit()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        adjustAxisLabels()
         barometer.settings = self.settings
         barometer.startBarometerUpdates(updateFunc: updateUI)
     }
