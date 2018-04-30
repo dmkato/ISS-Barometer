@@ -18,7 +18,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var currentTimestamp: UILabel!
     @IBOutlet weak var dpdtDisplay: UILabel!
     @IBOutlet weak var dtdpDisplay: UILabel!
-    @IBOutlet weak var dpdtTimestamp: UILabel!
+    @IBOutlet weak var dpdtToTimestamp: UILabel!
+    @IBOutlet weak var dpdtFromTimestamp: UILabel!
     @IBOutlet weak var pressureDisplayUnit: UILabel!
     @IBOutlet weak var deltaPressureDisplayUnit: UILabel!
     @IBOutlet weak var dpdtDisplayUnit: UILabel!
@@ -40,20 +41,17 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func dpdtResetPressed(_ sender: Any) {
-        dpdtResetWasPressed = true
-    }
-    
-    func handleDpdtReset(_ date: Date) {
-        if dpdtResetWasPressed {
-            dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDpdt())
-            dtdpDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDtdp())
-            dpdtTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
-            dpdtResetWasPressed = false
-        }
+        dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDpdt())
+        dtdpDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDtdp())
+        let startDate = Date(timeIntervalSince1970: barometer.getDtdpStartTime())
+        let endDate = Date(timeIntervalSince1970: barometer.getDtdpEndTime())
+        dpdtFromTimestamp.text =  DateFormatter.localizedString(from: startDate, dateStyle: .none, timeStyle: .medium)
+        dpdtToTimestamp.text = DateFormatter.localizedString(from: endDate, dateStyle: .none, timeStyle: .medium)
+        barometer.clearPressureReadings()
     }
     
     func handleDeltaReset(_ date: Date) {
-        if deltaResetWasPressed {
+        if deltaResetWasPressed || barometer.firstReading {
             deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
             deltaResetWasPressed = false
         }
@@ -65,7 +63,6 @@ class MainViewController: UIViewController {
         deltaPressureDisplay.text = String(format:"%.\(settings.sigFigs)f", deltaPressure)
         currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
         handleDeltaReset(date)
-        handleDpdtReset(date)
         chartViewController.updateChart(pressureReading: pressure, time: time)
     }
     
