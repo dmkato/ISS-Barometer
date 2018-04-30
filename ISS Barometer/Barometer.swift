@@ -52,7 +52,7 @@ class Barometer {
         return self.pressureReadings.last?.1 ?? Date().timeIntervalSince1970
     }
     
-    func clearPressureReadings() {
+    func clearPressureReadings(){
         self.pressureReadings = [(Double, Double)]()
     }
     

@@ -87,7 +87,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="H0n-q7-2e8" userLabel="Delta/Timestamp Stack">
-                                                <rect key="frame" x="256" y="192.5" width="236" height="180.5"/>
+                                                <rect key="frame" x="256" y="174.5" width="236" height="216"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kS1-Uc-lsg" userLabel="Delta Stack">
                                                         <rect key="frame" x="0.0" y="0.0" width="236" height="126"/>
@@ -140,7 +140,17 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEa-6A-ins">
+                                                        <rect key="frame" x="80" y="195.5" width="76" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="YEa-6A-ins" secondAttribute="trailing" constant="80" id="ZgA-Ob-Z8S"/>
+                                                    <constraint firstItem="YEa-6A-ins" firstAttribute="leading" secondItem="H0n-q7-2e8" secondAttribute="leading" constant="80" id="ql3-a9-1Uf"/>
+                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JTc-IJ-tLB" userLabel="dP/dt dt/dP Stack">
                                                 <rect key="frame" x="512" y="128" width="236" height="309"/>
@@ -305,6 +315,7 @@
                         <outlet property="dtdpDisplayUnit" destination="sHI-wM-vww" id="lBg-NJ-sXn"/>
                         <outlet property="pressureDisplay" destination="wfI-5A-aGZ" id="BS6-9y-V6o"/>
                         <outlet property="pressureDisplayUnit" destination="Nik-lW-xze" id="6Tt-0R-hSM"/>
+                        <outlet property="tResOutput" destination="YEa-6A-ins" id="7O3-Tl-VIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -24,6 +24,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dpdtDisplayUnit: UILabel!
     @IBOutlet weak var dtdpDisplayUnit: UILabel!
     
+    @IBOutlet weak var tResOutput: UILabel!
+    
     var barometer = Barometer()
     var deltaResetWasPressed = false
     var dpdtResetWasPressed = false
@@ -46,7 +48,8 @@ class MainViewController: UIViewController {
         let endDate = Date(timeIntervalSince1970: barometer.getDtdpEndTime())
         dpdtFromTimestamp.text =  DateFormatter.localizedString(from: startDate, dateStyle: .none, timeStyle: .medium)
         dpdtToTimestamp.text = DateFormatter.localizedString(from: endDate, dateStyle: .none, timeStyle: .medium)
-        barometer.clearPressureReadings()
+        let pressure = barometer.clearPressureReadings()
+        updateTRes(start: pressure.0)
     }
 
     
@@ -54,6 +57,16 @@ class MainViewController: UIViewController {
         if deltaResetWasPressed {
             deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
             deltaResetWasPressed = false
+        }
+    }
+    
+    func updateTRes(start: Double){
+        let dPdt = barometer.getDpdt()
+        if dPdt > 0 {
+            let buffer = 58.66 // In kPa
+            let tRes = (start - buffer) / dPdt
+            tResOutput.text = String(format:"TRes: %ld", tRes)
+            print(tRes, " seconds")
         }
     }
     
