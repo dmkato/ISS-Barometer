@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var pressureDisplay: UILabel!
     @IBOutlet weak var deltaPressureDisplay: UILabel!
     @IBOutlet weak var chartView: UIView!
+    @IBOutlet weak var yAxisLabel: UILabel!
     @IBOutlet weak var deltaTimestamp: UILabel!
     @IBOutlet weak var currentTimestamp: UILabel!
     @IBOutlet weak var dpdtDisplay: UILabel!
@@ -23,10 +24,15 @@ class MainViewController: UIViewController {
     @IBOutlet weak var deltaPressureDisplayUnit: UILabel!
     @IBOutlet weak var dpdtDisplayUnit: UILabel!
     @IBOutlet weak var dtdpDisplayUnit: UILabel!
+    @IBOutlet weak var deltaResetButton: UIButton!
+    @IBOutlet weak var dpdtResetButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var lockButton: UIButton!
     
     @IBOutlet weak var tResOutput: UILabel!
     
     var barometer = Barometer()
+    var screenIsLocked = false
     var deltaResetWasPressed = false
     var dpdtResetWasPressed = false
     
@@ -51,10 +57,18 @@ class MainViewController: UIViewController {
         let pressure = barometer.clearPressureReadings()
         updateTRes(start: pressure.0)
     }
-
+    
+    @IBAction func screenLockPressed(_ sender: Any) {
+        screenIsLocked = !screenIsLocked
+        lockButton.setTitle(screenIsLocked ? "Unlock" : "Lock", for: .normal)
+        settingsButton.isEnabled = !screenIsLocked
+        dpdtResetButton.isEnabled = !screenIsLocked
+        deltaResetButton.isEnabled = !screenIsLocked
+        chartView.isUserInteractionEnabled = !screenIsLocked
+    }
     
     func handleDeltaReset(_ date: Date) {
-        if deltaResetWasPressed {
+        if deltaResetWasPressed || barometer.firstReading {
             deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
             deltaResetWasPressed = false
         }
@@ -79,8 +93,15 @@ class MainViewController: UIViewController {
         chartViewController.updateChart(pressureReading: pressure, time: time)
     }
     
+    func adjustAxisLabels() {
+        yAxisLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+        yAxisLabel.text = "Pressure (\(settings.units))"
+        yAxisLabel.sizeToFit()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        adjustAxisLabels()
         barometer.settings = self.settings
         barometer.startBarometerUpdates(updateFunc: updateUI)
     }

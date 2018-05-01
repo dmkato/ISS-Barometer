@@ -18,6 +18,7 @@ class Barometer {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
     }()
+    var firstReading = true
 
     // REMOVE BEFORE DEPLOY <--
     var debugData:Double? = 100.0
@@ -87,6 +88,7 @@ class Barometer {
             self.pressureReadings.append((pressure, time))
             let deltaPressure = pressure - self.initialDeltaReading!
             updateFunc(pressure, deltaPressure, time)
+            self.firstReading = false
         })
     }
     
@@ -107,6 +109,7 @@ class Barometer {
             self.pressureReadings.append((pressure, time))
             let deltaDebug = (self.debugData! - self.initialDeltaReading!)
             updateFunc(pressure, deltaDebug, time)
+            self.firstReading = false
         }
     }
     
