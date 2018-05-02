@@ -38,9 +38,11 @@ class SettingsViewController: UITableViewController {
     @IBAction func unitPicked(_ sender: Any) {
         let selectedIdx = unitPicker.selectedSegmentIndex
         let selectedUnit = unitPicker.titleForSegment(at: selectedIdx)
+        let kpaOfField = Barometer().unit2kPa(pres: Double(minPressureField.text!)!)
         chartVC.convertDataPoints(unit: selectedUnit!)
         settings.units = selectedUnit!
         minPressureUnit.text = selectedUnit!
+        minPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: kpaOfField))
     }
     
     @IBAction func orientationPicked(_ sender: Any) {
@@ -104,7 +106,7 @@ class SettingsViewController: UITableViewController {
     func initMinPressure() {
         minPressureUnit.text = settings.units
         minPressureField.keyboardType = .numbersAndPunctuation
-        minPressureField.text = String(settings.pressureBuffer)
+        minPressureField.text = String(format:"%.3f", settings.pressureBuffer)
     }
     
     override func viewWillAppear(_ animated: Bool) {

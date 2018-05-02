@@ -38,6 +38,8 @@ class MainViewController: UIViewController {
     var dpdtResetWasPressed = false
     
     var currentPressure = 0.0
+    var tResTimer: Timer!
+    var tResTotal = 0.0
     
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
     lazy var settings: Settings = {
@@ -85,20 +87,35 @@ class MainViewController: UIViewController {
     func updateTRes(start: Double, rate: Double){
         if rate < 0 {
             let buffer = settings.pressureBuffer // In kPa
-            let tRes = -((start - buffer) / rate)
-            print(tRes, " seconds")
-            let tResDetail = secToHMSmS(seconds: tRes)
-            tResDisplay.text = "\(tResDetail.0):\(tResDetail.1):\(tResDetail.2):\(tResDetail.3)"
+            tResTotal = -((start - buffer) / rate)
+            startTResTimer()
+            print(tResTotal, " seconds")
         }
     }
     
-    func secToHMSmS(seconds: Double) -> (Int,Int,Int,Int){
+    func secToString(seconds: Double) -> String {
         let intSec = Int(seconds)
         let hours = Int(intSec / 3600)
         let mins = Int((intSec % 3600) / 60)
         let secs = Int((intSec % 3600) % 60)
         let ms = Int(seconds.truncatingRemainder(dividingBy: 1.0) * 60.0)
-        return (hours, mins, secs, ms)
+        return String(format: "%02d:%02d:%02d:%02d", hours, mins, secs, ms)
+    }
+    
+    func startTResTimer() {
+        tResTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTResTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTResTimer(){
+        tResDisplay.text =  secToString(seconds: tResTotal)
+        tResTotal -= 0.1
+        if tResTotal < 0 {
+            endTResTimer()
+        }
+    }
+    
+    func endTResTimer(){
+        tResTimer.invalidate()
     }
     
     func updateUI(pressure:Double, deltaPressure:Double, time:Double) {
