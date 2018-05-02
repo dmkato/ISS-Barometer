@@ -25,6 +25,9 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var runningWindowOptions: UIView!
     @IBOutlet weak var runningWindowTable: UITableViewCell!
     
+    @IBOutlet weak var minPressureField: UITextField!
+    @IBOutlet weak var minPressureUnit: UILabel!
+    
     @IBAction func sliderMoved(_ sender: Any) {
         let roundedValue = lroundf(sigFigSlider.value)
         (sender as AnyObject).setValue(Float(roundedValue), animated: true)
@@ -37,6 +40,7 @@ class SettingsViewController: UITableViewController {
         let selectedUnit = unitPicker.titleForSegment(at: selectedIdx)
         chartVC.convertDataPoints(unit: selectedUnit!)
         settings.units = selectedUnit!
+        minPressureUnit.text = selectedUnit!
     }
     
     @IBAction func orientationPicked(_ sender: Any) {
@@ -56,6 +60,12 @@ class SettingsViewController: UITableViewController {
         (sender as AnyObject).setValue(Float(roundedValue), animated: true)
         runningWindowValue.text = String(roundedValue*25)
         settings.windowSize = roundedValue*25
+    }
+    
+    @IBAction func minPressureChanged(_ sender: Any) {
+        if let pres = Double(minPressureField.text!) {
+            settings.pressureBuffer = pres
+        }
     }
     
     func initSlider() {
@@ -91,6 +101,12 @@ class SettingsViewController: UITableViewController {
         runningWindowSlider.setValue(Float(round(Double(settings.windowSize)/25.0)), animated: true)
     }
     
+    func initMinPressure() {
+        minPressureUnit.text = settings.units
+        minPressureField.keyboardType = .numbersAndPunctuation
+        minPressureField.text = String(settings.pressureBuffer)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initSlider()
@@ -98,6 +114,7 @@ class SettingsViewController: UITableViewController {
         initOrientationPicker()
         initSlidingScalePicker()
         initWindowSlider()
+        initMinPressure()
     }
     
     override func viewDidLoad() {

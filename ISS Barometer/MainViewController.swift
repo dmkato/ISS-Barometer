@@ -28,13 +28,16 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dpdtResetButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var lockButton: UIButton!
+    @IBOutlet weak var tResButton: UIButton!
+    @IBOutlet weak var tResDisplay: UILabel!
     
-    @IBOutlet weak var tResOutput: UILabel!
     
     var barometer = Barometer()
     var screenIsLocked = false
     var deltaResetWasPressed = false
     var dpdtResetWasPressed = false
+    
+    var currentPressure = 0.0
     
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
     lazy var settings: Settings = {
@@ -54,8 +57,7 @@ class MainViewController: UIViewController {
         let endDate = Date(timeIntervalSince1970: barometer.getDtdpEndTime())
         dpdtFromTimestamp.text =  DateFormatter.localizedString(from: startDate, dateStyle: .none, timeStyle: .medium)
         dpdtToTimestamp.text = DateFormatter.localizedString(from: endDate, dateStyle: .none, timeStyle: .medium)
-        let pressure = barometer.clearPressureReadings()
-        updateTRes(start: pressure.0)
+        barometer.clearPressureReadings()
     }
     
     @IBAction func screenLockPressed(_ sender: Any) {
@@ -67,6 +69,12 @@ class MainViewController: UIViewController {
         chartView.isUserInteractionEnabled = !screenIsLocked
     }
     
+    @IBAction func tResButtonPressed(_ sender: Any) {
+        let pressure = barometer.unit2kPa(pres: currentPressure)
+        let rate = barometer.getDpdt()
+        updateTRes(start: pressure, rate: rate)
+    }
+    
     func handleDeltaReset(_ date: Date) {
         if deltaResetWasPressed || barometer.firstReading {
             deltaTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
@@ -74,18 +82,28 @@ class MainViewController: UIViewController {
         }
     }
     
-    func updateTRes(start: Double){
-        let dPdt = barometer.getDpdt()
-        if dPdt > 0 {
-            let buffer = 58.66 // In kPa
-            let tRes = (start - buffer) / dPdt
-            tResOutput.text = String(format:"TRes: %ld", tRes)
+    func updateTRes(start: Double, rate: Double){
+        if rate < 0 {
+            let buffer = settings.pressureBuffer // In kPa
+            let tRes = -((start - buffer) / rate)
             print(tRes, " seconds")
+            let tResDetail = secToHMSmS(seconds: tRes)
+            tResDisplay.text = "\(tResDetail.0):\(tResDetail.1):\(tResDetail.2):\(tResDetail.3)"
         }
+    }
+    
+    func secToHMSmS(seconds: Double) -> (Int,Int,Int,Int){
+        let intSec = Int(seconds)
+        let hours = Int(intSec / 3600)
+        let mins = Int((intSec % 3600) / 60)
+        let secs = Int((intSec % 3600) % 60)
+        let ms = Int(seconds.truncatingRemainder(dividingBy: 1.0) * 60.0)
+        return (hours, mins, secs, ms)
     }
     
     func updateUI(pressure:Double, deltaPressure:Double, time:Double) {
         let date = Date(timeIntervalSince1970: time)
+        currentPressure = pressure
         pressureDisplay.text = String(format:"%.\(settings.sigFigs)f", pressure)
         deltaPressureDisplay.text = String(format:"%.\(settings.sigFigs)f", deltaPressure)
         currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)

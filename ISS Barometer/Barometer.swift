@@ -76,6 +76,21 @@ class Barometer {
         }
     }
     
+    func unit2kPa(pres:Double) -> Double {
+        switch settings.units {
+        case "mmHg":
+            return pres * 0.133322387415
+        case "psi":
+            return pres * 6.89475729
+        case "kPa":
+            return pres
+        case "atm":
+            return pres * 101.325
+        default:
+            return pres
+        }
+    }
+    
     func startDisplayingPressureData(updateFunc:@escaping (Double, Double, Double) -> ()) {
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
             data, error in
