@@ -88,6 +88,9 @@ class MainViewController: UIViewController {
         if rate < 0 {
             let buffer = settings.pressureBuffer // In kPa
             tResTotal = -((start - buffer) / rate)
+//            if tResTimer != nil {
+//                tResTimer.invalidate()
+//            }
             startTResTimer()
             print(tResTotal, " seconds")
         }
@@ -109,7 +112,7 @@ class MainViewController: UIViewController {
     @objc func updateTResTimer(){
         tResDisplay.text =  secToString(seconds: tResTotal)
         tResTotal -= 0.1
-        if tResTotal < 0 {
+        if tResTotal < 0.01 {
             endTResTimer()
         }
     }

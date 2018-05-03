@@ -79,7 +79,7 @@ class Barometer {
     func unit2kPa(pres:Double) -> Double {
         switch settings.units {
         case "mmHg":
-            return pres * 0.133322387415
+            return pres / 7.50061683
         case "psi":
             return pres * 6.89475729
         case "kPa":
