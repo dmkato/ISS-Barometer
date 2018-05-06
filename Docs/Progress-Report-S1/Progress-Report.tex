@@ -127,14 +127,14 @@ In further iterations, we plan to implement contextualized audio data readouts b
 As mentioned above the application we are making will provide ISS crew members with an accurate and efficient pressure reading.
 Our required features follow that purpose and are listed below:
 \begin{itemize}
-\item[V1:] Data Screen with initial pressure, current pressure, start/stop button, time stamp, pressure change (measured in sec / mmHg)
-\item[V1:] Graph Screen with plot pressure as a function of time
-\item[V1:] Additional settings menu that includes plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure
+\item[V1:] Display screen and a Settings pages
+\item [V1:] Display screen shows current pressure, delta, average change in pressure over time, average change in time over change in pressure and timestamps
+\item[V1:]  Display screen shows Graph Screen with plot pressure as a function of time
+\item[V1:] Settings Page that includes plot scale, scroll functionality, orientation, decimal point, units of measure for pressure and minimum pressure
 \item[V1:] All items will be optimized for efficient reading and clear interface
 \item[V2:] Graph will have pinch to zoom functionality, scaling options (to be set in settings)
 \item[V2:] Graph will be able to be exported as a csv, excel readable file
 \item[V2:] Graph can be compared to t-Res table, to measure time remaining
-\item[V2:] Audio data readouts that will provide specific information at regular intervals
 \end{itemize}
 
 Along with these specific features, the application that we create must be efficient and clear, as decided by the users.
@@ -164,13 +164,82 @@ From the listed project goals, we have sufficiently finished with V1, and have s
         We also need to redesign the app icon to depict the ISS with a hole in it with air escaping.
 
 \section{Problems Faced}
-    One of the problems I ran into was getting the orientation to lock.
-    There was not much information on the web about programmatically locking the orientation in Swift 4.
-    I eventually found out that you can set the orientation with a call to \texttt{UIDevice.current.setValue(<orientationInt>, forKey: "orientation")}.
-    Also, we switched from placing UI elements by dragging and dropping them in the appropriate location, to using Stacks to stack items so they can be automatically adjusted to fit the orientation/device.
-    In the transition to stacks, we ran into issues with centering certain elements.
+
+\subsection{Orientation} 
+Our first problem that we fasted was locking the orientation and then being able to reorient the display to the users’ preferences.
+We spent hours searching the web for help and mostly came up with ideas and code that just didn't work such as:
+
+\begin{lstlisting}
+static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {self.lockOrientation(orientation)}
+\end{lstlisting}
+
+   We found a lot of code like this, that potentially could have worked, but when implemented didn't lock the screen or allow you to switch your orientation.
+    In fact, most research told me i could use the code “ self.lockOrientation(left)” to lock the screen but i was unsuccessful.
+   The Solution we found was using the call to {UIDevice.current.setValue(<orientationInt>, forKey: "orientation")} to fix the orientation, so that the user could orient the screen however they wanted.
+
+
+\subsection{Stack}
+    Another problem we faced was orienting the stacks so that they were all aligned.
+    There were no instructions on how to use the \texttt{viewController} stacks online, so we had to manually adjust the stacks until we found a solution.
+    This solution was using more stacks within each other and making sure every single stack was correctly aligned with the previous one.
+
+\subsection{Rolling screen }
+
+The problems faced involved my efforts on rolling screen functionality and axis titles.
+The rolling screen functionality was the setting that allowed users to select the charts display mode.
+To implement rolling screen we had to set the minimum and maximum x axis for each data point added.
+It was simple enough to write this functionality but to make it call at regular intervals proved trickier.
+The solution we implemented was a timer object, that would activate each second, similar to the barometer polling.
+This allowed for the settings that affected the barometer, such as the units, to also change the debug data.
+
+\subsection{Axis titles}
+It comes from the fact that as a team, we want to have axis aligned titles, with the y-axis title being vertically orientated.
+It is only a single command that rotates the label, and is not really a challenge, but once rotated, Xcode's auto-formatting no longer applies.
+This means that size constraints that are applied before the rotation of the label are, for the most part, disregarded, as shown in the images below in fig \ref{fig:comparison}.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{widthAxis}
+  \caption{Label with width constraints}
+  \label{fig:width}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{heightAxis}
+  \caption{Label with height constraints}
+  \label{fig:height}
+\end{subfigure}
+\caption{A comparison of constraints on y axis label.}
+\label{fig:comparison}
+\end{figure}
+
+By fixing the width, the location of the label is affected, making the margin a ridiculous waste of space.
+When I try to fix this issue by also fixing the height of the label, the result is a truncated label.
+The solution that we were able to arrive at involved changing the implemented workspace technique, of using \texttt{Stacks}, to now using \texttt{Views}.
+This allows for more detailed adjustments, making it possible to constrain labels with position, and not just size.
+The result, shown in fig \ref{fig:comparison}, is the current solution.
+By using the following code, I am able to adjust the size of the label, after it is rotated.
+
+\begin{lstlisting}
+func adjustAxisLabels() {
+    yAxisLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+    yAxisLabel.text = "Pressure (\(settings.units))"
+    yAxisLabel.sizeToFit()
+}
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.3\linewidth]{solution}
+  \caption{The current solution of the label issue.}
+  \label{fig:solution}
+\end{figure}
+
 
 \section{Relevant and Interesting Details}
+\subsection{Code use}
     After completing the settings UI, we needed the settings to persist from use to use.
     To solution to this problem was UserDefaults which allows you to store serialized objects and retrieve them by an ID later is the class conforms to the \texttt{Codable} class.
     The code to implement this was very easy to read and implement and is as follows:
@@ -201,6 +270,23 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 
 \end{lstlisting}
+
+
+\subsection{Adaptation to space }
+
+Another thing that interested me was the adaptions requested for use aboard the ISS.
+I think that the applications use in microgravity and emergency situations is the most interesting detail of this project.
+The adaptions include things like the locked orientation and audio readout, as well as large font and clear typeface choices.
+It will be particularly interesting to deploy our application and hear feedback from real users.
+
+
+\subsection{Display}
+
+The most interesting thing i have found is how viewcontrollers are easy to use for simple programs because swift and Xcode have made it easy to drag and drop items.
+However, viewcontrollers create an organization problem for more in depth programs, because these items easily overlap making them hard to move.
+We started to use stacks that allowed us to make it easier to group items together and make them less cluttered.
+Although the \texttt{viewController} is useful for small apps, if this app were more extensive I would try to avoid the use of the \texttt{viewController} and remove it from the program.
+
 
 \section{Retrospective}
 \begin{center}
