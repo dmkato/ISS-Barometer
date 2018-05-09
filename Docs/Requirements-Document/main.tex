@@ -2,7 +2,7 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{setspace}
-
+\usepackage{longtable}
 \usepackage{geometry}
 \geometry{textheight=9.5in, textwidth=7in}
 
@@ -10,7 +10,7 @@
 \definecolor{grey}{rgb}{0.57, 0.64, 0.69}
 
 % 1. Fill in these details
-\def \CapstoneTeamName{The Cleverly Named Team}
+\def \CapstoneTeamName{Manovacumeter Team}
 \def \CapstoneTeamNumber{20}
 \def \GroupMemberOne{Cade Raichart}
 \def \GroupMemberTwo{Daniel Kato}
@@ -75,6 +75,7 @@ This document will also serve to be an agreement that both our team and our clie
 Within this document is the description, constraints and dependencies that will be used for this app.
 The Specific requirements that must be completed are laid out within the user, hardware and software interfaces sections.
 The System features entails the more in depth features of the pressure readings, recording button, graph and the settings pages.
+This document has been updated and is current (5.9.2018).
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -102,9 +103,9 @@ This document can be changed throughout the project, but scope changes must be s
 
 \subsection{Scope}
 The \CapstoneProjectName will measure the current pressure of its surroundings using the built in pressure transducer.
-The application will display the pressure in mmHg upon starting the app and whenever the 'Record Pressure' button is pressed the current pressure along with a timestamp will be recorded and displayed.
-It will also display the current pressure change in $\frac{\Delta t}{\Delta p}$ and include a graph of $\frac{\Delta p}{\Delta t}$ will be displayed with the capability to pinch to zoom and scale the graph.
-This graph will have a readout of $\Delta \frac{\Delta p}{\Delta t}$ displayed next to it.
+The application will display the current pressure in specified units and upon starting the app record the initial pressure.
+It will also display the current pressure change in $\frac{\Delta t}{\Delta P}$ and include a graph of $\frac{\Delta P}{\Delta t}$ with the capability to pinch to zoom and scale the graph.
+This graph will have a readout of $\frac{\Delta P}{\Delta t}$ and $\frac{\Delta t}{\Delta P}$ displayed next to it.
 A settings page will be provided that allows the user to choose the plot scale of the graph, orientation of the app, and number of significant digits.
 The graph's data will also be exportable as a csv file.
 The application will not read remote pressure data.
@@ -142,13 +143,16 @@ Second version features are not stretch goals, but instead expected after the fi
 Today in the Apple store there are apps that use the internal barometer and displays earth's atmospheric pressure, one such app is Barometer and Altimeter Pro.
 Apps on the market are designed for earth's atmospheric pressure and to help with detection of weather.
 The product we are creating will be used for detection atmospheric pressure in space specifically from hull breaches.
-To accomplish the requirements the system interfaces will have three pages the display, graph and settings.
-The Display will have a big button, with a digital display of atmospheric pressure.
-The first page will display the initial pressure, current pressure and the pressure change as sec/mmHG.
-Graphs display will have a graph that spans the whole screen, that the user will have the ability to zoom in and out.
- The graph axis will be pressure vs the function of time and our slope will be $\frac{\Delta p}{\Delta t}$.
- The third page, settings page, will control the characteristics and look of the other two pages.
-Settings page will contain the option of changing the plot scale, scroll functionality, orientation, decimal point, as well as other units of measure for pressure.
+To accomplish the requirements the system interfaces will have three sections: the readings display, graph and settings.
+These sections will be displayed over two pages, the main display and the settings page.
+The first page will display the initial pressure, current pressure and the pressure change as $\frac{\Delta P}{\Delta t}$ and $\frac{\Delta t}{\Delta P}$ as well as  the chart.
+The main display will have clear text, with a digital display of atmospheric pressure.
+Also on the main display will be a lock button, to disallow interaction with the chart and other buttons.
+This is to help prevent accidental presses in a high stress situation.
+The graph display will have a chart that spans the lower half of the main display and that will have the ability to zoom in and out.
+The graph axis will be pressure as a function of time and our slope will be $\frac{\Delta p}{\Delta t}$.
+The other page, the settings page, will control the characteristics and look of the other display.
+Settings page will contain the option of changing the plot scaling, orientation, floating point accuracy, as well as other units of measure for pressure.
  All displays and pages need to be able to be read fast and easily in low light.
 We will need to get the software to use the internal barometer that the iPad Air-2 uses, this will capture our atmospheric pressure for us.
 There is no outside interface that the app needs to use to complete the product.
@@ -160,15 +164,19 @@ This application will be released in multiple versions, with the initial version
 As such, the functions are separated into Version 1 requirements and Version 2 requirements.
 Additionally, if given time, our team may be able to do accuracy and resistance testing on the iPad devices for low pressure.
 This is a stretch goal, and might not be feasible with our current time frame.
+Difficulties with chart translation have also made the t-Res display a stretch goal, as discussed with our client.
+Although a stretch goal, we still plan to complete it, just not in time for the deadline.
 The following functions will be detailed in the Specific Requirements section, but are presented below for clarity.
 \begin{itemize}
-\item[V1:] Data Screen with initial pressure, current pressure, start/stop button, time stamp, pressure change (measured in sec / mmHg)
+\item[V1:] Data Screen with initial pressure, current pressure, time stamp, pressure change (measured in specified units)
 \item[V1:] Graph Screen with plot pressure as a function of time
-\item[V1:] Additional settings menu that includes plot scale, scroll functionality, orientation, decimal point, as well as other other units of measure for pressure
+\item[V1:] Additional settings menu that includes plot scale, orientation, floating point, as well as other other units of measure for pressure
 \item[V1:] All items will be optimized for efficient reading and clear interface
 \item[V2:] Graph will have pinch to zoom functionality, scaling options (to be set in settings)
 \item[V2:] Graph will be able to be exported as a csv, excel readable file
-\item[V2:] Graph can be compared to t-Res table, to measure time remaining
+\item[V2:] Main screen will have interaction lock, for protection against accidental touches
+\item[Optional:] Graph can be compared to t-Res table, to measure time remaining
+\item[Optional:] Audio alarms/dictation of t-Res and pressure
 \item[Optional:] Research can be done to identify low pressure accuracy and resistance
 \end{itemize}
 
@@ -222,7 +230,7 @@ Below is a schedule of the dependencies, which will broadly show schedule requir
 \ganttbar[inline]{Test Accuracy}{2018-01-01}{2018-05-18} \\
 \ganttbar[inline]{Adv. Plot}{2018-01-01}{2018-03-20} \\
 \ganttbar[inline]{Adv. Settings}{2018-01-01}{2018-03-10} \\
-\ganttbar[inline]{T-res Calculation}{2018-01-01}{2018-03-10} \\
+\ganttbar[inline]{T-res Calculation}{2018-01-01}{2018-05-30} \\
 \ganttbar[
 	bar/.append style={fill=grey, rounded corners=3pt}
     ]{Final Submission}{2018-05-18}{2018-06-10}
@@ -245,11 +253,13 @@ Below is a schedule of the dependencies, which will broadly show schedule requir
 \subsection{External Interface Requirements}
 
 \subsubsection{User Interfaces}
-The user interface will include a button to record the pressure at that given moment, a graph and the ability to pinch-to-zoom, and a settings page.
-The record button will simply record the pressure at the time the button was pressed and display the result with a timestamp.
+The user interface will include a button to lock screen interaction, a graph and the ability to pinch-to-zoom, and a settings page.
 The graph will be interactive and allow the user to zoom in on certain areas and scroll to view other portions of the graph.
-The settings page will include toggles to allow the user to change the number of significant digits, orientation, plot scale, scroll functionality, and other units of pressure.
+The settings page will include toggles to allow the user to change the number of significant digits, orientation, plot scaling, scroll functionality, and other units of pressure.
 There will be no privileged users, so anybody who uses the app will be able to use all features.
+There are however additional privileges that the compiler will have in building our application.
+When the t-Res is implemented, the compiler will have the option of updating the pressure rates within an internal table.
+This would be done by NASA if there are additional capsules added to the station, and wouldn't be an often occurrence.
 
 \subsubsection{Hardware Interfaces}
 The \CapstoneProjectName will not directly interface with any hardware, but will instead make use of Apple's iOS APIs in the Swift language that wrap all interaction with iOS hardware.
@@ -260,49 +270,51 @@ Each use of an iOS API will be carried out by a function call to the appropriate
 
 \subsubsection{Communications Interfaces}
 The ISS Barometer App will not need to communicate outside of the iPad, it will need to use the internal barometer and exported as a csv to an excel file.
-For updates, we will need to send them through NASA's link to the ISS, but ideally there will only be one update, and the infastructure we use is already inplace.
-\section{Specific System Features}
+For updates, we will need to send them through NASA's link to the ISS, but ideally there will only be one update, and the infrastructure we use is already in place.
 
+\section{Specific System Features}
 \subsection{Initial Pressure Reading}
 
 \subsubsection{Purpose of Function}
 This number will be on the initial data screen.
 It will show the initial pressure reading, in the units defined in the settings page, defaulted to mmHg.
-When the application is not in the recording mode it will show the current pressure, and once the record button is pressed it will show the pressure at the time of the recording was started.
-This provides the users with a clear, simple view of the current pressure, and once recording starts, it will provide a base line pressure that will be used to gauge the trends.
+When the application is launched, the initial pressure will be recorded and displayed as a static value.
+This provides the users with a clear, simple view of the initial pressure, on which they can base any situational awareness.
+
 \subsubsection{Stimulus/Response Sequence}
-Before and after a recording session, this text will display the current pressure polled from the barometer at regular intervals, depending on the settings.
-Once the button is pressed, this number will pause, and display the pressure at the time the recording started, with a time stamp.
+At launch, this text will display the initial pressure polled from the barometer.
+This number is static after launch, and will not change throughout the use of the application.
+At next launch, it is overridden to display the new initial pressure.
+It will have a time-stamp
 
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Ability to poll on-iPad barometer according to set rate
+\item Ability to poll on-iPad barometer at launch
 \item Ability to save and time stamp the pressure, in specified unit
-\item Ability to start, stop, and discard/save recordings
 \end{itemize}
 
-\subsection{Record Button}
-
-\subsubsection{Purpose of Function}
-This button will trigger the recording of data, it will also provide the user the ability to stop and pause recordings.
-By pressing/touching this button, the user will be able to activate the recording, in which the program will store pressure readings for use in the graph.
-As a result, the button will cause the graph to start recording, and the display to show the initial pressure alongside the current pressure and pressure change.
-\subsubsection{Stimulus/Response Sequence}
-Upon activating this button the graph will start recording and the initial pressure and pressure change will display alongside the current pressure.
-Once the program is recording this button will allow the user to pause and stop the recording, with pause meaning suspending recording and stop will fully cease recording.
-Once the recording has been dealt with, either deleted or saved as a csv, then the button will return to it's record ready state.
-\subsubsection{Associated Functional Requirements}
-\begin{itemize}
-\item Ability to poll on-iPad barometer
-\item Ability to display readings
-\item Ability to save and display saved data.
-\end{itemize}
+% \subsection{Record Button}
+%
+% \subsubsection{Purpose of Function}
+% This button will trigger the recording of data, it will also provide the user the ability to stop and pause recordings.
+% By pressing/touching this button, the user will be able to activate the recording, in which the program will store pressure readings for use in the graph.
+% As a result, the button will cause the graph to start recording, and the display to show the initial pressure alongside the current pressure and pressure change.
+% \subsubsection{Stimulus/Response Sequence}
+% Upon activating this button the graph will start recording and the initial pressure and pressure change will display alongside the current pressure.
+% Once the program is recording this button will allow the user to pause and stop the recording, with pause meaning suspending recording and stop will fully cease recording.
+% Once the recording has been dealt with, either deleted or saved as a csv, then the button will return to it's record ready state.
+% \subsubsection{Associated Functional Requirements}
+% \begin{itemize}
+% \item Ability to poll on-iPad barometer
+% \item Ability to display readings
+% \item Ability to save and display saved data.
+% \end{itemize}
 
 \subsection{Current Pressure Reading}
 \subsubsection{Purpose of Function}
 This number will be shown on the initial data screen during recording.
 It will show the current pressure reading in the defined units.
-This number will be polled from the barometer on the iPad at a rate defined in the settings, which will be no greater than 2 seconds.
+This number will be polled from the barometer on the iPad.
 It will be the same clear text as the other readings and have a decimal amount define in the settings.
 This measurement will be used for the $\frac{\Delta p}{\Delta t}$ plot and readout.
 \subsubsection{Stimulus/Response Sequence}
@@ -310,34 +322,34 @@ Upon starting up the app, the current pressure will be displayed, and when the r
 Once the recording is stopped the data will be stored with the plot.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Ability to poll on-iPad barometer readings according to set rate
-\item Ability to start, stop, and discard/save recordings
+\item Ability to poll on-iPad barometer readings
+\item Ability to start recording, display on UI
 \end{itemize}
 
-\subsection{Time over Pressure Change Reading}
+\subsection{Delta Reading}
 \subsubsection{Purpose of Function}
-This display of change in pressure or $\frac{\Delta t}{\Delta p}$ will be used to inform the user of how quickly the surrounding pressure is changing.
-This will be used to track changes in pressure in relation to change in time.
-This will also be used in the plotting of the data, as well as in the t-Res table, once that is implemented (V2).
+This display of $\frac{\Delta t}{\Delta P}$ and $\frac{\Delta P}{\Delta t}$ will be used to inform the user of how quickly the surrounding pressure is changing.
+This will be used in the plotting of the data, as well as in the t-Res table, once that is implemented.
+Both of these values are timestamped.
 \subsubsection{Stimulus/Response Sequence}
-This number will be displayed once the user activates the recording.
+This number will be displayed at launch.
 The pressure will be read at a consistent time interval, and at each reading, $\frac{\Delta t}{\Delta p}$ will be calculated and converted into the specified unit of measurement.
+The display will updated based on a set time interval.
 This number will then be displayed in a readable manner on the main page.
-Once a recording is discarded or saved, this number will no longer be displayed.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Ability to start, stop, and discard/save recordings
-\item Ability to poll on-iPad barometer readings according to set rate
-\item Ability to control the view of the app
+\item Ability to start pressure reading
+\item Ability to poll on-iPad barometer readings
+\item Ability to set various settings
 \end{itemize}
 
 \subsection{Plot of Pressure Change}
 \subsubsection{Purpose of Function}
 This graph will display the change in pressure over time, in such a way that the user can quickly see the whole timeline.
-This will allow the user to visualize the data and provide a comparison for the t-Res chart.
+This will allow the user to visualize the data and interact with pressure changes in an intuitive way.
 \subsubsection{Stimulus/Response Sequence}
 The graph's y axis will be pressure, while the x axis will be the function of time.
-The slope of the graph will be $\frac{\Delta p}{\Delta t}$, it will be constantly updated as the app is run.
+The slope of the graph will be $\frac{\Delta p}{\Delta t}$, it will be constantly updated as the app is run and new pressure is polled.
 The graph will be a running graph that allows data to flow off screen or shrinks the scale each time a data point is added.
 The time constraint is always getting longer and the slope is constantly updated to give you the newest read.
 \subsubsection{Associated Functional Requirements}
@@ -350,22 +362,35 @@ The time constraint is always getting longer and the slope is constantly updated
 \subsection{Configurable Settings Page}
 \subsubsection{Purpose of Function}
 This will be its own page in the application that allows the user to configure the app in a way that they like.
-The page will include toggles for number of significant digits, orientation, plot scale, scroll functionality, other units of pressure, and sample rate.
+The page will include toggles for number of significant digits, orientation, plot scaling, other units of pressure, and sample rate of $\frac{\Delta t}{\Delta P}$ and $\frac{\Delta P}{\Delta t}$.
 
 \subsubsection{Stimulus/Response Sequence}
 When the user selects a number from the significant digits selector, the all of the data displayed on the main page should have that number of digits to the right of the decimal place.
 When a user selects an orientation from the menu, the display should roll to that orientation in the settings view, and persist to the main page.
-When a user selects a plot scale, the graph on the main page's scale will adjust to match.
 When a user selects a specific graph scrolling functionality, the graph will change to reflect.
 When a user selected a different unit of measurement, the pressure displays on the main page will use that unit instead of the default mmHg.
-When a user selects a sample rate, the graph and pressure display will update at the specified number of times per second.
 
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
-\item Ability to poll on-iPad barometer according to set rate.
+\item Ability to poll on-iPad barometer
+\item Ability to persist settings throughout application
 \end{itemize}
 
-\subsection{V2 Consult T-Res}
+
+\subsection{V2 Export Function}
+\subsubsection{Purpose of Function}
+In version 2, it is required that the \CapstoneProjectName be able to export a .csv file containing all information from the current session.
+This will allow the user to review the data they have collected on a computer for further processing and analysis.
+\subsubsection{Stimulus/Response Sequence}
+By press pressing a 'Save to CSV' button, on the settings page, a csv file with the information collected during the current session will become available to share via Apple's share sheet.
+This share sheet will allow the user to choose an action for the created csv document.
+\subsubsection{Associated Functional Requirements}
+\begin{itemize}
+\item Ability to poll on-iPad barometer
+\item Ability to create files on the iPad
+\end{itemize}
+
+\subsection{Optional: Consult T-Res}
 \subsubsection{Purpose of Function}
 This function would allow users to look up the t-Res values in relation to the $\frac{\Delta t}{\Delta p}$.
 The t-Res look up would provide users with time remaining in a leak situation.
@@ -373,27 +398,54 @@ This is something that is already done aboard the ISS, but with the addition of 
 The display would provide the time remaining, with context of NASA's parameters for evacuation.
 \subsubsection{Stimulus/Response Sequence}
 This functionality would be available after a user had opted for it in the form of a button.
-It would then display time remaining, as a function of pressure loss.
+It would then display time remaining, as a function of pressure loss based off of the internal table.
 \subsubsection{Associated Functional Requirements}
 \begin{itemize}
 \item Ability to poll on-iPad barometer readings
-\item Ability to use t-Res look up, and access to evacuation parameters
+\item Ability to use t-Res look up, and reference internal table
 \item Ability to show/hide information
 \end{itemize}
 
-\subsection{V2 Save Function}
-\subsubsection{Purpose of Function}
-In version 2, it is required that the \CapstoneTeamName be able to export a csv containing all information from the current session.
-This will allow the user to review the data they have collected on a computer for further processing and analysis.
-This function will not be available while pressure data is being recorded and will require the user to pause the recording to save the data.
-\subsubsection{Stimulus/Response Sequence}
-Once in a paused state, by press pressing a 'Save to CSV' button, a csv file with the information collected during the current session will become available to share via Apple's share sheet.
-This share sheet will allow the user to choose an action for the created csv document.
-\subsubsection{Associated Functional Requirements}
-\begin{itemize}
-\item Ability to poll on-iPad barometer according to set rate.
-\item Ability to create files on the iPad
-\end{itemize}
+\section{Change Log}
+
+\begin{center}
+	\begin{longtable}{| l | p{0.28\linewidth} | p{0.28\linewidth} | p{0.28\linewidth} |}
+		\hline Section & Previous & Current & Justification \\ \hline \hline
+		\textbf{Title Page} & -- & -- \\ \hline
+		- & A cleverly named team & Manovacumeter Team & Updated default team name \\ \hline
+		\textbf{Scope} & -- & -- \\ \hline
+		- & $\frac{\Delta P}{\Delta t}$ & $\frac{\Delta P}{\Delta t}$ and $\frac{\Delta t}{\Delta P}$ & Client requested inverse as well \\ \hline
+		- & Mention of record button & - & Recent redesign with client removed record/reset buttons \\ \hline \hline
+ 		\textbf{Product Perspectives} & -- & -- \\ \hline
+		- & Mention of three pages & three sections, two pages & iPad screen size allows for compact display  \\ \hline
+		- & All mention of display page buttons & - & Recent redesign with client has made main page buttons obsolete \\ \hline
+		- & - & Lock button & Added to prevent accidental screen touches \\ \hline
+		- & Plot scale & plot scaling & The functionality of this setting has been redefined \\ \hline
+		- & Scrolling functionality & - & This setting has been reconsidered and scratched \\ \hline \hline
+ 		\textbf{Product Functions} & -- & -- \\ \hline
+		- & - & Screen lock function added & Requested by client \\ \hline
+		- & T-Res as requirement & t-Res to stretch goal & T-Res must be derived from a chart, which has proved difficult, tablature data isn't yet available \\ \hline
+		- & Mention of hhMg as only units & Settings allow for other units & Setting was implemented \\ \hline
+		- & - & Added audio alarms & Suggestion by client \\ \hline \hline
+		\textbf{Schedule Dependencies} & -- & -- \\ \hline
+		- & Expected T-Res May, 5 & Pushed to May 30 & T-Res must be derived from a chart \\ \hline \hline
+		\textbf{Specific Requirements} & -- & -- \\ \hline
+		- & - & Screen lock function added & Requested by client \\ \hline
+		- & Mention of record button & - & Client redesign no longer requires record function \\ \hline
+		- & Plot scale & Plot scaling & Added clarity, plot scaling refers to rolling window \\ \hline
+		- & - & Addition of t-Res internal chart & Clarified by client during redesign \\ \hline \hline
+		\textbf{Specific System Features} & -- & -- \\ \hline
+		- & All mention of recording/record button & - & Client redesign no longer requires record function \\ \hline
+		- & Initial pressure as dynamic & Initial pressure will be static & Initial pressure is defined at launch \\ \hline
+		- & Polling rate setting & - & Polling rate isn't adjustable \\ \hline
+		- & Change in pressure over time & Delta Reading & Updated to reflect new client redesign \\ \hline
+		- & Mention of scaling functionality in graph & - & Scaling works, but needs no setting \\ \hline
+		- & T-Res as V2 requirement & Moved to optional stretch goal & T-Res must be derived from chart \\ \hline
+		- & Save data & Renamed as Export data, removed recording requirement & Added clarity \\ \hline
+
+
+\end{longtable}
+\end{center}
 
 
 \end{document}
