@@ -73,16 +73,11 @@ class MainViewController: UIViewController {
         yAxisLabel.sizeToFit()
     }
     
-    func drawSeperatorLine() {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         adjustAxisLabels()
         barometer.settings = self.settings
         barometer.startBarometerUpdates(updateUI, setInitialPressure)
-        drawSeperatorLine()
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,6 +99,7 @@ class MainViewController: UIViewController {
         if segue.identifier == "SettingsSegue" {
             let settingsVC = segue.destination as! SettingsViewController
             settingsVC.chartVC = self.chartViewController
+            settingsVC.barometer = barometer
         } else if segue.identifier == "ChartSegue" {
             let chartVC = segue.destination as! ChartViewController
             chartVC.barometer = barometer

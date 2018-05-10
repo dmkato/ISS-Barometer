@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     var chartVC: ChartViewController!
+    var barometer: Barometer!
     lazy var csv: Csv = Csv()
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -41,6 +42,7 @@ class SettingsViewController: UITableViewController {
         (sender as AnyObject).setValue(Float(roundedValue), animated: true)
         sigFigValue.text = String(roundedValue)
         settings.sigFigs = roundedValue
+        barometer.updateInitialPressureReading = true
     }
     
     @IBAction func unitPicked(_ sender: Any) {
