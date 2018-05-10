@@ -96,7 +96,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQV-Kf-0kI" userLabel="Readings View">
-                                        <rect key="frame" x="0.0" y="60" width="748" height="184"/>
+                                        <rect key="frame" x="0.0" y="60" width="748" height="183"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xNB-GU-8nP" userLabel="Readings Stack">
                                                 <rect key="frame" x="0.0" y="-60" width="748" height="303"/>
@@ -114,13 +114,13 @@
                                                                 <rect key="frame" x="69" y="54" width="212" height="39"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wfI-5A-aGZ" userLabel="Pressure Value">
-                                                                        <rect key="frame" x="61.5" y="-16.5" width="88" height="72"/>
+                                                                        <rect key="frame" x="62" y="-16.5" width="88" height="72"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="738" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nik-lW-xze">
-                                                                        <rect key="frame" x="152.5" y="28.5" width="28.5" height="18"/>
+                                                                        <rect key="frame" x="153" y="28" width="28.5" height="18"/>
                                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
@@ -170,13 +170,13 @@
                                                                                 <rect key="frame" x="18" y="49" width="121" height="60"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-b5-WNd" userLabel="dPdt Value">
-                                                                                        <rect key="frame" x="17" y="-6" width="88" height="72"/>
+                                                                                        <rect key="frame" x="16.5" y="-6" width="88" height="72"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Df1-Ii-2kt">
-                                                                                        <rect key="frame" x="108" y="37" width="28.5" height="18"/>
+                                                                                        <rect key="frame" x="107.5" y="37" width="28.5" height="18"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -209,13 +209,13 @@
                                                                                 <rect key="frame" x="18" y="49" width="121" height="60"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fg2-pp-n0q" userLabel="dP/dt Value">
-                                                                                        <rect key="frame" x="17" y="-6" width="88" height="72"/>
+                                                                                        <rect key="frame" x="16.5" y="-6" width="88" height="72"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHI-wM-vww">
-                                                                                        <rect key="frame" x="108" y="37" width="28.5" height="18"/>
+                                                                                        <rect key="frame" x="107.5" y="37" width="28.5" height="18"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -274,16 +274,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T12-1H-QuU" userLabel="Plot View">
-                                        <rect key="frame" x="0.0" y="274" width="748" height="676"/>
+                                        <rect key="frame" x="0.0" y="273" width="748" height="677"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-oO-Sl6" userLabel="xAxisLabel">
-                                                <rect key="frame" x="358" y="659" width="32" height="17"/>
+                                                <rect key="frame" x="358" y="659.5" width="32" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1D-bx-B8W">
-                                                <rect key="frame" x="31" y="0.0" width="717" height="657"/>
+                                                <rect key="frame" x="31" y="0.0" width="717" height="658"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="717" id="ITc-G0-S79"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="717" id="JPv-xL-yLN"/>
@@ -646,18 +646,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zt-1e-3cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="32"/>
+            <point key="canvasLocation" x="889.84375" y="31.640624999999996"/>
         </scene>
         <!--Chart View Controller-->
         <scene sceneID="2jW-JN-V5k">
             <objects>
                 <viewController storyboardIdentifier="ChartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WSa-VY-E7U" customClass="ChartViewController" customModule="ISS_Barometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mr1-AK-6F3">
-                        <rect key="frame" x="0.0" y="0.0" width="717" height="657"/>
+                        <rect key="frame" x="0.0" y="0.0" width="717" height="658"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NY4-By-H64" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="717" height="657"/>
+                                <rect key="frame" x="0.0" y="0.0" width="717" height="658"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
