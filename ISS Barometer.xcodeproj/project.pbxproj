@@ -15,6 +15,7 @@
 		354958A61FF6DE8700C00594 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354958A51FF6DE8700C00594 /* Settings.swift */; };
 		354958A81FF702D200C00594 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354958A71FF702D200C00594 /* NavigationController.swift */; };
 		355183D01FE4C05E0065279E /* Barometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355183CF1FE4C05E0065279E /* Barometer.swift */; };
+		358F52FF20A3F6740044E973 /* Csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F52FE20A3F6740044E973 /* Csv.swift */; };
 		35F63A4A1FCCE56C00639EB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A491FCCE56C00639EB5 /* AppDelegate.swift */; };
 		35F63A4C1FCCE56C00639EB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A4B1FCCE56C00639EB5 /* MainViewController.swift */; };
 		35F63A521FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A501FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld */; };
@@ -64,6 +65,7 @@
 		354958A51FF6DE8700C00594 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		354958A71FF702D200C00594 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		355183CF1FE4C05E0065279E /* Barometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barometer.swift; sourceTree = "<group>"; };
+		358F52FE20A3F6740044E973 /* Csv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Csv.swift; sourceTree = "<group>"; };
 		35F63A461FCCE56C00639EB5 /* ISS Barometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISS Barometer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F63A491FCCE56C00639EB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35F63A4B1FCCE56C00639EB5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				354958A71FF702D200C00594 /* NavigationController.swift */,
 				353B59291FD3C0310060613E /* ChartViewController.swift */,
 				354958A31FF6D3A200C00594 /* SettingsViewController.swift */,
+				358F52FE20A3F6740044E973 /* Csv.swift */,
 			);
 			path = "ISS Barometer";
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				355183D01FE4C05E0065279E /* Barometer.swift in Sources */,
 				354958A81FF702D200C00594 /* NavigationController.swift in Sources */,
 				354958A41FF6D3A200C00594 /* SettingsViewController.swift in Sources */,
+				358F52FF20A3F6740044E973 /* Csv.swift in Sources */,
 				354958A61FF6DE8700C00594 /* Settings.swift in Sources */,
 				35F63A4A1FCCE56C00639EB5 /* AppDelegate.swift in Sources */,
 				3507D3541FE71A7800C2C39D /* XAxisValueFormatter.swift in Sources */,

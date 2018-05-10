@@ -602,13 +602,21 @@
                             <outlet property="delegate" destination="Z9g-Lb-bfY" id="1jY-Pd-Yg6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JkB-zp-2mc"/>
+                    <navigationItem key="navigationItem" id="JkB-zp-2mc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="iRS-pY-ooy">
+                            <connections>
+                                <action selector="shareSheetPressed:" destination="Z9g-Lb-bfY" id="KdH-qQ-9aB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="orientationPicker" destination="rqr-aY-t3V" id="fLP-GC-NfT"/>
                         <outlet property="runningWindowOptions" destination="egQ-m3-Nqv" id="JpF-7p-YBR"/>
                         <outlet property="runningWindowSlider" destination="0iU-HK-SCH" id="Lvu-A7-dkw"/>
                         <outlet property="runningWindowTable" destination="LNK-Ak-toq" id="Ygz-NJ-DxF"/>
                         <outlet property="runningWindowValue" destination="Kda-4J-a63" id="s2n-H7-tT5"/>
+                        <outlet property="shareSheet" destination="iRS-pY-ooy" id="Zgd-nK-NNb"/>
                         <outlet property="sigFigSlider" destination="AgK-hC-Pu8" id="dPw-El-JYB"/>
                         <outlet property="sigFigValue" destination="qss-w1-w1a" id="vb8-Zw-aW4"/>
                         <outlet property="slidingScalePicker" destination="58K-OA-gSd" id="6Rh-Xz-SUe"/>

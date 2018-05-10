@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     var chartVC: ChartViewController!
+    lazy var csv: Csv = Csv()
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
@@ -24,6 +25,16 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var runningWindowValue: UILabel!
     @IBOutlet weak var runningWindowOptions: UIView!
     @IBOutlet weak var runningWindowTable: UITableViewCell!
+    @IBOutlet weak var shareSheet: UIBarButtonItem!
+    
+    @IBAction func shareSheetPressed(_ sender: Any) {
+        let path = csv.createCsvFile(chartVC.dataEntries)
+        let vc = UIActivityViewController(activityItems: [path!], applicationActivities: nil)
+        present(vc, animated: true, completion: nil)
+        let popOver = vc.popoverPresentationController!
+        popOver.sourceView = self.view
+        popOver.barButtonItem = self.shareSheet
+    }
     
     @IBAction func sliderMoved(_ sender: Any) {
         let roundedValue = lroundf(sigFigSlider.value)
@@ -107,7 +118,6 @@ class SettingsViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 
 }
 
