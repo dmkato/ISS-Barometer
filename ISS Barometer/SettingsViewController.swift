@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     var chartVC: ChartViewController!
+    lazy var csv: Csv = Csv()
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
@@ -27,22 +28,12 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var shareSheet: UIBarButtonItem!
     
     @IBAction func shareSheetPressed(_ sender: Any) {
-        let csvText = "Balls"                       // Compose CSV
-        let fileName = "ISS_Barometer_Data.csv" // Add date
-        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-        do {
-            try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
-        } catch {
-            print("Failed to create file")
-            print("\(error)")
-        }
+        let path = csv.createCsvFile(chartVC.dataEntries)
         let vc = UIActivityViewController(activityItems: [path!], applicationActivities: nil)
-        vc.excludedActivityTypes = []
         present(vc, animated: true, completion: nil)
-        if let popOver = vc.popoverPresentationController {
-            popOver.sourceView = self.view
-            popOver.barButtonItem = self.shareSheet
-        }
+        let popOver = vc.popoverPresentationController!
+        popOver.sourceView = self.view
+        popOver.barButtonItem = self.shareSheet
     }
     
     @IBAction func sliderMoved(_ sender: Any) {
