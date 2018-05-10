@@ -66,7 +66,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func minPressureChanged(_ sender: Any) {
         if let pres = Double(minPressureField.text!) {
-            settings.pressureBuffer = pres
+            settings.pressureBuffer = Barometer().unit2kPa(pres: pres)
         }
     }
     
@@ -106,7 +106,7 @@ class SettingsViewController: UITableViewController {
     func initMinPressure() {
         minPressureUnit.text = settings.units
         minPressureField.keyboardType = .numbersAndPunctuation
-        minPressureField.text = String(format:"%.3f", settings.pressureBuffer)
+        minPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: settings.pressureBuffer))
     }
     
     override func viewWillAppear(_ animated: Bool) {
