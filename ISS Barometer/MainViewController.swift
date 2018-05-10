@@ -73,11 +73,16 @@ class MainViewController: UIViewController {
         yAxisLabel.sizeToFit()
     }
     
+    func drawSeperatorLine() {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         adjustAxisLabels()
         barometer.settings = self.settings
         barometer.startBarometerUpdates(updateUI, setInitialPressure)
+        drawSeperatorLine()
     }
     
     override func didReceiveMemoryWarning() {

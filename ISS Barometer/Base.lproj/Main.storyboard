@@ -44,10 +44,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="748" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Pressure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPM-GG-0Kc">
-                                                <rect key="frame" x="10" y="10" width="100.5" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="ME8-AG-2Ti"/>
-                                                </constraints>
+                                                <rect key="frame" x="10" y="12" width="100.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -62,13 +59,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROE-cv-jHb" userLabel="Initial Pressure Display Unit">
-                                                <rect key="frame" x="221" y="15.5" width="28.5" height="18"/>
+                                                <rect key="frame" x="221" y="13.5" width="28.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5e-yI-dCO" userLabel="Initial Time Label">
+                                                <rect key="frame" x="259.5" y="12" width="74" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMv-7X-sSA" userLabel="Initial Pressure Timestamp">
-                                                <rect key="frame" x="259.5" y="10" width="106.5" height="20"/>
+                                                <rect key="frame" x="343.5" y="10" width="106.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Tgg-3z-YG4"/>
                                                 </constraints>
@@ -79,14 +82,16 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="WPM-GG-0Kc" secondAttribute="bottom" id="Ct4-zb-0pl"/>
+                                            <constraint firstAttribute="bottom" secondItem="Y5e-yI-dCO" secondAttribute="bottom" id="DPW-cv-CDi"/>
                                             <constraint firstAttribute="height" constant="30" id="DPZ-Gp-y6Y"/>
-                                            <constraint firstItem="yMv-7X-sSA" firstAttribute="leading" secondItem="ROE-cv-jHb" secondAttribute="trailing" constant="10" id="Rgg-oL-AeJ"/>
+                                            <constraint firstItem="yMv-7X-sSA" firstAttribute="leading" secondItem="Y5e-yI-dCO" secondAttribute="trailing" constant="10" id="Rgg-oL-AeJ"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yMv-7X-sSA" secondAttribute="trailing" constant="20" symbolic="YES" id="Shf-PN-WGD"/>
                                             <constraint firstItem="Ejx-af-yCa" firstAttribute="leading" secondItem="WPM-GG-0Kc" secondAttribute="trailing" constant="10" id="VzI-PW-PZL"/>
+                                            <constraint firstItem="Y5e-yI-dCO" firstAttribute="leading" secondItem="ROE-cv-jHb" secondAttribute="trailing" constant="10" id="dMV-Yv-1Kk"/>
                                             <constraint firstAttribute="bottom" secondItem="yMv-7X-sSA" secondAttribute="bottom" id="gFy-g3-FYf"/>
                                             <constraint firstItem="ROE-cv-jHb" firstAttribute="leading" secondItem="Ejx-af-yCa" secondAttribute="trailing" constant="1" id="mwx-hs-u7I"/>
                                             <constraint firstItem="WPM-GG-0Kc" firstAttribute="leading" secondItem="nj0-Zy-Nf3" secondAttribute="leading" constant="10" id="odR-6X-Xxg"/>
-                                            <constraint firstAttribute="bottom" secondItem="ROE-cv-jHb" secondAttribute="bottom" multiplier="0.9" id="wBD-Dd-ilw"/>
+                                            <constraint firstAttribute="bottom" secondItem="ROE-cv-jHb" secondAttribute="bottom" multiplier="0.95" id="wBD-Dd-ilw"/>
                                             <constraint firstAttribute="bottom" secondItem="Ejx-af-yCa" secondAttribute="bottom" id="xqp-gO-WDd"/>
                                         </constraints>
                                     </view>
