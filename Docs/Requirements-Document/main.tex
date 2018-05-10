@@ -4,6 +4,7 @@
 \usepackage{setspace}
 \usepackage{longtable}
 \usepackage{geometry}
+\usepackage{multirow}
 \geometry{textheight=9.5in, textwidth=7in}
 
 \usepackage{pgfgantt}
@@ -407,45 +408,81 @@ It would then display time remaining, as a function of pressure loss based off o
 \end{itemize}
 
 \section{Change Log}
+Here is our change log, listed with sections and previous values:
+\begin{longtable}[h]{| p{0.28\linewidth} | p{0.28\linewidth} | p{0.28\linewidth} |}
 
-\begin{center}
-	\begin{longtable}{| l | p{0.28\linewidth} | p{0.28\linewidth} | p{0.28\linewidth} |}
-		\hline Section & Previous & Current & Justification \\ \hline \hline
-		\textbf{Title Page} & -- & -- \\ \hline
-		- & A cleverly named team & Manovacumeter Team & Updated default team name \\ \hline
-		\textbf{Scope} & -- & -- \\ \hline
-		- & $\frac{\Delta P}{\Delta t}$ & $\frac{\Delta P}{\Delta t}$ and $\frac{\Delta t}{\Delta P}$ & Client requested inverse as well \\ \hline
-		- & Mention of record button & - & Recent redesign with client removed record/reset buttons \\ \hline \hline
- 		\textbf{Product Perspectives} & -- & -- \\ \hline
-		- & Mention of three pages & three sections, two pages & iPad screen size allows for compact display  \\ \hline
-		- & All mention of display page buttons & - & Recent redesign with client has made main page buttons obsolete \\ \hline
-		- & - & Lock button & Added to prevent accidental screen touches \\ \hline
-		- & Plot scale & plot scaling & The functionality of this setting has been redefined \\ \hline
-		- & Scrolling functionality & - & This setting has been reconsidered and scratched \\ \hline \hline
- 		\textbf{Product Functions} & -- & -- \\ \hline
-		- & - & Screen lock function added & Requested by client \\ \hline
-		- & T-Res as requirement & t-Res to stretch goal & T-Res must be derived from a chart, which has proved difficult, tablature data isn't yet available \\ \hline
-		- & Mention of hhMg as only units & Settings allow for other units & Setting was implemented \\ \hline
-		- & - & Added audio alarms & Suggestion by client \\ \hline \hline
-		\textbf{Schedule Dependencies} & -- & -- \\ \hline
-		- & Expected T-Res May, 5 & Pushed to May 30 & T-Res must be derived from a chart \\ \hline \hline
-		\textbf{Specific Requirements} & -- & -- \\ \hline
-		- & - & Screen lock function added & Requested by client \\ \hline
-		- & Mention of record button & - & Client redesign no longer requires record function \\ \hline
-		- & Plot scale & Plot scaling & Added clarity, plot scaling refers to rolling window \\ \hline
-		- & - & Addition of t-Res internal chart & Clarified by client during redesign \\ \hline \hline
-		\textbf{Specific System Features} & -- & -- \\ \hline
-		- & All mention of recording/record button & - & Client redesign no longer requires record function \\ \hline
-		- & Initial pressure as dynamic & Initial pressure will be static & Initial pressure is defined at launch \\ \hline
-		- & Polling rate setting & - & Polling rate isn't adjustable \\ \hline
-		- & Change in pressure over time & Delta Reading & Updated to reflect new client redesign \\ \hline
-		- & Mention of scaling functionality in graph & - & Scaling works, but needs no setting \\ \hline
-		- & T-Res as V2 requirement & Moved to optional stretch goal & T-Res must be derived from chart \\ \hline
-		- & Save data & Renamed as Export data, removed recording requirement & Added clarity \\ \hline
+		\multicolumn{3}{l}{\textbf{Title Page}} \\ \hline
+		\textbf{Previous} & \textbf{Updated} & \textbf{Justification} \\
+		\hline
+		A cleverly named team & Manovacumeter Team & Updated default team name \\
+		\hline
 
+		\multicolumn{3}{l}{\textbf{Scope}} \\ \hline
+		\textbf{Previous} & \textbf{Updated} & \textbf{Justification} \\
+		\hline
+		$\frac{\Delta P}{\Delta t}$ & $\frac{\Delta P}{\Delta t}$ and $\frac{\Delta t}{\Delta P}$ & Client requested inverse as well \\
+		\hline
+		Mention of record button & - & Recent redesign with client removed record/reset buttons \\
+		\hline
+
+		\multicolumn{3}{l}{\textbf{Product Perspectives}} \\ \hline
+		\textbf{Previous} & \textbf{Updated} & \textbf{Justification} \\ \hline
+		Mention of three pages & Three sections on two pages & iPad screen size allows for compact display  \\
+		\hline
+		All mention of display page buttons & - & Recent redesign has made main page buttons unnecessary \\
+		\hline
+		- & Lock button & Added to prevent accidental screen touches \\
+		\hline
+		Plot scale & Plot scaling & The functionality of this setting has been redefined \\
+		\hline
+		Scrolling functionality & - & This setting has been reconsidered and scratched \\
+		\hline
+
+		\multicolumn{3}{l}{\textbf{Product Functions}} \\ \hline
+		\textbf{Previous} & \textbf{Updated} & \textbf{Justification} \\ \hline
+		- & Screen lock function added & Requested by client \\
+		\hline
+		T-Res as requirement & T-Res to stretch goal & T-Res must be derived from a chart, which has proved difficult, tablature data isn't yet available \\
+		\hline
+		Mention of hhMg as only units & Settings allow for other units & Setting was implemented \\
+		\hline
+		- & Added audio alarms & Suggestion by client \\
+		\hline
+
+		\multicolumn{3}{l}{\textbf{Schedule Dependencies}} \\ \hline
+		\textbf{Previous} & \textbf{Updated} & \textbf{Justification} \\ \hline
+		Expected T-Res May, 5 & Pushed to May 30 & T-Res must be derived from a chart \\
+		\hline
+
+		\multicolumn{3}{l}{\textbf{Specific Requirements}} \\ \hline
+		\textbf{Previous} & \textbf{Updated} & \textbf{Justification} \\ \hline
+		- & Screen lock function added & Requested by client \\
+		\hline
+		Mention of record button & - & Client redesign no longer requires record function \\
+		\hline
+		Plot scale & Plot scaling & Added clarity, plot scaling refers to rolling window \\
+		\hline
+		- & Addition of t-Res internal chart & Clarified by client during redesign \\
+		\hline
+
+		\multicolumn{3}{l}{\textbf{Specific System Features}} \\ \hline
+		\textbf{Previous} & \textbf{Updated} & \textbf{Justification} \\ \hline
+		All mention of recording/record button & - & Client redesign no longer requires record function \\
+		\hline
+		Initial pressure as dynamic & Initial pressure will be static & Initial pressure is defined at launch \\
+		\hline
+		Polling rate setting & - & Polling rate isn't adjustable \\
+		\hline
+		Change in pressure over time & Delta Reading & Updated to reflect new client redesign \\
+		\hline
+		Mention of scaling functionality in graph & - & Scaling works, but needs no setting \\
+		\hline
+		T-Res as V2 requirement & Moved to optional stretch goal & T-Res must be derived from chart \\
+		\hline
+		Save data & Renamed as Export data, removed recording requirement & Added clarity \\
+		\hline
 
 \end{longtable}
-\end{center}
 
 
 \end{document}
