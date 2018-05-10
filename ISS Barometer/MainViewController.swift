@@ -132,14 +132,13 @@ class MainViewController: UIViewController {
     }
     
     func adjustAxisLabels() {
-        yAxisLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
         yAxisLabel.text = "Pressure (\(settings.units))"
+        yAxisLabel.transform = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
         yAxisLabel.sizeToFit()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        adjustAxisLabels()
         barometer.settings = self.settings
         barometer.startBarometerUpdates(updateFunc: updateUI)
     }
@@ -157,6 +156,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setDisplayUnits()
+        adjustAxisLabels()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
