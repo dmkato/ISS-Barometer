@@ -27,6 +27,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var runningWindowOptions: UIView!
     @IBOutlet weak var runningWindowTable: UITableViewCell!
     @IBOutlet weak var shareSheet: UIBarButtonItem!
+    @IBOutlet weak var integrationIntervalPicker: UISegmentedControl!
     
     @IBAction func shareSheetPressed(_ sender: Any) {
         let path = csv.createCsvFile(chartVC.dataEntries)
@@ -59,6 +60,12 @@ class SettingsViewController: UITableViewController {
         UIDevice.current.setValue(selectedIdx + 1, forKey: "orientation")
     }
     
+    @IBAction func IntervalPicked(_ sender: Any) {
+        let selectedIdx = integrationIntervalPicker.selectedSegmentIndex
+        let selectedInterval = integrationIntervalPicker.titleForSegment(at: selectedIdx)
+        settings.runningIntegrationInterval = Int(selectedInterval!)!
+    }
+    
     @IBAction func slidingScalePicked(_ sender: Any) {
         settings.slidingScale = slidingScalePicker.isOn
         initWindowSlider()
@@ -87,6 +94,12 @@ class SettingsViewController: UITableViewController {
         let segmentIdx = orientationPickerSegments[settings.orientation]!
         orientationPicker.selectedSegmentIndex = segmentIdx
     }
+
+    func initIntegrationIntervalPicker() {
+        let orientationPickerSegments = [1: 0, 2: 1, 4: 2, 6: 3, 8: 4, 10: 5]
+        let segmentIdx = orientationPickerSegments[settings.runningIntegrationInterval]!
+        integrationIntervalPicker.selectedSegmentIndex = segmentIdx
+    }
     
     func initSlidingScalePicker() {
         slidingScalePicker.setOn((settings.slidingScale), animated: true)
@@ -111,6 +124,7 @@ class SettingsViewController: UITableViewController {
         initOrientationPicker()
         initSlidingScalePicker()
         initWindowSlider()
+        initIntegrationIntervalPicker()
     }
     
     override func viewDidLoad() {

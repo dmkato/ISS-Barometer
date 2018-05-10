@@ -18,14 +18,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var currentTimestamp: UILabel!
     @IBOutlet weak var dpdtDisplay: UILabel!
     @IBOutlet weak var dtdpDisplay: UILabel!
-    @IBOutlet weak var dpdtToTimestamp: UILabel!
-    @IBOutlet weak var dpdtFromTimestamp: UILabel!
     @IBOutlet weak var pressureDisplayUnit: UILabel!
     @IBOutlet weak var initialPressureDisplayUnit: UILabel!
     @IBOutlet weak var dpdtDisplayUnit: UILabel!
     @IBOutlet weak var dtdpDisplayUnit: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var lockButton: UIButton!
+    @IBOutlet weak var integrationInterval: UILabel!
     
     var barometer = Barometer()
     var screenIsLocked = false
@@ -36,16 +35,6 @@ class MainViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
     }()
-    
-//    @IBAction func dpdtResetPressed(_ sender: Any) {
-//        dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDpdt())
-//        dtdpDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDtdp())
-//        let startDate = Date(timeIntervalSince1970: barometer.getDtdpStartTime())
-//        let endDate = Date(timeIntervalSince1970: barometer.getDtdpEndTime())
-//        dpdtFromTimestamp.text =  DateFormatter.localizedString(from: startDate, dateStyle: .none, timeStyle: .medium)
-//        dpdtToTimestamp.text = DateFormatter.localizedString(from: endDate, dateStyle: .none, timeStyle: .medium)
-//        barometer.clearPressureReadings()
-//    }
     
     @IBAction func screenLockPressed(_ sender: Any) {
         screenIsLocked = !screenIsLocked
@@ -58,6 +47,8 @@ class MainViewController: UIViewController {
         let date = Date(timeIntervalSince1970: time)
         pressureDisplay.text = String(format:"%.\(settings.sigFigs)f", pressure)
         currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+        dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDpdt())
+        dtdpDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDtdp())
         chartViewController.updateChart(pressureReading: pressure, time: time)
     }
     
@@ -93,6 +84,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setDisplayUnits()
+        integrationInterval.text = String(settings.runningIntegrationInterval)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

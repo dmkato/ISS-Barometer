@@ -27,10 +27,11 @@ class Barometer {
     
     func calcDeltaSum(_ dType: String) -> Double {
         var sum = 0.0
-        if pressureReadings.count <= 1 {
+        let startIdx = pressureReadings.count - settings.runningIntegrationInterval + 1
+        if pressureReadings.count <= settings.runningIntegrationInterval {
             return 0
         }
-        for idx in 1..<pressureReadings.count {
+        for idx in startIdx..<pressureReadings.count {
             let dp = pressureReadings[idx].0 - pressureReadings[idx-1].0
             let dt = pressureReadings[idx].1 - pressureReadings[idx-1].1
             sum += (dType == "dpdt" ? dp/dt : dt/dp)

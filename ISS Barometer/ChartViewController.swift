@@ -83,9 +83,11 @@ class ChartViewController: UIViewController {
         lineChartView.rightAxis.axisMinimum = 0
         lineChartView.rightAxis.spaceTop = 0.5
         lineChartView.leftAxis.spaceTop = 0.5
-        lineChartView.rightAxis.drawAxisLineEnabled = false
-        lineChartView.leftAxis.drawAxisLineEnabled = false
-        lineChartView.xAxis.drawAxisLineEnabled = false
+//        lineChartView.rightAxis.drawAxisLineEnabled = false
+//        lineChartView.leftAxis.drawAxisLineEnabled = false
+//        lineChartView.xAxis.drawAxisLineEnabled = false
+        lineChartView.drawBordersEnabled = true
+        lineChartView.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         lineChartView.highlightPerTapEnabled = false
         lineChartView.highlightPerDragEnabled = false
     }
