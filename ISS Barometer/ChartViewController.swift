@@ -149,7 +149,8 @@ class ChartViewController: UIViewController {
     
     func convertDataPoints(unit: String) {
         let lineChartDataSet = lineChartView.data!.dataSets[0] as! LineChartDataSet
-        barometer.initialDeltaReading = convertValue(barometer.initialDeltaReading!, unit)
+        barometer.initialPressureReading = convertValue(barometer.initialPressureReading!, unit)
+        barometer.updateInitialPressureReading = true
         dataEntries = dataEntries.map { value in convertEntry(value, unit) }
         lineChartDataSet.values = dataEntries
         updateChartView()
