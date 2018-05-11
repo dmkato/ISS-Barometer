@@ -29,6 +29,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var shareSheet: UIBarButtonItem!
     @IBOutlet weak var integrationIntervalPicker: UISegmentedControl!
     
+    @IBOutlet weak var minimumPressureUnit: UILabel!
+    @IBOutlet weak var minimumPressureField: UITextField!
     @IBAction func shareSheetPressed(_ sender: Any) {
         let path = csv.createCsvFile(chartVC.dataEntries)
         let vc = UIActivityViewController(activityItems: [path!], applicationActivities: nil)
@@ -37,9 +39,6 @@ class SettingsViewController: UITableViewController {
         popOver.sourceView = self.view
         popOver.barButtonItem = self.shareSheet
     }
-    
-    @IBOutlet weak var minPressureField: UITextField!
-    @IBOutlet weak var minPressureUnit: UILabel!
     
     @IBAction func sliderMoved(_ sender: Any) {
         let roundedValue = lroundf(sigFigSlider.value)
@@ -52,11 +51,11 @@ class SettingsViewController: UITableViewController {
     @IBAction func unitPicked(_ sender: Any) {
         let selectedIdx = unitPicker.selectedSegmentIndex
         let selectedUnit = unitPicker.titleForSegment(at: selectedIdx)
-        let kpaOfField = Barometer().unit2kPa(pres: Double(minPressureField.text!)!)
+        let kpaOfField = Barometer().unit2kPa(pres: Double(minimumPressureField.text!)!)
         chartVC.convertDataPoints(unit: selectedUnit!)
         settings.units = selectedUnit!
-        minPressureUnit.text = selectedUnit!
-        minPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: kpaOfField))
+        minimumPressureUnit.text = selectedUnit!
+        minimumPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: kpaOfField))
     }
     
     @IBAction func orientationPicked(_ sender: Any) {
@@ -84,8 +83,8 @@ class SettingsViewController: UITableViewController {
         settings.windowSize = roundedValue*25
     }
     
-    @IBAction func minPressureChanged(_ sender: Any) {
-        if let pres = Double(minPressureField.text!) {
+    @IBAction func minimumPressureChanged(_ sender: Any) {
+        if let pres = Double(minimumPressureField.text!) {
             settings.pressureBuffer = Barometer().unit2kPa(pres: pres)
         }
     }
@@ -130,9 +129,9 @@ class SettingsViewController: UITableViewController {
     }
     
     func initMinPressure() {
-        minPressureUnit.text = settings.units
-        minPressureField.keyboardType = .numbersAndPunctuation
-        minPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: settings.pressureBuffer))
+        minimumPressureUnit.text = settings.units
+        minimumPressureField.keyboardType = .numbersAndPunctuation
+        minimumPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: settings.pressureBuffer))
     }
     
     override func viewWillAppear(_ animated: Bool) {

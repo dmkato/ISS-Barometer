@@ -31,8 +31,8 @@ class MainViewController: UIViewController {
     var screenIsLocked = false
     var dpdtResetWasPressed = false
     
-    var currentPressure = 0.0
-    var tResTimer: Timer!
+    var initialPressure = 0.0
+    var currentdPdt = 0.0
     var tResTotal = 0.0
     
     lazy var chartViewController = childViewControllers[0] as! ChartViewController
@@ -49,15 +49,12 @@ class MainViewController: UIViewController {
     }
 
     func updateTRes(){
-        let start = barometer.unit2kPa(pres: currentPressure)
-        let rate = barometer.getDpdt()
+        let start = barometer.unit2kPa(pres: initialPressure)
+        let rate = currentdPdt
         if rate < 0 {
             let buffer = settings.pressureBuffer // In kPa
             tResTotal = -((start - buffer) / rate)
-            if tResTimer != nil {
-                tResTimer.invalidate()
-            }
-            startTResTimer()
+            tResDisplay.text =  "T-Res: " + secToString(seconds: tResTotal)
             print(tResTotal, " seconds")
         }
     }
@@ -67,32 +64,16 @@ class MainViewController: UIViewController {
         let hours = Int(intSec / 3600)
         let mins = Int((intSec % 3600) / 60)
         let secs = Int((intSec % 3600) % 60)
-        let ms = Int(seconds.truncatingRemainder(dividingBy: 1.0) * 60.0)
-        return String(format: "%02d:%02d:%02d:%02d", hours, mins, secs, ms)
-    }
-    
-    func startTResTimer() {
-        tResTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTResTimer), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateTResTimer(){
-        tResDisplay.text =  secToString(seconds: tResTotal)
-        tResTotal -= 0.1
-        if tResTotal < 0.01 {
-            endTResTimer()
-        }
-    }
-    
-    func endTResTimer(){
-        tResTimer.invalidate()
+        let ms = Int(seconds.truncatingRemainder(dividingBy: 1.0) * 100.0)
+        return String(format: "%02d:%02d:%02d.%02d", hours, mins, secs, ms)
     }
     
     func updateUI(pressure:Double, time:Double) {
         let date = Date(timeIntervalSince1970: time)
-        currentPressure = pressure
         pressureDisplay.text = String(format:"%.\(settings.sigFigs)f", pressure)
         currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
-        dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDpdt())
+        currentdPdt = barometer.getDpdt()
+        dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", currentdPdt)
         dtdpDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDtdp())
         chartViewController.updateChart(pressureReading: pressure, time: time)
         updateTRes()
@@ -102,6 +83,7 @@ class MainViewController: UIViewController {
         let date = Date(timeIntervalSince1970: time)
         initialPressureDisplay.text = String(format:"%.\(settings.sigFigs)f", pressure)
         initialPressureTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+        initialPressure = pressure
     }
     
     func adjustAxisLabels() {
