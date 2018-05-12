@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     var chartVC: ChartViewController!
+    var barometer: Barometer!
     lazy var csv: Csv = Csv()
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -26,7 +27,10 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var runningWindowOptions: UIView!
     @IBOutlet weak var runningWindowTable: UITableViewCell!
     @IBOutlet weak var shareSheet: UIBarButtonItem!
+    @IBOutlet weak var integrationIntervalPicker: UISegmentedControl!
     
+    @IBOutlet weak var minimumPressureUnit: UILabel!
+    @IBOutlet weak var minimumPressureField: UITextField!
     @IBAction func shareSheetPressed(_ sender: Any) {
         let path = csv.createCsvFile(chartVC.dataEntries)
         let vc = UIActivityViewController(activityItems: [path!], applicationActivities: nil)
@@ -41,13 +45,17 @@ class SettingsViewController: UITableViewController {
         (sender as AnyObject).setValue(Float(roundedValue), animated: true)
         sigFigValue.text = String(roundedValue)
         settings.sigFigs = roundedValue
+        barometer.updateInitialPressureReading = true
     }
     
     @IBAction func unitPicked(_ sender: Any) {
         let selectedIdx = unitPicker.selectedSegmentIndex
         let selectedUnit = unitPicker.titleForSegment(at: selectedIdx)
+        let kpaOfField = Barometer().unit2kPa(pres: Double(minimumPressureField.text!)!)
         chartVC.convertDataPoints(unit: selectedUnit!)
         settings.units = selectedUnit!
+        minimumPressureUnit.text = selectedUnit!
+        minimumPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: kpaOfField))
     }
     
     @IBAction func orientationPicked(_ sender: Any) {
@@ -55,6 +63,12 @@ class SettingsViewController: UITableViewController {
         let selectedOrientation = orientationPicker.titleForSegment(at: selectedIdx)
         settings.orientation = selectedOrientation!
         UIDevice.current.setValue(selectedIdx + 1, forKey: "orientation")
+    }
+    
+    @IBAction func IntervalPicked(_ sender: Any) {
+        let selectedIdx = integrationIntervalPicker.selectedSegmentIndex
+        let selectedInterval = integrationIntervalPicker.titleForSegment(at: selectedIdx)
+        settings.runningIntegrationInterval = Int(selectedInterval!)!
     }
     
     @IBAction func slidingScalePicked(_ sender: Any) {
@@ -67,6 +81,12 @@ class SettingsViewController: UITableViewController {
         (sender as AnyObject).setValue(Float(roundedValue), animated: true)
         runningWindowValue.text = String(roundedValue*25)
         settings.windowSize = roundedValue*25
+    }
+    
+    @IBAction func minimumPressureChanged(_ sender: Any) {
+        if let pres = Double(minimumPressureField.text!) {
+            settings.pressureBuffer = Barometer().unit2kPa(pres: pres)
+        }
     }
     
     func initSlider() {
@@ -85,6 +105,12 @@ class SettingsViewController: UITableViewController {
         let segmentIdx = orientationPickerSegments[settings.orientation]!
         orientationPicker.selectedSegmentIndex = segmentIdx
     }
+
+    func initIntegrationIntervalPicker() {
+        let orientationPickerSegments = [1: 0, 2: 1, 4: 2, 6: 3, 8: 4, 10: 5]
+        let segmentIdx = orientationPickerSegments[settings.runningIntegrationInterval]!
+        integrationIntervalPicker.selectedSegmentIndex = segmentIdx
+    }
     
     func initSlidingScalePicker() {
         slidingScalePicker.setOn((settings.slidingScale), animated: true)
@@ -102,6 +128,12 @@ class SettingsViewController: UITableViewController {
         runningWindowSlider.setValue(Float(round(Double(settings.windowSize)/25.0)), animated: true)
     }
     
+    func initMinPressure() {
+        minimumPressureUnit.text = settings.units
+        minimumPressureField.keyboardType = .numbersAndPunctuation
+        minimumPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: settings.pressureBuffer))
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initSlider()
@@ -109,6 +141,8 @@ class SettingsViewController: UITableViewController {
         initOrientationPicker()
         initSlidingScalePicker()
         initWindowSlider()
+        initIntegrationIntervalPicker()
+        initMinPressure()
     }
     
     override func viewDidLoad() {

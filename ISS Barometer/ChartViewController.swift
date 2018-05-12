@@ -83,9 +83,11 @@ class ChartViewController: UIViewController {
         lineChartView.rightAxis.axisMinimum = 0
         lineChartView.rightAxis.spaceTop = 0.5
         lineChartView.leftAxis.spaceTop = 0.5
-        lineChartView.rightAxis.drawAxisLineEnabled = false
-        lineChartView.leftAxis.drawAxisLineEnabled = false
-        lineChartView.xAxis.drawAxisLineEnabled = false
+//        lineChartView.rightAxis.drawAxisLineEnabled = false
+//        lineChartView.leftAxis.drawAxisLineEnabled = false
+//        lineChartView.xAxis.drawAxisLineEnabled = false
+        lineChartView.drawBordersEnabled = true
+        lineChartView.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         lineChartView.highlightPerTapEnabled = false
         lineChartView.highlightPerDragEnabled = false
     }
@@ -149,7 +151,8 @@ class ChartViewController: UIViewController {
     
     func convertDataPoints(unit: String) {
         let lineChartDataSet = lineChartView.data!.dataSets[0] as! LineChartDataSet
-        barometer.initialDeltaReading = convertValue(barometer.initialDeltaReading!, unit)
+        barometer.initialPressureReading = convertValue(barometer.initialPressureReading!, unit)
+        barometer.updateInitialPressureReading = true
         dataEntries = dataEntries.map { value in convertEntry(value, unit) }
         lineChartDataSet.values = dataEntries
         updateChartView()
