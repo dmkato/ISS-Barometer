@@ -15,6 +15,7 @@
 		354958A61FF6DE8700C00594 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354958A51FF6DE8700C00594 /* Settings.swift */; };
 		354958A81FF702D200C00594 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354958A71FF702D200C00594 /* NavigationController.swift */; };
 		355183D01FE4C05E0065279E /* Barometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355183CF1FE4C05E0065279E /* Barometer.swift */; };
+		358F52FF20A3F6740044E973 /* Csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358F52FE20A3F6740044E973 /* Csv.swift */; };
 		35F63A4A1FCCE56C00639EB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A491FCCE56C00639EB5 /* AppDelegate.swift */; };
 		35F63A4C1FCCE56C00639EB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A4B1FCCE56C00639EB5 /* MainViewController.swift */; };
 		35F63A521FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35F63A501FCCE56C00639EB5 /* ISS_Barometer.xcdatamodeld */; };
@@ -64,6 +65,7 @@
 		354958A51FF6DE8700C00594 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		354958A71FF702D200C00594 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		355183CF1FE4C05E0065279E /* Barometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barometer.swift; sourceTree = "<group>"; };
+		358F52FE20A3F6740044E973 /* Csv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Csv.swift; sourceTree = "<group>"; };
 		35F63A461FCCE56C00639EB5 /* ISS Barometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISS Barometer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F63A491FCCE56C00639EB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35F63A4B1FCCE56C00639EB5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				354958A71FF702D200C00594 /* NavigationController.swift */,
 				353B59291FD3C0310060613E /* ChartViewController.swift */,
 				354958A31FF6D3A200C00594 /* SettingsViewController.swift */,
+				358F52FE20A3F6740044E973 /* Csv.swift */,
 			);
 			path = "ISS Barometer";
 			sourceTree = "<group>";
@@ -212,7 +215,7 @@
 				35F63A441FCCE56C00639EB5 /* Resources */,
 				3537199D1FCF519B007A0C10 /* Embed Frameworks */,
 				39DC001B95C4540ABCA9F64D /* [CP] Embed Pods Frameworks */,
-				8C28CEC8E3D30C948A271FB6 /* [CP] Copy Pods Resources */,
+				A7C7323D598F417B900CA917 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,8 +234,8 @@
 				35F63A591FCCE56C00639EB5 /* Sources */,
 				35F63A5A1FCCE56C00639EB5 /* Frameworks */,
 				35F63A5B1FCCE56C00639EB5 /* Resources */,
-				A7A1FB0B439FC817BFCEEE86 /* [CP] Embed Pods Frameworks */,
-				ADCADD65D9DD6E46E1C08B6E /* [CP] Copy Pods Resources */,
+				99C386F5C7ED5C11D1CF1EF9 /* [CP] Embed Pods Frameworks */,
+				EF6A146E3508952D753CAA1F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,8 +255,8 @@
 				35F63A641FCCE56C00639EB5 /* Sources */,
 				35F63A651FCCE56C00639EB5 /* Frameworks */,
 				35F63A661FCCE56C00639EB5 /* Resources */,
-				CD9DC88A99EAC85A2F208743 /* [CP] Embed Pods Frameworks */,
-				49D249AA1DC8908550E8D696 /* [CP] Copy Pods Resources */,
+				861D58DE71CD9036417A40BA /* [CP] Embed Pods Frameworks */,
+				6840EC4B385C886A22C84CDF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -357,7 +360,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS Barometer/Pods-ISS Barometer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		49D249AA1DC8908550E8D696 /* [CP] Copy Pods Resources */ = {
+		6840EC4B385C886A22C84CDF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,6 +373,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS BarometerUITests/Pods-ISS BarometerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		861D58DE71CD9036417A40BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS BarometerUITests/Pods-ISS BarometerUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		87DF5F6778AC4ECDEC90F6EF /* [CP] Check Pods Manifest.lock */ = {
@@ -390,19 +408,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8C28CEC8E3D30C948A271FB6 /* [CP] Copy Pods Resources */ = {
+		99C386F5C7ED5C11D1CF1EF9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS Barometer/Pods-ISS Barometer-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS BarometerTests/Pods-ISS BarometerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A5DAB713EC2FBD7B175BFB5F /* [CP] Check Pods Manifest.lock */ = {
@@ -423,22 +441,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A7A1FB0B439FC817BFCEEE86 /* [CP] Embed Pods Frameworks */ = {
+		A7C7323D598F417B900CA917 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS BarometerTests/Pods-ISS BarometerTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS Barometer/Pods-ISS Barometer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ADCADD65D9DD6E46E1C08B6E /* [CP] Copy Pods Resources */ = {
+		EF6A146E3508952D753CAA1F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -451,21 +469,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS BarometerTests/Pods-ISS BarometerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD9DC88A99EAC85A2F208743 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISS BarometerUITests/Pods-ISS BarometerUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6DE2ED93C0446FD6C650651 /* [CP] Check Pods Manifest.lock */ = {
@@ -499,6 +502,7 @@
 				355183D01FE4C05E0065279E /* Barometer.swift in Sources */,
 				354958A81FF702D200C00594 /* NavigationController.swift in Sources */,
 				354958A41FF6D3A200C00594 /* SettingsViewController.swift in Sources */,
+				358F52FF20A3F6740044E973 /* Csv.swift in Sources */,
 				354958A61FF6DE8700C00594 /* Settings.swift in Sources */,
 				35F63A4A1FCCE56C00639EB5 /* AppDelegate.swift in Sources */,
 				3507D3541FE71A7800C2C39D /* XAxisValueFormatter.swift in Sources */,

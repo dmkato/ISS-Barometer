@@ -12,13 +12,14 @@ import UIKit
 
 class Barometer {
     lazy var altimeter :CMAltimeter = CMAltimeter()
-    var initialDeltaReading: Double?
     var pressureReadings = [(Double, Double)]()
     lazy var settings: Settings = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.settings
     }()
-    var firstReading = true
+    var initialPressureReading: Double!
+    var initialTime: Double!
+    var updateInitialPressureReading = false
 
     // REMOVE BEFORE DEPLOY <--
     var debugData:Double? = 100.0
@@ -26,10 +27,11 @@ class Barometer {
     
     func calcDeltaSum(_ dType: String) -> Double {
         var sum = 0.0
-        if pressureReadings.count <= 1 {
+        let startIdx = pressureReadings.count - settings.runningIntegrationInterval + 1
+        if pressureReadings.count <= settings.runningIntegrationInterval {
             return 0
         }
-        for idx in 1..<pressureReadings.count {
+        for idx in startIdx..<pressureReadings.count {
             let dp = pressureReadings[idx].0 - pressureReadings[idx-1].0
             let dt = pressureReadings[idx].1 - pressureReadings[idx-1].1
             sum += (dType == "dpdt" ? dp/dt : dt/dp)
@@ -53,12 +55,8 @@ class Barometer {
         return self.pressureReadings.last?.1 ?? Date().timeIntervalSince1970
     }
     
-    func clearPressureReadings() {
+    func clearPressureReadings(){
         self.pressureReadings = [(Double, Double)]()
-    }
-    
-    func updateInitialDeltaReading() {
-        initialDeltaReading = nil
     }
     
     func kPa2units(kPa:Double) -> Double {
@@ -76,24 +74,43 @@ class Barometer {
         }
     }
     
-    func startDisplayingPressureData(updateFunc:@escaping (Double, Double, Double) -> ()) {
+    func unit2kPa(pres:Double) -> Double {
+        switch settings.units {
+        case "mmHg":
+            return pres / 7.50061683
+        case "psi":
+            return pres * 6.89475729
+        case "kPa":
+            return pres
+        case "atm":
+            return pres * 101.325
+        default:
+            return pres
+        }
+    }
+    
+    func startDisplayingPressureData(_ updateFunc:@escaping (Double, Double) -> (), _ setInitialPressure:@escaping (Double, Double) -> ()) {
         altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
             data, error in
             let kPa = data?.pressure.doubleValue
             let pressure = self.kPa2units(kPa: kPa!)
             let time = Date().timeIntervalSince1970
-            if self.initialDeltaReading == nil {
-                self.initialDeltaReading = pressure
+            if self.initialPressureReading == nil {
+                self.initialPressureReading = pressure
+                self.initialTime = time
+                setInitialPressure(pressure, time)
+            }
+            if self.updateInitialPressureReading == true {
+                setInitialPressure(self.initialPressureReading, self.initialTime)
+                self.updateInitialPressureReading = false
             }
             self.pressureReadings.append((pressure, time))
-            let deltaPressure = pressure - self.initialDeltaReading!
-            updateFunc(pressure, deltaPressure, time)
-            self.firstReading = false
+            updateFunc(pressure, time)
         })
     }
     
     // REMOVE BEFORE DEPLOY
-    func startDisplayingDebugData(updateFunc:@escaping (Double, Double, Double) -> ()) {
+    func startDisplayingDebugData(_ updateFunc:@escaping (Double, Double) -> (), _ setInitialPressure:@escaping (Double, Double) -> ()) {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             _ in
             let time = Date().timeIntervalSince1970
@@ -102,22 +119,24 @@ class Barometer {
             } else {
                 self.debugData = self.debugData! - drand48()
             }
-            if self.initialDeltaReading == nil {
-                self.initialDeltaReading = self.debugData!
-            }
             let pressure = self.kPa2units(kPa: self.debugData!)
+            if self.initialPressureReading == nil {
+                self.initialPressureReading = pressure
+                setInitialPressure(pressure, time)
+            }
+            if self.updateInitialPressureReading == true {
+                setInitialPressure(self.initialPressureReading, time)
+            }
             self.pressureReadings.append((pressure, time))
-            let deltaDebug = (self.debugData! - self.initialDeltaReading!)
-            updateFunc(pressure, deltaDebug, time)
-            self.firstReading = false
+            updateFunc(pressure, time)
         }
     }
     
-    func startBarometerUpdates(updateFunc:@escaping (Double, Double, Double) -> ()) {
+    func startBarometerUpdates(_ updateFunc:@escaping (Double, Double) -> (), _ setInitialPressure:@escaping (Double, Double) -> ()) {
         if CMAltimeter.isRelativeAltitudeAvailable() {
-            startDisplayingPressureData(updateFunc: updateFunc)
+            startDisplayingPressureData(updateFunc, setInitialPressure)
         } else {
-            startDisplayingDebugData(updateFunc: updateFunc)
+            startDisplayingDebugData(updateFunc, setInitialPressure)
         }
     }
 }
