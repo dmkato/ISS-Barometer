@@ -55,7 +55,6 @@ class MainViewController: UIViewController {
             let buffer = settings.pressureBuffer // In kPa
             tResTotal = -((start - buffer) / rate)
             tResDisplay.text =  "T-Res: " + secToString(seconds: tResTotal)
-            print(tResTotal, " seconds")
         }
     }
     

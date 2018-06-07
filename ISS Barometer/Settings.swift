@@ -11,8 +11,8 @@ import UIKit
 
 class Settings: Codable {
     var units = "mmHg"
-    var sigFigs = 4
-    var orientation = "Right"
+    var sigFigs = 3
+    var orientation = "Up"
     var runningIntegrationInterval = 4
     var slidingScale = false
     var slidingScaleThreshold = 20
