@@ -8,8 +8,16 @@
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{longtable}
+\usepackage{pdfpages}
 
 \newcommand{\subparagraph}{}
+
+\newcommand{\fakesection}[1]{%
+  \par\refstepcounter{section}% Increase section counter
+  \sectionmark{#1}% Add section mark (header)
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}% Add section to ToC
+  % Add more content here, if needed.
+}
 
 \usepackage[explicit]{titlesec}
 
@@ -557,12 +565,8 @@ The following is a chart that displays our projected timeline \cite{reqDoc}.
 \end{itemize}
 
 \subsection{References}
-\begingroup
-\renewcommand{\subsection}[2]{}%
-%\renewcommand{\chapter}[2]{}% for other classes
-\bibliographystyle{IEEEtran}
-\bibliography{bibliography}
-\endgroup
+At the end of document.
+
 \subsection{Context Viewpoint}
 % The Context view of a system defines the relationships, dependencies, and interactions between the system and its environment—the people, systems, and external entities with which it interacts.
 \subsubsection{Design Concerns}
@@ -1197,38 +1201,43 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 		\hline
 	Week & Summary \\ \hline
     \multicolumn{2}{c}{\textbf{Fall}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
-    \multicolumn{2}{c}{\textbf{Winter}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
+    Week 1 & Final choices were submitted, and I would be happy to work on any of them.  I am excited to get started, and meet the client, as well as the rest of my team.  \\ \hline
+	Week 2 & We we're able to meet with Don Pettit, and together we fleshed out the project in terms of the final deliverable.  All of us (Daniel, Cade, and I) are going to complete our problem statements and submit them to Don, along with links to share our OneNote and GitHub.  \\ \hline
+	Week 3 & Daniel has an iPad, with a iTunes dev account we could share the program using another free program. Problem statements written, the team needs to check in GitHub is working, we need to share it with Don, and TA/Professors. OneNote still needs help  \\ \hline
+	Week 4 & Finished and submitted final draft of Problem Statement \\ \hline
+    Week 5 & We've met with our TA, Junki, and have set up the GitHub to work with Kambon.  The requirements document is being finalized, and we're setting up our gantt chart, to better plan the year. \\ \hline
+    Week 6 & We have sent Don our rough draft, but he hasn't been able to reply with revisions. We are in the finalizing stage with our Requirements document, using GitHub and issues have been very helpful. \\ \hline
+	Week 7 & We've gotten our Requirements Document looked over and scheduled a meeting for Friday.  We've also set up a basic demo of the barometer functionality.  I've started basic learning on Swift, and Don says that once we complete the first version then we'll be able to send it to the ISS in the next week.  I’m still super excited to be working on this project, probably the best Capstone project out there.  \\ \hline
+	Week 8 & Most of the work done this week was from our Technology document.  Having finished that early in the week, the final draft was saved for later. \\ \hline
+	Week 9 & This week we finished the technology document, and start working on the design document. \\ \hline
+  Week 10 & We will need to make new GitHub issues, as well as claim them, as they are no longer tied to our individual tech docs.  I've made new sections that reflect in the IEEE doc. \\ \hline
+  \multicolumn{2}{c}{\textbf{Winter Break}} \\ \hline
+  Week 1 & GitHub is set up with multiple issues, corresponding with our requirements.  \\ \hline
+  Week 2 & Testing is possible now using XCode's simulator, without a barometer.  This allows both Cade and I to test without connecting to an iPad, as Daniel is able to do.  \\ \hline
+  Week 3 & During this week we finalized our design, completing issues such as graph scale and settings. \\ \hline
+  Week 4 & Don was emailed, but did not respond and as such, we did not have make any progress on the application. \\ \hline
+  \multicolumn{2}{c}{\textbf{Winter}} \\ \hline
+  Week 1 & Mostly this week we waited for the client to email us a reply, and by Thursday we set up a meeting with Don.  We also scheduled our TA meetings, with Junki. \\ \hline
+	Week 2 & We met during this week to create issues of the suggestions from our client and Paolo Nespoli.  We met with our TA also, and are planning on making small changes to our requirements document and our design document. \\ \hline
+	Week 3 & Still working on finishing up UI issues.  I've run into an issue with the alignment and shaping of a y axis label. As it needs to be vertical, there are problems with shrinking the width and height.  \\ \hline
+	Week 4 & Not much work was done this week, but we have started to plan for our presentation and progress reports.  We still need to polish the UI and provide a V1 to Don.  I've spent this week researching and debugging the issues with the axis labels. \\ \hline
+  Week 5 & We met this week, to start working on the progress report and our presentation.  We also met up for class to complete some practice exercises on our elevator pitches and presentations during the fair.  The issues with the labels were slightly lessened by the fact that we are now using views instead of stacks to organize our data layouts.  I'm still having problems with the auto adjusting of the rotated text, but hopefully it'll be figured out soon. \\ \hline
+  Week 6 & This week we've worked hard to get our progress report and poster completed and turned in. \\ \hline
+	Week 7 & This week was spent on other projects, we do plan to email and meet with Don soon, but haven't had time to further detail our plans. \\ \hline
+	Week 8 & We've met up this week to contact our client and finalize our initial release.  We finalized our portrait mode UI, but the landscape still needs help.  Our meeting with Don was postponed, but we have our table and will start working on implementation next week. \\ \hline
+	Week 9 & We weren't able to meet up last Friday, and have scheduled a meeting for this Friday.  We have been given the T-Res Table, but have yet to integrate it into our project.  We will also start working on our progress report in the near future. We were able to meet up for this Friday and talk more in depth on the T-Res and alarms, but we will probably be meeting up in the near future for some more details.  \\ \hline
+    Week 10 & Not much was done this week.  We met for the last time of the term with Junki and further discussed the final progress report. \\ \hline
     \multicolumn{2}{c}{\textbf{Spring}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
+    Week 1 &  Just starting back on this term, we have a good amount to do to finalize this project.  We completed some simple tasks over, personally I was able to finally finish the labels, completely. \\ \hline
+	Week 2 & This week we planned to meet up during the week, but were unable to.  We ended up pushing our meeting to Sunday, where we will figure out more things to do within our project.  \\ \hline
+	Week 3 & We were able to meet up this last week and planned some additional features for us to take.  Hopefully we will be able to meet up again soon to work on the project.  \\ \hline
+	Week 4 & We completed the poster, making small adjustments based off of the instructors suggestions.  I started work on the TRes implementation.  We planned a meeting with Don for next Wednesday.  \\ \hline
+    Week 5 & We were able to meet with Don, and he was able prototype our program.  This meant that he could interact with it on his end, which allowed him to give us some pointed UI changes.  We've started working on those changes, as well as our progress report. \\ \hline
+    Week 6 & The code freeze is approaching, and we need to complete all the functionality for the application. I updated the requirements document and sent that to Don for authorization.  After that we continued working on the application, to the point where we now feel as if it is good enough for production. \\ \hline
+	Week 7 & EXPO WEEK!  With our code freeze figured out, my team pretty much just made some UI changes and prepped for Expo.  I think we did good at the fair, I enjoyed it, except for the standing.  It was really cool to see everyone's posters also. \\ \hline
+	Week 8 & We've finished our project and haven't yet started on our documentation.  \\ \hline
+	Week 9 & This week we plan to get started on the documentation.  Hopefully also meeting up with Don, and making our final adjustments before handing off the application. \\ \hline
+    Week 10 & Started documentation and signed-off with our client. \\ \hline
 \end{longtable}
 \end{center}
 
@@ -1273,8 +1282,9 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 \end{longtable}
 \end{center}
 
-\section{Final Poster}
+\fakesection{Final Poster}
 % scaled to fit on a color-printed on a single 8.5"x11" paper.
+\includepdf[]{poster_team20.pdf}
 
 \section{Project Documentation}
 % How does your project work? (Could include the following...)
