@@ -9,6 +9,8 @@
 \usepackage{float}
 \usepackage{longtable}
 
+\graphicspath{ {./img/} }
+
 \newcommand{\subparagraph}{}
 
 \usepackage[explicit]{titlesec}
@@ -1208,6 +1210,8 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 	Week 8 &  \\ \hline
 	Week 9 &  \\ \hline
     Week 10 & \\ \hline
+    \multicolumn{2}{c}{\textbf{Winter Break}} \\ \hline
+    Week 4 & The team completed a version 1 to show Don \\ \hline
     \multicolumn{2}{c}{\textbf{Winter}} \\ \hline
     Week 1 &  \\ \hline
 	Week 2 &  \\ \hline
@@ -1278,6 +1282,7 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 % scaled to fit on a color-printed on a single 8.5"x11" paper.
 
 \section{Project Documentation}
+% DK
 % How does your project work? (Could include the following...)
 % What is its structure?
 % What is its Theory of Operation?
@@ -1288,7 +1293,22 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 % Any user guides, API documentation, etc.
 % This needs to be detailed enough to recreate and/or use your project!
 
+\subsection{Application Flow}
+Our project follows the basic flow of receiving barometer readings in a callback to the CMAltimeter function startRelativeAltitudeUpdates. WE then read reads and send them to the main UI and the chart. A flow chart of the application is provided below. \\
+
+\includegraphics[scale=0.8]{flowchart}
+
+\subsection{How to Run}
+To run the project you need to have Xcode installed.
+To install the project, fetch the most recent version from github, and run the Build script found in the root folder.
+This installs the charts library used to draw the barometer chart.
+If Cocoa pods is not already installed on the machine, you may need to run the Build script a second time to successfully install the dependencies.
+From there to run the application in a simulator, select iPad Air 2 from the target device dropdown menu.
+If you want to run the application on a real device, you need to have an apple developer account.
+Just click on the project folder at the top of the hierarchy and change the team to your developer account.
+
 \section{Recommended Technical Resources for Learning More}
+% CR
 % What web sites were helpful? (Listed in order of helpfulness.)
 % What, if any, reference books really helped?
 % Were there any people on campus that were really helpful?
@@ -1303,9 +1323,95 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 % If you could do it all over, what would you do differently?
 % Be honest here -- no B.S.
 
-\section{Appendix 1: Essential Code Listings}
-% You don't have to include absolutely everything, but if someone wants to understand your project, there should be enough here to learn from. If you worked within a larger project, something like a patch file might be a good way to go.
+\subsection{Daniel's Conclusions and Reflections}
 
+\subsection{Nathan's Conclusions and Reflections}
+
+\subsection{Cade's Conclusions and Reflections}
+
+\section{Appendix 1: Essential Code Listings}
+% DK
+% You don't have to include absolutely everything, but if someone wants to understand your project, there should be enough here to learn from. If you worked within a larger project, something like a patch file might be a good way to go.
+\subsection{Barometer.swift}
+    \begin{lstlisting}
+func startDisplayingPressureData(_ updateFunc:@escaping (Double, Double) -> (),
+ _ setInitialPressure:@escaping (Double, Double) -> ()) {
+    altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
+        data, error in
+        let kPa = data?.pressure.doubleValue
+        let pressure = self.kPa2units(kPa: kPa!)
+        let time = Date().timeIntervalSince1970
+        if self.initialPressureReading == nil {
+            self.initialPressureReading = pressure
+            self.initialTime = time
+            setInitialPressure(pressure, time)
+        }
+        if self.updateInitialPressureReading == true {
+            setInitialPressure(self.initialPressureReading, self.initialTime)
+            self.updateInitialPressureReading = false
+        }
+        self.pressureReadings.append((pressure, time))
+        updateFunc(pressure, time)
+    })
+}
+    \end{lstlisting}
+
+\subsection{Settings.swift}
+    \begin{lstlisting}
+class Settings: Codable {
+    var units = "mmHg"
+    var sigFigs = 4
+    var orientation = "Right"
+    var runningIntegrationInterval = 4
+    var slidingScale = false
+    var slidingScaleThreshold = 20
+    var windowSize = 50
+    var pressureBuffer = 58.66
+}
+\end{lstlisting}
+
+\subsection{MainViewController.swift}
+    \begin{lstlisting}
+func updateUI(pressure:Double, time:Double) {
+    let date = Date(timeIntervalSince1970: time)
+    pressureDisplay.text = String(format:"%.\(settings.sigFigs)f", pressure)
+    currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+    currentdPdt = barometer.getDpdt()
+    dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", currentdPdt)
+    dtdpDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDtdp())
+    chartViewController.updateChart(pressureReading: pressure, time: time)
+    updateTRes()
+}
+    \end{lstlisting}
+
+\subsection{ChartViewController.swift}
+    \begin{lstlisting}
+func updateChart(pressureReading: Double, time: Double) {
+    let newEntry = ChartDataEntry(x: time, y: pressureReading)
+    if (currentCount == 0) {
+        startTime = time
+    }
+    if (settings.slidingScale && currentCount <= settings.windowSize) {
+        lineChartView.xAxis.axisMinimum = startTime
+        lineChartView.xAxis.axisMaximum = Double(settings.windowSize) + startTime
+    }
+    addDataPoint(newEntry: newEntry)
+    updateChartView()
+}
+    \end{lstlisting}
+
+\subsection{SettingsViewController.swift}
+    \begin{lstlisting}
+@IBAction func unitPicked(_ sender: Any) {
+    let selectedIdx = unitPicker.selectedSegmentIndex
+    let selectedUnit = unitPicker.titleForSegment(at: selectedIdx)
+    let kpaOfField = Barometer().unit2kPa(pres: Double(minimumPressureField.text!)!)
+    chartVC.convertDataPoints(unit: selectedUnit!)
+    settings.units = selectedUnit!
+    minimumPressureUnit.text = selectedUnit!
+    minimumPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: kpaOfField))
+}
+    \end{lstlisting}
 
 \newpage
 \bibliographystyle{IEEEtran}
