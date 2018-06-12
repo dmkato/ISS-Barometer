@@ -10,6 +10,8 @@
 \usepackage{longtable}
 \usepackage{pdfpages}
 
+\graphicspath{ {./img/} }
+
 \newcommand{\subparagraph}{}
 
 \newcommand{\fakesection}[1]{%
@@ -144,6 +146,20 @@
 % Who are the members of your team?
 % What were their roles?
 % What was the role of the client(s)? (I.e., did they supervise only, or did they participate in doing development)
+
+N.A.S.A requested this project of us, specifically the astronauts aboard the international space station requested that the project be started. 
+
+The App was wanted to replace the mechanical barometer that are called, Manovacumeters.
+These are being used for finding holes that are letting atmospheric pressure out. 
+They needed to replace these because they are starting to break, they only have 3 or left. 
+The app will also be made to make it so the crew members no longer have to do calculations in their head or on paper, while in emergency situations. 
+This is significant for the survival of the team. 
+it also is significant because the less time they use for math the more time to find the hole, it helps with resources to because if they can't find the hole then they have to leave the space station meaning they will have to make a whole new mission to bring it back on. 
+
+Don Pettit was our contact from N.A.S.A, he is an astronaut who is a chemical engineer and has spent a year of his life in space on two different six month trips. 
+He acted as a supervisor who we would report to and would change how the app looked and worked after each iteration we sent him 
+
+ Nathan Shepherd, Daniel Kato and Cade Raichart are the team members working on the ISS Barometer App. 
 
 \section{Requirements Document}
 % include the original document, showing what you thought, at the time, was the project definition with the original Gantt chart
@@ -456,7 +472,19 @@ This share sheet will allow the user to choose an action for the created csv doc
 \item Ability to create files on the iPad
 \end{itemize}
 
+
+\subsubsection{added and changed requirements}
 % Add (your client should have okay'd): What new requirements were added? What existing requirements were changed? What existing requirements were deleted? Why?
+The display page no longer has a big button for the digital display of atmospheric pressure. 
+Client asked us to remove most of the buttons so that there was less for the astronauts to do.
+We no longer have three pages, this way all of the displayed data is in one spot for the astronauts, so they don't have to swipe for more info.  
+
+We added a lock screen button on the top left of the app, this was so that you didn't accidently press or zoom in when you didn't want to.
+We also now had have an initial pressure and initial timestamp of when app was started, so they know when and how much the pressure was at when the emergency happened. 
+Now on the display page we have average dP/dt and a average dt/dP, that's running integration interval is displayed on the right of them.
+A current pressure with its time stamp. 
+
+
 % Add: Final Gantt Chart as a record of what happened when.
 
 \section{Design Document}
@@ -1248,38 +1276,40 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 		\hline
 	Week & Summary \\ \hline
     \multicolumn{2}{c}{\textbf{Fall}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
+    Week 1 & Brought resume to class and did peer help. Finished and turned in Preferences.  \\ \hline
+	Week 2 & Met up with my group members, exchanged contact info and set up meeting for Wedsenday at 4.Emailed our contact Don. Started doing some research on what languages to use, about using the ipads baraometer, about my contact, similar apps how their lay outs. Wrote down questions to ask Don when we have our first meeting or in email if that is what he prefers. Figure out questions to ask Don.   \\ \hline
+	Week 3 & Finished and turned in problem statement, added it to the repo on my own branch called Cades-problem-statement.Met with ta, and talked to group about problem statement that Don asked us for. Brought in hard copy to class    \\ \hline
+	Week 4 &  Finished writing problem statement and sent it to be edited by a friend/ Downloaded swift libraries and tried to get it to work for linux. \\ \hline
+    Week 5 & Started writing for my section of requirement documents. Finished rough draft with team for Requirements document  \\ \hline
+    Week 6 & Met with TA talked about how class was going. Team met and worked on Requirements doc.Team turned in finished requirements document    \\ \hline
+	Week 7 &  Met with TA talked about how the class is going and how we are communicating with our client. Started tech review  \\ \hline. Met with don again talked about technology review. 
+	Week 8 & Finished and turned in rough draft for tech review, handed in.  \\ \hline
+	Week 9 & Turned in Tech Review.    \\ \hline
+    Week 10 & Met with ta. Talked about deadlines. Friday is the design document. Monday is the presentation and documentation for that. Turned in the design document.  \\ \hline
     \multicolumn{2}{c}{\textbf{Winter}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
+    Week 1 &   Met with ta  \\ \hline
+	Week 2 &  Met with ta. Finished code for beta, fixed all things don asked us to change. got to meet Paolo Nespoli who also gave more suggestions \\ \hline
+	Week 3 & Met with ta. continued work from previous weeks meeting   \\ \hline
+	Week 4 & Met with ta. continued work from previous weeks meeting. did some work on documents \\ \hline
+    Week 5 &  met with the team and with ta, went to class.\\ \hline
+    Week 6 & Summary: Worked on the presentation, poster and progress report. Also meet with ta.   \\ \hline
+	Week 7 & didnt do much this week on the project other then email don \\ \hline
+	Week 8 &  Meeting with don didn’t happen, remade meeting for next week. Had to get notes from meetings that I missed Wednesday.  \\ \hline
+	Week 9 & Met with don was given the slopes for the graphs. Got to see the inside of mission control  \\ \hline
+    Week 10 & Met with ta for last time this term  \\ \hline
     \multicolumn{2}{c}{\textbf{Spring}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
+    Week 1 & Got back into contact with the team did a bit of work over the break  \\ \hline
+	Week 2 & Worked on the 4/11 assignment. Also met on Sunday to plan the term   \\ \hline
+	Week 3 & Worked on the wired article  \\ \hline
+	Week 4 &  Finished up and edited the poster for expo. Made small adjustments to the project. \\ \hline
+    Week 5 &  Met with done and got him to download and have the app running on his end. He pointed out more things to change.  \\ \hline
+    Week 6 & Worked on midterm report and presentation. Talked to don about things he wants changed 
+
+  \\ \hline
+	Week 7 &Prepared and did expo!!! Lots of friends stopped by and tried  to embarrass me with hard questions. Made some final changes to the project design as don had asked   \\ \hline
+	Week 8 & Started working on final report \\ \hline
+	Week 9 & Started working on final presentation \\ \hline
+    Week 10 & Worked on and turned in final presentation. Had a final send off meeting with don where he told us we could come to Dallas and he would give us a tour. Also said we could use him as a reference. Also worked on peer reviews. Working on the final paper will turn it in by Monday \\ \hline
 \end{longtable}
 \end{center}
 
@@ -1288,17 +1318,36 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 \includepdf[]{poster_team20.pdf}
 
 \section{Project Documentation}
+% DK
 % How does your project work? (Could include the following...)
 % What is its structure?
 % What is its Theory of Operation?
 % Block and flow diagrams are good here.
 % How does one install your software, if any?
 % How does one run it?
+
+As of right now to use our application you need to download and have xcode installed. Then all you have to do is download our zip file from our github page. Unzip the file and run the build file, this file should set up the project and even start xcode up. It should then start the program on either you device that's plugged in or start a simulation on the computer. 
+
 % Are there any special hardware, OS, or runtime requirements to run your software?
 % Any user guides, API documentation, etc.
 % This needs to be detailed enough to recreate and/or use your project!
 
+\subsection{Application Flow}
+Our project follows the basic flow of receiving barometer readings in a callback to the CMAltimeter function startRelativeAltitudeUpdates. WE then read reads and send them to the main UI and the chart. A flow chart of the application is provided below. \\
+
+\includegraphics[scale=0.8]{flowchart}
+
+\subsection{How to Run}
+To run the project you need to have Xcode installed.
+To install the project, fetch the most recent version from github, and run the Build script found in the root folder.
+This installs the charts library used to draw the barometer chart.
+If Cocoa pods is not already installed on the machine, you may need to run the Build script a second time to successfully install the dependencies.
+From there to run the application in a simulator, select iPad Air 2 from the target device dropdown menu.
+If you want to run the application on a real device, you need to have an apple developer account.
+Just click on the project folder at the top of the hierarchy and change the team to your developer account.
+
 \section{Recommended Technical Resources for Learning More}
+% CR
 % What web sites were helpful? (Listed in order of helpfulness.)
 % What, if any, reference books really helped?
 % Were there any people on campus that were really helpful?
@@ -1313,9 +1362,105 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 % If you could do it all over, what would you do differently?
 % Be honest here -- no B.S.
 
-\section{Appendix 1: Essential Code Listings}
-% You don't have to include absolutely everything, but if someone wants to understand your project, there should be enough here to learn from. If you worked within a larger project, something like a patch file might be a good way to go.
+\subsection{Daniel's Conclusions and Reflections}
 
+\subsection{Nathan's Conclusions and Reflections}
+
+\subsection{Cade's Conclusions and Reflections}
+I learned how to use swift coding language. This also taught me how to use xcode as it works well with swift. I learned how to use and navigate through UI view controllers. I learned how to send variables from one view controller to another. I learned how view controllers use or interact with global variables, there can be a global variable for all view controllers or just certain ones. Learned how to use stacks and then even more indefet use views to center objects in view controllers, this helped with organization and adding axis to the the graph. Learned how to lock and orient the screen, this was a problem that took a lot of time to figure out as there wasn't very good documentation on it. The answer was barely longer then a line of code. 
+    
+I learned how to communicate better, with clients and teammates. Learned about how to set up meetings and sacrificing your time to meet with the client. Time change was a new thing to think about, learned that you need to double check your time and their time so you aren't early to the meeting or late to the meeting.  
+
+    Project work uses a lot more documentation then i had ever realized. I learned that the reason for this is so that you can always go back and look at what was required as it was in written form. I was also very scared of project work thinking that a client would be yelling at us alot and telling us we were doing it wrong or that's not what they wanted a lot. My experience was nothing like that, Don was very polite and worked through us with everything we did. Never got mad at us just told us what we could change and make better. Project work is not to be scary as i thought previously but is more work on paper. 
+
+    I learned that i like the agile style of of project management, working for a few weeks and getting in contact with the client to go over what's been done. I also learned that not everyone schedule can always line up making it hard to have meetings sometimes. When managing a project you need to have everything laid out on paper as well. Using a service like github makes it easy to lay out who needs to do what by when as well. 
+    
+    I hated working in teams in almost every single project I have ever had except this one. I learned that not everyone will let you down and sometimes you are the person who needs to catch up and do more. This team worked well together and even communicated well, not just well but politely. Even when someone was behind on their work they were not attacked they were reminded and even offered help 
+    If i could do it all over again. I would have done even more on the project, i would have asked for help more from my teammates. I would have liked to talk about their parts more in depth so that i understood every single line of code not just some of mine and most of theirs. I would have liked to also have gotten to know my teammates even better than I already did. 
+
+\section{Appendix 1: Essential Code Listings}
+% DK
+% You don't have to include absolutely everything, but if someone wants to understand your project, there should be enough here to learn from. If you worked within a larger project, something like a patch file might be a good way to go.
+\subsection{Barometer.swift}
+    \begin{lstlisting}
+func startDisplayingPressureData(_ updateFunc:@escaping (Double, Double) -> (),
+ _ setInitialPressure:@escaping (Double, Double) -> ()) {
+    altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
+        data, error in
+        let kPa = data?.pressure.doubleValue
+        let pressure = self.kPa2units(kPa: kPa!)
+        let time = Date().timeIntervalSince1970
+        if self.initialPressureReading == nil {
+            self.initialPressureReading = pressure
+            self.initialTime = time
+            setInitialPressure(pressure, time)
+        }
+        if self.updateInitialPressureReading == true {
+            setInitialPressure(self.initialPressureReading, self.initialTime)
+            self.updateInitialPressureReading = false
+        }
+        self.pressureReadings.append((pressure, time))
+        updateFunc(pressure, time)
+    })
+}
+    \end{lstlisting}
+
+\subsection{Settings.swift}
+    \begin{lstlisting}
+class Settings: Codable {
+    var units = "mmHg"
+    var sigFigs = 4
+    var orientation = "Right"
+    var runningIntegrationInterval = 4
+    var slidingScale = false
+    var slidingScaleThreshold = 20
+    var windowSize = 50
+    var pressureBuffer = 58.66
+}
+\end{lstlisting}
+
+\subsection{MainViewController.swift}
+    \begin{lstlisting}
+func updateUI(pressure:Double, time:Double) {
+    let date = Date(timeIntervalSince1970: time)
+    pressureDisplay.text = String(format:"%.\(settings.sigFigs)f", pressure)
+    currentTimestamp.text = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+    currentdPdt = barometer.getDpdt()
+    dpdtDisplay.text = String(format:"%.\(settings.sigFigs)f", currentdPdt)
+    dtdpDisplay.text = String(format:"%.\(settings.sigFigs)f", barometer.getDtdp())
+    chartViewController.updateChart(pressureReading: pressure, time: time)
+    updateTRes()
+}
+    \end{lstlisting}
+
+\subsection{ChartViewController.swift}
+    \begin{lstlisting}
+func updateChart(pressureReading: Double, time: Double) {
+    let newEntry = ChartDataEntry(x: time, y: pressureReading)
+    if (currentCount == 0) {
+        startTime = time
+    }
+    if (settings.slidingScale && currentCount <= settings.windowSize) {
+        lineChartView.xAxis.axisMinimum = startTime
+        lineChartView.xAxis.axisMaximum = Double(settings.windowSize) + startTime
+    }
+    addDataPoint(newEntry: newEntry)
+    updateChartView()
+}
+    \end{lstlisting}
+
+\subsection{SettingsViewController.swift}
+    \begin{lstlisting}
+@IBAction func unitPicked(_ sender: Any) {
+    let selectedIdx = unitPicker.selectedSegmentIndex
+    let selectedUnit = unitPicker.titleForSegment(at: selectedIdx)
+    let kpaOfField = Barometer().unit2kPa(pres: Double(minimumPressureField.text!)!)
+    chartVC.convertDataPoints(unit: selectedUnit!)
+    settings.units = selectedUnit!
+    minimumPressureUnit.text = selectedUnit!
+    minimumPressureField.text = String(format:"%.3f", Barometer().kPa2units(kPa: kpaOfField))
+}
+    \end{lstlisting}
 
 \newpage
 \bibliographystyle{IEEEtran}
