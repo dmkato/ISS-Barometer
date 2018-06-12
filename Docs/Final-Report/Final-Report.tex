@@ -147,19 +147,19 @@
 % What were their roles?
 % What was the role of the client(s)? (I.e., did they supervise only, or did they participate in doing development)
 
-N.A.S.A requested this project of us, specifically the astronauts aboard the international space station requested that the project be started. 
+N.A.S.A requested this project of us, specifically the astronauts aboard the international space station requested that the project be started.
 
 The App was wanted to replace the mechanical barometer that are called, Manovacumeters.
-These are being used for finding holes that are letting atmospheric pressure out. 
-They needed to replace these because they are starting to break, they only have 3 or left. 
-The app will also be made to make it so the crew members no longer have to do calculations in their head or on paper, while in emergency situations. 
-This is significant for the survival of the team. 
-it also is significant because the less time they use for math the more time to find the hole, it helps with resources to because if they can't find the hole then they have to leave the space station meaning they will have to make a whole new mission to bring it back on. 
+These are being used for finding holes that are letting atmospheric pressure out.
+They needed to replace these because they are starting to break, they only have 3 or left.
+The app will also be made to make it so the crew members no longer have to do calculations in their head or on paper, while in emergency situations.
+This is significant for the survival of the team.
+it also is significant because the less time they use for math the more time to find the hole, it helps with resources to because if they can't find the hole then they have to leave the space station meaning they will have to make a whole new mission to bring it back on.
 
-Don Pettit was our contact from N.A.S.A, he is an astronaut who is a chemical engineer and has spent a year of his life in space on two different six month trips. 
-He acted as a supervisor who we would report to and would change how the app looked and worked after each iteration we sent him 
+Don Pettit was our contact from N.A.S.A, he is an astronaut who is a chemical engineer and has spent a year of his life in space on two different six month trips.
+He acted as a supervisor who we would report to and would change how the app looked and worked after each iteration we sent him
 
- Nathan Shepherd, Daniel Kato and Cade Raichart are the team members working on the ISS Barometer App. 
+ Nathan Shepherd, Daniel Kato and Cade Raichart are the team members working on the ISS Barometer App.
 
 \section{Requirements Document}
 % include the original document, showing what you thought, at the time, was the project definition with the original Gantt chart
@@ -475,17 +475,53 @@ This share sheet will allow the user to choose an action for the created csv doc
 
 \subsubsection{added and changed requirements}
 % Add (your client should have okay'd): What new requirements were added? What existing requirements were changed? What existing requirements were deleted? Why?
-The display page no longer has a big button for the digital display of atmospheric pressure. 
+The display page no longer has a big button for the digital display of atmospheric pressure.
 Client asked us to remove most of the buttons so that there was less for the astronauts to do.
-We no longer have three pages, this way all of the displayed data is in one spot for the astronauts, so they don't have to swipe for more info.  
+We no longer have three pages, this way all of the displayed data is in one spot for the astronauts, so they don't have to swipe for more info.
 
 We added a lock screen button on the top left of the app, this was so that you didn't accidently press or zoom in when you didn't want to.
-We also now had have an initial pressure and initial timestamp of when app was started, so they know when and how much the pressure was at when the emergency happened. 
+We also now had have an initial pressure and initial timestamp of when app was started, so they know when and how much the pressure was at when the emergency happened.
 Now on the display page we have average dP/dt and a average dt/dP, that's running integration interval is displayed on the right of them.
-A current pressure with its time stamp. 
+A current pressure with its time stamp.
 
 
 % Add: Final Gantt Chart as a record of what happened when.
+\subsection{Final Timeline}
+\begin{ganttchart}[
+	hgrid,
+    x unit=.5mm,
+    time slot format=isodate,
+    link bulge=4
+]{2017-09-10}{2018-06-20}
+\gantttitlecalendar{year, month} \\
+
+%Items
+\ganttgroup{Version 1}{2017-09-20}{2017-12-30} \\ %Will add new line
+\ganttbar{Display Readings}{2017-10-30}{2017-11-20} \\
+\ganttbar{Basic Plot}{2017-10-20}{2017-11-30} \\
+\ganttbar{Settings}{2017-11-20}{2017-11-30} \\
+\ganttgroup{Version 2}{2018-01-01}{2018-05-18} \\
+\ganttbar{dP/dt Calculation}{2018-01-01}{2018-02-20} \\
+\ganttbar{Plot Labels}{2018-01-01}{2018-04-20} \\
+\ganttbar{UI Redesign}{2018-05-25}{2018-05-30} \\
+\ganttbar{CSV Exporting}{2018-05-01}{2018-05-20} \\
+\ganttbar{T-res Calculation}{2018-04-01}{2018-04-30} \\
+\ganttbar[
+	inline bar/.append style={fill=grey, rounded corners=3pt}
+    ]{Final Submission}{2018-05-18}{2018-06-10}
+
+%Relationships
+% \ganttlink{elem1}{elem2}
+% \ganttlink[link type=s-s]{elem2}{elem3}
+%
+% \ganttlink{elem4}{elem5}
+% \ganttlink[link type=s-s]{elem6}{elem7}
+% \ganttlink[link type=s-s]{elem7}{elem8}
+% \ganttlink[link type=s-s]{elem8}{elem9}
+
+% \ganttlink{elem5}{elem10}
+
+\end{ganttchart}
 
 \section{Design Document}
 % (original)
@@ -987,7 +1023,7 @@ The colors are bold, which is good for a flag or emblem, but not for our applica
 \end{itemize}
 This color palette would represent the creators and origin of the application.
 The well defined color palette of OSU would be easy to implement, and could follow examples such as OSU app.
-Once agian we run into the problem that these colors are meant to stand out, whereas in our application, we require that the colors do not draw excessive attention.
+Once again we run into the problem that these colors are meant to stand out, whereas in our application, we require that the colors do not draw excessive attention.
 Although, of course, we want our application to be well designed, including coloring, there is no place in this application for bold, strong colors.
 Also, there is little need to associate this application with the college, because the work will be done by our team, with little interaction of the college as a whole.
 
@@ -1133,15 +1169,15 @@ The app will be using Swift Charts as our graph interface.
 
 \subsection{UI library}
 \subsubsection{Option 1: Cocoa controls}
-Cocoa controls library features input bars, search displays, calendar displays, ability to put pictures on the app, file indexes, map displays, rating displays, card swiping, small graph displays, easy to read data displays, pop ups, easy buttons and many many more displays. \cite{Cocoa}
+Cocoa controls library features input bars, search displays, calendar displays, ability to put pictures on the app, file indexes, map displays, rating displays, card swiping, small graph displays, easy to read data displays, pop ups, easy buttons and many many more displays.
 I chose this UI Library because of how much you can do with it, there are just so many different displays, view and inputs that can be customizable in so many ways.
 It is the largest of the libraries from the other technologies I choose for the UI library, that what gives it an advantage compared to the other two.
 \subsubsection{Option 2: CRPageViewController}
-CRPageViewController Library features the ability to switch from page to page easily and easy to customize how those pages are displayed (size, margins, height,etc.).\cite{Github1}
+CRPageViewController Library features the ability to switch from page to page easily and easy to customize how those pages are displayed (size, margins, height,etc.).
  I chose this library for its easy to use page swiper, easy on the go customization and the how the library looks.
 This library is superior to the other two because of its on the go customization and professional look.
 \subsubsection{Option 3: FlatUIKit}
-FlatUIKit is a swift library made by Grouper and it features buttons, text fields, segment controls, switches, alert Views, sliders, bar button items, navigation bars, table cells, popovers, and customizable colors, fonts and icons.\cite{Github2}
+FlatUIKit is a swift library made by Grouper and it features buttons, text fields, segment controls, switches, alert Views, sliders, bar button items, navigation bars, table cells, popovers, and customizable colors, fonts and icons.
  I chose this Library for its easy to read displayable items, we don't need fancy gadgets for our app just straightforward easy to use and read.
  This is superior to the other two technologies because it's straightforward to code and easy to manipulate/customize .
 \subsubsection{Decision}
@@ -1282,7 +1318,7 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 	Week 4 &  Finished writing problem statement and sent it to be edited by a friend/ Downloaded swift libraries and tried to get it to work for linux. \\ \hline
     Week 5 & Started writing for my section of requirement documents. Finished rough draft with team for Requirements document  \\ \hline
     Week 6 & Met with TA talked about how class was going. Team met and worked on Requirements doc.Team turned in finished requirements document    \\ \hline
-	Week 7 &  Met with TA talked about how the class is going and how we are communicating with our client. Started tech review  \\ \hline. Met with don again talked about technology review. 
+	Week 7 &  Met with TA talked about how the class is going and how we are communicating with our client. Started tech review  \\ \hline. Met with don again talked about technology review.
 	Week 8 & Finished and turned in rough draft for tech review, handed in.  \\ \hline
 	Week 9 & Turned in Tech Review.    \\ \hline
     Week 10 & Met with ta. Talked about deadlines. Friday is the design document. Monday is the presentation and documentation for that. Turned in the design document.  \\ \hline
@@ -1303,7 +1339,7 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 	Week 3 & Worked on the wired article  \\ \hline
 	Week 4 &  Finished up and edited the poster for expo. Made small adjustments to the project. \\ \hline
     Week 5 &  Met with done and got him to download and have the app running on his end. He pointed out more things to change.  \\ \hline
-    Week 6 & Worked on midterm report and presentation. Talked to don about things he wants changed 
+    Week 6 & Worked on midterm report and presentation. Talked to don about things he wants changed
 
   \\ \hline
 	Week 7 &Prepared and did expo!!! Lots of friends stopped by and tried  to embarrass me with hard questions. Made some final changes to the project design as don had asked   \\ \hline
@@ -1326,7 +1362,7 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 % How does one install your software, if any?
 % How does one run it?
 
-As of right now to use our application you need to download and have xcode installed. Then all you have to do is download our zip file from our github page. Unzip the file and run the build file, this file should set up the project and even start xcode up. It should then start the program on either you device that's plugged in or start a simulation on the computer. 
+As of right now to use our application you need to download and have xcode installed. Then all you have to do is download our zip file from our github page. Unzip the file and run the build file, this file should set up the project and even start xcode up. It should then start the program on either you device that's plugged in or start a simulation on the computer.
 
 % Are there any special hardware, OS, or runtime requirements to run your software?
 % Any user guides, API documentation, etc.
@@ -1367,16 +1403,16 @@ Just click on the project folder at the top of the hierarchy and change the team
 \subsection{Nathan's Conclusions and Reflections}
 
 \subsection{Cade's Conclusions and Reflections}
-I learned how to use swift coding language. This also taught me how to use xcode as it works well with swift. I learned how to use and navigate through UI view controllers. I learned how to send variables from one view controller to another. I learned how view controllers use or interact with global variables, there can be a global variable for all view controllers or just certain ones. Learned how to use stacks and then even more indefet use views to center objects in view controllers, this helped with organization and adding axis to the the graph. Learned how to lock and orient the screen, this was a problem that took a lot of time to figure out as there wasn't very good documentation on it. The answer was barely longer then a line of code. 
-    
-I learned how to communicate better, with clients and teammates. Learned about how to set up meetings and sacrificing your time to meet with the client. Time change was a new thing to think about, learned that you need to double check your time and their time so you aren't early to the meeting or late to the meeting.  
+I learned how to use swift coding language. This also taught me how to use xcode as it works well with swift. I learned how to use and navigate through UI view controllers. I learned how to send variables from one view controller to another. I learned how view controllers use or interact with global variables, there can be a global variable for all view controllers or just certain ones. Learned how to use stacks and then even more indefet use views to center objects in view controllers, this helped with organization and adding axis to the the graph. Learned how to lock and orient the screen, this was a problem that took a lot of time to figure out as there wasn't very good documentation on it. The answer was barely longer then a line of code.
 
-    Project work uses a lot more documentation then i had ever realized. I learned that the reason for this is so that you can always go back and look at what was required as it was in written form. I was also very scared of project work thinking that a client would be yelling at us alot and telling us we were doing it wrong or that's not what they wanted a lot. My experience was nothing like that, Don was very polite and worked through us with everything we did. Never got mad at us just told us what we could change and make better. Project work is not to be scary as i thought previously but is more work on paper. 
+I learned how to communicate better, with clients and teammates. Learned about how to set up meetings and sacrificing your time to meet with the client. Time change was a new thing to think about, learned that you need to double check your time and their time so you aren't early to the meeting or late to the meeting.
 
-    I learned that i like the agile style of of project management, working for a few weeks and getting in contact with the client to go over what's been done. I also learned that not everyone schedule can always line up making it hard to have meetings sometimes. When managing a project you need to have everything laid out on paper as well. Using a service like github makes it easy to lay out who needs to do what by when as well. 
-    
-    I hated working in teams in almost every single project I have ever had except this one. I learned that not everyone will let you down and sometimes you are the person who needs to catch up and do more. This team worked well together and even communicated well, not just well but politely. Even when someone was behind on their work they were not attacked they were reminded and even offered help 
-    If i could do it all over again. I would have done even more on the project, i would have asked for help more from my teammates. I would have liked to talk about their parts more in depth so that i understood every single line of code not just some of mine and most of theirs. I would have liked to also have gotten to know my teammates even better than I already did. 
+    Project work uses a lot more documentation then i had ever realized. I learned that the reason for this is so that you can always go back and look at what was required as it was in written form. I was also very scared of project work thinking that a client would be yelling at us alot and telling us we were doing it wrong or that's not what they wanted a lot. My experience was nothing like that, Don was very polite and worked through us with everything we did. Never got mad at us just told us what we could change and make better. Project work is not to be scary as i thought previously but is more work on paper.
+
+    I learned that i like the agile style of of project management, working for a few weeks and getting in contact with the client to go over what's been done. I also learned that not everyone schedule can always line up making it hard to have meetings sometimes. When managing a project you need to have everything laid out on paper as well. Using a service like github makes it easy to lay out who needs to do what by when as well.
+
+    I hated working in teams in almost every single project I have ever had except this one. I learned that not everyone will let you down and sometimes you are the person who needs to catch up and do more. This team worked well together and even communicated well, not just well but politely. Even when someone was behind on their work they were not attacked they were reminded and even offered help
+    If i could do it all over again. I would have done even more on the project, i would have asked for help more from my teammates. I would have liked to talk about their parts more in depth so that i understood every single line of code not just some of mine and most of theirs. I would have liked to also have gotten to know my teammates even better than I already did.
 
 \section{Appendix 1: Essential Code Listings}
 % DK
