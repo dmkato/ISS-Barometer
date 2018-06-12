@@ -9,6 +9,7 @@
 \usepackage{float}
 \usepackage{longtable}
 \usepackage{pdfpages}
+\usepackage{hyperref}
 
 \graphicspath{ {./img/} }
 
@@ -1224,7 +1225,6 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 % (all team members' posts)
 % formatted nicely and clearly distinct from one another
 % include all members posts, clearly distinct, clearly organized
-
 \subsection{Daniel's Blog Posts}
 \begin{center}
 	\begin{longtable}{| l | p{0.84\linewidth}|}
@@ -1266,7 +1266,6 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 \\ \hline
 \end{longtable}
 \end{center}
-
 \subsection{Nathan's Blog Posts}
 \begin{center}
 	\begin{longtable}{| l | p{0.84\linewidth}|}
@@ -1320,12 +1319,12 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 	Week & Summary \\ \hline
     \multicolumn{2}{c}{\textbf{Fall}} \\ \hline
     Week 1 & Brought resume to class and did peer help. Finished and turned in Preferences.  \\ \hline
-	Week 2 & Met up with my group members, exchanged contact info and set up meeting for Wedsenday at 4.Emailed our contact Don. Started doing some research on what languages to use, about using the ipads baraometer, about my contact, similar apps how their lay outs. Wrote down questions to ask Don when we have our first meeting or in email if that is what he prefers. Figure out questions to ask Don.   \\ \hline
+	Week 2 & Met up with my group members, exchanged contact info and set up meeting for Wednesday at 4. Emailed our contact Don. Started doing some research on what languages to use, about using the ipads baraometer, about my contact, similar apps how their lay outs. Wrote down questions to ask Don when we have our first meeting or in email if that is what he prefers. Figure out questions to ask Don.   \\ \hline
 	Week 3 & Finished and turned in problem statement, added it to the repo on my own branch called Cades-problem-statement. Met with ta, and talked to group about problem statement that Don asked us for. Brought in hard copy to class    \\ \hline
 	Week 4 &  Finished writing problem statement and sent it to be edited by a friend/ Downloaded swift libraries and tried to get it to work for linux. \\ \hline
     Week 5 & Started writing for my section of requirement documents. Finished rough draft with team for Requirements document  \\ \hline
     Week 6 & Met with TA talked about how class was going. Team met and worked on Requirements doc.Team turned in finished requirements document    \\ \hline
-	Week 7 &  Met with TA talked about how the class is going and how we are communicating with our client. Started tech review  \\ \hline. Met with don again talked about technology review.
+	Week 7 &  Met with TA talked about how the class is going and how we are communicating with our client. Started tech review. Met with don again talked about technology review. \\ \hline
 	Week 8 & Finished and turned in rough draft for tech review, handed in.  \\ \hline
 	Week 9 & Turned in Tech Review.    \\ \hline
     Week 10 & Met with ta. Talked about deadlines. Friday is the design document. Monday is the presentation and documentation for that. Turned in the design document.  \\ \hline
@@ -1346,9 +1345,7 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 	Week 3 & Worked on the wired article  \\ \hline
 	Week 4 &  Finished up and edited the poster for expo. Made small adjustments to the project. \\ \hline
     Week 5 &  Met with done and got him to download and have the app running on his end. He pointed out more things to change.  \\ \hline
-    Week 6 & Worked on midterm report and presentation. Talked to don about things he wants changed
-
-  \\ \hline
+    Week 6 & Worked on midterm report and presentation. Talked to don about things he wants changed \\ \hline
 	Week 7 &Prepared and did expo!!! Lots of friends stopped by and tried  to embarrass me with hard questions. Made some final changes to the project design as don had asked   \\ \hline
 	Week 8 & Started working on final report \\ \hline
 	Week 9 & Started working on final presentation \\ \hline
@@ -1401,23 +1398,20 @@ Just click on the project folder at the top of the hierarchy and change the team
 % What web sites were helpful? (Listed in order of helpfulness.)
 % What, if any, reference books really helped?
 % Were there any people on campus that were really helpful?
-We only used websites and online resources during this project, we did not use any books or people from campus as references. We recommended the following websites to be used when learning how to use swift, xcode and app creation. 
+We only used websites and online resources during this project, we did not use any books or people from campus as references. We recommended the following websites to be used when learning how to use swift, XCode and app creation.
 
 
 \begin{itemize}
-	\item Developer.apple.com
-	\item Charts API issues on git
-	\item Youtube 
-	\item Stack Overflow
+	\item \href{https://developer.apple.com/documentation/swift/swift_standard_library}{developer.apple.com}
+	\item \href{https://github.com/danielgindi/Charts/issues}{Charts API}
+	\item \href{https://developer.apple.com/documentation/coremotion/cmaltimeter}{Barometer Implementation}
 \end{itemize}
 
-    
-    We developer.apple.com to download xcode from that and learned the basics of how to us it.
-    The charts API was the biggest API we used, and we used it for the graph.
-    The issues page helped us through many of our problems with the API.
-    We used youtube tutorials we learned different aspects of xcode. 
-    Stack Overflow is good for suggestions debug code and learn about swift from other programmers in the world
-
+We used developer.apple.com to download XCode from that and learned the basics of how to use it.
+The charts API was the biggest API we used, and we used it for the graph.
+The issues page helped us through many of our problems with the API.
+We used youtube tutorials we learned different aspects of XCode.
+Stack Overflow is good for suggestions debug code and learn about swift from other programmers in the world
 
 
 \section{Conclusions and Reflections}
@@ -1472,6 +1466,7 @@ I learned how to communicate better, with clients and teammates. Learned about h
     I hated working in teams in almost every single project I have ever had except this one. I learned that not everyone will let you down and sometimes you are the person who needs to catch up and do more. This team worked well together and even communicated well, not just well but politely. Even when someone was behind on their work they were not attacked they were reminded and even offered help
     If i could do it all over again. I would have done even more on the project, i would have asked for help more from my teammates. I would have liked to talk about their parts more in depth so that i understood every single line of code not just some of mine and most of theirs. I would have liked to also have gotten to know my teammates even better than I already did.
 
+\newpage
 \section{Appendix 1: Essential Code Listings}
 % DK
 % You don't have to include absolutely everything, but if someone wants to understand your project, there should be enough here to learn from. If you worked within a larger project, something like a patch file might be a good way to go.
