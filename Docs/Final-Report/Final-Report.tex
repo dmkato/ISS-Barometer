@@ -123,7 +123,12 @@
         }
         \begin{abstract}
         % 6. Fill in your abstract
-
+        This is a culmination of all of the documentation required throughout the development of the ISS Barometer project, for CS Capstone 2018.
+        Our team has amassed the documentation of the year to provide a comprehensive plan to detail the design and construction of the project.
+        The documents included are the Requirements, Design, and Technical Review documents.
+        Also included are the poster used at the exposition, the weekly blogs by each of the teammates, and introductions and conclusions of the project.
+        Not only does this document serve to fully explain our project to the instructors of the class, but it may serve to instruct others interested in this project.
+        Portions of code will be included, as well as an installation guide, to assist those attempting to replicate our project.
         \end{abstract}
     \end{singlespace}
 \end{titlepage}
@@ -147,6 +152,21 @@
 % What were their roles?
 % What was the role of the client(s)? (I.e., did they supervise only, or did they participate in doing development)
 
+N.A.S.A. requested this project of us, specifically the astronauts aboard the international space station requested that the project be started.
+
+The App was wanted to replace the mechanical barometer that are called, Manovacumeters.
+These are being used for finding holes that are letting atmospheric pressure out.
+They needed to replace these because they are starting to break, they only have 3 or left.
+The app will also be made to make it so the crew members no longer have to do calculations in their head or on paper, while in emergency situations.
+This is significant for the survival of the team.
+it also is significant because the less time they use for math the more time to find the hole, it helps with resources to because if they can't find the hole then they have to leave the space station meaning they will have to make a whole new mission to bring it back on.
+
+Don Pettit was our contact from N.A.S.A, he is an astronaut who is a chemical engineer and has spent a year of his life in space on two different six month trips.
+He acted as a supervisor who we would report to and would change how the app looked and worked after each iteration we sent him
+
+Nathan Shepherd, Daniel Kato and Cade Raichart are the team members working on the ISS Barometer App.
+
+\newpage
 \section{Requirements Document}
 % include the original document, showing what you thought, at the time, was the project definition with the original Gantt chart
 
@@ -245,8 +265,8 @@ Although more of a design consideration, it is imperative that the application b
 
 \subsubsection{Constraints}
 The majority of the constraints of this project are a result of the iPad's constraints.
-The language that we will use is Swift, which must be developed on Apple's IDE, Xcode.
-This further limits our development environment options, in that Xcode is only made for Mac OS machines, and not for Windows computers.
+The language that we will use is Swift, which must be developed on Apple's IDE, XCode.
+This further limits our development environment options, in that XCode is only made for Mac OS machines, and not for Windows computers.
 One constraint is the download and size limits of iPad Apps; which must have executables under 500 MB, and a decompressed size of 4 GB.
 The download speed of the ISS, unknown at this time, will also limit the size of the app.
 The fact that the ISS is unreachable, and our audience are the few crew members aboard, problems and updates might take a while to be addressed and applied.
@@ -450,7 +470,7 @@ In version 2, it is required that the \CapstoneTeamName be able to export a csv 
 This will allow the user to review the data they have collected on a computer for further processing and analysis.
 This function will not be available while pressure data is being recorded and will require the user to pause the recording to save the data.
 \paragraph{Stimulus/Response Sequence}
-Once in a paused state, by press pressing a 'Save to CSV' button, a csv file with the information collected during the current session will become available to share via Apple's share sheet.
+Once in a paused state, by press pressing a \lstinline|Save to CSV| button, a csv file with the information collected during the current session will become available to share via Apple's share sheet.
 This share sheet will allow the user to choose an action for the created csv document.
 \paragraph{Associated Functional Requirements}
 \begin{itemize}
@@ -458,9 +478,57 @@ This share sheet will allow the user to choose an action for the created csv doc
 \item Ability to create files on the iPad
 \end{itemize}
 
-% Add (your client should have okay'd): What new requirements were added? What existing requirements were changed? What existing requirements were deleted? Why?
-% Add: Final Gantt Chart as a record of what happened when.
 
+\subsubsection{added and changed requirements}
+% Add (your client should have okay'd): What new requirements were added? What existing requirements were changed? What existing requirements were deleted? Why?
+The display page no longer has a big button for the digital display of atmospheric pressure.
+Client asked us to remove most of the buttons so that there was less for the astronauts to do.
+We no longer have three pages, this way all of the displayed data is in one spot for the astronauts, so they don't have to swipe for more info.
+
+We added a lock screen button on the top left of the app, this was so that you didn't accidently press or zoom in when you didn't want to.
+We also now had have an initial pressure and initial timestamp of when app was started, so they know when and how much the pressure was at when the emergency happened.
+Now on the display page we have average dP/dt and a average dt/dP, that's running integration interval is displayed on the right of them.
+A current pressure with its time stamp.
+
+
+% Add: Final Gantt Chart as a record of what happened when.
+\subsection{Final Timeline}
+\begin{ganttchart}[
+	hgrid,
+    x unit=.5mm,
+    time slot format=isodate,
+    link bulge=4
+]{2017-09-10}{2018-06-20}
+\gantttitlecalendar{year, month} \\
+
+%Items
+\ganttgroup{Version 1}{2017-09-20}{2017-12-30} \\ %Will add new line
+\ganttbar{Display Readings}{2017-10-30}{2017-11-20} \\
+\ganttbar{Basic Plot}{2017-10-20}{2017-11-30} \\
+\ganttbar{Settings}{2017-11-20}{2017-11-30} \\
+\ganttgroup{Version 2}{2018-01-01}{2018-05-18} \\
+\ganttbar{dP/dt Calculation}{2018-01-01}{2018-02-20} \\
+\ganttbar{Plot Labels}{2018-01-01}{2018-04-20} \\
+\ganttbar{UI Redesign}{2018-05-25}{2018-05-30} \\
+\ganttbar{CSV Exporting}{2018-05-01}{2018-05-20} \\
+\ganttbar{T-res Calculation}{2018-04-01}{2018-04-30} \\
+\ganttbar[
+	inline bar/.append style={fill=grey, rounded corners=3pt}
+    ]{Final Submission}{2018-05-18}{2018-06-10}
+
+%Relationships
+% \ganttlink{elem1}{elem2}
+% \ganttlink[link type=s-s]{elem2}{elem3}
+%
+% \ganttlink{elem4}{elem5}
+% \ganttlink[link type=s-s]{elem6}{elem7}
+% \ganttlink[link type=s-s]{elem7}{elem8}
+% \ganttlink[link type=s-s]{elem8}{elem9}
+
+% \ganttlink{elem5}{elem10}
+
+\end{ganttchart}
+\newpage
 \section{Design Document}
 % (original)
 % include the original document, showing what you thought, at the time, was the project design
@@ -723,15 +791,15 @@ The programming language used will have to be supported by the development frame
 
 \subsubsection{Design Elements}
 % Language Used, IDE, packages in general
-To address the concern of development framework, we will use Xcode to write our application.
+To address the concern of development framework, we will use XCode to write our application.
 This will allow us direct access to the barometer and any native features of the iPad.
-It will also allow us to take advantage of the native Xcode testing framework.
+It will also allow us to take advantage of the native XCode testing framework.
 To address the concern of module organization, we will use the package manager Cocoapods to install and manage all third party APIs.
 Cocoapods will also make it easy to keep our applications dependencies up to date to avoid security issues.
 We will be using the Swift 4 language to develop our application because it is a supported and feature rich language made by Apple that has received plenty of positive feedback regarding its usability and ease of development.
 We will be using 2 third party APIs: Charts by Daniel Daniel Cohen Gindi, and Cocoa Controls.
 These libraries were chosen due to their compatibility with the project as outlined in the technology review.
-To test our application's code and UI, we will use Xcode's built in testing library.
+To test our application's code and UI, we will use XCode's built in testing library.
 This is the best solution as it is a full featured testing suit that is set up when the project is created, making it easy to test our program from the beginning.
 
 \subsection{Deployment and Post-Deployment Viewpoints}
@@ -770,7 +838,7 @@ As those improvements are made, our application will become perfectly tailored t
 % Add (your client should have okay'd): What design aspects were changed, deleted or added? Why?
 
 
-
+\newpage
 \section{Tech Review}
 % (original)
 
@@ -832,10 +900,10 @@ The benefits of using this is that it is easy to implement, it is commonly used 
 \subsubsection{Option 2: CoreData Package}
 CoreData, similar to NSUserDefaults, is a Swift supported, local storage library.
 It is used as a storage package, and is said to reduce code up to 70\% \cite{coreApple}.
-CoreData actually uses SQLite as its stoarage manipulation package, but it still stores locally.
+CoreData actually uses SQLite as its storage manipulation package, but it still stores locally.
 This is how it can potentially reduce code volume, because it abstracts out the use of specific SQLite commands and functions, replacing them with its own general functions.
 Additionally, because CoreData uses SQLite, it stores all of the files with the .db suffix \cite{storeoptions}.
-CoreData is often implemented as a chatch-all storage manager, as it has the funcionality to provide comprehensive storage.
+CoreData is often implemented as a catch-all storage manager, as it has the functionality to provide comprehensive storage.
 This means, however, that CoreData also is harder to implement, as it may be more confusing to new users and it has a lot of functionality.
 In fact, on the developer pages for this package, it is noted ``\textbf{Important:} Core Data is an advanced technology that is not required for creating simple applications.''\cite{coreApple2}
 In most cases, this means that CoreData is not used unless it is necessary.
@@ -848,7 +916,7 @@ In this case, that would be in the form of an SQL server, either provided by NAS
 This option would allow us to access data, meaning NASA officials in Mission Control would be able to recieve and analyze data.
 Although this could be helpful, it is unknown the connectivity of the ISS, and it would most likely be a bottle neck for such an implementation.
 To use an SQL server, our application would have to implement SQLite, to make queries and store data.
-SQLite is a wiedly used framework, and is supported in Swift and Objective C.
+SQLite is a widely used framework, and is supported in Swift and Objective C.
 It uses C as a backend to make server calls, and so has the potential to be complicated.
 SQLite can also be used as a local storage library, and so offers more options.
 Additionally, SQLite is rated among the fastest database managers, though may require further set up than Option 1 or 2.
@@ -863,7 +931,7 @@ This means we need a scalable option, for which we will use CoreData.
 It allows for large data sets, and can scale well, far better than NSUserDefaults would be able to.
 As far as a server, the challenges associated with a server, namely the problems of connectivity on the ISS, make this option moot.
 Additionally, its only benefit is that it would allow NASA to view data, which will also be possible when we implement the saving ability.
-As users wish to share data, they would save the plot as a csv, and then send it seperately, using already in place methods, developed by NASA.
+As users wish to share data, they would save the plot as a csv, and then send it separately, using already in place methods, developed by NASA.
 
 \subsection{Language}
 The language used for development has a large effect on our project.
@@ -877,7 +945,7 @@ Major considerations of choosing a language are as follows:
 \begin{itemize}
 	\item Accessibility: Can all team members and our client understand and work with this languages
 	\item Implementation: Is it possible to implement the necessary features in our application with this languages
-	\item Performance: Does using this language noticibly affect reaction time of the application
+	\item Performance: Does using this language noticeably affect reaction time of the application
 \end{itemize}
 More considerations may affect the final decision, though first each language will be described below.
 
@@ -888,7 +956,7 @@ For example, from their ``Welcome to Swift'' page, they say, ``The compiler is o
 Although bold, Swift may deliver on that statement.
 Swift is newer and, as a result, better designed for iOS development.
 It is supported through Apple, and is likely to be the primary application language in the future, ensuring our applications lasting power.
-Also it is backwards compatable with Objective C libraries, meaining that along with the benefits it has very few draw backs from Objective C.
+Also it is backwards compatible with Objective C libraries, meaning that along with the benefits it has very few draw backs from Objective C.
 It is said to be more readable, easier to learn, and considerably safer, with abstractions that define away memory management and pointers.
 In fact, Swift is said, by Apple, to ``defines away'' many different problems faced by developers:
 \begin{itemize}
@@ -946,11 +1014,11 @@ Additionally, I will do my best to display these colors, so that comparisons wil
   \item[\fcolorbox{black}{NASAblue}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad] NASA blue
 \end{itemize}
 NASA has a very defined style, specifically defending their logo with strict guidelines regarding placement and coloring \cite{nasa2}.
-If our application were to use the logo we would need to liscence it, but for now it is only color that we are interested in.
+If our application were to use the logo we would need to license it, but for now it is only color that we are interested in.
 The color palette of NASA actually depends on the application of it, and in many cases the background images that the text is superimposed over.
 The main color palette of NASA, from their base published logo and documents, is the red, white and blue of the United States.
 This color palette would potentially be a good choice, as it is directly tied to our client and the company for which we are developing.
-The benefits of this would be that our application could be marketed to other users, besides ISS crewmembers, but as that is not our initial goal, this color scheme most likely would only hurt our readability and clarity.
+The benefits of this would be that our application could be marketed to other users, besides ISS crew-members, but as that is not our initial goal, this color scheme most likely would only hurt our readability and clarity.
 The colors are bold, which is good for a flag or emblem, but not for our application \cite{nasa1}.
 
 \subsubsection{Option 2: OSU Similar Theme}
@@ -961,7 +1029,7 @@ The colors are bold, which is good for a flag or emblem, but not for our applica
 \end{itemize}
 This color palette would represent the creators and origin of the application.
 The well defined color palette of OSU would be easy to implement, and could follow examples such as OSU app.
-Once agian we run into the problem that these colors are meant to stand out, whereas in our application, we require that the colors do not draw excessive attention.
+Once again we run into the problem that these colors are meant to stand out, whereas in our application, we require that the colors do not draw excessive attention.
 Although, of course, we want our application to be well designed, including coloring, there is no place in this application for bold, strong colors.
 Also, there is little need to associate this application with the college, because the work will be done by our team, with little interaction of the college as a whole.
 
@@ -989,14 +1057,14 @@ The third option, Subtle Technology Theme, will be implemented, and changes can 
 \subsubsection{Criteria}
 A suitable development framework is one that will include tools to allow the developer to create a working user interfaces with ease. It is also necessary that the framework provides direct access to the built in barometer.
 
-\subsubsection{Xcode/Swift}
-Xcode is the development platform provided by Apple for engineers to create apps for their iOS products.
+\subsubsection{XCode/Swift}
+XCode is the development platform provided by Apple for engineers to create apps for their iOS products.
 This platform allows the developer to write code and connect it to User Interface elements to create an application. This the most commonly used framework for iOS app development.
-Because Xcode and Swift are the proprietary software development tools from Apple, these tools provide the developer with the full capability to interface with Apple's hardware.
+Because XCode and Swift are the proprietary software development tools from Apple, these tools provide the developer with the full capability to interface with Apple's hardware.
 This will allow the developer to have full access to the iPad's onboard sensors through Apple's APIs.
 
-The way the user interface is created and manipulated in Xcode is through a drag-and-drop style interface called Interface Builder.
-This can make it easy to quickly turn an idea into an application, but when it comes to collaborating and having multiple people make changes to the UI, the Xcode implementation falls short.
+The way the user interface is created and manipulated in XCode is through a drag-and-drop style interface called Interface Builder.
+This can make it easy to quickly turn an idea into an application, but when it comes to collaborating and having multiple people make changes to the UI, the XCode implementation falls short.
 When interacting with Interface Builder, each change is saved to a .xib file, which is obfuscated away from the developer.
 This becomes a problem when certain UI elements that are linked to the code are changed, because the reference to the UI element that is linked to the Swift code may be different after the UI change.
 This can cause errors that can only be fixed by opening up the xib file and manually changing the reference, or deleting the code and re creating the reference, which can cause its own set of problems.
@@ -1010,12 +1078,12 @@ It also does not have the capability to interface with the iPad's built in barom
 
 \subsubsection{React Native}
 React Native is a software development framework that allows developers to create apps for mobile devices using javascript, CSS, and HTML.
-Because the UI in a React Native app is controlled by CSS and HTML, every creation or modification of an element will be executed via code and not by Xcode's Interface Builder, it will be a lot easier to collaborate and make changes to the code base.
+Because the UI in a React Native app is controlled by CSS and HTML, every creation or modification of an element will be executed via code and not by XCode's Interface Builder, it will be a lot easier to collaborate and make changes to the code base.
 React native was built to allow the rapid creation of cross platform apps and because of this, it does not support all features of all phones.
 As a result, apps written with React-Native do not offer support for the built-in barometer.
 
 \subsubsection{Decision}
-Because the ability to interface with the onboard barometer is required for this project, we will be using Xcode and swift to develop the ISS Barometer application.
+Because the ability to interface with the onboard barometer is required for this project, we will be using XCode and swift to develop the ISS Barometer application.
 The ability to interface directly with the built in barometer is necessary for gaining an accurate pressure reading.
 
 \subsection{Chart Library}
@@ -1027,7 +1095,7 @@ It will also need to be a library that is compatible with the iPad Air 2 and iOS
 \subsubsection{Charts}
 Charts is an open source library by Daniel Cohen Gindi for building charts in iOS applications.
 Charts' latest commit at the time is 6 days ago, which means that it is still being maintained to some degree.
-It also specifically supports Xcode 9.0 and Swift 4.0, making it likely that we wont run into compatibility issues.
+It also specifically supports XCode 9.0 and Swift 4.0, making it likely that we wont run into compatibility issues.
 This API also has specific methods for adding realtime and dynamic data to the graph.
 One downside is that the graphs are not particularly appealing visually
 
@@ -1083,7 +1151,7 @@ The graph must also be legible and easy to use so that there is no time wasted, 
 Our client has asked for the graph but have not give us any set libraries to use, so we get to choose the best library.
 
 \subsubsection{Option 1: ScrollableGraphView}
-Scrollable Graph View features the animations for the graph, relocation of values while in use, changing the size of the range while scrolling, smooth scrolling, handles large amount of points and has customizable for looks. \cite{Github3}
+Scrollable Graph View features the animations for the graph, relocation of values while in use, changing the size of the range while scrolling, smooth scrolling, handles large amount of points and has customizable for looks.
  I picked this technology because of its ability to scroll, change range while working and its workload ability.
 This technology is better than the others i chose because the others don't have as fluid and easily displayable graphs.
  As well as this library has the most support to help you program a graph for the iPad.
@@ -1092,12 +1160,12 @@ This technology is better than the others i chose because the others don't have 
 
 
 \subsubsection{Option 2: Charts}
-	Charts features eight charts, x and y scaling, side scrolling, combining charts, highlights, saving chart to camera roll, color template, customizable legends and Animations. \cite{Github4}
+	Charts features eight charts, x and y scaling, side scrolling, combining charts, highlights, saving chart to camera roll, color template, customizable legends and Animations.
 I picked this technology because of its scrolling ability and how easy it is to read the data.
 Unlike the other two, this Library has a very clear and easily customizable labels as well as the fact that it is fastest and easiest to change and upgrade from within the code.
  These three reason the advantages it holds against the other two libraries.
 \subsubsection{Option 3:Swift Charts}
-	Swift Charts features 7 types of charts, multiple labels per value, Creation of arbitrary markers, Modular architecture, Chars can be combined, legends, Zooming and panning, lockable x and y axis, extensible axis values and label generators. \cite{Github5}
+	Swift Charts features 7 types of charts, multiple labels per value, Creation of arbitrary markers, Modular architecture, Chars can be combined, legends, Zooming and panning, lockable x and y axis, extensible axis values and label generators.
 I chose this library for its ability to zoom, panning and customize almost everything, including the zoom ability.
  This one is superior to the other two because of its ability to zoom, which our employer has demanded that we must have.
 \subsubsection{Decision }
@@ -1107,15 +1175,15 @@ The app will be using Swift Charts as our graph interface.
 
 \subsection{UI library}
 \subsubsection{Option 1: Cocoa controls}
-Cocoa controls library features input bars, search displays, calendar displays, ability to put pictures on the app, file indexes, map displays, rating displays, card swiping, small graph displays, easy to read data displays, pop ups, easy buttons and many many more displays. \cite{Cocoa}
+Cocoa controls library features input bars, search displays, calendar displays, ability to put pictures on the app, file indexes, map displays, rating displays, card swiping, small graph displays, easy to read data displays, pop ups, easy buttons and many many more displays.
 I chose this UI Library because of how much you can do with it, there are just so many different displays, view and inputs that can be customizable in so many ways.
 It is the largest of the libraries from the other technologies I choose for the UI library, that what gives it an advantage compared to the other two.
 \subsubsection{Option 2: CRPageViewController}
-CRPageViewController Library features the ability to switch from page to page easily and easy to customize how those pages are displayed (size, margins, height,etc.).\cite{Github1}
+CRPageViewController Library features the ability to switch from page to page easily and easy to customize how those pages are displayed (size, margins, height,etc.).
  I chose this library for its easy to use page swiper, easy on the go customization and the how the library looks.
 This library is superior to the other two because of its on the go customization and professional look.
 \subsubsection{Option 3: FlatUIKit}
-FlatUIKit is a swift library made by Grouper and it features buttons, text fields, segment controls, switches, alert Views, sliders, bar button items, navigation bars, table cells, popovers, and customizable colors, fonts and icons.\cite{Github2}
+FlatUIKit is a swift library made by Grouper and it features buttons, text fields, segment controls, switches, alert Views, sliders, bar button items, navigation bars, table cells, popovers, and customizable colors, fonts and icons.
  I chose this Library for its easy to read displayable items, we don't need fancy gadgets for our app just straightforward easy to use and read.
  This is superior to the other two technologies because it's straightforward to code and easy to manipulate/customize .
 \subsubsection{Decision}
@@ -1151,6 +1219,7 @@ We will be using the iPad for our barometer implementation.
  There is already iPads aboard the ISS, so no need for a new mission just to send a new app up to the station.
 The iPad has a bigger screen that will allow easy viewing and not cramp the graph space.
 
+\newpage
 \section{Weekly Blog Posts}
 % (all team members' posts)
 % formatted nicely and clearly distinct from one another
@@ -1190,7 +1259,7 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 	Week 4 & Completed Wired article \\ \hline
     Week 5 & Started working on progress report. Started working on progress report presentation. Met with Don. Started on changes \\ \hline
     Week 6 & Completed progress report. Completed progress report presentation \\ \hline
-	Week 7 & Met with Don. Don requested a few UI changes that were added to github as issues. Implemented UI changes. Engineering expo \\ \hline
+	Week 7 & Met with Don. Don requested a few UI changes that were added to Github as issues. Implemented UI changes. Engineering expo \\ \hline
 	Week 8 & Started working on final report \\ \hline
 	Week 9 & Started working on final presentation \\ \hline
     Week 10 & Final meeting with Don
@@ -1250,38 +1319,40 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 		\hline
 	Week & Summary \\ \hline
     \multicolumn{2}{c}{\textbf{Fall}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
+    Week 1 & Brought resume to class and did peer help. Finished and turned in Preferences.  \\ \hline
+	Week 2 & Met up with my group members, exchanged contact info and set up meeting for Wedsenday at 4.Emailed our contact Don. Started doing some research on what languages to use, about using the ipads baraometer, about my contact, similar apps how their lay outs. Wrote down questions to ask Don when we have our first meeting or in email if that is what he prefers. Figure out questions to ask Don.   \\ \hline
+	Week 3 & Finished and turned in problem statement, added it to the repo on my own branch called Cades-problem-statement.Met with ta, and talked to group about problem statement that Don asked us for. Brought in hard copy to class    \\ \hline
+	Week 4 &  Finished writing problem statement and sent it to be edited by a friend/ Downloaded swift libraries and tried to get it to work for linux. \\ \hline
+    Week 5 & Started writing for my section of requirement documents. Finished rough draft with team for Requirements document  \\ \hline
+    Week 6 & Met with TA talked about how class was going. Team met and worked on Requirements doc.Team turned in finished requirements document    \\ \hline
+	Week 7 &  Met with TA talked about how the class is going and how we are communicating with our client. Started tech review  \\ \hline. Met with don again talked about technology review.
+	Week 8 & Finished and turned in rough draft for tech review, handed in.  \\ \hline
+	Week 9 & Turned in Tech Review.    \\ \hline
+    Week 10 & Met with ta. Talked about deadlines. Friday is the design document. Monday is the presentation and documentation for that. Turned in the design document.  \\ \hline
     \multicolumn{2}{c}{\textbf{Winter}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
+    Week 1 &   Met with ta  \\ \hline
+	Week 2 &  Met with ta. Finished code for beta, fixed all things don asked us to change. got to meet Paolo Nespoli who also gave more suggestions \\ \hline
+	Week 3 & Met with ta. continued work from previous weeks meeting   \\ \hline
+	Week 4 & Met with ta. continued work from previous weeks meeting. did some work on documents \\ \hline
+    Week 5 &  met with the team and with ta, went to class.\\ \hline
+    Week 6 & Summary: Worked on the presentation, poster and progress report. Also meet with ta.   \\ \hline
+	Week 7 & didnt do much this week on the project other then email don \\ \hline
+	Week 8 &  Meeting with don didn’t happen, remade meeting for next week. Had to get notes from meetings that I missed Wednesday.  \\ \hline
+	Week 9 & Met with don was given the slopes for the graphs. Got to see the inside of mission control  \\ \hline
+    Week 10 & Met with ta for last time this term  \\ \hline
     \multicolumn{2}{c}{\textbf{Spring}} \\ \hline
-    Week 1 &  \\ \hline
-	Week 2 &  \\ \hline
-	Week 3 &  \\ \hline
-	Week 4 &  \\ \hline
-    Week 5 &  \\ \hline
-    Week 6 &  \\ \hline
-	Week 7 &  \\ \hline
-	Week 8 &  \\ \hline
-	Week 9 &  \\ \hline
-    Week 10 & \\ \hline
+    Week 1 & Got back into contact with the team did a bit of work over the break  \\ \hline
+	Week 2 & Worked on the 4/11 assignment. Also met on Sunday to plan the term   \\ \hline
+	Week 3 & Worked on the wired article  \\ \hline
+	Week 4 &  Finished up and edited the poster for expo. Made small adjustments to the project. \\ \hline
+    Week 5 &  Met with done and got him to download and have the app running on his end. He pointed out more things to change.  \\ \hline
+    Week 6 & Worked on midterm report and presentation. Talked to don about things he wants changed
+
+  \\ \hline
+	Week 7 &Prepared and did expo!!! Lots of friends stopped by and tried  to embarrass me with hard questions. Made some final changes to the project design as don had asked   \\ \hline
+	Week 8 & Started working on final report \\ \hline
+	Week 9 & Started working on final presentation \\ \hline
+    Week 10 & Worked on and turned in final presentation. Had a final send off meeting with don where he told us we could come to Dallas and he would give us a tour. Also said we could use him as a reference. Also worked on peer reviews. Working on the final paper will turn it in by Monday \\ \hline
 \end{longtable}
 \end{center}
 
@@ -1297,6 +1368,9 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 % Block and flow diagrams are good here.
 % How does one install your software, if any?
 % How does one run it?
+
+As of right now to use our application you need to download and have XCode installed. Then all you have to do is download our zip file from our Github page. Unzip the file and run the build file, this file should set up the project and even start XCode up. It should then start the program on either you device that's plugged in or start a simulation on the computer.
+
 % Are there any special hardware, OS, or runtime requirements to run your software?
 % Any user guides, API documentation, etc.
 % This needs to be detailed enough to recreate and/or use your project!
@@ -1307,8 +1381,8 @@ Our project follows the basic flow of receiving barometer readings in a callback
 \includegraphics[scale=0.8]{flowchart}
 
 \subsection{How to Run}
-To run the project you need to have Xcode installed.
-To install the project, fetch the most recent version from github, and run the Build script found in the root folder.
+To run the project you need to have XCode installed.
+To install the project, fetch the most recent version from Github, and run the Build script found in the root folder.
 This installs the charts library used to draw the barometer chart.
 If Cocoa pods is not already installed on the machine, you may need to run the Build script a second time to successfully install the dependencies.
 From there to run the application in a simulator, select iPad Air 2 from the target device dropdown menu.
@@ -1340,8 +1414,35 @@ Just click on the project folder at the top of the hierarchy and change the team
 
 
 \subsection{Nathan's Conclusions and Reflections}
+This project taught me many different technical skills.
+Primarily, I learned to comfortably code in the Swift language, working with the XCode editor.
+Working with Swift on a regular basis showed how to develop an application in the language.
+Using XCode provided me with experience using other IDEs, which I hadn't messed with before.
+Additionally to Swift and XCode, I became more familiar with using Git and GitHub as a version control and a project managing application.
+We used GitHub entirely for all of our assignments and I quickly became used to the restrictions and benefits.
+Another language that I got more used to was \LaTeX.
+I now use it in other classes for the majority of my documents.
+Learning \LaTeX, and Daniel, introduced me to Atom and Markdown, both of which I am more comfortable with now.
+
+Non-Technical information I learned mostly relates to project work, where I further practiced my ability to work within a team.
+Additionally, Expo really helped me sell or advertise my project.
+A really important skill I got practice on was working closely with a client, especially someone very much my superior.
+Our client, Don Pettit, was honestly the best client I could have hoped for, being understanding and curious in our work.
+I also learned about project managing, working with my team to organize meetings and start work on projects.
+In long-term project managing, I learned more about the different methods to project development, and how to manage issues over a period of time.
+
 
 \subsection{Cade's Conclusions and Reflections}
+I learned how to use swift coding language. This also taught me how to use XCode as it works well with swift. I learned how to use and navigate through UI view controllers. I learned how to send variables from one view controller to another. I learned how view controllers use or interact with global variables, there can be a global variable for all view controllers or just certain ones. Learned how to use stacks and then even more indefet use views to center objects in view controllers, this helped with organization and adding axis to the the graph. Learned how to lock and orient the screen, this was a problem that took a lot of time to figure out as there wasn't very good documentation on it. The answer was barely longer then a line of code.
+
+I learned how to communicate better, with clients and teammates. Learned about how to set up meetings and sacrificing your time to meet with the client. Time change was a new thing to think about, learned that you need to double check your time and their time so you aren't early to the meeting or late to the meeting.
+
+    Project work uses a lot more documentation then i had ever realized. I learned that the reason for this is so that you can always go back and look at what was required as it was in written form. I was also very scared of project work thinking that a client would be yelling at us alot and telling us we were doing it wrong or that's not what they wanted a lot. My experience was nothing like that, Don was very polite and worked through us with everything we did. Never got mad at us just told us what we could change and make better. Project work is not to be scary as i thought previously but is more work on paper.
+
+    I learned that i like the agile style of of project management, working for a few weeks and getting in contact with the client to go over what's been done. I also learned that not everyone schedule can always line up making it hard to have meetings sometimes. When managing a project you need to have everything laid out on paper as well. Using a service like Github makes it easy to lay out who needs to do what by when as well.
+
+    I hated working in teams in almost every single project I have ever had except this one. I learned that not everyone will let you down and sometimes you are the person who needs to catch up and do more. This team worked well together and even communicated well, not just well but politely. Even when someone was behind on their work they were not attacked they were reminded and even offered help
+    If i could do it all over again. I would have done even more on the project, i would have asked for help more from my teammates. I would have liked to talk about their parts more in depth so that i understood every single line of code not just some of mine and most of theirs. I would have liked to also have gotten to know my teammates even better than I already did.
 
 \section{Appendix 1: Essential Code Listings}
 % DK
