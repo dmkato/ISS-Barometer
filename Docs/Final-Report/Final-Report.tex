@@ -343,7 +343,7 @@ Each use of an iOS API will be carried out by a function call to the appropriate
 
 \paragraph{Communications Interfaces}
 The ISS Barometer App will not need to communicate outside of the iPad, it will need to use the internal barometer and exported as a csv to an excel file.
-For updates, we will need to send them through NASA's link to the ISS, but ideally there will only be one update, and the infastructure we use is already inplace.
+For updates, we will need to send them through NASA's link to the ISS, but ideally there will only be one update, and the infrastructure we use is already in place.
 \subsection{Specific System Features}
 
 \subsubsection{Initial Pressure Reading}
@@ -485,7 +485,7 @@ The display page no longer has a big button for the digital display of atmospher
 Client asked us to remove most of the buttons so that there was less for the astronauts to do.
 We no longer have three pages, this way all of the displayed data is in one spot for the astronauts, so they don't have to swipe for more info.
 
-We added a lock screen button on the top left of the app, this was so that you didn't accidently press or zoom in when you didn't want to.
+We added a lock screen button on the top left of the app, this was so that you didn't accidentally press or zoom in when you didn't want to.
 We also now had have an initial pressure and initial timestamp of when app was started, so they know when and how much the pressure was at when the emergency happened.
 Now on the display page we have average dP/dt and a average dt/dP, that's running integration interval is displayed on the right of them.
 A current pressure with its time stamp.
@@ -843,7 +843,7 @@ As those improvements are made, our application will become perfectly tailored t
 % (original)
 
 \subsection{Introduction}
-The ISS Barometer is an iOS application that will serve the crewmembers of the International Space Station (ISS).
+The ISS Barometer is an iOS application that will serve the crew members of the International Space Station (ISS).
 Our application will be used on the ISS to find leaks in the station by measuring air pressure, using the on-iPad barometer sensor.
 For this project we have divided the pieces into the following sections:
 
@@ -861,14 +861,14 @@ For this project we have divided the pieces into the following sections:
 
 This document works with Language, Data Storage, and Color Palette, as far as technologies.
 For each piece, three different options will be presented, and then the best choice will be chosen and justified, given our project requirements.
-Something to note, the choices rely on predecided technologies, though these are up for deciding, in my partners' documents.
+Something to note, the choices rely on pre-decidedtechnologies, though these are up for deciding, in my partners' documents.
 For example, some of the data storage choices rely on using Swift 3 or 4, with the XCode development environment.
 
 \subsection{Data Storage}
 The data storage of our application will mostly be used for the storage of settings, as well as temporary storage of plot data.
 One of the functions of ISS Barometer is it will record data from the barometer, and display a graph.
-This plot will be stored temporarily until the user decides to save it as a seperate file, at which point, the iPad will store it in the users file directory.
-Before storing it seperately, this data will be saved with the application, and so there are choices to make regarding storage.
+This plot will be stored temporarily until the user decides to save it as a separate file, at which point, the iPad will store it in the users file directory.
+Before storing it separately, this data will be saved with the application, and so there are choices to make regarding storage.
 Namely, we can decide if we wish to store this data locally, or on a remote server.
 Additionally, we must decide upon the package implementation, as listed below.
 In regards to the settings storage, each iPad will have settings which must also be stored, so that users do not need to set their preferences each time.
@@ -913,7 +913,7 @@ Also it might not be necessary to explicitly store plot information from the app
 \subsubsection{Option 3: SQL Server}
 The third option that has been put forward is a non-local server storage solution.
 In this case, that would be in the form of an SQL server, either provided by NASA, or by the students of this project.
-This option would allow us to access data, meaning NASA officials in Mission Control would be able to recieve and analyze data.
+This option would allow us to access data, meaning NASA officials in Mission Control would be able to receive and analyze data.
 Although this could be helpful, it is unknown the connectivity of the ISS, and it would most likely be a bottle neck for such an implementation.
 To use an SQL server, our application would have to implement SQLite, to make queries and store data.
 SQLite is a widely used framework, and is supported in Swift and Objective C.
@@ -924,7 +924,7 @@ SQLite can be implemented on many different languages, and also has a large amou
 
 \subsubsection{Decision and Justification}
 In the case of ISS Barometer, the clear decision is to use CoreData, in tandem with NSUserDefaults.
-As with many applications, ours requires that user preferences be saved with the application, and not required to be reentered everytime ISS Barometer launches.
+As with many applications, ours requires that user preferences be saved with the application, and not required to be reentered every time ISS Barometer launches.
 This will require the NSUserDefaults package, allowing us to quickly save data that the user specifies, such as float point accuracy and orientation options.
 However, NSUserDefaults does not scale, and would be inappropriate for plots of undefined size, such as the $\Delta \frac{\Delta p}{\Delta t}$ plot.
 This means we need a scalable option, for which we will use CoreData.
@@ -981,12 +981,12 @@ This benefit should not be looked over, as all members of this group are novice 
 \subsubsection{Option 3: C\#}
 C\# is the option if we were to use Unity as a development environment.
 A major benefit of using this language is the ability to be cross platform, using Unity to alternate from Android or Desktop applications.
-Although a realatively cool feature, this doesn't help us in development of a purely iOS application.
+Although a relatively cool feature, this doesn't help us in development of a purely iOS application.
 Additionally, C\# can call methods and import packages built in Objective C, C, or C++, allowing it to have similar functionality to the other applications.
 C\# would, however, require that we build our application and then refactor it into Objective C, using the XCode.
 It turns out that Unity does not have the capability to test or deploy applications straight to iOS, and must first use XCode.
-This would slow down development, and impeed the team.
-On the flip side, Unity may be installed on Mac, Windows, and Linux, allowing all of the team memebers equal access \cite{objc1}.
+This would slow down development, and impede the team.
+On the flip side, Unity may be installed on Mac, Windows, and Linux, allowing all of the team members equal access \cite{objc1}.
 
 \subsubsection{Decision and Justification: Swift}
 For this project the clear language decision is Swift.
@@ -996,14 +996,14 @@ C\# is not really an option in that it would require that we rewrite our code in
 Additionally, aside from the accessibility, it doesn't offer any benefits for our application, and is more geared towards game design.
 Choosing Swift offers more choices in which version we use.
 The clear option is the most recent version, Swift 4.
-This will ensure that our application remains verible, and doesn't cause any drawbacks becuase the ISS iPads are kept up to date.
+This will ensure that our application remains variable, and doesn't cause any drawbacks because the ISS iPads are kept up to date.
 Keeping updated also helps protect security and limited bugs in our code.
 Also, as our client has access to XCode, using Swift will also allow us to show him progress, without very much difficulty.
 
 \subsection{Color Palette}
-The color of this application is more of an auxilliary decision, but still requires some thought.
+The color of this application is more of an auxiliary decision, but still requires some thought.
 As our application is specifically meant to improve the readability of other available applications, we must make sure that any colors we choose are clear and do not distract from the data being displayed.
-This application is not meant to be visually suprising.
+This application is not meant to be visually surprising.
 As such, the options put forward are kept clean and muted, with obvious ties to known palettes.
 Additionally, I will do my best to display these colors, so that comparisons will be clear.
 
@@ -1047,7 +1047,7 @@ This color scheme doesn't have the problem of being bold or too strong, and it c
 \subsubsection{Decision and Justification}
 As stated before any color used will not be emphasized, as readability is our main goal.
 This means that although certain elements may be colored, the majority will most likely remain black and white, with accents on the graph and other data to help clarity.
-Also, as our application is being released in two versions, there is time we could use to get feedback from the crewmembers using the application, and a color scheme would be easily changed.
+Also, as our application is being released in two versions, there is time we could use to get feedback from the crew members using the application, and a color scheme would be easily changed.
 For version one though, I think that option 3 is the obvious choice.
 As the other options are designed specifically for other uses, such as emblems and flags, their colors stand out, and draw attention in a way that would be intrusive and counter productive in our application.
 The third option, Subtle Technology Theme, will be implemented, and changes can be issued from our users or our client, as this technology doesn't have any features that depend on it.
@@ -1179,7 +1179,7 @@ Cocoa controls library features input bars, search displays, calendar displays, 
 I chose this UI Library because of how much you can do with it, there are just so many different displays, view and inputs that can be customizable in so many ways.
 It is the largest of the libraries from the other technologies I choose for the UI library, that what gives it an advantage compared to the other two.
 \subsubsection{Option 2: CRPageViewController}
-CRPageViewController Library features the ability to switch from page to page easily and easy to customize how those pages are displayed (size, margins, height,etc.).
+CRPageViewController Library features the ability to switch from page to page easily and easy to customize how those pages are displayed (size, margins, height, etc.).
  I chose this library for its easy to use page swiper, easy on the go customization and the how the library looks.
 This library is superior to the other two because of its on the go customization and professional look.
 \subsubsection{Option 3: FlatUIKit}
@@ -1209,7 +1209,7 @@ This was not chosen by the employer but if needing a cheap barometer that will g
 \subsubsection{Option 3: iPhone 6}
 The iPhone 6 comes with a barometer on board.
  This would be used the same was as the iPad and programmed using the same language.
- The difference between the two is the ios is older in the iPhone 6, It has a smaller display, and we don't know if they have them aboard the ISS.
+ The difference between the two is the iOS is older in the iPhone 6, It has a smaller display, and we don't know if they have them aboard the ISS.
  I chose this because it would keep us from having to learn something different then the language we have chosen and since the NASA is using iPads they might also use apple's iPhones.
  This technology would be superior to the other two because of how small the iPhone is (easy to carry around), it isn't heavy, no wires and can be carried in a pocket.
 This could replace the iPad if they didn't have to make new trips to the ISS.
@@ -1321,7 +1321,7 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
     \multicolumn{2}{c}{\textbf{Fall}} \\ \hline
     Week 1 & Brought resume to class and did peer help. Finished and turned in Preferences.  \\ \hline
 	Week 2 & Met up with my group members, exchanged contact info and set up meeting for Wedsenday at 4.Emailed our contact Don. Started doing some research on what languages to use, about using the ipads baraometer, about my contact, similar apps how their lay outs. Wrote down questions to ask Don when we have our first meeting or in email if that is what he prefers. Figure out questions to ask Don.   \\ \hline
-	Week 3 & Finished and turned in problem statement, added it to the repo on my own branch called Cades-problem-statement.Met with ta, and talked to group about problem statement that Don asked us for. Brought in hard copy to class    \\ \hline
+	Week 3 & Finished and turned in problem statement, added it to the repo on my own branch called Cades-problem-statement. Met with ta, and talked to group about problem statement that Don asked us for. Brought in hard copy to class    \\ \hline
 	Week 4 &  Finished writing problem statement and sent it to be edited by a friend/ Downloaded swift libraries and tried to get it to work for linux. \\ \hline
     Week 5 & Started writing for my section of requirement documents. Finished rough draft with team for Requirements document  \\ \hline
     Week 6 & Met with TA talked about how class was going. Team met and worked on Requirements doc.Team turned in finished requirements document    \\ \hline
@@ -1369,7 +1369,14 @@ The iPad has a bigger screen that will allow easy viewing and not cramp the grap
 % How does one install your software, if any?
 % How does one run it?
 
-As of right now to use our application you need to download and have XCode installed. Then all you have to do is download our zip file from our Github page. Unzip the file and run the build file, this file should set up the project and even start XCode up. It should then start the program on either you device that's plugged in or start a simulation on the computer.
+As of right now to use our application you need to download and have XCode installed. Then all you have to do is download our zip file from our Github page.
+Unzip the file and run the build file, this file should set up the project and even start XCode up.
+With XCode running, you need to select your device (which can be connected via usb cable) or select the iPad Air 2 simulator.
+Once you click the run button, it should then start the program on either you device that's plugged in or start a simulation on the computer.
+Minor issues have been found with trying to run the software without a valid developer account, this can be remedied by either purchasing an account, or entering a valid apple id.
+This application is restricted to the iPad Air 2, which has a valid barometer, or it can be run on the simulator.
+It should be noted that the simulator only displays random data, as there is no ability to feed in real barometer readings.
+XCode and other development tools can only be run on Mac OS.
 
 % Are there any special hardware, OS, or runtime requirements to run your software?
 % Any user guides, API documentation, etc.
@@ -1422,7 +1429,8 @@ Additionally to Swift and XCode, I became more familiar with using Git and GitHu
 We used GitHub entirely for all of our assignments and I quickly became used to the restrictions and benefits.
 Another language that I got more used to was \LaTeX.
 I now use it in other classes for the majority of my documents.
-Learning \LaTeX, and Daniel, introduced me to Atom and Markdown, both of which I am more comfortable with now.
+Learning more about \LaTeX, and with help from my teammates, introduced me to Atom and Markdown, both of which I am more comfortable with now.
+
 
 Non-Technical information I learned mostly relates to project work, where I further practiced my ability to work within a team.
 Additionally, Expo really helped me sell or advertise my project.
@@ -1430,14 +1438,16 @@ A really important skill I got practice on was working closely with a client, es
 Our client, Don Pettit, was honestly the best client I could have hoped for, being understanding and curious in our work.
 I also learned about project managing, working with my team to organize meetings and start work on projects.
 In long-term project managing, I learned more about the different methods to project development, and how to manage issues over a period of time.
-
+If I did it again I would maybe spend more effort making sure we were on the right track in the beginning.
+Maybe if we had a mockup, or something, than we could have had a better idea of our UI.
+Other than that change, it was a truly great experience, and I learned a lot in the process of producing a useful and impressive product.
 
 \subsection{Cade's Conclusions and Reflections}
-I learned how to use swift coding language. This also taught me how to use XCode as it works well with swift. I learned how to use and navigate through UI view controllers. I learned how to send variables from one view controller to another. I learned how view controllers use or interact with global variables, there can be a global variable for all view controllers or just certain ones. Learned how to use stacks and then even more indefet use views to center objects in view controllers, this helped with organization and adding axis to the the graph. Learned how to lock and orient the screen, this was a problem that took a lot of time to figure out as there wasn't very good documentation on it. The answer was barely longer then a line of code.
+I learned how to use swift coding language. This also taught me how to use XCode as it works well with swift. I learned how to use and navigate through UI view controllers. I learned how to send variables from one view controller to another. I learned how view controllers use or interact with global variables, there can be a global variable for all view controllers or just certain ones. Learned how to use stacks and then even more in depth use views to center objects in view controllers, this helped with organization and adding axis to the the graph. Learned how to lock and orient the screen, this was a problem that took a lot of time to figure out as there wasn't very good documentation on it. The answer was barely longer then a line of code.
 
 I learned how to communicate better, with clients and teammates. Learned about how to set up meetings and sacrificing your time to meet with the client. Time change was a new thing to think about, learned that you need to double check your time and their time so you aren't early to the meeting or late to the meeting.
 
-    Project work uses a lot more documentation then i had ever realized. I learned that the reason for this is so that you can always go back and look at what was required as it was in written form. I was also very scared of project work thinking that a client would be yelling at us alot and telling us we were doing it wrong or that's not what they wanted a lot. My experience was nothing like that, Don was very polite and worked through us with everything we did. Never got mad at us just told us what we could change and make better. Project work is not to be scary as i thought previously but is more work on paper.
+    Project work uses a lot more documentation then i had ever realized. I learned that the reason for this is so that you can always go back and look at what was required as it was in written form. I was also very scared of project work thinking that a client would be yelling at us a lot and telling us we were doing it wrong or that's not what they wanted a lot. My experience was nothing like that, Don was very polite and worked through us with everything we did. Never got mad at us just told us what we could change and make better. Project work is not to be scary as i thought previously but is more work on paper.
 
     I learned that i like the agile style of of project management, working for a few weeks and getting in contact with the client to go over what's been done. I also learned that not everyone schedule can always line up making it hard to have meetings sometimes. When managing a project you need to have everything laid out on paper as well. Using a service like Github makes it easy to lay out who needs to do what by when as well.
 
